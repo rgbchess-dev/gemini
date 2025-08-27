@@ -1,0 +1,104 @@
+/**
+ * Shared Promotion Styles for All Chess Trainers
+ * Place this file in: engine/promotion.css
+ */
+
+.promotion-selector {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    display: none;
+    background: white !important;
+    border: 3px solid #333 !important;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8) !important;
+    padding: 20px !important;
+}
+
+.promotion-title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px !important;
+    font-weight: bold;
+    color: #333 !important;
+}
+
+.promotion-pieces {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.promotion-piece {
+    width: 70px !important;
+    height: 70px !important;
+    cursor: pointer;
+    border: 2px solid #ccc !important;
+    border-radius: 6px;
+    background: #f9f9f9 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease;
+    background-size: 80% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.promotion-piece:hover {
+    background-color: #4CAF50 !important;
+    border-color: #2E7D32 !important;
+    transform: scale(1.1) !important;
+}
+
+/* White pieces using SVG files */
+.promotion-piece.white[data-piece="q"] {
+    background-image: url('../assets/pieces/queen-white.svg') !important;
+}
+
+.promotion-piece.white[data-piece="r"] {
+    background-image: url('../assets/pieces/rook-white.svg') !important;
+}
+
+.promotion-piece.white[data-piece="b"] {
+    background-image: url('../assets/pieces/bishop-white.svg') !important;
+}
+
+.promotion-piece.white[data-piece="n"] {
+    background-image: url('../assets/pieces/knight-white.svg') !important;
+}
+
+/* Black pieces using SVG files */
+.promotion-piece.black[data-piece="q"] {
+    background-image: url('../assets/pieces/queen-black.svg') !important;
+}
+
+.promotion-piece.black[data-piece="r"] {
+    background-image: url('../assets/pieces/rook-black.svg') !important;
+}
+
+.promotion-piece.black[data-piece="b"] {
+    background-image: url('../assets/pieces/bishop-black.svg') !important;
+}
+
+.promotion-piece.black[data-piece="n"] {
+    background-image: url('../assets/pieces/knight-black.svg') !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .promotion-piece {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .promotion-selector {
+        padding: 15px !important;
+    }
+    
+    .promotion-title {
+        font-size: 16px !important;
+    }
+}

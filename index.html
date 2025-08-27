@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Opening Trainer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #202429; /* Dark Slate Blue */
+            --surface-color: #2c313a;
+            --border-color: #434853;
+            --primary-color: #388dff; /* Vibrant Blue */
+            --text-color: #e1e3e6;
+            --text-muted-color: #8a919f;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        h1 span { color: var(--primary-color); }
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .course-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-color);
+        }
+        .course-card h2 { margin: 0 0 10px 0; font-size: 1.4em; color: #fff; }
+        .course-card p { margin: 0 0 15px 0; color: var(--text-muted-color); font-size: 0.95em; line-height: 1.6; flex-grow: 1; }
+        .course-card .author { font-style: italic; font-size: 0.9em; color: #666; }
+        .course-card .player-color {
+            font-weight: 500;
+            color: var(--primary-color);
+            text-transform: capitalize;
+            text-align: right;
+            margin-top: auto;
+        }
+        #loadingMessage { text-align: center; font-size: 1.2em; color: var(--text-muted-color); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chess Opening <span>Trainer</span></h1>
+        <div id="course-list" class="course-list">
+            <p id="loadingMessage">Loading courses...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

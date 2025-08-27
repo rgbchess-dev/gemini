@@ -1,0 +1,187 @@
+{
+    "name": "Traxler Counter-Attack",
+    "playerColor": "black",
+    "orientation": "black",
+    "theory": {
+        "startingFen": null,
+        "lines": [
+            {
+                "name": "Line 1: Kxf2 Main (Kf3)",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Kf3", "Qf6+", "Kxe4", "d5+", "Bxd5", "Qf4+", "Kd3", "Qd4+", "Ke2", "Qxd5", "Kf1", "Qxf7+"],
+                "description": "The main line where White takes on f2 and walks into the king hunt. Critical line for both sides.",
+                "hint": "After Ng5, Black sacrifices the bishop with Bc5-Bxf2+ to drag the white king forward!",
+                "evaluation": "Black gets excellent compensation and attacking chances",
+                "category": "Nxf7 Sacrifice Lines"
+            },
+            {
+                "name": "Line 1.1: Kxf2 then Ke1",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Ke1", "Qh4+", "g3", "Nxg3", "hxg3", "Qxh1+", "Bf1", "O-O"],
+                "description": "White tries Ke1 to escape. Black gets excellent compensation with the rook on h1.",
+                "hint": "After Ke1, Black brings the queen to h4+ and wins the exchange on h1",
+                "evaluation": "Black has strong compensation for the piece",
+                "category": "Nxf7 Sacrifice Lines"
+            },
+            {
+                "name": "Line 1.2: Kxf2 then Kf1",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Kf1", "Qh4", "Qf3", "Nd4", "g3", "Qh3+", "Qg2", "d5", "Bxd5", "Qf5+", "Ke1", "Nxc2+"],
+                "description": "Kf1 leads to complex tactics. Black maintains strong pressure with tactical shots.",
+                "hint": "Against Kf1, Black's queen goes to h4 and creates immediate threats",
+                "evaluation": "Sharp tactical play favoring Black",
+                "category": "Nxf7 Sacrifice Lines"
+            },
+            {
+                "name": "Line 1.3: King Hunt (Ke2) - The Famous Mate!",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Ke2", "Nd4+", "Ke3", "Qh4", "g3", "Nxg3", "hxg3", "Qxg3+", "Ke4", "d5+", "Kxd5", "c6+", "Kd6", "Nf5+", "Kc5", "b6+", "Kb4", "a5+", "Ka4", "b5+", "Bxb5", "cxb5+", "Kxb5", "Bd7+", "Kc5", "Rc8+", "Kb6", "Qg6+", "Nd6+", "Qxd6+", "Ka7", "Qc7+", "Ka6", "Ra8#"],
+                "description": "The famous king hunt! White's king gets mated in the center of the board. A masterpiece of tactics.",
+                "hint": "The white king takes a deadly walk across the board - one of the most beautiful tactical sequences in chess!",
+                "evaluation": "Forced mate for Black - the crown jewel of the Traxler!",
+                "category": "Nxf7 Sacrifice Lines"
+            },
+            {
+                "name": "Line 1.4: Kxf2 then Ke3",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Ke3", "Qh4", "g3", "Nxg3", "hxg3", "Qd4+", "Ke2", "Qxc4+"],
+                "description": "Ke3 is another try but Black gets excellent play with the centralized queen.",
+                "hint": "After Ke3, the black queen dominates the center and wins material",
+                "evaluation": "Black has winning advantage",
+                "category": "Nxf7 Sacrifice Lines"
+            },
+            {
+                "name": "Line 2: Kf1 Variation (Refusing the Bishop)",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kf1", "Qe7", "Nxh8", "d5", "exd5", "Nd4", "c3", "Bg4", "Qa4+", "Nd7", "cxd4", "Qf6", "dxe5", "Qf4", "g3", "Bxg3+", "Kg2", "Qf2#"],
+                "description": "If White refuses the bishop sacrifice with Kf1, Black gets a beautiful mating attack.",
+                "hint": "If White doesn't take the bishop, Black develops with Qe7 and gets a crushing attack",
+                "evaluation": "Forced mate for Black if White refuses the sacrifice",
+                "category": "Nxf7 Sacrifice Lines"
+            },
+            {
+                "name": "Line 3: Bxf7+ Bishop Sacrifice",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Bxf7+", "Ke7", "Bb3", "Rf8", "Nc3", "Qe8", "O-O", "d6", "d3", "Qg6", "Nf3", "Bg4", "Bd2", "Nd4"],
+                "description": "White can try the bishop sacrifice instead. Black gets good compensation but it's more complex.",
+                "hint": "Against the bishop sacrifice, Black accepts with Ke7 and develops actively",
+                "evaluation": "Complex position with good compensation for Black",
+                "category": "Bxf7+ Bishop Sacrifice"
+            },
+            {
+                "name": "Line 4: Quiet Retreat (Nf3)",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nf3", "d5", "exd5", "Nxd5", "O-O", "O-O", "d3", "f5", "Ng5", "Qd6", "f4", "exf4", "Bxf4", "Nxf4", "Rxf4", "Bd6"],
+                "description": "If White retreats quietly, Black gets excellent central control and attacking chances.",
+                "hint": "Against the quiet retreat, Black strikes in the center with d5!",
+                "evaluation": "Equal position with good play for Black",
+                "category": "Quiet Development"
+            },
+            {
+                "name": "Line 5: d4 Variation",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "d4", "exd4", "O-O", "dxc3", "bxc3", "d6", "Re1+", "Kf8", "Nh3", "h6", "Nf4", "g5", "Nd5", "Nxd5", "Bxd5", "c6"],
+                "description": "White can try d4 to open the center, but Black gets good piece play.",
+                "hint": "Against d4, Black takes and develops with good compensation",
+                "evaluation": "Approximately equal with active piece play",
+                "category": "d4 Variations"
+            },
+            {
+                "name": "Line 6: Nxf7 Declined - Nh3",
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nh3", "d5", "exd5", "Nxd5", "Bxd5", "Qxd5", "O-O", "O-O", "d3", "f5", "f4", "exf4", "Nxf4", "Qh5"],
+                "description": "White can retreat to h3 to avoid complications. Black gets active piece play.",
+                "hint": "Against Nh3, Black seizes the center with d5 and gets excellent development",
+                "evaluation": "Good compensation for Black with active pieces",
+                "category": "Quiet Development"
+            }
+        ]
+    },
+    "exercises": {
+        "startingFen": "r1bqk2r/pppp1ppp/2n2n2/2b1p1N1/2B1P3/8/PPPP1PPP/RNBQK2R w KQkq - 4 5",
+        "lines": [
+            {
+                "name": "Exercise 1: Basic Traxler Sacrifice",
+                "description": "White just played Ng5, attacking f7. How should Black respond with the Traxler Counter-Attack?",
+                "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p1N1/2B1P3/8/PPPP1PPP/RNBQK2R w KQkq - 4 5",
+                "moves": ["Nxf7", "Bxf2+", "Kxf2", "Nxe4+"],
+                "hint": "Sacrifice the bishop to deflect the king and attack e4! This is the signature Traxler sacrifice.",
+                "instruction": "The Traxler begins with a shocking bishop sacrifice to drag the white king forward.",
+                "category": "Basic Tactics"
+            },
+            {
+                "name": "Exercise 2: Find the Correct King Move",
+                "description": "After 1.Nxf7 Bxf2+ 2.Kxf2 Nxe4+, White tries 3.Kf3. How should Black continue the attack?",
+                "fen": "r1bqk2r/pppp1ppp/2n5/4p3/2B1n3/5K2/PPPP2PP/RNBQ3R b kq - 1 6",
+                "moves": ["Kf3", "Qf6+", "Kxe4", "d5+"],
+                "hint": "Bring the queen into the attack with check! The white king is very exposed.",
+                "instruction": "After Kf3, Black brings the queen into the attack to hunt the white king.",
+                "category": "King Hunt"
+            },
+            {
+                "name": "Exercise 3: King Hunt Continuation",
+                "description": "White played 3.Ke2 instead. Find Black's powerful continuation to start the famous king hunt!",
+                "fen": "r1bqk2r/pppp1ppp/2n5/4p3/2B1n3/8/PPPPK1PP/RNBQ3R b kq - 1 6",
+                "moves": ["Ke2", "Nd4+", "Ke3", "Qh4"],
+                "hint": "Force the king forward with checks, then bring the queen into the attack! This is the start of the famous king hunt.",
+                "instruction": "Ke2 allows the most famous king hunt in chess history. Force the king into the center!",
+                "category": "King Hunt"
+            },
+            {
+                "name": "Exercise 4: Alternative Defense - Kf1",
+                "description": "What if White doesn't take the bishop and plays 2.Kf1 instead of Kxf2?",
+                "fen": "r1bqk2r/pppp1ppp/2n2n2/4p1N1/2B1P1b1/8/PPPP1KPP/RNBQ3R b kq - 0 6",
+                "moves": ["Kf1", "Qe7", "Nxh8", "d5"],
+                "hint": "If White refuses the bishop, develop the queen aggressively and attack the center!",
+                "instruction": "Against Kf1, Black gets excellent compensation by developing actively and striking in the center.",
+                "category": "Alternative Lines"
+            },
+            {
+                "name": "Exercise 5: Quiet Defense Test",
+                "description": "White retreats the knight quietly with 3.Nf3 instead of capturing. How should Black respond?",
+                "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 5 5",
+                "moves": ["Nf3", "d5", "exd5", "Nxd5"],
+                "hint": "If White retreats quietly, strike in the center immediately with d5!",
+                "instruction": "Against quiet moves, Black should seize the initiative with central action.",
+                "category": "Alternative Lines"
+            },
+            {
+                "name": "Exercise 6: Bishop Sacrifice Alternative",
+                "description": "White tries the bishop sacrifice 3.Bxf7+ instead of Nxf7. How should Black respond?",
+                "fen": "r1bqk2r/pppp1Bpp/2n2n2/2b1p1N1/4P3/8/PPPP1PPP/RNBQK2R b KQkq - 0 5",
+                "moves": ["Bxf7+", "Ke7", "Bb3", "Rf8"],
+                "hint": "Accept the sacrifice and develop actively! The bishop sacrifice is less dangerous than Nxf7.",
+                "instruction": "The bishop sacrifice leads to complex play but Black gets reasonable compensation.",
+                "category": "Alternative Lines"
+            },
+            {
+                "name": "Exercise 7: Complete the King Hunt!",
+                "description": "You're in the middle of the famous king hunt. White's king is on e4, and you just played d5+. Complete the mating sequence!",
+                "fen": "r1bqk1nr/ppp3pp/2n5/3pK3/2B1p3/6q1/PPPP2PP/RNB2Q1R w kq d6 0 10",
+                "moves": ["Kxd5", "c6+", "Kd6", "Nf5+", "Kc5", "b6+", "Kb4", "a5+", "Ka4", "b5+", "Bxb5", "cxb5+", "Kxb5", "Bd7+", "Kc5", "Rc8+", "Kb6", "Qg6+", "Nd6+", "Qxd6+", "Ka7", "Qc7+", "Ka6", "Ra8#"],
+                "hint": "The white king must walk to its doom! Continue with forcing checks to drive the king to a6 where it gets mated!",
+                "instruction": "This is the crown jewel of the Traxler - a forced mate with the king in the center of the board!",
+                "category": "King Hunt"
+            }
+        ]
+    },
+    "spacedRepetition": {
+        "cards": [
+            {
+                "question": "What is the key move that starts the Traxler Counter-Attack?",
+                "answer": "Bxf2+! This bishop sacrifice deflects the white king and starts the attack.",
+                "category": "Opening Theory"
+            },
+            {
+                "question": "After 1.Nxf7 Bxf2+ 2.Kxf2 Nxe4+ 3.Ke2, what does Black play?",
+                "answer": "Nd4+! This starts the famous king hunt by forcing the white king forward.",
+                "category": "Tactical Sequences"
+            },
+            {
+                "question": "What happens if White plays Kf1 instead of taking the bishop on f2?",
+                "answer": "Black plays Qe7 and gets excellent compensation with a strong attack.",
+                "category": "Alternative Lines"
+            },
+            {
+                "question": "In the king hunt line, where does the white king ultimately get mated?",
+                "answer": "On a6! The white king takes a famous walk across the board and gets mated in the corner.",
+                "category": "Tactical Sequences"
+            },
+            {
+                "question": "How should Black respond if White retreats quietly with Nf3?",
+                "answer": "d5! Strike in the center immediately and seize the initiative.",
+                "category": "Positional Understanding"
+            }
+        ]
+    }
+}

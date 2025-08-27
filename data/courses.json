@@ -1,0 +1,18 @@
+[
+    {
+        "id": "e4-repertoire-white",
+        "name": "Complete 1.e4 Repertoire for White",
+        "author": "IM Andras Toth & Community",
+        "description": "A comprehensive repertoire for White starting with 1.e4, covering responses to the Petrov, Scandinavian, French, and more.",
+        "playerColor": "white",
+        "path": "data/e4-repertoire.json"
+    },
+    {
+        "id": "traxler-counter-attack",
+        "name": "Traxler Counter-Attack",
+        "author": "Community",
+        "description": "An aggressive and tactical counter-attacking system for Black against the Italian Game's Fried Liver Attack.",
+        "playerColor": "black",
+        "path": "./data/traxler.json"
+    }
+]

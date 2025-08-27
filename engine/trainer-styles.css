@@ -1,0 +1,323 @@
+/* /engine/trainer-styles.css - COMPLETE REWRITE */
+
+
+
+.cg-wrap {
+    width: 600px;
+    height: 600px;
+    margin: 20px auto;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.trainer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.opening-title {
+    font-size: 28px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.opening-title.traxler-theme {
+    color: #d32f2f;
+}
+
+.opening-title.scotch-theme {
+    color: #1976d2;
+}
+
+.opening-title.kingpawn-theme {
+    color: #388e3c;
+}
+
+.opening-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0 0 0;
+    font-style: italic;
+}
+
+.controls {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ddd;
+}
+
+.traxler-theme ~ * .controls {
+    border-left: 4px solid #d32f2f;
+}
+
+.scotch-theme ~ * .controls {
+    border-left: 4px solid #1976d2;
+}
+
+.kingpawn-theme ~ * .controls {
+    border-left: 4px solid #388e3c;
+}
+
+.control-group {
+    margin: 15px 0;
+}
+
+.control-group label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+/* FIXED: Separate select and button styling */
+select {
+    padding: 8px 15px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+/* FIXED: Button styling with proper text visibility */
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    text-align: center;
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+/* FIXED: Theme button colors with proper contrast */
+.traxler-theme ~ * button {
+    background: #d32f2f;
+    border-color: #d32f2f;
+    color: white;
+}
+
+.traxler-theme ~ * button:hover {
+    background: #b71c1c;
+    border-color: #b71c1c;
+    color: white;
+}
+
+.scotch-theme ~ * button {
+    background: #1976d2;
+    border-color: #1976d2;
+    color: white;
+}
+
+.scotch-theme ~ * button:hover {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: white;
+}
+
+.kingpawn-theme ~ * button {
+    background: #388e3c;
+    border-color: #388e3c;
+    color: white;
+}
+
+.kingpawn-theme ~ * button:hover {
+    background: #2e7d32;
+    border-color: #2e7d32;
+    color: white;
+}
+
+/* FIXED: Default button hover */
+button:hover {
+    background: #e0e0e0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* FIXED: Disabled button styling */
+button:disabled {
+    background: #ccc;
+    border-color: #bbb;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* FIXED: Specific button overrides */
+#prevLineBtn, #nextLineBtn, #resetBtn, #hintBtn, #flipBtn {
+    min-width: 100px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.position-info {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ff9800;
+}
+
+.exercise-info {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2196f3;
+}
+
+.position-info h4, .exercise-info h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.challenge-box {
+    background: #f0f8ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 4px solid #2196f3;
+    font-weight: bold;
+}
+
+#status {
+    font-weight: bold;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    text-align: center;
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+#moves {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#moves h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+#movesList {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.success-message, .error-message {
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 8px;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .cg-wrap {
+        width: 350px !important;
+        height: 350px !important;
+    }
+    
+    .cg-board {
+        touch-action: manipulation;
+    }
+    
+    .trainer-container {
+        padding: 10px;
+    }
+    
+    .opening-title {
+        font-size: 24px;
+    }
+    
+    .control-group {
+        margin: 10px 0;
+    }
+    
+    select, button {
+        padding: 6px 12px;
+        margin: 3px;
+        font-size: 13px;
+    }
+
+    #prevLineBtn, #nextLineBtn, #resetBtn, #hintBtn, #flipBtn {
+        min-width: 80px;
+        padding: 8px 12px;
+    }
+}
+
+/* FINAL BUTTON TEXT OVERRIDE - This should fix everything */
+button, input[type="button"], input[type="submit"] {
+    color: #333 !important;
+    font-family: Arial, sans-serif !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.traxler-theme ~ * button,
+.scotch-theme ~ * button,
+.kingpawn-theme ~ * button {
+    color: white !important;
+}
+
+button:disabled {
+    color: #666 !important;
+}
+
