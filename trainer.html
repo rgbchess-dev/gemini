@@ -3,20 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Trainer</title>
+    <title>Chess Trainer - Enhanced</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
 
-    <!-- Chessboard CSS (Base, Theme, and Piece Set) -->
+    <!-- Chessboard CSS (Base and Piece Set) -->
     <link rel="stylesheet" href="./assets/css/chessground.base.css">
     <link rel="stylesheet" href="./assets/css/chessground.brown.css">
     <link rel="stylesheet" href="./assets/css/chessground.cburnett.css">
     
-    <!-- Main App CSS -->
+    <!-- Enhanced App CSS with Dynamic Theming -->
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <style>
+        /* Enhanced Styles with Dynamic Theming Support */
+        
+        /* CSS Custom Properties for Dynamic Theming */
+        :root {
+            --board-light: #f0d9b5;
+            --board-dark: #b58863;
+            --board-highlight: rgba(255, 255, 0, 0.5);
+            --board-selected: rgba(20, 85, 30, 0.5);
+            --board-check: rgba(255, 0, 0, 0.8);
+            --board-lastmove: rgba(155, 199, 0, 0.41);
+        }
+
+        /* Clean Arrow Controls - No More Purple! */
+        .arrow-controls-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        .arrow-controls-grid .control-group {
+            margin: 0;
+        }
+
+        .arrow-controls-grid .control-group label {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .arrow-controls-grid .control-group select {
+            width: 100%;
+            padding: 4px 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-top: 2px;
+        }
+
+        .arrow-controls-grid .control-group input[type="checkbox"] {
+            margin-right: 6px;
+        }
+
+        /* Debug info */
+        #debugInfo {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            font-family: monospace;
+            font-size: 0.75em;
+            color: #6c757d;
+        }
+
+        /* Dynamic Board Theming */
+        cg-board {
+            background-color: var(--board-light);
+            transition: background-color 0.3s ease;
+        }
+
+        /* Arrow Legend */
+        .arrow-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0;
+            font-size: 0.75em;
+        }
+
+        .arrow-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 6px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+        }
+
+        .arrow-color {
+            width: 12px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .arrow-color.green { background-color: #15781B; }
+        .arrow-color.blue { background-color: #003088; }
+        .arrow-color.yellow { background-color: #e68f00; }
+        .arrow-color.red { background-color: #882020; }
+        .arrow-color.purple { background-color: #68217a; }
+        .arrow-color.palegreen { background-color: rgba(21, 120, 27, 0.4); }
+
+        /* Theme Transition Animation */
+        @keyframes themeTransition {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        cg-board.theme-transition {
+            animation: themeTransition 0.5s ease;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .enhanced-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .enhanced-section {
+                padding: 12px;
+                margin: 8px 0;
+            }
+            
+            .arrow-legend {
+                justify-content: center;
+            }
+        }
+    </style>
 
     <!-- Third-party Libraries -->
     <script src="./assets/js/chess.min.js"></script>
@@ -72,6 +196,42 @@
                     </div>
                 </div>
 
+                <!-- Enhanced Arrow Controls -->
+                <div id="enhancedControls" class="control-section">
+                    <h4>Arrow Settings</h4>
+                    <div class="arrow-controls-grid">
+                        <div class="control-group">
+                            <label>
+                                <input type="checkbox" id="enableEnhancer" checked> 
+                                Multiple Arrows
+                            </label>
+                        </div>
+                        <div class="control-group">
+                            <label for="previewMoves">Show Moves:</label>
+                            <select id="previewMoves">
+                                <option value="1">1 Move</option>
+                                <option value="2">2 Moves</option>
+                                <option value="3" selected>3 Moves</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="boardTheme">Theme:</label>
+                            <select id="boardTheme">
+                                <option value="classic">Brown</option>
+                                <option value="blue" selected>Blue</option>
+                                <option value="green">Green</option>
+                                <option value="purple">Purple</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>
+                                <input type="checkbox" id="educationalHints" checked> 
+                                Hints
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="control-section action-buttons">
                     <button id="resetBtn">Reset</button>
                     <button id="hintBtn">Hint</button>
@@ -83,6 +243,10 @@
                         <div id="progressFill"></div>
                     </div>
                     <div id="status">Ready</div>
+                </div>
+
+                <div id="debugInfo" class="control-section">
+                    <strong>Debug:</strong> <span id="debugText">Loading...</span>
                 </div>
 
                 <div id="movesList" class="control-section"></div>

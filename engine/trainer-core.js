@@ -1,4 +1,4 @@
-// /engine/trainer-core.js - Final Version with Pre-computation
+// /engine/trainer-core.js - FIXED VERSION with Working Computer Move Events
 
 import { ChessEngine } from './chess-engine.js';
 import { SpacedRepetitionManager } from './spaced-repetition.js';
@@ -26,6 +26,7 @@ export class ChessTrainer extends EventTarget {
             orientation: this.courseData.orientation || this.options.defaultColor
         });
         
+        // FIXED: Proper event handling
         this.chessEngine.onMove((move, validation) => this.handleMove(move, validation));
         this.chessEngine.onLineComplete((data) => this.handleLineComplete(data));
         this.chessEngine.onComputerMove((move) => this.handleComputerMove(move));
@@ -37,7 +38,7 @@ export class ChessTrainer extends EventTarget {
     }
 
     precomputeMoveData(courseData) {
-        console.log('Processing all course lines with PgnParser...');
+        console.log('🎯 Processing all course lines with PgnParser...');
         if (!courseData.theory || !courseData.theory.lines) return courseData;
     
         for (const line of courseData.theory.lines) {
@@ -59,12 +60,14 @@ export class ChessTrainer extends EventTarget {
         };
         if (data.theory) normalized.theory = data.theory;
         else if (data.lines) normalized.theory = { lines: data.lines, startingFen: data.startingFen };
-        if (data.exercises) normalized.exercises = Array.isArray(data.exercises) ? { lines: data.exercises } : data.exercises;
+        if (data.exercises) normalized.exercises = Array.isArray(data.exercises) ? 
+            { lines: data.exercises } : data.exercises;
         if (data.spacedRepetition) normalized.spacedRepetition = data.spacedRepetition;
         return normalized;
     }
     
     setMode(mode) {
+        console.log('🎯 Mode changed to:', mode);
         this.currentMode = mode;
         this.currentLineIndex = 0;
         this.emit('modeChanged', { mode: mode, categories: this.getAvailableCategories() });
@@ -74,9 +77,12 @@ export class ChessTrainer extends EventTarget {
     loadCurrentPosition() {
         const line = this.getCurrentLine();
         if (!line) {
+            console.warn('⚠️ No line available');
             this.emit('error', { message: 'No line available' });
             return;
         }
+        
+        console.log('🎯 Loading position for line:', line.name);
         this.chessEngine.loadLine(line, this.getStartingFen());
         this.emit('positionLoaded', {
             mode: this.currentMode,
@@ -85,25 +91,32 @@ export class ChessTrainer extends EventTarget {
         });
     }
     
+    // FIXED: Proper event emission
     handleMove(move, validation) {
+        console.log('🎯 Move handled:', move.san, 'Valid:', validation.valid);
+        
         if (validation.valid) {
-            this.emit('correctMove');
+            this.emit('correctMove', { move, validation });
         } else {
-            this.emit('incorrectMove', { expected: validation.expected });
+            this.emit('incorrectMove', { move, expected: validation.expected });
         }
     }
     
     handleComputerMove(move) {
-        this.emit('computerMove');
+        console.log('🤖 Computer move handled:', move.san);
+        this.emit('computerMove', { move });
     }
     
     handleLineComplete(data) {
-        this.emit('lineComplete');
+        console.log('🏁 Line completed:', data.line?.name);
+        this.emit('lineComplete', data);
     }
     
     nextLine() {
-        if (this.currentLineIndex < this.getCurrentLines().length - 1) {
+        const lines = this.getCurrentLines();
+        if (this.currentLineIndex < lines.length - 1) {
             this.currentLineIndex++;
+            console.log('➡️ Next line:', this.currentLineIndex);
             this.loadCurrentPosition();
             this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
         }
@@ -112,27 +125,39 @@ export class ChessTrainer extends EventTarget {
     previousLine() {
         if (this.currentLineIndex > 0) {
             this.currentLineIndex--;
+            console.log('⬅️ Previous line:', this.currentLineIndex);
             this.loadCurrentPosition();
             this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
         }
     }
     
     selectLine(index) {
+        console.log('🎯 Selecting line:', index);
         this.currentLineIndex = index;
         this.loadCurrentPosition();
         this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
     }
     
     setCategory(category) {
+        console.log('🎯 Category changed to:', category);
         this.currentCategory = category;
         this.currentLineIndex = 0;
         this.emit('categoryChanged', { category: category, lines: this.getCurrentLines() });
         this.loadCurrentPosition();
     }
     
-    resetPosition() { this.chessEngine.resetCurrentLine(); }
-    flipBoard() { this.chessEngine.flipBoard(); }
+    resetPosition() { 
+        console.log('🔄 Resetting position');
+        this.chessEngine.resetCurrentLine(); 
+    }
+    
+    flipBoard() { 
+        console.log('🔄 Flipping board');
+        this.chessEngine.flipBoard(); 
+    }
+    
     setPlayerColor(color) { 
+        console.log('🎯 Player color changed to:', color);
         this.chessEngine.setPlayerColor(color);
         this.loadCurrentPosition();
     }
@@ -163,5 +188,8 @@ export class ChessTrainer extends EventTarget {
             chessProgress: this.chessEngine.getLineProgress()
         };
     }
-    emit(eventName, detail) { this.dispatchEvent(new CustomEvent(eventName, { detail })); }
+    emit(eventName, detail) { 
+        console.log('📡 Event emitted:', eventName, detail);
+        this.dispatchEvent(new CustomEvent(eventName, { detail })); 
+    }
 }

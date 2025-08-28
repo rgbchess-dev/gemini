@@ -1,13 +1,4 @@
-/**
- * Enhanced Chess Engine Module
- * File: /engine/chess-engine.js
- * 
- * Responsibilities:
- * - Board visualization (Chessground)
- * - Line management and validation
- * - Move sequence tracking
- * - Computer move automation
- */
+// /engine/chess-engine.js - FIXED VERSION with Working Computer Moves
 
 import { Chessground } from '../assets/js/chessground.min.js';
 
@@ -22,7 +13,7 @@ export class ChessEngine {
         this.playerColor = options.playerColor || 'both';
         this.orientation = options.orientation || 'white';
         
-        // Line management - NEW
+        // Line management
         this.currentLine = null;
         this.currentMoves = [];
         this.moveIndex = 0;
@@ -38,11 +29,11 @@ export class ChessEngine {
     }
 
     // ============================================
-    // CORE BOARD FUNCTIONS (existing)
+    // CORE BOARD FUNCTIONS
     // ============================================
     
     initializeBoard() {
-        console.log('Initializing board with playerColor:', this.playerColor, 'orientation:', this.orientation);
+        console.log('🎯 Initializing board with playerColor:', this.playerColor, 'orientation:', this.orientation);
         
         this.board = Chessground(this.boardElement, {
             orientation: this.orientation,
@@ -64,7 +55,7 @@ export class ChessEngine {
             }
         });
         
-        console.log('Board initialized, movable color:', this.getMovableColor());
+        console.log('🎯 Board initialized, movable color:', this.getMovableColor());
     }
 
     calculateDests() {
@@ -88,16 +79,14 @@ export class ChessEngine {
     }
 
     // ============================================
-    // LINE MANAGEMENT (NEW)
+    // LINE MANAGEMENT - FIXED
     // ============================================
     
     /**
      * Load a line for training
-     * @param {Object} lineData - Contains moves array and metadata
-     * @param {string} startingFen - Optional starting position
      */
     loadLine(lineData, startingFen = null) {
-        console.log('Loading line:', lineData.name, 'with moves:', lineData.moves);
+        console.log('🎯 Loading line:', lineData.name, 'with moves:', lineData.moves);
         
         this.currentLine = lineData;
         this.currentMoves = lineData.moves || [];
@@ -113,94 +102,107 @@ export class ChessEngine {
         
         this.updateBoard();
         
-        // Check if computer should make the first move
-        const shouldPlayFirst = this.shouldComputerMove();
-        console.log('After loading line, should computer move first?', shouldPlayFirst);
-        
-        if (shouldPlayFirst) {
-            console.log('Computer will play first move in 500ms...');
-            setTimeout(() => {
-                console.log('Computer playing first move now');
+        // FIXED: Check if computer should make the first move
+        setTimeout(() => {
+            if (this.shouldComputerMoveNow()) {
+                console.log('🤖 Computer will make first move...');
                 this.playNextComputerMove();
-            }, 500);
-        }
+            }
+        }, 300);
     }
     
     /**
-     * Check if it's computer's turn to move
+     * FIXED: Check if it's computer's turn to move right now
      */
-    shouldComputerMove() {
-        if (!this.isLineActive) return false;
-        if (this.moveIndex >= this.currentMoves.length) return false;
-        
-        // If player plays both sides, no automatic moves
-        if (this.playerColor === 'both') {
+    shouldComputerMoveNow() {
+        if (!this.isLineActive) {
+            console.log('🤖 Not computer turn: line not active');
             return false;
         }
         
-        // Check whose turn it is
-        const isWhiteTurn = this.chess.turn() === 'w';
+        if (this.moveIndex >= this.currentMoves.length) {
+            console.log('🤖 Not computer turn: no more moves');
+            return false;
+        }
         
-        // Determine if it's the player's turn
-        const isPlayerTurn = (this.playerColor === 'white' && isWhiteTurn) || 
-                            (this.playerColor === 'black' && !isWhiteTurn);
+        // If player plays both sides, never auto-move
+        if (this.playerColor === 'both') {
+            console.log('🤖 Not computer turn: player plays both sides');
+            return false;
+        }
         
-        // Computer should move if it's not the player's turn
-        const shouldMove = !isPlayerTurn;
+        // Check whose turn it is to move
+        const currentTurn = this.chess.turn(); // 'w' or 'b'
+        const isWhiteTurn = currentTurn === 'w';
         
-        // Debug logging
-        console.log('shouldComputerMove check:', {
-            playerColor: this.playerColor,
+        // Determine if it's the computer's turn
+        let isComputerTurn = false;
+        
+        if (this.playerColor === 'white') {
+            // Player is white, so computer is black
+            isComputerTurn = !isWhiteTurn; // Computer moves when it's black's turn
+        } else if (this.playerColor === 'black') {
+            // Player is black, so computer is white  
+            isComputerTurn = isWhiteTurn; // Computer moves when it's white's turn
+        }
+        
+        console.log('🤖 Turn check:', {
             currentTurn: isWhiteTurn ? 'white' : 'black',
-            isPlayerTurn: isPlayerTurn,
-            shouldMove: shouldMove,
+            playerColor: this.playerColor,
+            isComputerTurn: isComputerTurn,
             moveIndex: this.moveIndex,
-            totalMoves: this.currentMoves.length
+            nextMove: this.currentMoves[this.moveIndex]
         });
         
-        return shouldMove;
+        return isComputerTurn;
     }
     
     /**
-     * Play the next computer move in the sequence
+     * FIXED: Play the next computer move in the sequence
      */
     playNextComputerMove() {
-        console.log('playNextComputerMove called');
+        console.log('🤖 playNextComputerMove called');
         
-        if (!this.isLineActive || this.moveIndex >= this.currentMoves.length) {
-            console.log('Cannot play computer move:', {
-                isLineActive: this.isLineActive,
-                moveIndex: this.moveIndex,
-                totalMoves: this.currentMoves.length
-            });
+        if (!this.isLineActive) {
+            console.log('🤖 Cannot move: line not active');
+            return false;
+        }
+        
+        if (this.moveIndex >= this.currentMoves.length) {
+            console.log('🤖 Cannot move: no more moves in sequence');
             return false;
         }
         
         const nextMove = this.currentMoves[this.moveIndex];
-        console.log(`Computer attempting to play move ${this.moveIndex}: ${nextMove}`);
+        console.log(`🤖 Computer playing move ${this.moveIndex + 1}: ${nextMove}`);
         
-        const move = this.chess.move(nextMove);
-        
-        if (move) {
-            console.log('Computer successfully played:', move.san);
-            this.moveIndex++;
-            this.updateBoard();
+        try {
+            const move = this.chess.move(nextMove, { sloppy: true });
             
-            // Notify callback
-            if (this.onComputerMoveCallback) {
-                this.onComputerMoveCallback(move);
+            if (move) {
+                console.log('🤖 Computer successfully played:', move.san);
+                this.moveIndex++;
+                this.updateBoard();
+                
+                // Notify callback
+                if (this.onComputerMoveCallback) {
+                    this.onComputerMoveCallback(move);
+                }
+                
+                // Check if line is complete
+                if (this.moveIndex >= this.currentMoves.length) {
+                    this.completeCurrentLine();
+                }
+                
+                return true;
+            } else {
+                console.error('🤖 Failed to make computer move:', nextMove);
+                return false;
             }
-            
-            // Check if line is complete
-            if (this.moveIndex >= this.currentMoves.length) {
-                this.completeCurrentLine();
-            }
-            
-            return true;
+        } catch (error) {
+            console.error('🤖 Error making computer move:', error);
+            return false;
         }
-        
-        console.error(`Failed to make computer move: ${nextMove}`);
-        return false;
     }
     
     /**
@@ -212,28 +214,22 @@ export class ChessEngine {
         }
         
         const expectedMove = this.currentMoves[this.moveIndex];
-        const isCorrect = (move.san === expectedMove || move.lan === expectedMove);
+        const isCorrect = (move.san === expectedMove);
+        
+        console.log('🎯 User move validation:', {
+            played: move.san,
+            expected: expectedMove,
+            isCorrect: isCorrect
+        });
         
         if (isCorrect) {
             this.moveIndex++;
             const isComplete = this.moveIndex >= this.currentMoves.length;
-            const shouldPlayComputer = !isComplete && this.shouldComputerMove();
-            
-            console.log('Move validated:', {
-                moveIndex: this.moveIndex,
-                isComplete: isComplete,
-                shouldPlayComputer: shouldPlayComputer
-            });
-            
-            if (isComplete) {
-                this.completeCurrentLine();
-            }
             
             return { 
                 valid: true, 
                 expected: expectedMove,
-                isComplete: isComplete,
-                shouldPlayComputer: shouldPlayComputer
+                isComplete: isComplete
             };
         }
         
@@ -248,6 +244,7 @@ export class ChessEngine {
      * Handle line completion
      */
     completeCurrentLine() {
+        console.log('🏁 Line completed!');
         this.isLineActive = false;
         
         if (this.onLineCompleteCallback) {
@@ -262,12 +259,12 @@ export class ChessEngine {
      * Get current progress in the line
      */
     getLineProgress() {
-        if (!this.currentLine) return null;
+        if (!this.currentLine) return { current: 0, total: 0, percentage: 0, isComplete: true };
         
         return {
             current: this.moveIndex,
             total: this.currentMoves.length,
-            percentage: (this.moveIndex / this.currentMoves.length) * 100,
+            percentage: this.currentMoves.length > 0 ? (this.moveIndex / this.currentMoves.length) * 100 : 0,
             isComplete: this.moveIndex >= this.currentMoves.length,
             movesPlayed: this.currentMoves.slice(0, this.moveIndex),
             movesRemaining: this.currentMoves.slice(this.moveIndex)
@@ -279,16 +276,20 @@ export class ChessEngine {
      */
     resetCurrentLine() {
         if (this.currentLine) {
+            console.log('🔄 Resetting line to beginning');
             this.loadLine(this.currentLine);
         }
     }
     
     // ============================================
-    // MOVE HANDLING (enhanced)
+    // MOVE HANDLING - FIXED
     // ============================================
     
     handleMove(orig, dest) {
+        console.log('👤 User attempting move:', orig, 'to', dest);
+        
         if (!this.canPlayerMove()) {
+            console.log('👤 Move rejected: not player turn');
             this.updateBoard(); // Reset invalid drag
             return;
         }
@@ -309,49 +310,65 @@ export class ChessEngine {
         const move = this.chess.move({ from: orig, to: dest });
         
         if (move) {
+            console.log('👤 User successfully played:', move.san);
+            
             // If we have an active line, validate the move
             if (this.isLineActive) {
                 const validation = this.validateUserMove(move);
                 
                 if (!validation.valid) {
                     // Wrong move - undo it
+                    console.log('👤 Wrong move! Undoing:', move.san, 'Expected:', validation.expected);
                     this.chess.undo();
                     this.updateBoard();
+                } else {
+                    console.log('👤 Correct move!');
+                    this.updateBoard();
+                    
+                    // Check if line is complete
+                    if (validation.isComplete) {
+                        this.completeCurrentLine();
+                    } else {
+                        // FIXED: Check if computer should respond
+                        setTimeout(() => {
+                            if (this.shouldComputerMoveNow()) {
+                                console.log('🤖 Computer will respond in 600ms...');
+                                setTimeout(() => {
+                                    this.playNextComputerMove();
+                                }, 600);
+                            }
+                        }, 100);
+                    }
                 }
                 
                 // Notify callback with validation result
                 if (this.onMoveCallback) {
                     this.onMoveCallback(move, validation);
                 }
-                
-                // If move was correct and computer should play
-                if (validation.valid && validation.shouldPlayComputer) {
-                    console.log('User move correct, computer will respond in 800ms');
-                    setTimeout(() => {
-                        console.log('Computer responding to user move');
-                        this.playNextComputerMove();
-                    }, 800);
-                }
             } else {
                 // Free play mode - just notify the move
+                this.updateBoard();
                 if (this.onMoveCallback) {
                     this.onMoveCallback(move, { valid: true, freePlay: true });
                 }
             }
-            
-            this.updateBoard();
         } else {
+            console.log('👤 Invalid move attempted');
             this.updateBoard(); // Reset invalid move
         }
     }
 
     // ============================================
-    // PROMOTION HANDLING (existing)
+    // PROMOTION HANDLING
     // ============================================
     
     showPromotionDialog(color) {
         const selector = document.getElementById('promotionSelector');
-        if (!selector) return;
+        if (!selector) {
+            // Default to queen if no promotion dialog
+            this.handlePromotion('q');
+            return;
+        }
 
         selector.style.display = 'block';
         
@@ -385,7 +402,7 @@ export class ChessEngine {
             const validation = this.isLineActive ? this.validateUserMove(move) : { valid: true, freePlay: true };
             this.onMoveCallback(move, validation);
             
-            if (validation.valid && validation.shouldPlayComputer) {
+            if (validation.valid && this.shouldComputerMoveNow()) {
                 setTimeout(() => this.playNextComputerMove(), 800);
             }
         }
@@ -403,7 +420,7 @@ export class ChessEngine {
     }
 
     // ============================================
-    // UTILITIES (existing + enhanced)
+    // UTILITIES
     // ============================================
     
     getCurrentColor() {
@@ -413,7 +430,7 @@ export class ChessEngine {
     getMovableColor() {
         if (this.playerColor === 'both') return this.getCurrentColor();
         if (this.playerColor === this.getCurrentColor()) return this.getCurrentColor();
-        return null;
+        return null; // Computer's turn - player can't move
     }
 
     canPlayerMove() {
@@ -449,15 +466,17 @@ export class ChessEngine {
     }
 
     setPlayerColor(color) {
-        console.log('Chess engine playerColor changed from', this.playerColor, 'to', color);
+        console.log('🎯 Chess engine playerColor changed from', this.playerColor, 'to', color);
         this.playerColor = color;
         this.updateBoard();
         
         // If we have an active line and it's now computer's turn, play
-        if (this.isLineActive && this.shouldComputerMove()) {
-            console.log('After color change, computer should play');
-            setTimeout(() => this.playNextComputerMove(), 500);
-        }
+        setTimeout(() => {
+            if (this.isLineActive && this.shouldComputerMoveNow()) {
+                console.log('🤖 After color change, computer should play');
+                this.playNextComputerMove();
+            }
+        }, 100);
     }
 
     setOrientation(orientation) {
