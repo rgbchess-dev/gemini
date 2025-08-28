@@ -20,6 +20,9 @@
         animationDelay: 800,
         autoSetup: true,
         colors: {
+            playerMove1: 'green',
+            opponentMove: 'blue',
+            playerMove2: 'orange', // new color
             nextMove: 'green',
             preview2: 'blue', 
             preview3: 'yellow',
