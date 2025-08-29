@@ -62,6 +62,7 @@ export class UIManager {
         if(this.elements.lineSelect) this.elements.lineSelect.value = state.lineIndex;
         this.updatePositionInfo(this.trainer.getCurrentLine());
         this.refreshArrows();
+        this.updateMovesList(); // --- ADD THIS --- Call the new function on initial load
     }
     
     attachTrainerListeners() {
@@ -86,21 +87,25 @@ export class UIManager {
     handlePositionLoaded(data) {
         this.updatePositionInfo(data.line);
         this.refreshArrows();
+        this.updateMovesList(); // --- ADD THIS --- Update moves list when a new position loads
     }
     
     handleCorrectMove() {
         this.clearArrows();
         setTimeout(() => this.refreshArrows(), 100);
+        this.updateMovesList(); // --- ADD THIS --- Update moves list after a correct player move
     }
     
     handleComputerMove() {
         this.refreshArrows();
+        this.updateMovesList();
     }
 
     handleLineChanged(data) {
         this.updatePositionInfo(data.line);
         this.elements.lineSelect.value = data.lineIndex;
         this.refreshArrows();
+        this.updateMovesList();
     }
 
     handleCategoryChanged(data) {
@@ -285,4 +290,33 @@ export class UIManager {
             this.elements.positionInfo.innerHTML = `<h4>${line.name || ''}</h4><p>${line.description || ''}</p>`;
         }
     }
+
+    updateMovesList() {
+        if (!this.elements.movesList) return;
+
+        // Get the full history of moves from the underlying chess.js instance
+        const history = this.trainer.chessEngine.chess.history();
+        
+        if (history.length > 0) {
+            let formattedMoves = '';
+            // Loop through the moves to add move numbers
+            for (let i = 0; i < history.length; i++) {
+                // Check if it's White's move (the first move in a pair)
+                if (i % 2 === 0) {
+                    // Calculate the move number and add it
+                    const moveNumber = Math.floor(i / 2) + 1;
+                    formattedMoves += `${moveNumber}. ${history[i]} `;
+                } else {
+                    // It's Black's move, just add the move
+                    formattedMoves += `${history[i]} `;
+                }
+            }
+            // Update the div with the formatted string, trimming any extra space at the end
+            this.elements.movesList.textContent = formattedMoves.trim();
+        } else {
+            // Show a placeholder if there are no moves
+            this.elements.movesList.textContent = 'Moves will appear here...';
+        }
+    }
+
 }

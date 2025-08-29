@@ -1,0 +1,2536 @@
+
+--- FILE: ./engine/pgn-parser.js ---
+
+// /engine/pgn-parser.js - Enhanced Version with Rich Move Data
+
+/**
+ * Enhanced PGN parser that provides detailed move analysis for arrow rendering
+ */
+export class PgnParser {
+    /**
+     * Takes a line object and returns an array of computed move objects with rich data
+     * @param {object} line - A line object from our course JSON.
+     * @returns {Array} - An array of enhanced move objects with detailed analysis
+     */
+    static compute(line) {
+        if (typeof Chess === 'undefined') {
+            console.error('FATAL: chess.js is not loaded. Parsing cannot run.');
+            return [];
+        }
+
+        const computedMoves = [];
+        // CRITICAL FIX: Create a new, fresh board for EACH line.
+        const tempBoard = new Chess(); 
+        let moveCounter = 1;
+
+        for (let i = 0; i < line.moves.length; i++) {
+            const moveNotation = line.moves[i];
+            
+            // Get position before the move
+            const fenBefore = tempBoard.fen();
+            const isWhiteTurn = tempBoard.turn() === 'w';
+            
+            // Try to make the move
+            const moveObject = tempBoard.move(moveNotation, { sloppy: true });
+            
+            // This is our data validation! If a move is invalid, the entire line is considered corrupt.
+            if (!moveObject) {
+                console.error(`Data Validation Error in line "${line.name}": The move "${moveNotation}" is invalid from FEN: ${fenBefore}`);
+                return []; // Return an empty array to prevent crashes.
+            }
+            
+            // Get position after the move
+            const fenAfter = tempBoard.fen();
+            
+            // Enhanced move analysis
+            const enhancedMove = {
+                // Basic data (existing)
+                from: moveObject.from,
+                to: moveObject.to,
+                san: moveObject.san,
+                isCapture: moveObject.flags.includes('c'),
+                
+                // Enhanced data (new)
+                moveNumber: Math.ceil(moveCounter / 2),
+                isWhiteMove: isWhiteTurn,
+                piece: moveObject.piece,
+                captured: moveObject.captured || null,
+                promotion: moveObject.promotion || null,
+                
+                // Move type analysis
+                moveType: this.analyzeMoveType(moveObject, moveNotation),
+                flags: this.analyzeFlags(moveObject),
+                
+                // Positional analysis
+                fenBefore: fenBefore,
+                fenAfter: fenAfter,
+                isCheck: moveObject.flags.includes('k'),
+                isCheckmate: moveObject.flags.includes('#'),
+                isCastle: moveObject.flags.includes('k') || moveObject.flags.includes('q'),
+                
+                // Strategic analysis
+                centralControl: this.analyzesCentralControl(moveObject),
+                developmentMove: this.issDevelopmentMove(moveObject, isWhiteTurn),
+                tacticalThemes: this.identifyTacticalThemes(moveObject, tempBoard),
+                
+                // Educational metadata
+                notation: moveNotation,
+                index: i,
+                description: this.generateMoveDescription(moveObject, moveNotation)
+            };
+            
+            computedMoves.push(enhancedMove);
+            moveCounter++;
+        }
+        
+        console.log(`✅ Enhanced parsing complete: ${computedMoves.length} moves analyzed for "${line.name}"`);
+        return computedMoves;
+    }
+    
+    /**
+     * Analyze the type of move for enhanced visualization
+     */
+    static analyzeMoveType(moveObject, notation) {
+        if (notation.includes('#')) return 'checkmate';
+        if (notation.includes('+')) return 'check';
+        if (notation === 'O-O') return 'castle-kingside';
+        if (notation === 'O-O-O') return 'castle-queenside';
+        if (moveObject.flags.includes('c')) return 'capture';
+        if (moveObject.flags.includes('e')) return 'en-passant';
+        if (moveObject.promotion) return 'promotion';
+        if (this.issDevelopmentMove(moveObject)) return 'development';
+        return 'normal';
+    }
+    
+    /**
+     * Analyze move flags for detailed information
+     */
+    static analyzeFlags(moveObject) {
+        const flagMap = {
+            'n': 'normal',
+            'c': 'capture', 
+            'b': 'big-pawn',
+            'e': 'en-passant',
+            'k': 'king-castle',
+            'q': 'queen-castle',
+            'p': 'promotion'
+        };
+        
+        return moveObject.flags.split('').map(flag => flagMap[flag] || flag);
+    }
+    
+    /**
+     * Check if move controls central squares
+     */
+    static analyzesCentralControl(moveObject) {
+        const centralSquares = ['e4', 'e5', 'd4', 'd5'];
+        const extendedCenter = ['c4', 'c5', 'f4', 'f5'];
+        
+        const controlsCenter = centralSquares.includes(moveObject.to);
+        const influencesCenter = extendedCenter.includes(moveObject.to);
+        
+        return {
+            controlsCenter,
+            influencesCenter,
+            targetSquare: moveObject.to,
+            centralSquares: controlsCenter ? [moveObject.to] : []
+        };
+    }
+    
+    /**
+     * Determine if this is a development move
+     */
+    static issDevelopmentMove(moveObject, isWhiteTurn = true) {
+        const piece = moveObject.piece;
+        const from = moveObject.from;
+        const to = moveObject.to;
+        
+        // Piece development from starting squares
+        const whiteStartSquares = {
+            'n': ['b1', 'g1'],
+            'b': ['c1', 'f1'],
+            'q': ['d1'],
+            'r': ['a1', 'h1']
+        };
+        
+        const blackStartSquares = {
+            'n': ['b8', 'g8'],
+            'b': ['c8', 'f8'], 
+            'q': ['d8'],
+            'r': ['a8', 'h8']
+        };
+        
+        const startSquares = isWhiteTurn ? whiteStartSquares : blackStartSquares;
+        const pieceStartSquares = startSquares[piece] || [];
+        
+        return pieceStartSquares.includes(from) && !pieceStartSquares.includes(to);
+    }
+    
+    /**
+     * Identify tactical themes in the move
+     */
+    static identifyTacticalThemes(moveObject, board) {
+        const themes = [];
+        
+        // Check if move creates threats
+        if (board.in_check()) {
+            themes.push('check');
+        }
+        
+        if (board.in_checkmate()) {
+            themes.push('checkmate');
+        }
+        
+        // Fork detection (simplified)
+        if (moveObject.piece === 'n' || moveObject.piece === 'p') {
+            const attacks = this.getAttackedSquares(moveObject, board);
+            const importantPieces = attacks.filter(sq => {
+                const piece = board.get(sq);
+                return piece && ['k', 'q', 'r'].includes(piece.type);
+            });
+            
+            if (importantPieces.length >= 2) {
+                themes.push('fork');
+            }
+        }
+        
+        // Pin detection (basic)
+        if (moveObject.flags.includes('c')) {
+            themes.push('capture');
+        }
+        
+        return themes;
+    }
+    
+    /**
+     * Get squares attacked by a piece (simplified)
+     */
+    static getAttackedSquares(moveObject, board) {
+        // This is a simplified implementation
+        // In a full implementation, you'd calculate actual piece attacks
+        try {
+            const moves = board.moves({ 
+                square: moveObject.to, 
+                verbose: true 
+            });
+            return moves.map(move => move.to);
+        } catch (error) {
+            return [];
+        }
+    }
+    
+    /**
+     * Generate a human-readable description of the move
+     */
+    static generateMoveDescription(moveObject, notation) {
+        const pieceNames = {
+            'p': 'pawn',
+            'r': 'rook', 
+            'n': 'knight',
+            'b': 'bishop',
+            'q': 'queen',
+            'k': 'king'
+        };
+        
+        const pieceName = pieceNames[moveObject.piece];
+        const fromSquare = moveObject.from;
+        const toSquare = moveObject.to;
+        
+        let description = `${pieceName} from ${fromSquare} to ${toSquare}`;
+        
+        if (moveObject.flags.includes('c')) {
+            const capturedPiece = pieceNames[moveObject.captured];
+            description += ` captures ${capturedPiece}`;
+        }
+        
+        if (notation.includes('+')) {
+            description += ' with check';
+        }
+        
+        if (notation.includes('#')) {
+            description += ' - checkmate!';
+        }
+        
+        if (notation === 'O-O') {
+            description = 'castles kingside';
+        }
+        
+        if (notation === 'O-O-O') {
+            description = 'castles queenside';
+        }
+        
+        return description;
+    }
+    
+    /**
+     * Validate and repair line data if possible
+     */
+    static validateLine(line) {
+        if (!line || !line.moves || !Array.isArray(line.moves)) {
+            console.warn('Invalid line data:', line);
+            return false;
+        }
+        
+        if (line.moves.length === 0) {
+            console.warn('Empty move list in line:', line.name);
+            return false;
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Get move statistics for a line
+     */
+    static getLineStatistics(computedMoves) {
+        const stats = {
+            totalMoves: computedMoves.length,
+            captures: 0,
+            checks: 0,
+            castles: 0,
+            developments: 0,
+            centralMoves: 0,
+            tacticalThemes: new Set()
+        };
+        
+        computedMoves.forEach(move => {
+            if (move.isCapture) stats.captures++;
+            if (move.isCheck) stats.checks++;
+            if (move.isCastle) stats.castles++;
+            if (move.developmentMove) stats.developments++;
+            if (move.centralControl.controlsCenter) stats.centralMoves++;
+            
+            move.tacticalThemes.forEach(theme => stats.tacticalThemes.add(theme));
+        });
+        
+        stats.tacticalThemes = Array.from(stats.tacticalThemes);
+        return stats;
+    }
+}
+--- FILE: ./engine/promotion.css ---
+
+/**
+ * Shared Promotion Styles for All Chess Trainers
+ * Place this file in: engine/promotion.css
+ */
+
+.promotion-selector {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    display: none;
+    background: white !important;
+    border: 3px solid #333 !important;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8) !important;
+    padding: 20px !important;
+}
+
+.promotion-title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px !important;
+    font-weight: bold;
+    color: #333 !important;
+}
+
+.promotion-pieces {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.promotion-piece {
+    width: 70px !important;
+    height: 70px !important;
+    cursor: pointer;
+    border: 2px solid #ccc !important;
+    border-radius: 6px;
+    background: #f9f9f9 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease;
+    background-size: 80% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.promotion-piece:hover {
+    background-color: #4CAF50 !important;
+    border-color: #2E7D32 !important;
+    transform: scale(1.1) !important;
+}
+
+/* White pieces using SVG files */
+.promotion-piece.white[data-piece="q"] {
+    background-image: url('../assets/pieces/chess24/wQ.png') !important;
+}
+
+.promotion-piece.white[data-piece="r"] {
+    background-image: url('../assets/pieces/chess24/rW.png') !important;
+}
+
+.promotion-piece.white[data-piece="b"] {
+    background-image: url('../assets/pieces/chess24/wB.png') !important;
+}
+
+.promotion-piece.white[data-piece="n"] {
+    background-image: url('../assets/pieces/chess24/wN.png') !important;
+}
+
+/* Black pieces using SVG files */
+.promotion-piece.black[data-piece="q"] {
+    background-image: url('../assets/pieces/chess24/bQ.png') !important;
+}
+
+.promotion-piece.black[data-piece="r"] {
+    background-image: url('../assets/pieces/chess24/bR.png') !important;
+}
+
+.promotion-piece.black[data-piece="b"] {
+    background-image: url('../assets/pieces/chess24/bB.png') !important;
+}
+
+.promotion-piece.black[data-piece="n"] {
+    background-image: url('../assets/pieces/chess24/bN.png') !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .promotion-piece {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .promotion-selector {
+        padding: 15px !important;
+    }
+    
+    .promotion-title {
+        font-size: 16px !important;
+    }
+}
+--- FILE: ./engine/trainer-styles.css ---
+
+/* /engine/trainer-styles.css - COMPLETE REWRITE */
+
+
+
+.cg-wrap {
+    width: 600px;
+    height: 600px;
+    margin: 20px auto;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.trainer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.opening-title {
+    font-size: 28px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.opening-title.traxler-theme {
+    color: #d32f2f;
+}
+
+.opening-title.scotch-theme {
+    color: #1976d2;
+}
+
+.opening-title.kingpawn-theme {
+    color: #388e3c;
+}
+
+.opening-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0 0 0;
+    font-style: italic;
+}
+
+.controls {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ddd;
+}
+
+.traxler-theme ~ * .controls {
+    border-left: 4px solid #d32f2f;
+}
+
+.scotch-theme ~ * .controls {
+    border-left: 4px solid #1976d2;
+}
+
+.kingpawn-theme ~ * .controls {
+    border-left: 4px solid #388e3c;
+}
+
+.control-group {
+    margin: 15px 0;
+}
+
+.control-group label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+/* FIXED: Separate select and button styling */
+select {
+    padding: 8px 15px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+/* FIXED: Button styling with proper text visibility */
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    text-align: center;
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+/* FIXED: Theme button colors with proper contrast */
+.traxler-theme ~ * button {
+    background: #d32f2f;
+    border-color: #d32f2f;
+    color: white;
+}
+
+.traxler-theme ~ * button:hover {
+    background: #b71c1c;
+    border-color: #b71c1c;
+    color: white;
+}
+
+.scotch-theme ~ * button {
+    background: #1976d2;
+    border-color: #1976d2;
+    color: white;
+}
+
+.scotch-theme ~ * button:hover {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: white;
+}
+
+.kingpawn-theme ~ * button {
+    background: #388e3c;
+    border-color: #388e3c;
+    color: white;
+}
+
+.kingpawn-theme ~ * button:hover {
+    background: #2e7d32;
+    border-color: #2e7d32;
+    color: white;
+}
+
+/* FIXED: Default button hover */
+button:hover {
+    background: #e0e0e0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* FIXED: Disabled button styling */
+button:disabled {
+    background: #ccc;
+    border-color: #bbb;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* FIXED: Specific button overrides */
+#prevLineBtn, #nextLineBtn, #resetBtn, #hintBtn, #flipBtn {
+    min-width: 100px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.position-info {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ff9800;
+}
+
+.exercise-info {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2196f3;
+}
+
+.position-info h4, .exercise-info h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.challenge-box {
+    background: #f0f8ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 4px solid #2196f3;
+    font-weight: bold;
+}
+
+#status {
+    font-weight: bold;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    text-align: center;
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+#moves {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#moves h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+#movesList {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.success-message, .error-message {
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 8px;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .cg-wrap {
+        width: 350px !important;
+        height: 350px !important;
+    }
+    
+    .cg-board {
+        touch-action: manipulation;
+    }
+    
+    .trainer-container {
+        padding: 10px;
+    }
+    
+    .opening-title {
+        font-size: 24px;
+    }
+    
+    .control-group {
+        margin: 10px 0;
+    }
+    
+    select, button {
+        padding: 6px 12px;
+        margin: 3px;
+        font-size: 13px;
+    }
+
+    #prevLineBtn, #nextLineBtn, #resetBtn, #hintBtn, #flipBtn {
+        min-width: 80px;
+        padding: 8px 12px;
+    }
+}
+
+/* FINAL BUTTON TEXT OVERRIDE - This should fix everything */
+button, input[type="button"], input[type="submit"] {
+    color: #333 !important;
+    font-family: Arial, sans-serif !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.traxler-theme ~ * button,
+.scotch-theme ~ * button,
+.kingpawn-theme ~ * button {
+    color: white !important;
+}
+
+button:disabled {
+    color: #666 !important;
+}
+
+/* Enhanced Move List and Feedback Styles */
+
+/* --- MOVES LIST ENHANCED --- */
+#movesList {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--text-color);
+    min-height: 120px;
+    max-height: 250px;
+    overflow-y: auto;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.moves-placeholder {
+    color: var(--text-muted-color);
+    font-style: italic;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.moves-header {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.move-pair {
+    margin: 4px 0;
+    padding: 2px 0;
+}
+
+.move-number {
+    color: var(--text-muted-color);
+    font-weight: 600;
+    margin-right: 6px;
+    min-width: 25px;
+    display: inline-block;
+}
+
+.move {
+    display: inline-block;
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.player-move {
+    background: rgba(76, 175, 80, 0.15);
+    color: #2e7d32;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.computer-move {
+    background: rgba(33, 150, 243, 0.15);
+    color: #1565c0;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.move:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- ENHANCED FEEDBACK MESSAGES --- */
+.feedback-message {
+    position: fixed;
+    bottom: -120px; /* Initially hidden */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 25px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95em;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: 1000;
+    max-width: 90vw;
+    text-align: center;
+    white-space: pre-line; /* Allow line breaks */
+    backdrop-filter: blur(10px);
+}
+
+#successMessage { 
+    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+#errorMessage { 
+    background: linear-gradient(135deg, #f44336 0%, #ef5350 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.feedback-message.show {
+    bottom: 40px;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* Animation entrance effect */
+.feedback-message {
+    transform: translateX(-50%) translateY(20px) scale(0.9);
+}
+
+/* --- STATUS ENHANCEMENTS --- */
+#status {
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#status.success {
+    background: rgba(76, 175, 80, 0.1);
+    color: #2e7d32;
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+#status.error {
+    background: rgba(244, 67, 54, 0.1);
+    color: #c62828;
+    border-color: rgba(244, 67, 54, 0.3);
+}
+
+#status.thinking {
+    background: rgba(255, 193, 7, 0.1);
+    color: #f57c00;
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+/* --- PROGRESS BAR ENHANCEMENTS --- */
+.progress-bar {
+    position: relative;
+    overflow: visible;
+}
+
+#progressFill {
+    background: linear-gradient(90deg, #4caf50 0%, #66bb6a 50%, #81c784 100%);
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#progressFill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 0 3px 3px 0;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    #movesList {
+        font-size: 0.85em;
+        max-height: 180px;
+        padding: 10px;
+    }
+    
+    .move {
+        padding: 1px 4px;
+        margin: 0 1px;
+        font-size: 0.9em;
+    }
+    
+    .move-number {
+        min-width: 20px;
+        margin-right: 4px;
+    }
+    
+    .feedback-message {
+        bottom: -100px;
+        left: 15px;
+        right: 15px;
+        transform: none;
+        max-width: none;
+        font-size: 0.9em;
+        padding: 14px 20px;
+    }
+    
+    .feedback-message.show {
+        bottom: 25px;
+        transform: none;
+    }
+}
+
+/* --- DARK MODE SUPPORT --- */
+@media (prefers-color-scheme: dark) {
+    .player-move {
+        background: rgba(76, 175, 80, 0.2);
+        color: #81c784;
+        border-color: rgba(76, 175, 80, 0.4);
+    }
+    
+    .computer-move {
+        background: rgba(33, 150, 243, 0.2);
+        color: #64b5f6;
+        border-color: rgba(33, 150, 243, 0.4);
+    }
+    
+    .moves-header {
+        color: var(--text-color);
+    }
+}
+
+/* --- ANIMATION CLASSES --- */
+@keyframes moveHighlight {
+    0% { background: var(--primary-color); opacity: 0.8; }
+    100% { background: transparent; opacity: 1; }
+}
+
+.move.recent {
+    animation: moveHighlight 1s ease-out;
+}
+
+/* --- SCROLL STYLING --- */
+#movesList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#movesList::-webkit-scrollbar-track {
+    background: var(--surface-color);
+    border-radius: 3px;
+}
+
+#movesList::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+#movesList::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted-color);
+}
+--- FILE: ./engine/ui-manager.js ---
+
+// /engine/ui-manager.js - FIXED VERSION - Complete File
+
+export class UIManager {
+    constructor(trainer) {
+        this.trainer = trainer;
+        this.elements = {};
+        
+        // Simple, reliable config
+        this.config = {
+            multipleArrows: true,
+            maxMoves: 3,
+            showHints: true
+        };
+        
+        this.setup();
+    }
+    
+    setup() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.onDomReady());
+        } else {
+            this.onDomReady();
+        }
+    }
+    
+    onDomReady() {
+        this.initializeElements();
+        this.attachTrainerListeners();
+        this.attachUIListeners();
+        this.performInitialUpdate();
+        console.log('✅ UI Manager loaded');
+    }
+    
+    initializeElements() {
+        this.elements = {
+            modeSelect: document.getElementById('modeSelect'),
+            categorySelect: document.getElementById('categorySelect'),
+            categoryLabel: document.getElementById('categoryLabel'),
+            lineSelect: document.getElementById('lineSelect'),
+            colorSelect: document.getElementById('colorSelect'),
+            prevLineBtn: document.getElementById('prevLineBtn'),
+            nextLineBtn: document.getElementById('nextLineBtn'),
+            hintBtn: document.getElementById('hintBtn'),
+            resetBtn: document.getElementById('resetBtn'),
+            flipBtn: document.getElementById('flipBtn'),
+            positionInfo: document.getElementById('positionInfo'),
+            status: document.getElementById('status'),
+            movesList: document.getElementById('movesList'),
+            successMessage: document.getElementById('successMessage'),
+            errorMessage: document.getElementById('errorMessage'),
+            progressFill: document.getElementById('progressFill')
+        };
+    }
+
+    performInitialUpdate() {
+        const state = this.trainer.getProgress();
+        this.populateCategorySelect(this.trainer.getAvailableCategories());
+        this.populateLineSelect(this.trainer.getCurrentLines());
+        if(this.elements.modeSelect) this.elements.modeSelect.value = state.mode;
+        if(this.elements.colorSelect) this.elements.colorSelect.value = this.trainer.options.defaultColor;
+        if(this.elements.categorySelect) this.elements.categorySelect.value = state.category;
+        if(this.elements.lineSelect) this.elements.lineSelect.value = state.lineIndex;
+        this.updatePositionInfo(this.trainer.getCurrentLine());
+        this.refreshArrows();
+    }
+    
+    attachTrainerListeners() {
+        this.trainer.addEventListener('positionLoaded', e => this.handlePositionLoaded(e.detail));
+        this.trainer.addEventListener('correctMove', () => this.handleCorrectMove());
+        this.trainer.addEventListener('computerMove', () => this.handleComputerMove());
+        this.trainer.addEventListener('lineChanged', e => this.handleLineChanged(e.detail));
+        this.trainer.addEventListener('categoryChanged', e => this.handleCategoryChanged(e.detail));
+    }
+    
+    attachUIListeners() {
+        this.elements.modeSelect.addEventListener('change', () => this.trainer.setMode(this.elements.modeSelect.value));
+        this.elements.categorySelect.addEventListener('change', () => this.trainer.setCategory(this.elements.categorySelect.value));
+        this.elements.lineSelect.addEventListener('change', () => this.trainer.selectLine(parseInt(this.elements.lineSelect.value)));
+        this.elements.colorSelect.addEventListener('change', () => this.trainer.setPlayerColor(this.elements.colorSelect.value));
+        this.elements.prevLineBtn.addEventListener('click', () => this.trainer.previousLine());
+        this.elements.nextLineBtn.addEventListener('click', () => this.trainer.nextLine());
+        this.elements.resetBtn.addEventListener('click', () => this.trainer.resetPosition());
+        this.elements.flipBtn.addEventListener('click', () => this.trainer.flipBoard());
+    }
+    
+    handlePositionLoaded(data) {
+        this.updatePositionInfo(data.line);
+        this.refreshArrows();
+    }
+    
+    handleCorrectMove() {
+        this.clearArrows();
+        setTimeout(() => this.refreshArrows(), 100);
+    }
+    
+    handleComputerMove() {
+        this.refreshArrows();
+    }
+
+    handleLineChanged(data) {
+        this.updatePositionInfo(data.line);
+        this.elements.lineSelect.value = data.lineIndex;
+        this.refreshArrows();
+    }
+
+    handleCategoryChanged(data) {
+        this.populateLineSelect(data.lines);
+        this.elements.lineSelect.value = 0;
+        this.updatePositionInfo(this.trainer.getCurrentLine());
+        this.refreshArrows();
+    }
+
+    // ============================================
+    // FIXED ARROW SYSTEM - MAIN LOGIC
+    // ============================================
+    
+    refreshArrows() {
+        try {
+            this.clearArrows();
+            
+            if (!this.config.multipleArrows || this.trainer.currentMode !== 'theory') {
+                return;
+            }
+
+            // CRITICAL FIX: Only show arrows when it's player's turn
+            const playerColor = this.trainer.chessEngine.playerColor;
+            const currentTurn = this.trainer.chessEngine.getCurrentColor();
+            
+            if (playerColor !== 'both' && playerColor !== currentTurn) {
+                return; // Computer's turn - no arrows
+            }
+
+            const line = this.trainer.getCurrentLine();
+            const progress = this.trainer.getProgress().chessProgress;
+            const currentIndex = progress.current;
+            
+            if (!line || !line.moves || currentIndex >= line.moves.length) {
+                return;
+            }
+
+            const shapes = this.createArrowShapes(line.moves, currentIndex);
+            
+            if (shapes.length > 0) {
+                this.trainer.chessEngine.board.setAutoShapes(shapes);
+            }
+            
+        } catch (error) {
+            console.error('❌ Arrow error:', error);
+        }
+    }
+
+    createArrowShapes(moves, startIndex) {
+        const shapes = [];
+        const maxMoves = Math.min(this.config.maxMoves, moves.length - startIndex);
+        
+        // Create a temporary chess instance to simulate moves
+        const tempChess = new Chess(this.trainer.chessEngine.chess.fen());
+        
+        // Track computer move count to show blue arrow for first computer move only
+        let computerMovesShown = 0;
+        let playerMovesShown = 0;
+        
+        for (let i = 0; i < maxMoves; i++) {
+            const moveNotation = moves[startIndex + i];
+            if (!moveNotation) continue;
+            
+            try {
+                // Get legal moves in current position
+                const legalMoves = tempChess.moves({ verbose: true });
+                
+                // Find the move that matches our notation
+                let targetMove = legalMoves.find(move => move.san === moveNotation);
+                
+                // Try without check/checkmate symbols
+                if (!targetMove) {
+                    const cleanNotation = moveNotation.replace(/[+#]$/, '');
+                    targetMove = legalMoves.find(move => 
+                        move.san === cleanNotation || 
+                        move.san.replace(/[+#]$/, '') === cleanNotation
+                    );
+                }
+                
+                if (targetMove) {
+                    const isPlayerMove = this.isPlayerMove(startIndex + i);
+                    let color;
+                    
+                    if (isPlayerMove) {
+                        // Player moves: green for first, yellow for others
+                        color = playerMovesShown === 0 ? 'green' : 'yellow';
+                        playerMovesShown++;
+                    } else {
+                        // Computer moves: blue for FIRST computer move only
+                        color = computerMovesShown === 0 ? 'blue' : null;
+                        if (computerMovesShown === 0) computerMovesShown++;
+                    }
+                    
+                    if (color) {
+                        // Main arrow
+                        shapes.push({
+                            orig: targetMove.from,
+                            dest: targetMove.to,
+                            brush: color
+                        });
+                        
+                        // Capture indicator
+                        if (targetMove.captured && this.config.showHints) {
+                            shapes.push({
+                                orig: targetMove.to,
+                                brush: 'red'
+                            });
+                        }
+                    }
+                    
+                    // Make the move in temp board for next iteration
+                    tempChess.move(moveNotation, { sloppy: true });
+                } else {
+                    console.warn('⚠️ Could not parse move:', moveNotation);
+                }
+                
+            } catch (error) {
+                console.warn('⚠️ Move parsing error:', error);
+                continue;
+            }
+        }
+        
+        return shapes;
+    }
+
+    // FIXED: Determine if a move belongs to player or computer (works for both White and Black)
+    isPlayerMove(moveIndex) {
+        const playerColor = this.trainer.chessEngine.playerColor;
+        if (playerColor === 'both') return true;
+        
+        // Get the current position to determine who moves at this point in the sequence
+        const progress = this.trainer.getProgress().chessProgress;
+        const currentIndex = progress.current;
+        
+        // Calculate the offset from current position
+        const offset = moveIndex - currentIndex;
+        
+        // Get who's turn it is right now (at currentIndex)
+        const currentTurn = this.trainer.chessEngine.getCurrentColor();
+        
+        // Determine who makes the move at moveIndex
+        let moveColor;
+        if (offset === 0) {
+            // This is the current move
+            moveColor = currentTurn;
+        } else {
+            // Alternate colors from current turn
+            moveColor = (offset % 2 === 0) ? currentTurn : (currentTurn === 'white' ? 'black' : 'white');
+        }
+        
+        return playerColor === moveColor;
+    }
+
+    clearArrows() {
+        if (this.trainer.chessEngine.board) {
+            this.trainer.chessEngine.board.setAutoShapes([]);
+        }
+    }
+
+    // ============================================
+    // UI UTILITIES
+    // ============================================
+    
+    populateCategorySelect(categories) {
+        if(this.elements.categorySelect) {
+            this.elements.categorySelect.innerHTML = categories.map(cat => 
+                `<option value="${cat}">${cat}</option>`
+            ).join('');
+        }
+    }
+    
+    populateLineSelect(lines) {
+        if(this.elements.lineSelect) {
+            this.elements.lineSelect.innerHTML = lines.map((line, idx) => 
+                `<option value="${idx}">${line.name || `Line ${idx + 1}`}</option>`
+            ).join('');
+        }
+    }
+    
+    updatePositionInfo(line) {
+        if (line && this.elements.positionInfo) {
+            this.elements.positionInfo.innerHTML = `<h4>${line.name || ''}</h4><p>${line.description || ''}</p>`;
+        }
+    }
+}
+--- FILE: ./engine/spaced-repetition.js ---
+
+// /engine/spaced-repetition.js - Complete working implementation
+export class SpacedRepetitionManager {
+    constructor(openingName) {
+        this.openingName = openingName;
+        this.cards = new Map();
+        this.currentSession = {
+            studied: 0,
+            correct: 0,
+            startTime: Date.now()
+        };
+    }
+
+    createCard(positionId, data) {
+        const card = {
+            id: positionId,
+            opening: this.openingName,
+            lineIndex: data.lineIndex,
+            
+            interval: 1,
+            repetitions: 0,
+            easeFactor: 2.5,
+            nextReview: Date.now(),
+            
+            lineCompletions: 0,
+            correctTestAttempts: 0,
+            totalTestAttempts: 0,
+            streak: 0,
+            lastStudied: null,
+            currentMoveInLine: 0,
+            difficulty: 'new',
+            
+            moves: data.moves || [],
+            name: data.name,
+            category: data.category,
+            description: data.description,
+            hint: data.hint,
+            playerColor: data.playerColor || 'black',
+            orientation: data.orientation || 'black'
+        };
+        
+        this.cards.set(positionId, card);
+        return card;
+    }
+
+    generateCardsFromOpening(openingData) {
+        console.log('=== GENERATING SPACED REPETITION CARDS ===');
+        
+        if (!openingData || !openingData.lines || !openingData.lines.length) {
+            console.error('ERROR: No lines in opening data');
+            return;
+        }
+
+        const playerColor = openingData.playerColor || 'black';
+        const orientation = openingData.orientation || 'black';
+        let cardCount = 0;
+
+        openingData.lines.forEach((line, lineIndex) => {
+            if (!line.moves || !line.moves.length) {
+                console.warn(`Skipping line ${lineIndex}: no moves`);
+                return;
+            }
+
+            const positionId = `${this.openingName}_line${lineIndex}`;
+            const cardData = {
+                lineIndex: lineIndex,
+                moves: line.moves,
+                name: line.name,
+                category: line.category || 'Main Lines',
+                description: line.description || `Learn ${line.name}`,
+                hint: line.hint || `Study ${line.name} variation`,
+                playerColor: playerColor,
+                orientation: orientation
+            };
+
+            this.createCard(positionId, cardData);
+            cardCount++;
+        });
+
+        console.log(`Generated ${cardCount} cards for ${this.openingName}`);
+        console.log(`Total cards available: ${this.cards.size}`);
+    }
+
+    getNextCard() {
+        const allCards = Array.from(this.cards.values());
+        
+        if (allCards.length === 0) {
+            console.log('No cards available');
+            return null;
+        }
+
+        const learningCards = allCards.filter(card => card.lineCompletions < 2);
+        if (learningCards.length > 0) {
+            console.log(`Returning learning card: ${learningCards[0].name}`);
+            return learningCards[0];
+        }
+
+        const testingCards = allCards.filter(card => card.lineCompletions >= 2);
+        if (testingCards.length > 0) {
+            console.log(`Returning testing card: ${testingCards[0].name}`);
+            return testingCards[0];
+        }
+
+        console.log(`Returning first available card: ${allCards[0].name}`);
+        return allCards[0];
+    }
+
+    updateCardAfterReview(cardId, quality) {
+        const card = this.cards.get(cardId);
+        if (!card) return;
+
+        card.lastStudied = Date.now();
+        this.currentSession.studied++;
+        
+        const isLearningPhase = card.lineCompletions < 2;
+        
+        if (isLearningPhase) {
+            if (quality >= 3) {
+                this.currentSession.correct++;
+            }
+        } else {
+            card.totalTestAttempts++;
+            
+            if (quality >= 3) {
+                card.correctTestAttempts++;
+                card.streak++;
+                this.currentSession.correct++;
+                
+                if (card.repetitions === 0) {
+                    card.interval = 1;
+                } else if (card.repetitions === 1) {
+                    card.interval = 6;
+                } else {
+                    card.interval = Math.round(card.interval * card.easeFactor);
+                }
+                
+                card.repetitions++;
+                card.easeFactor = card.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+                
+                if (card.easeFactor < 1.3) {
+                    card.easeFactor = 1.3;
+                }
+                
+                card.difficulty = card.repetitions >= 2 && card.easeFactor >= 2.5 ? 'mastered' : 'testing';
+            } else {
+                card.streak = 0;
+                card.repetitions = 0;
+                card.interval = 1;
+                card.difficulty = 'learning';
+                card.lineCompletions = 0;
+                card.currentMoveInLine = 0;
+            }
+            
+            card.nextReview = Date.now() + (card.interval * 24 * 60 * 60 * 1000);
+        }
+    }
+
+    getStats() {
+        const cards = Array.from(this.cards.values());
+        
+        return {
+            totalCards: cards.length,
+            learningCards: cards.filter(c => c.lineCompletions < 2).length,
+            testingCards: cards.filter(c => c.lineCompletions >= 2).length,
+            masteredCards: cards.filter(c => c.difficulty === 'mastered').length,
+            
+            session: {
+                studied: this.currentSession.studied,
+                correct: this.currentSession.correct,
+                successRate: this.currentSession.studied > 0 ? 
+                    Math.round((this.currentSession.correct / this.currentSession.studied) * 100) : 0,
+                timeMinutes: Math.round((Date.now() - this.currentSession.startTime) / 60000)
+            }
+        };
+    }
+
+    resetSession() {
+        this.currentSession = { studied: 0, correct: 0, startTime: Date.now() };
+    }
+
+    loadProgress() {
+        console.log(`Loading spaced repetition data for ${this.openingName}`);
+    }
+
+    saveProgress() {
+        console.log(`Saved progress: ${this.cards.size} cards tracked`);
+    }
+}
+--- FILE: ./engine/chess-engine.js ---
+
+// /engine/chess-engine.js - FIXED VERSION with Working Computer Moves
+
+import { Chessground } from '../assets/js/chessground.min.js';
+
+export class ChessEngine {
+    constructor(boardElementId, options = {}) {
+        // Core chess components
+        this.chess = new Chess();
+        this.boardElement = document.getElementById(boardElementId);
+        this.board = null;
+        
+        // Player settings
+        this.playerColor = options.playerColor || 'both';
+        this.orientation = options.orientation || 'white';
+        
+        // Line management
+        this.currentLine = null;
+        this.currentMoves = [];
+        this.moveIndex = 0;
+        this.isLineActive = false;
+        
+        // Callbacks
+        this.onMoveCallback = null;
+        this.onLineCompleteCallback = null;
+        this.onComputerMoveCallback = null;
+        
+        this.initializeBoard();
+        this.setupPromotionHandlers();
+    }
+
+    // ============================================
+    // CORE BOARD FUNCTIONS
+    // ============================================
+    
+    initializeBoard() {
+        console.log('🎯 Initializing board with playerColor:', this.playerColor, 'orientation:', this.orientation);
+        
+        this.board = Chessground(this.boardElement, {
+            orientation: this.orientation,
+            movable: {
+                color: this.getMovableColor(),
+                free: false,
+                dests: this.calculateDests()
+            },
+            draggable: {
+                showGhost: true
+            }
+        });
+
+        this.board.set({
+            movable: {
+                events: {
+                    after: (orig, dest) => this.handleMove(orig, dest)
+                }
+            }
+        });
+        
+        console.log('🎯 Board initialized, movable color:', this.getMovableColor());
+    }
+
+    calculateDests() {
+        const dests = new Map();
+        this.chess.SQUARES.forEach(s => {
+            const ms = this.chess.moves({square: s, verbose: true});
+            if (ms.length) dests.set(s, ms.map(m => m.to));
+        });
+        return dests;
+    }
+
+    updateBoard() {
+        this.board.set({
+            fen: this.chess.fen(),
+            turnColor: this.getCurrentColor(),
+            movable: {
+                color: this.getMovableColor(),
+                dests: this.calculateDests()
+            }
+        });
+    }
+
+    // ============================================
+    // LINE MANAGEMENT - FIXED
+    // ============================================
+    
+    /**
+     * Load a line for training
+     */
+    loadLine(lineData, startingFen = null) {
+        console.log('🎯 Loading line:', lineData.name, 'with moves:', lineData.moves);
+        
+        this.currentLine = lineData;
+        this.currentMoves = lineData.moves || [];
+        this.moveIndex = 0;
+        this.isLineActive = true;
+        
+        // Load starting position
+        if (startingFen) {
+            this.chess.load(startingFen);
+        } else {
+            this.chess.reset();
+        }
+        
+        this.updateBoard();
+        
+        // FIXED: Check if computer should make the first move
+        setTimeout(() => {
+            if (this.shouldComputerMoveNow()) {
+                console.log('🤖 Computer will make first move...');
+                this.playNextComputerMove();
+            }
+        }, 300);
+    }
+    
+    /**
+     * FIXED: Check if it's computer's turn to move right now
+     */
+    shouldComputerMoveNow() {
+        if (!this.isLineActive) {
+            console.log('🤖 Not computer turn: line not active');
+            return false;
+        }
+        
+        if (this.moveIndex >= this.currentMoves.length) {
+            console.log('🤖 Not computer turn: no more moves');
+            return false;
+        }
+        
+        // If player plays both sides, never auto-move
+        if (this.playerColor === 'both') {
+            console.log('🤖 Not computer turn: player plays both sides');
+            return false;
+        }
+        
+        // Check whose turn it is to move
+        const currentTurn = this.chess.turn(); // 'w' or 'b'
+        const isWhiteTurn = currentTurn === 'w';
+        
+        // Determine if it's the computer's turn
+        let isComputerTurn = false;
+        
+        if (this.playerColor === 'white') {
+            // Player is white, so computer is black
+            isComputerTurn = !isWhiteTurn; // Computer moves when it's black's turn
+        } else if (this.playerColor === 'black') {
+            // Player is black, so computer is white  
+            isComputerTurn = isWhiteTurn; // Computer moves when it's white's turn
+        }
+        
+        console.log('🤖 Turn check:', {
+            currentTurn: isWhiteTurn ? 'white' : 'black',
+            playerColor: this.playerColor,
+            isComputerTurn: isComputerTurn,
+            moveIndex: this.moveIndex,
+            nextMove: this.currentMoves[this.moveIndex]
+        });
+        
+        return isComputerTurn;
+    }
+    
+    /**
+     * FIXED: Play the next computer move in the sequence
+     */
+    playNextComputerMove() {
+        console.log('🤖 playNextComputerMove called');
+        
+        if (!this.isLineActive) {
+            console.log('🤖 Cannot move: line not active');
+            return false;
+        }
+        
+        if (this.moveIndex >= this.currentMoves.length) {
+            console.log('🤖 Cannot move: no more moves in sequence');
+            return false;
+        }
+        
+        const nextMove = this.currentMoves[this.moveIndex];
+        console.log(`🤖 Computer playing move ${this.moveIndex + 1}: ${nextMove}`);
+        
+        try {
+            const move = this.chess.move(nextMove, { sloppy: true });
+            
+            if (move) {
+                console.log('🤖 Computer successfully played:', move.san);
+                this.moveIndex++;
+                this.updateBoard();
+                
+                // Notify callback
+                if (this.onComputerMoveCallback) {
+                    this.onComputerMoveCallback(move);
+                }
+                
+                // Check if line is complete
+                if (this.moveIndex >= this.currentMoves.length) {
+                    this.completeCurrentLine();
+                }
+                
+                return true;
+            } else {
+                console.error('🤖 Failed to make computer move:', nextMove);
+                return false;
+            }
+        } catch (error) {
+            console.error('🤖 Error making computer move:', error);
+            return false;
+        }
+    }
+    
+    /**
+     * Validate a user's move against the expected sequence
+     */
+    validateUserMove(move) {
+        if (!this.isLineActive || this.moveIndex >= this.currentMoves.length) {
+            return { valid: false, expected: null, isComplete: false };
+        }
+        
+        const expectedMove = this.currentMoves[this.moveIndex];
+        const isCorrect = (move.san === expectedMove);
+        
+        console.log('🎯 User move validation:', {
+            played: move.san,
+            expected: expectedMove,
+            isCorrect: isCorrect
+        });
+        
+        if (isCorrect) {
+            this.moveIndex++;
+            const isComplete = this.moveIndex >= this.currentMoves.length;
+            
+            return { 
+                valid: true, 
+                expected: expectedMove,
+                isComplete: isComplete
+            };
+        }
+        
+        return { 
+            valid: false, 
+            expected: expectedMove,
+            isComplete: false 
+        };
+    }
+    
+    /**
+     * Handle line completion
+     */
+    completeCurrentLine() {
+        console.log('🏁 Line completed!');
+        this.isLineActive = false;
+        
+        if (this.onLineCompleteCallback) {
+            this.onLineCompleteCallback({
+                line: this.currentLine,
+                totalMoves: this.currentMoves.length
+            });
+        }
+    }
+    
+    /**
+     * Get current progress in the line
+     */
+    getLineProgress() {
+        if (!this.currentLine) return { current: 0, total: 0, percentage: 0, isComplete: true };
+        
+        return {
+            current: this.moveIndex,
+            total: this.currentMoves.length,
+            percentage: this.currentMoves.length > 0 ? (this.moveIndex / this.currentMoves.length) * 100 : 0,
+            isComplete: this.moveIndex >= this.currentMoves.length,
+            movesPlayed: this.currentMoves.slice(0, this.moveIndex),
+            movesRemaining: this.currentMoves.slice(this.moveIndex)
+        };
+    }
+    
+    /**
+     * Reset current line to beginning
+     */
+    resetCurrentLine() {
+        if (this.currentLine) {
+            console.log('🔄 Resetting line to beginning');
+            this.loadLine(this.currentLine);
+        }
+    }
+    
+    // ============================================
+    // MOVE HANDLING - FIXED
+    // ============================================
+    
+    handleMove(orig, dest) {
+        console.log('👤 User attempting move:', orig, 'to', dest);
+        
+        if (!this.canPlayerMove()) {
+            console.log('👤 Move rejected: not player turn');
+            this.updateBoard(); // Reset invalid drag
+            return;
+        }
+
+        // Check for promotion
+        const piece = this.chess.get(orig);
+        const isPromotion = piece && piece.type === 'p' &&
+            ((piece.color === 'w' && dest[1] === '8') ||
+             (piece.color === 'b' && dest[1] === '1'));
+
+        if (isPromotion) {
+            this.pendingPromotion = { from: orig, to: dest };
+            this.showPromotionDialog(piece.color);
+            return;
+        }
+
+        // Try to make the move
+        const move = this.chess.move({ from: orig, to: dest });
+        
+        if (move) {
+            console.log('👤 User successfully played:', move.san);
+            
+            // If we have an active line, validate the move
+            if (this.isLineActive) {
+                const validation = this.validateUserMove(move);
+                
+                if (!validation.valid) {
+                    // Wrong move - undo it
+                    console.log('👤 Wrong move! Undoing:', move.san, 'Expected:', validation.expected);
+                    this.chess.undo();
+                    this.updateBoard();
+                } else {
+                    console.log('👤 Correct move!');
+                    this.updateBoard();
+                    
+                    // Check if line is complete
+                    if (validation.isComplete) {
+                        this.completeCurrentLine();
+                    } else {
+                        // FIXED: Check if computer should respond
+                        setTimeout(() => {
+                            if (this.shouldComputerMoveNow()) {
+                                console.log('🤖 Computer will respond in 600ms...');
+                                setTimeout(() => {
+                                    this.playNextComputerMove();
+                                }, 600);
+                            }
+                        }, 100);
+                    }
+                }
+                
+                // Notify callback with validation result
+                if (this.onMoveCallback) {
+                    this.onMoveCallback(move, validation);
+                }
+            } else {
+                // Free play mode - just notify the move
+                this.updateBoard();
+                if (this.onMoveCallback) {
+                    this.onMoveCallback(move, { valid: true, freePlay: true });
+                }
+            }
+        } else {
+            console.log('👤 Invalid move attempted');
+            this.updateBoard(); // Reset invalid move
+        }
+    }
+
+    // ============================================
+    // PROMOTION HANDLING
+    // ============================================
+    
+    showPromotionDialog(color) {
+        const selector = document.getElementById('promotionSelector');
+        if (!selector) {
+            // Default to queen if no promotion dialog
+            this.handlePromotion('q');
+            return;
+        }
+
+        selector.style.display = 'block';
+        
+        // Show only pieces of the correct color
+        selector.querySelectorAll('.promotion-piece').forEach(piece => {
+            const isWhite = piece.classList.contains('white');
+            piece.style.display = (color === 'w' && isWhite) || (color === 'b' && !isWhite) ? 'block' : 'none';
+        });
+    }
+
+    hidePromotionDialog() {
+        const selector = document.getElementById('promotionSelector');
+        if (selector) {
+            selector.style.display = 'none';
+        }
+    }
+
+    handlePromotion(promotionPiece) {
+        if (!this.pendingPromotion) return;
+
+        const move = this.chess.move({
+            from: this.pendingPromotion.from,
+            to: this.pendingPromotion.to,
+            promotion: promotionPiece
+        });
+
+        this.pendingPromotion = null;
+        this.hidePromotionDialog();
+
+        if (move && this.onMoveCallback) {
+            const validation = this.isLineActive ? this.validateUserMove(move) : { valid: true, freePlay: true };
+            this.onMoveCallback(move, validation);
+            
+            if (validation.valid && this.shouldComputerMoveNow()) {
+                setTimeout(() => this.playNextComputerMove(), 800);
+            }
+        }
+
+        this.updateBoard();
+    }
+
+    setupPromotionHandlers() {
+        document.querySelectorAll('.promotion-piece').forEach(piece => {
+            piece.addEventListener('click', () => {
+                const promotionPiece = piece.dataset.piece;
+                this.handlePromotion(promotionPiece);
+            });
+        });
+    }
+
+    // ============================================
+    // UTILITIES
+    // ============================================
+    
+    getCurrentColor() {
+        return this.chess.turn() === 'w' ? 'white' : 'black';
+    }
+
+    getMovableColor() {
+        if (this.playerColor === 'both') return this.getCurrentColor();
+        if (this.playerColor === this.getCurrentColor()) return this.getCurrentColor();
+        return null; // Computer's turn - player can't move
+    }
+
+    canPlayerMove() {
+        if (this.playerColor === 'both') return true;
+        return this.getCurrentColor() === this.playerColor;
+    }
+
+    loadPosition(fen) {
+        this.isLineActive = false; // Free play when loading arbitrary position
+        this.currentLine = null;
+        
+        if (fen) {
+            this.chess.load(fen);
+        } else {
+            this.chess.reset();
+        }
+        this.updateBoard();
+    }
+
+    getGameState() {
+        return {
+            fen: this.chess.fen(),
+            turn: this.getCurrentColor(),
+            inCheck: this.chess.in_check(),
+            inCheckmate: this.chess.in_checkmate(),
+            inStalemate: this.chess.in_stalemate(),
+            inDraw: this.chess.in_draw(),
+            gameOver: this.chess.game_over(),
+            pgn: this.chess.pgn(),
+            history: this.chess.history(),
+            lineProgress: this.getLineProgress()
+        };
+    }
+
+    setPlayerColor(color) {
+        console.log('🎯 Chess engine playerColor changed from', this.playerColor, 'to', color);
+        this.playerColor = color;
+        this.updateBoard();
+        
+        // If we have an active line and it's now computer's turn, play
+        setTimeout(() => {
+            if (this.isLineActive && this.shouldComputerMoveNow()) {
+                console.log('🤖 After color change, computer should play');
+                this.playNextComputerMove();
+            }
+        }, 100);
+    }
+
+    setOrientation(orientation) {
+        this.orientation = orientation;
+        this.board.set({ orientation: orientation });
+    }
+
+    flipBoard() {
+        const newOrientation = this.orientation === 'white' ? 'black' : 'white';
+        this.setOrientation(newOrientation);
+        return newOrientation;
+    }
+
+    // ============================================
+    // EVENT CALLBACKS
+    // ============================================
+    
+    onMove(callback) {
+        this.onMoveCallback = callback;
+    }
+
+    onLineComplete(callback) {
+        this.onLineCompleteCallback = callback;
+    }
+
+    onComputerMove(callback) {
+        this.onComputerMoveCallback = callback;
+    }
+
+    // ============================================
+    // CLEANUP
+    // ============================================
+    
+    destroy() {
+        this.board = null;
+        this.chess = null;
+        this.currentLine = null;
+        this.onMoveCallback = null;
+        this.onLineCompleteCallback = null;
+        this.onComputerMoveCallback = null;
+    }
+}
+--- FILE: ./engine/trainer-core.js ---
+
+// /engine/trainer-core.js - FIXED VERSION with Working Computer Move Events
+
+import { ChessEngine } from './chess-engine.js';
+import { SpacedRepetitionManager } from './spaced-repetition.js';
+import { PgnParser } from './pgn-parser.js';
+
+export class ChessTrainer extends EventTarget {
+    constructor(boardId, courseData, options = {}) {
+        super();
+        
+        this.boardId = boardId;
+        this.courseData = this.precomputeMoveData(this.normalizeCourseData(courseData));
+        this.options = { defaultColor: options.defaultColor || 'white', ...options };
+        
+        this.chessEngine = null;
+        this.currentMode = 'theory';
+        this.currentCategory = null;
+        this.currentLineIndex = 0;
+        
+        this.init();
+    }
+    
+    init() {
+        this.chessEngine = new ChessEngine(this.boardId, {
+            playerColor: this.options.defaultColor,
+            orientation: this.courseData.orientation || this.options.defaultColor
+        });
+        
+        // FIXED: Proper event handling
+        this.chessEngine.onMove((move, validation) => this.handleMove(move, validation));
+        this.chessEngine.onLineComplete((data) => this.handleLineComplete(data));
+        this.chessEngine.onComputerMove((move) => this.handleComputerMove(move));
+        
+        this.currentCategory = this.getDefaultCategory();
+        
+        this.emit('initialized', { courseData: this.courseData, mode: this.currentMode, category: this.currentCategory });
+        this.loadCurrentPosition();
+    }
+
+    precomputeMoveData(courseData) {
+        console.log('🎯 Processing all course lines with PgnParser...');
+        if (!courseData.theory || !courseData.theory.lines) return courseData;
+    
+        for (const line of courseData.theory.lines) {
+            line.computedMoves = PgnParser.compute(line);
+        }
+        
+        console.log('✅ Course data processing complete.');
+        return courseData;
+    }
+    
+    normalizeCourseData(data) {
+        const normalized = {
+            name: data.name || 'Unnamed Course',
+            playerColor: data.playerColor || 'white',
+            orientation: data.orientation || data.playerColor || 'white',
+            theory: null,
+            exercises: null,
+            spacedRepetition: null
+        };
+        if (data.theory) normalized.theory = data.theory;
+        else if (data.lines) normalized.theory = { lines: data.lines, startingFen: data.startingFen };
+        if (data.exercises) normalized.exercises = Array.isArray(data.exercises) ? 
+            { lines: data.exercises } : data.exercises;
+        if (data.spacedRepetition) normalized.spacedRepetition = data.spacedRepetition;
+        return normalized;
+    }
+    
+    setMode(mode) {
+        console.log('🎯 Mode changed to:', mode);
+        this.currentMode = mode;
+        this.currentLineIndex = 0;
+        this.emit('modeChanged', { mode: mode, categories: this.getAvailableCategories() });
+        this.loadCurrentPosition();
+    }
+    
+    loadCurrentPosition() {
+        const line = this.getCurrentLine();
+        if (!line) {
+            console.warn('⚠️ No line available');
+            this.emit('error', { message: 'No line available' });
+            return;
+        }
+        
+        console.log('🎯 Loading position for line:', line.name);
+        this.chessEngine.loadLine(line, this.getStartingFen());
+        this.emit('positionLoaded', {
+            mode: this.currentMode,
+            line: line,
+            lineIndex: this.currentLineIndex
+        });
+    }
+    
+    // FIXED: Proper event emission
+    handleMove(move, validation) {
+        console.log('🎯 Move handled:', move.san, 'Valid:', validation.valid);
+        
+        if (validation.valid) {
+            this.emit('correctMove', { move, validation });
+        } else {
+            this.emit('incorrectMove', { move, expected: validation.expected });
+        }
+    }
+    
+    handleComputerMove(move) {
+        console.log('🤖 Computer move handled:', move.san);
+        this.emit('computerMove', { move });
+    }
+    
+    handleLineComplete(data) {
+        console.log('🏁 Line completed:', data.line?.name);
+        this.emit('lineComplete', data);
+    }
+    
+    nextLine() {
+        const lines = this.getCurrentLines();
+        if (this.currentLineIndex < lines.length - 1) {
+            this.currentLineIndex++;
+            console.log('➡️ Next line:', this.currentLineIndex);
+            this.loadCurrentPosition();
+            this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
+        }
+    }
+    
+    previousLine() {
+        if (this.currentLineIndex > 0) {
+            this.currentLineIndex--;
+            console.log('⬅️ Previous line:', this.currentLineIndex);
+            this.loadCurrentPosition();
+            this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
+        }
+    }
+    
+    selectLine(index) {
+        console.log('🎯 Selecting line:', index);
+        this.currentLineIndex = index;
+        this.loadCurrentPosition();
+        this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
+    }
+    
+    setCategory(category) {
+        console.log('🎯 Category changed to:', category);
+        this.currentCategory = category;
+        this.currentLineIndex = 0;
+        this.emit('categoryChanged', { category: category, lines: this.getCurrentLines() });
+        this.loadCurrentPosition();
+    }
+    
+    resetPosition() { 
+        console.log('🔄 Resetting position');
+        this.chessEngine.resetCurrentLine(); 
+    }
+    
+    flipBoard() { 
+        console.log('🔄 Flipping board');
+        this.chessEngine.flipBoard(); 
+    }
+    
+    setPlayerColor(color) { 
+        console.log('🎯 Player color changed to:', color);
+        this.chessEngine.setPlayerColor(color);
+        this.loadCurrentPosition();
+    }
+    
+    getCurrentLine() { return this.getCurrentLines()[this.currentLineIndex] || null; }
+    getCurrentLines() { return this.getCategoryLines(this.currentCategory); }
+    getCategoryLines(category) {
+        const allLines = this.courseData.theory?.lines || [];
+        if (!category || category === 'All Categories') return allLines;
+        return allLines.filter(line => line.category === category);
+    }
+    getAvailableCategories() {
+        if (!this.courseData.theory) return [];
+        const categories = [...new Set(this.courseData.theory.lines.map(line => line.category).filter(Boolean))];
+        if (categories.length > 1) categories.unshift('All Categories');
+        return categories;
+    }
+    getDefaultCategory() {
+        const cats = this.getAvailableCategories();
+        return cats.includes('All Categories') ? 'All Categories' : cats[0] || null;
+    }
+    getStartingFen() { return this.courseData.theory?.startingFen || null; }
+    getProgress() {
+        return {
+            mode: this.currentMode,
+            category: this.currentCategory,
+            lineIndex: this.currentLineIndex,
+            chessProgress: this.chessEngine.getLineProgress()
+        };
+    }
+    emit(eventName, detail) { 
+        console.log('📡 Event emitted:', eventName, detail);
+        this.dispatchEvent(new CustomEvent(eventName, { detail })); 
+    }
+}
+--- FILE: ./app.js ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const courseListContainer = document.getElementById('course-list');
+    const loadingMessage = document.getElementById('loadingMessage');
+
+    async function loadCourses() {
+        try {
+            const response = await fetch('./data/courses.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const courses = await response.json();
+            
+            loadingMessage.style.display = 'none';
+            displayCourses(courses);
+
+        } catch (error) {
+            loadingMessage.textContent = 'Error: Could not load courses. Please check the console for details.';
+            console.error('Failed to fetch courses:', error);
+        }
+    }
+
+    function displayCourses(courses) {
+        courseListContainer.innerHTML = ''; // Clear loading message
+
+        courses.forEach(course => {
+            const cardLink = document.createElement('a');
+            cardLink.href = `trainer.html?course=${course.id}`;
+            cardLink.className = 'course-card';
+
+            cardLink.innerHTML = `
+                <h2>${course.name}</h2>
+                <p>${course.description}</p>
+                <p class="author">By: ${course.author}</p>
+                <p class="player-color">Play as ${course.playerColor}</p>
+            `;
+            
+            courseListContainer.appendChild(cardLink);
+        });
+    }
+
+    loadCourses();
+});
+--- FILE: ./index.html ---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Opening Trainer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #202429; /* Dark Slate Blue */
+            --surface-color: #2c313a;
+            --border-color: #434853;
+            --primary-color: #388dff; /* Vibrant Blue */
+            --text-color: #e1e3e6;
+            --text-muted-color: #8a919f;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        h1 span { color: var(--primary-color); }
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .course-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-color);
+        }
+        .course-card h2 { margin: 0 0 10px 0; font-size: 1.4em; color: #fff; }
+        .course-card p { margin: 0 0 15px 0; color: var(--text-muted-color); font-size: 0.95em; line-height: 1.6; flex-grow: 1; }
+        .course-card .author { font-style: italic; font-size: 0.9em; color: #666; }
+        .course-card .player-color {
+            font-weight: 500;
+            color: var(--primary-color);
+            text-transform: capitalize;
+            text-align: right;
+            margin-top: auto;
+        }
+        #loadingMessage { text-align: center; font-size: 1.2em; color: var(--text-muted-color); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chess Opening <span>Trainer</span></h1>
+        <div id="course-list" class="course-list">
+            <p id="loadingMessage">Loading courses...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+--- FILE: ./trainer.html ---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Trainer - Enhanced</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Chessboard CSS (Base and Piece Set) -->
+    <link rel="stylesheet" href="./assets/css/chessground.base.css">
+    <link rel="stylesheet" href="./assets/css/chessground.chess24.css">
+    <link rel="stylesheet" href="./assets/css/chessground.pieces.css">
+    <link rel="stylesheet" href="./assets/css/mobile.css">
+
+    <!-- Enhanced App CSS with Dynamic Theming -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <!-- Third-party Libraries -->
+    <script src="./assets/js/chess.min.js"></script>
+
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <a href="index.html" class="back-link">← Courses</a>
+            <h1 id="course-title">Loading Course...</h1>
+        </header>
+        
+        <main>
+            <div id="board-container" class="theme-chess24">
+                <div id="board"></div>
+            </div>
+            
+            <div id="controls-panel">
+                <div id="positionInfo" class="control-section">
+                    <!-- Position info will be loaded here -->
+                </div>
+                
+                <div class="control-section">
+                    <div class="control-group">
+                        <label for="modeSelect">Mode:</label>
+                        <select id="modeSelect">
+                            <option value="theory">Theory</option>
+                            <option value="exercises">Exercises</option>
+                            <option value="spaced_repetition">Spaced Repetition</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="colorSelect">Play as:</label>
+                        <select id="colorSelect">
+                            <option value="white">White</option>
+                            <option value="black">Black</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <div class="control-group">
+                        <label id="categoryLabel" for="categorySelect">Category:</label>
+                        <select id="categorySelect"></select>
+                    </div>
+                    <div class="control-group">
+                        <label for="lineSelect">Line:</label>
+                        <select id="lineSelect"></select>
+                    </div>
+                    <div class="nav-buttons">
+                        <button id="prevLineBtn">‹ Prev</button>
+                        <button id="nextLineBtn">Next ›</button>
+                    </div>
+                </div>
+
+                <div class="control-section action-buttons">
+                    <button id="resetBtn">Reset</button>
+                    <button id="hintBtn">Hint</button>
+                    <button id="flipBtn">Flip Board</button>
+                </div>
+
+                <div class="status-section">
+                    <div class="progress-bar">
+                        <div id="progressFill"></div>
+                    </div>
+                    <div id="status">Ready</div>
+                </div>
+                <div id="movesList" class="control-section"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="successMessage" class="feedback-message"></div>
+    <div id="errorMessage" class="feedback-message"></div>
+
+    <!-- Main application logic -->
+    <script src="trainer.js" type="module"></script>
+</body>
+</html>
+--- FILE: ./trainer.js ---
+
+// Simple trainer.js - Clean and working
+
+import { ChessTrainer } from './engine/trainer-core.js';
+import { UIManager } from './engine/ui-manager.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    console.log('🚀 Starting Chess Trainer...');
+    
+    // Get the course ID from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseId = urlParams.get('course');
+    const courseTitleElement = document.getElementById('course-title');
+
+    if (!courseId) {
+        courseTitleElement.textContent = 'Error: No course selected!';
+        alert('No course ID found in the URL. Please select a course from the homepage.');
+        window.location.href = '/index.html';
+        return;
+    }
+
+    async function initializeTrainer(id) {
+        try {
+            // Fetch the manifest
+            const manifestResponse = await fetch('./data/courses.json');
+            if (!manifestResponse.ok) throw new Error('Failed to load course manifest.');
+            const courses = await manifestResponse.json();
+            const courseInfo = courses.find(c => c.id === id);
+
+            if (!courseInfo) throw new Error(`Course with ID "${id}" not found.`);
+            
+            // Fetch course data
+            const courseResponse = await fetch(courseInfo.path);
+            if (!courseResponse.ok) throw new Error(`Failed to load course data.`);
+            const courseData = await courseResponse.json();
+
+            // Update page title
+            courseTitleElement.textContent = courseData.name;
+            console.log('📚 Course loaded:', courseData.name);
+
+            // Initialize trainer
+            const trainer = new ChessTrainer('board', courseData, {
+                defaultColor: courseData.playerColor
+            });
+
+            // Initialize UI
+            const uiManager = new UIManager(trainer);
+            
+            // Global access for debugging
+            window.trainer = trainer;
+            window.uiManager = uiManager;
+            
+            // Simple keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Don't interfere with typing in inputs
+                if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'select') {
+                    return;
+                }
+                
+                switch (e.key.toLowerCase()) {
+                    case 'r':
+                        if (!e.ctrlKey && !e.metaKey) {
+                            trainer.resetPosition();
+                            e.preventDefault();
+                        }
+                        break;
+                    case 'f':
+                        if (!e.ctrlKey && !e.metaKey) {
+                            trainer.flipBoard();
+                            e.preventDefault();
+                        }
+                        break;
+                    case 'arrowleft':
+                        trainer.previousLine();
+                        e.preventDefault();
+                        break;
+                    case 'arrowright':
+                        trainer.nextLine();
+                        e.preventDefault();
+                        break;
+                    case ' ': // Spacebar to toggle arrows
+                        const checkbox = document.getElementById('enableEnhancer');
+                        if (checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                            checkbox.dispatchEvent(new Event('change'));
+                            e.preventDefault();
+                        }
+                        break;
+                }
+            });
+            
+            console.log('✅ Chess Trainer initialized successfully!');
+            
+        } catch (error) {
+            courseTitleElement.textContent = 'Error loading course!';
+            console.error('❌ Initialization failed:', error);
+            alert(`Error: ${error.message}`);
+        }
+    }
+
+    // Start the application
+    initializeTrainer(courseId);
+
+    // Add debug commands to console
+    console.log(`
+    🎯 Chess Trainer Debug Commands:
+    - window.trainer: Access trainer
+    - window.uiManager: Access UI manager  
+    - uiManager.refreshArrows(): Force refresh arrows
+    - trainer.chessEngine.board.setAutoShapes([{orig:'e2',dest:'e4',brush:'green'}]): Test arrow
+    
+    Keyboard shortcuts:
+    - R: Reset position
+    - F: Flip board
+    - ←/→: Previous/Next line
+    - Space: Toggle multiple arrows
+    `);
+});
