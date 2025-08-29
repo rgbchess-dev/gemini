@@ -1,0 +1,72 @@
+.theme-chess24 cg-board {
+  background-color: #f2f2f2;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><rect x="0" y="0" width="8" height="8" fill="%23f2f2f2"/><rect x="8" y="0" width="8" height="8" fill="%237b8794"/><rect x="0" y="8" width="8" height="8" fill="%237b8794"/><rect x="8" y="8" width="8" height="8" fill="%23f2f2f2"/></svg>');
+  background-size: 25% 25%;
+  background-repeat: repeat;}
+
+.theme-chess24 cg-board square.move-dest {
+  background: radial-gradient(rgba(33, 150, 243, 0.6) 22%, #2196f3 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+.theme-chess24 cg-board square.last-move {
+  background-color: rgba(255, 193, 7, 0.5);
+}
+
+.theme-chess24 cg-board square.selected {
+  background-color: rgba(33, 150, 243, 0.5);
+}
+/* ==========================================
+   SHARED INTERACTIVE ELEMENTS FOR ALL THEMES
+   ========================================== */
+/* Apply to all themes */
+[class*="theme-"] cg-board square.premove-dest {
+  background: radial-gradient(rgba(156, 39, 176, 0.5) 22%, #9c27b0 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+[class*="theme-"] cg-board square.oc.move-dest {
+  background: radial-gradient(transparent 0%, transparent 80%, rgba(20, 85, 0, 0.3) 80%);
+}
+
+[class*="theme-"] cg-board square.oc.premove-dest {
+  background: radial-gradient(transparent 0%, transparent 80%, rgba(156, 39, 176, 0.2) 80%);
+}
+
+[class*="theme-"] cg-board square.move-dest:hover {
+  transform: scale(1.02);
+  transition: transform 0.1s ease;
+}
+
+[class*="theme-"] cg-board square.check {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(244, 67, 54, 1) 0%,
+    rgba(211, 47, 47, 1) 25%,
+    rgba(183, 28, 28, 0) 89%,
+    rgba(176, 0, 32, 0) 100%
+  );
+}
+
+[class*="theme-"] cg-board square.current-premove {
+  background-color: rgba(156, 39, 176, 0.5);
+}
+
+/* ==========================================
+   COORDINATE COLORS FOR ALL THEMES
+   ========================================== */
+/* Light squares coordinates */
+[class*="theme-"] .orientation-white .ranks :nth-child(even),
+[class*="theme-"] .orientation-white .files :nth-child(odd),
+[class*="theme-"] .orientation-black .ranks :nth-child(odd),
+[class*="theme-"] .orientation-black .files :nth-child(even) {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+/* Dark squares coordinates */
+[class*="theme-"] .orientation-white .ranks :nth-child(odd),
+[class*="theme-"] .orientation-white .files :nth-child(even),
+[class*="theme-"] .orientation-black .ranks :nth-child(even),
+[class*="theme-"] .orientation-black .files :nth-child(odd) {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+}

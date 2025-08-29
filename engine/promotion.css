@@ -55,36 +55,36 @@
 
 /* White pieces using SVG files */
 .promotion-piece.white[data-piece="q"] {
-    background-image: url('../assets/pieces/queen-white.svg') !important;
+    background-image: url('../assets/pieces/chess24/wQ.png') !important;
 }
 
 .promotion-piece.white[data-piece="r"] {
-    background-image: url('../assets/pieces/rook-white.svg') !important;
+    background-image: url('../assets/pieces/chess24/rW.png') !important;
 }
 
 .promotion-piece.white[data-piece="b"] {
-    background-image: url('../assets/pieces/bishop-white.svg') !important;
+    background-image: url('../assets/pieces/chess24/wB.png') !important;
 }
 
 .promotion-piece.white[data-piece="n"] {
-    background-image: url('../assets/pieces/knight-white.svg') !important;
+    background-image: url('../assets/pieces/chess24/wN.png') !important;
 }
 
 /* Black pieces using SVG files */
 .promotion-piece.black[data-piece="q"] {
-    background-image: url('../assets/pieces/queen-black.svg') !important;
+    background-image: url('../assets/pieces/chess24/bQ.png') !important;
 }
 
 .promotion-piece.black[data-piece="r"] {
-    background-image: url('../assets/pieces/rook-black.svg') !important;
+    background-image: url('../assets/pieces/chess24/bR.png') !important;
 }
 
 .promotion-piece.black[data-piece="b"] {
-    background-image: url('../assets/pieces/bishop-black.svg') !important;
+    background-image: url('../assets/pieces/chess24/bB.png') !important;
 }
 
 .promotion-piece.black[data-piece="n"] {
-    background-image: url('../assets/pieces/knight-black.svg') !important;
+    background-image: url('../assets/pieces/chess24/bN.png') !important;
 }
 
 /* Mobile responsive */

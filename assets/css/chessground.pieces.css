@@ -1,0 +1,55 @@
+/** 
+ * Chess24-Style Piece Set - Modern & Professional
+ * Replace chessground.cburnett.css with this file
+ * MODIFIED TO USE LOCAL PNG FILES
+ */
+
+/** WHITE PIECES */
+.cg-wrap piece.pawn.white {
+  background-image: url('../pieces/chess24/wP.png');
+}
+
+.cg-wrap piece.rook.white {
+  background-image: url('../pieces/chess24/wR.png');
+}
+
+.cg-wrap piece.bishop.white {
+  background-image: url('../pieces/chess24/wB.png');
+}
+
+.cg-wrap piece.knight.white {
+  background-image: url('../pieces/chess24/wN.png');
+}
+
+.cg-wrap piece.queen.white {
+  background-image: url('../pieces/chess24/wQ.png');
+}
+
+.cg-wrap piece.king.white {
+  background-image: url('../pieces/chess24/wK.png');
+}
+
+/** BLACK PIECES */
+.cg-wrap piece.pawn.black {
+  background-image: url('../pieces/chess24/bP.png');
+}
+
+.cg-wrap piece.rook.black {
+  background-image: url('../pieces/chess24/bR.png');
+}
+
+.cg-wrap piece.bishop.black {
+  background-image: url('../pieces/chess24/bB.png');
+}
+
+.cg-wrap piece.knight.black {
+  background-image: url('../pieces/chess24/bN.png');
+}
+
+.cg-wrap piece.queen.black {
+  background-image: url('../pieces/chess24/bQ.png');
+}
+
+.cg-wrap piece.king.black {
+  background-image: url('../pieces/chess24/bK.png');
+}

@@ -1,0 +1,160 @@
+/* ============================================
+   MODERN CHESS BOARD THEMES 
+   Replace your brown theme with any of these
+   ============================================ */
+
+/* ==========================================
+   THEME 1: MODERN BLUE (Chess.com inspired)
+   ========================================== */
+.theme-blue cg-board {
+  background-color: #8ca2ad;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgOCA4IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgo8ZyBpZD0iYSI+CjxnIGlkPSJiIj4KPGcgaWQ9ImMiPgo8ZyBpZD0iZCI+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGlkPSJlIiBvcGFjaXR5PSIwIi8+Cjx1c2UgeD0iMSIgeT0iMSIgaHJlZj0iI2UiLz4KPHJlY3QgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgaWQ9ImYiIGZpbGw9IiNmMGY5ZmYiIG9wYWNpdHk9IjAuOCIvPgo8dXNlIHg9IjEiIHk9Ii0xIiBocmVmPSIjZiIvPgo8L2c+Cjx1c2UgeD0iMiIgaHJlZj0iI2QiLz4KPC9nPgo8dXNlIHg9IjQiIGhyZWY9IiNjIi8+CjwvZz4KPHU+ZSB5PSIyIiBocmVmPSIjYiIvPgo8L2c+Cjx1c2UgeT0iNCIgaHJlZj0iI2EiLz4KPC9zdmc+');
+}
+
+.theme-blue cg-board square.move-dest {
+  background: radial-gradient(rgba(15, 135, 255, 0.6) 22%, #0f87ff 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+.theme-blue cg-board square.last-move {
+  background-color: rgba(255, 255, 0, 0.4);
+}
+
+.theme-blue cg-board square.selected {
+  background-color: rgba(15, 135, 255, 0.5);
+}
+
+/* ==========================================
+   THEME 2: LICHESS GREEN (Tournament Style)
+   ========================================== */
+.theme-green cg-board {
+  background-color: #86a666;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgOCA4IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgo8ZyBpZD0iYSI+CjxnIGlkPSJiIj4KPGcgaWQ9ImMiPgo8ZyBpZD0iZCI+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGlkPSJlIiBvcGFjaXR5PSIwIi8+Cjx1c2UgeD0iMSIgeT0iMSIgaHJlZj0iI2UiLz4KPHJlY3QgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgaWQ9ImYiIGZpbGw9IiNkYWVkY2YiIG9wYWNpdHk9IjEiLz4KPHU+ZSB4PSIxIiB5PSItMSIgaHJlZj0iI2YiLz4KPC9nPgo8dXNlIHg9IjIiIGhyZWY9IiNkIi8+CjwvZz4KPHU+ZSB4PSI0IiBocmVmPSIjYyIvPgo8L2c+Cjx1c2UgeT0iMiIgaHJlZj0iI2IiLz4KPC9nPgo8dXNlIHk9IjQiIGhyZWY9IiNhIi8+Cjwvc3ZnPg==');
+}
+
+.theme-green cg-board square.move-dest {
+  background: radial-gradient(rgba(76, 175, 80, 0.6) 22%, #4caf50 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+.theme-green cg-board square.last-move {
+  background-color: rgba(255, 235, 59, 0.5);
+}
+
+.theme-green cg-board square.selected {
+  background-color: rgba(76, 175, 80, 0.6);
+}
+
+/* ==========================================
+   THEME 3: CHESS24 STYLE (Blue-Grey)
+   ========================================== */
+.theme-chess24 cg-board {
+  background-color: #7b8794;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgOCA4IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgo8ZyBpZD0iYSI+CjxnIGlkPSJiIj4KPGcgaWQ9ImMiPgo8ZyBpZD0iZCI+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGlkPSJlIiBvcGFjaXR5PSIwIi8+Cjx1c2UgeD0iMSIgeT0iMSIgaHJlZj0iI2UiLz4KPHJlY3QgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgaWQ9ImYiIGZpbGw9IiNlZWVkZDIiIG9wYWNpdHk9IjEiLz4KPHU+ZSB4PSIxIiB5PSItMSIgaHJlZj0iI2YiLz4KPC9nPgo8dXNlIHg9IjIiIGhyZWY9IiNkIi8+CjwvZz4KPHU+ZSB4PSI0IiBocmVmPSIjYyIvPgo8L2c+Cjx1c2UgeT0iMiIgaHJlZj0iI2IiLz4KPC9nPgo8dXNlIHk9IjQiIGhyZWY9IiNhIi8+Cjwvc3ZnPg==');
+}
+
+.theme-chess24 cg-board square.move-dest {
+  background: radial-gradient(rgba(33, 150, 243, 0.6) 22%, #2196f3 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+.theme-chess24 cg-board square.last-move {
+  background-color: rgba(255, 193, 7, 0.5);
+}
+
+.theme-chess24 cg-board square.selected {
+  background-color: rgba(33, 150, 243, 0.5);
+}
+
+/* ==========================================
+   THEME 4: MODERN DARK (Sleek & Modern)
+   ========================================== */
+.theme-dark cg-board {
+  background-color: #4a4a4a;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgOCA4IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgo8ZyBpZD0iYSI+CjxnIGlkPSJiIj4KPGcgaWQ9ImMiPgo8ZyBpZD0iZCI+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGlkPSJlIiBvcGFjaXR5PSIwIi8+Cjx1c2UgeD0iMSIgeT0iMSIgaHJlZj0iI2UiLz4KPHJlY3QgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgaWQ9ImYiIGZpbGw9IiNmNWY1ZjUiIG9wYWNpdHk9IjEiLz4KPHU+ZSB4PSIxIiB5PSItMSIgaHJlZj0iI2YiLz4KPC9nPgo8dXNlIHg9IjIiIGhyZWY9IiNkIi8+CjwvZz4KPHU+ZSB4PSI0IiBocmVmPSIjYyIvPgo8L2c+Cjx1c2UgeT0iMiIgaHJlZj0iI2IiLz4KPC9nPgo8dXNlIHk9IjQiIGhyZWY9IiNhIi8+Cjwvc3ZnPg==');
+}
+
+.theme-dark cg-board square.move-dest {
+  background: radial-gradient(rgba(0, 229, 255, 0.6) 22%, #00e5ff 0, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 0);
+}
+
+.theme-dark cg-board square.last-move {
+  background-color: rgba(255, 87, 34, 0.4);
+}
+
+.theme-dark cg-board square.selected {
+  background-color: rgba(0, 229, 255, 0.5);
+}
+
+/* ==========================================
+   THEME 5: CORAL MODERN (Warm & Elegant)
+   ========================================== */
+.theme-coral cg-board {
+  background-color: #70a2a3;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgOCA4IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgo8ZyBpZD0iYSI+CjxnIGlkPSJiIj4KPGcgaWQ9ImMiPgo8ZyBpZD0iZCI+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGlkPSJlIiBvcGFjaXR5PSIwIi8+Cjx1c2UgeD0iMSIgeT0iMSIgaHJlZj0iI2UiLz4KPHJlY3QgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgaWQ9ImYiIGZpbGw9IiNiMWU0YjkiIG9wYWNpdHk9IjEiLz4KPHU+ZSB4PSIxIiB5PSItMSIgaHJlZj0iI2YiLz4KPC9nPgo8dXNlIHg9IjIiIGhyZWY9IiNkIi8+CjwvZz4KPHU+ZSB4PSI0IiBocmVmPSIjYyIvPgo8L2c+Cjx1c2UgeT0iMiIgaHJlZj0iI2IiLz4KPC9nPgo8dXNlIHk9IjQiIGhyZWY9IiNhIi8+Cjwvc3ZnPg==');
+}
+
+.theme-coral cg-board square.move-dest {
+  background: radial-gradient(rgba(233, 30, 99, 0.6) 22%, #e91e63 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+.theme-coral cg-board square.last-move {
+  background-color: rgba(255, 152, 0, 0.4);
+}
+
+.theme-coral cg-board square.selected {
+  background-color: rgba(233, 30, 99, 0.5);
+}
+
+/* ==========================================
+   SHARED INTERACTIVE ELEMENTS FOR ALL THEMES
+   ========================================== */
+/* Apply to all themes */
+[class*="theme-"] cg-board square.premove-dest {
+  background: radial-gradient(rgba(156, 39, 176, 0.5) 22%, #9c27b0 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+
+[class*="theme-"] cg-board square.oc.move-dest {
+  background: radial-gradient(transparent 0%, transparent 80%, rgba(20, 85, 0, 0.3) 80%);
+}
+
+[class*="theme-"] cg-board square.oc.premove-dest {
+  background: radial-gradient(transparent 0%, transparent 80%, rgba(156, 39, 176, 0.2) 80%);
+}
+
+[class*="theme-"] cg-board square.move-dest:hover {
+  transform: scale(1.02);
+  transition: transform 0.1s ease;
+}
+
+[class*="theme-"] cg-board square.check {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(244, 67, 54, 1) 0%,
+    rgba(211, 47, 47, 1) 25%,
+    rgba(183, 28, 28, 0) 89%,
+    rgba(176, 0, 32, 0) 100%
+  );
+}
+
+[class*="theme-"] cg-board square.current-premove {
+  background-color: rgba(156, 39, 176, 0.5);
+}
+
+/* ==========================================
+   COORDINATE COLORS FOR ALL THEMES
+   ========================================== */
+/* Light squares coordinates */
+[class*="theme-"] .orientation-white .ranks :nth-child(even),
+[class*="theme-"] .orientation-white .files :nth-child(odd),
+[class*="theme-"] .orientation-black .ranks :nth-child(odd),
+[class*="theme-"] .orientation-black .files :nth-child(even) {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+/* Dark squares coordinates */
+[class*="theme-"] .orientation-white .ranks :nth-child(odd),
+[class*="theme-"] .orientation-white .files :nth-child(even),
+[class*="theme-"] .orientation-black .ranks :nth-child(even),
+[class*="theme-"] .orientation-black .files :nth-child(odd) {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+}
