@@ -1,0 +1,124 @@
+{
+  "name": "Italian Game: Giuoco Piano & Tricky Gambits",
+  "author": "IM Andras Toth",
+  "description": "An aggressive introduction to the Italian Game, focusing on the Giuoco Piano, Scotch Gambit, and Evans Gambit.",
+  "playerColor": "white",
+  "orientation": "white",
+  "theory": {
+    "startingFen": null,
+    "lines": [
+      {
+        "name": "Italian: Giuoco Pianissimo (5.c3)",
+        "description": "The main line of the 'Quiet Game'.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "c3", "d6", "Nbd2", "a5", "Nf1", "Be6", "Bb5", "O-O"],
+        "comments": ["","","","","Time to move on to the Italian...", "The first decision...","The main line. White defends their pawn...","I've played quite a few Italians...","Both sides have thousands of possible move orders...","I believe this is the simplest...","A move order tried a few times by Magnus Carlsen...","Taking control of the b4-square.","White continues the knight's journey.","Let's challenge White's bishop immediately...","White's only challenging continuation.","Magnus Carlsen had this position twice against Aryan Tari."]
+      },
+      {
+        "name": "Italian: Giuoco Pianissimo (Side: 9.Bg5 Trap)",
+        "description": "A side variation from the Giuoco Pianissimo line featuring a checkmate trap.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "c3", "d6", "Nbd2", "a5", "Nf1", "Be6", "Bb5", "O-O", "Bg5", "h6", "Bh4", "g5", "Nxg5", "hxg5", "Bxg5", "Nxe4", "Bxd8", "Bxf2+", "Ke2", "Bg4#"],
+        "comments": ["","","","","","","","","","","","","","","","","Carlsen's first try...", "","","","We don't need to fear the piece sacrifice.","","","These positions can be scary, but here we have a knockout blow.","It turns out it's White's king that is in trouble.","","","A picturesque mate."]
+      },
+      {
+        "name": "Italian: Two Knights, Scotch Gambit (Main Line)",
+        "description": "An aggressive line beginning with 4.d4.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d4", "exd4", "e5", "d5", "Bb5", "Ne4", "Nxd4", "Bd7", "Bxc6", "bxc6", "O-O", "Bc5", "f3", "Ng5", "f4", "Ne4", "Be3", "Bb6", "Nd2", "c5", "N4f3", "Nxd2", "Qxd2", "d4", "Bf2", "O-O", "a4", "a5", "Qd3"],
+        "comments": ["","","","","The Italian is a trendy opening...","","Two Knights Defense, Open Variation...","C44 Scotch Game: Scotch Gambit...","Scotch Gambit, Advance Variation...","This counterthrust is always Black's best way to respond...","Both pawn captures are bad here...","","","","In return for the bishop pair we hope to exploit two positional factors...","","","","","White executes the f2-f4 idea...","","","The knight is now on an outpost...","Our best case scenario is to trade the b6-bishop...","This is an ambitious plan...","","","","","And suddenly our dark-squared strategy has completely shifted..."]
+      },
+      {
+        "name": "Italian: Scotch Gambit (Side: 6.exd6?? Trap)",
+        "description": "A side variation showing an opening trap for White.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d4", "exd4", "e5", "d5", "exd6", "Bxd6", "Qe2+", "Be7", "O-O", "O-O", "Bg5", "Bf5"],
+        "comments": ["","","","","","","","","","","just develops Black's pieces after","","","","","","",""]
+      },
+      {
+        "name": "Italian: Scotch Gambit (Side: vs 13...Nxd2)",
+        "description": "A side variation within the Scotch Gambit line.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d4", "exd4", "e5", "d5", "Bb5", "Ne4", "Nxd4", "Bd7", "Bxc6", "bxc6", "O-O", "Bc5", "f3", "Ng5", "f4", "Ne4", "Be3", "Bb6", "Nd2", "Nxd2", "Qxd2", "c5", "Nf3", "Bf5", "Bf2", "O-O", "a4", "a5", "Rad1", "Rb8", "c4", "dxc4", "Qc3", "Qc8", "Nd2", "Bd7", "Nxc4", "Bxa4", "Rd3", "Bb5", "b3", "Qe6", "Bh4", "Qf5", "Rg3", "g6", "Kh1", "Bxc4", "bxc4", "c6", "Be7", "Rfc8", "Rg5", "Qe4", "f5", "Bd8", "e6", "Rb1", "exf7+", "Kxf7", "fxg6+", "Ke8", "Rc1", "Bxe7", "gxh7", "Qxh7", "Re5", "Rcb8", "Ree1", "Rxc1", "Qxc1", "Kd7", "Rd1+", "Ke8", "Qa1", "Rd8", "Re1", "Qh4", "Qxa5", "Qxc4", "Qc7", "Rd7", "Qc8+", "Rd8", "Qxc6+", "Kf7", "Qh6", "Bf6", "Qh7+", "Kf8", "Qh6+", "Bg7", "Qg6", "Qe2", "Qb1", "Qd3", "Qb6", "c4", "Qe6", "Bc3", "Qe7+", "Kg8", "Qe6+", "Kh8", "Rg1", "Bg7", "h3", "c3", "Qe7", "c2", "Rc1", "Qd1+", "Kh2", "Rc8", "Qh4+", "Kg8", "Qf4", "Qd4", "Qf3", "Bh6", "Qb3+", "Qc4", "Qg3+", "Kh7", "Re1", "Rc7"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","WE P","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Italian: Evans Gambit, Compromised Defense (Main)",
+        "description": "The main line of the Evans Gambit, accepting the pawn.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "b4", "Bxb4", "c3", "Ba5", "d4", "exd4", "O-O", "dxc3", "Qb3", "Qf6", "Bg5", "Qg6", "Nxc3", "Bxc3", "Qxc3"],
+        "comments": ["","","","","The Italian is a trendy opening...","","This move introduces the C51 Italian Game: Evans Gambit...","Black has accepted the gambit...","This is the move that earns the extra tempo for us...","This is Black's best response...","White goes for it anyway!","White happily gambits the second pawn...","","","This queen move is a common idea...","","White's development unfolds fluidly...","","","","White has everything one could ask for..."]
+      },
+      {
+        "name": "Italian: Evans Gambit, Anderssen Defense",
+        "description": "A second line in the Evans Gambit.",
+        "category": "Italian Game",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "b4", "Bxb4", "c3", "Ba5", "d4", "exd4", "O-O", "Nf6", "Ba3", "d6", "e5", "dxe5", "Qb3"],
+        "comments": ["","","","","","","","","","","","","","","This is another very important measure...","","Utilising the evergreen theme of the Evans...","","With a huge attack against the uncastled black king."]
+      },
+      {
+        "name": "Deutz Gambit: Main Line (5...Bxd4)",
+        "description": "The main line of the Deutz Gambit after Black recaptures on d4.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "Bxd4", "Nxd4", "Nxd4", "Bg5", "O-O", "f4", "d6", "Nc3", "h6", "fxe5", "dxe5", "Bxf6", "gxf6", "Qh5", "Kh7", "Bxf7", "Qe7", "Qg6+", "Kh8", "Qxh6#"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: Queen Trap Variation (5...exd4)",
+        "description": "A devastating line where Black's queen gets trapped after a series of precise moves.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", "e5", "d5", "exf6", "dxc4", "fxg7", "Rg8", "Re1+", "Be6", "Bg5", "Qd5", "Nc3", "Qf5", "Ne4", "Rxg7", "Nh4", "Qd5", "Nf6+"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: vs 6...Ng4 (Bxf7+ Sacrifice)",
+        "description": "A sharp variation involving a bishop sacrifice on f7.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", "e5", "Ng4", "Bxf7+", "Kxf7", "Ng5+", "Kg8", "Qxg4", "Nxe5", "Qe4", "d6", "Qd5+", "Kf8", "f4", "c6", "fxe5+", "Ke8", "Qf7#"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: vs 6...Ng8 Retreat",
+        "description": "Punishing the passive knight retreat to g8 with a queen sacrifice.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", "e5", "Ng8", "Ng5", "Nh6", "Re1", "O-O", "Qd3", "g6", "Qh3", "Kg7", "Qxh6+", "Kxh6", "Nxf7+", "Kg7", "Bh6+", "Kg8", "Nxd8+", "Kh8", "Bxf8", "Bxf8", "Nxc6", "dxc6"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: Queen Fianchetto Attack (5...Bxd4)",
+        "description": "An aggressive continuation involving f4!! and a mating attack.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "Bxd4", "Nxd4", "Nxd4", "Bg5", "h6", "Bh4", "g5", "f4", "gxf4", "Rxf4", "exf4", "Qxd4", "O-O", "Bxf6", "Qe8", "Bh8", "d6", "Qg7#"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: vs 5...Nxd4 Trap",
+        "description": "A line punishing the immediate knight capture on d4.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "Nxd4", "Nxe5", "O-O", "Be3", "Ne6", "Bxe6", "Bxe3", "Bxf7+", "Rxf7", "Nxf7", "Kxf7", "fxe3", "d6", "e5"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: via Two Knights (4...Bc5)",
+        "description": "How the Deutz Gambit can arise from the Two Knights Defense move order.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Bc5", "d4"],
+        "comments": ["","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: Two Knights Main (6...Be7!)",
+        "description": "The correct and solid way for Black to respond in the Two Knights move order.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Qd5", "O-O", "Nxe5"],
+        "comments": ["","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Deutz Gambit: Two Knights Trap (6...Bc5??)",
+        "description": "A classic trap Black can fall into after 4...Nxe4.",
+        "category": "Deutz Gambit",
+        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Nxe4", "Nc3", "Nxc3", "dxc3", "Bc5", "Ng5", "O-O", "Qh5", "h6", "Nxf7", "Qf6", "Nxh6+", "Kh8", "Nf7+", "Kg8", "Qh8#"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","",""]
+      }
+    ]
+  }
+}

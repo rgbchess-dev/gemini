@@ -2,7 +2,7 @@
     {
         "id": "e4-repertoire-white",
         "name": "Complete 1.e4 Repertoire for White",
-        "author": "IM Andras Toth & Community",
+        "author": "IM Andras Toth",
         "description": "A comprehensive repertoire for White starting with 1.e4, covering responses to the Petrov, Scandinavian, French, and more.",
         "playerColor": "white",
         "path": "data/e4-repertoire.json"
@@ -14,5 +14,13 @@
         "description": "An aggressive and tactical counter-attacking system for Black against the Italian Game's Fried Liver Attack.",
         "playerColor": "black",
         "path": "./data/traxler.json"
+    },
+    {
+        "id": "italian-toth",
+        "name": "Italian Game: Giuoco Pianissimo & Tricky Gambits",
+        "author": "Community",
+        "description": "An aggressive introduction to the Italian Game, focusing on the Giuoco Piano and Evans Gambit.",
+        "playerColor": "black",
+        "path": "./data/italian-toth.json"
     }
 ]

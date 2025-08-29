@@ -105,6 +105,251 @@
         "category": "Scandinavian Defense",
         "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Bb4", "h5", "Bxc3", "Bxc3", "Qd5", "hxg6", "Qxh1"],
         "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Petrov Defense: Nimzowitsch Attack (Main Line)",
+        "description": "An active approach against the solid Petrov Defense.",
+        "category": "Petrov Defense",
+        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nf3", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Be3", "Nc6", "Qd2", "Be6", "O-O-O", "Qd7", "Kb1", "Bf6", "h4", "O-O-O", "Nd4", "Nxd4", "Bxd4", "Bxd4", "Qxd4"],
+        "comments": ["","","","This move introduces the Petrov Defense...","The most popular move and the most principled one...","","","","This is the second most popular move...","","The right recapture...","By far the most popular move...","White's main goal in this system is to quickly castle queenside...","7...d5 is too early here...","White consistently carries out the intention...","The bishop is annoyingly aiming at a2...","Anyway! It turns out that the a2-pawn is poisoned!","Black floats the possibility of castling either side...","Simply securing the a2-pawn...","","This is a typical method we use to begin a kingside attack...","","This is an important move to remember!","","","","And White has the upper hand..."]
+      },
+      {
+        "name": "Petrov Defense: Three Knights Game (Side)",
+        "description": "Side variation from the Petrov chapter.",
+        "category": "Petrov Defense",
+        "moves": ["e4", "e5", "Nf3", "Nf6", "Nc3"],
+        "comments": ["","","","", "Black can easily transpose into the Four Knights Game with 3...Nc6..."]
+      },
+      {
+        "name": "Petrov Defense: Steinitz Variation (Side)",
+        "description": "Side variation from the Petrov chapter.",
+        "category": "Petrov Defense",
+        "moves": ["e4", "e5", "Nf3", "Nf6", "d4", "Nxe4", "Bd3", "d5", "Nxe5", "Nd7", "Nxd7", "Bxd7", "O-O", "Bd6", "c4", "c6", "cxd5", "cxd5", "Nc3", "Nxc3", "bxc3", "O-O", "Qh5", "g6", "Qxd5", "Qc7"],
+        "comments": ["","","","", "Modern or Steinitz variation...", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Petrov Defense: Cochrane Gambit (Side)",
+        "description": "Side variation from the Petrov chapter.",
+        "category": "Petrov Defense",
+        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nxf7", "Kxf7", "d4", "c5", "Nc3", "cxd4", "Bc4+", "d5", "Nxd5", "Be6", "Bg5", "Nbd7", "O-O", "Qc8", "Nxf6", "Qxc4", "Qh5+", "g6", "Qf3", "Nxf6", "Bxf6", "Bg7", "Bxd4+", "Kg8", "Bxg7", "Kxg7", "b3", "Qc5", "Rad1", "Rhd8", "c4", "Qe5", "h3", "Rxd1", "Rxd1"],
+        "comments": ["","","","","","","There are a few lines that are quite dangerous...","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Petrov Defense: Nimzowitsch (Side: Poisoned a2 pawn)",
+        "description": "Side variation from the Petrov chapter.",
+        "category": "Petrov Defense",
+        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nf3", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Be3", "Nc6", "Qd2", "Be6", "O-O-O", "Bxa2", "b3", "a5", "Kb2", "a4", "Ra1", "axb3", "cxb3", "Bxb3", "Rxa8", "Qxa8", "Kxb3", "Qa1", "Qb2", "Qd1+", "Qc2", "Qa1", "Qc1", "Na5+", "Kc2", "Qa4+", "Kb1", "Nc4", "Bxc4", "Qxc4", "Qa3", "O-O", "Kc2", "Qe4+", "Kd2", "Qd5+", "Kc2", "Qe4+", "Kc1", "d5", "Qb3", "Ra8", "Kd2", "c6", "Rc1", "b5", "Ke2", "Ra3", "Qc2", "Qc4+", "Qd3", "Qxd3+", "Kxd3", "b4", "Nd4", "c5", "Nb5"],
+        "comments": ["","","","","","","","","","","","","","","","","","","go to sleep bishop","","","","","","","","","","","","the only good move here","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","WAS THE ONLY GOOD MOVE","",""]
+      },
+      {
+        "name": "Petrov Defense: OTB Game Example",
+        "description": "An example game vs the Russian Game.",
+        "category": "Petrov Defense",
+        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "Qe7", "Nf3", "d6", "Qe2", "Qxe4", "Qxe4+", "Nxe4", "d4", "Nc6", "Bb5", "Bd7", "Be3", "O-O-O", "a4", "Kb8", "O-O", "Nb4", "Na3", "a6", "Bc4", "f6", "d5", "Bxa4", "c3", "Nc2", "Nxc2", "Bxc2", "Nd4", "b5", "Rxa6", "bxc4", "Nc6+", "Kc8", "Ra8+", "Kb7", "Rxd8"],
+        "comments": ["","","","","","Inaccuracy. d6 was best.","10000 players+ played 4...d6...","Blunder. Nxe4 was best.","I have to admit I played too fast there...","","","position back to =...","","","","","","","","","","","","","Inaccuracy. Bxd7 was best.","Mistake. Bxa4 was best.","","Blunder. c6 was best.","","Inaccuracy. b5 was best.","","","","Inaccuracy. Nxc3 was best.","","Checkmate is now unavoidable...","","","","","",""]
+      },
+      {
+        "name": "Caro-Kann: Bronstein-Larsen (Main Line)",
+        "description": "Facing the ...gxf6 line in the Caro-Kann.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "Be2", "e6", "O-O", "Qc7", "c4", "Nd7", "Nh4", "Bxe2", "Qxe2", "O-O-O", "d5", "exd5", "cxd5", "cxd5", "Be3"],
+        "comments": ["","","","","","","","This move leads to two very different positions...","","With this quirky move Black takes several risks...","Unlike in the system with exf6...","Against such pins our gut reaction is always to kick the bishop immediately...","The text move breaks the pin...","","The g-file attack is nothing more than an illusion...","","","","This unusual move here has multiple benefits...","","","","This central break is the key idea!","","","","And White has a tremendous attacking position..."]
+      },
+      {
+        "name": "Caro-Kann: Bronstein-Larsen (Side: vs 7.h3?)",
+        "description": "Side variation from the Bronstein-Larsen chapter.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3", "Qxd4", "Be2", "Nd7", "O-O", "Ne5"],
+        "comments": ["","","","","","","","","","", "", "", "","Bxf3!","","","THIS WAY WHITE IS UNDEVELOPED...","","","",""]
+      },
+      {
+        "name": "Caro-Kann: Karpov Variation Trap",
+        "description": "An aggressive trap in the Karpov Variation.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nd7", "Ng5", "h6", "Ne6", "Qa5+", "Bd2", "Qb6", "Bd3", "fxe6", "Qh5+", "Kd8", "Ba5"],
+        "comments": ["","","","","","","","This line is called the Karpov Variation...","An unorthodox move in return...","This is a common mistake here...","This knight sortie is one of the key ideas...","This leads to a famous opening trap.","","","White can still leave the knight hanging!","","","","This stunning geometrical motif decides the game. The queen is lost!"]
+      },
+      {
+        "name": "Caro-Kann: Classical, Lobron System",
+        "description": "A solid, strategic approach against the Classical Caro-Kann.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "h5", "Bh7", "Nf3", "e6", "Bd3", "Bxd3", "Qxd3", "Nd7", "Bd2", "Ngf6", "O-O-O", "Be7", "Qe2", "O-O", "Nf1"],
+        "comments": ["","This move introduces the Caro-Kann Defense...","As always, when given the chance...","","The most thematic response...","","","The vast majority of times, black plays the solid 3...dxe4...","","","This move tickles the bishop...","","This pawn thrust has a long-term benefit too...","","","","The active 'Capablanca bishop' needs to be dealt with.","","","","","11.Bf4 is also possible here...","","","","This useful move removes the queen from the d-file...","","With Black having committed to opposite side castling, we adjust our plans!"]
+      },
+      {
+        "name": "Caro-Kann: Von Hennig Gambit",
+        "description": "An aggressive gambit line against the Caro-Kann.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Bc4", "Nf6", "f3", "h6", "fxe4", "Bg4", "Nf3", "Bxf3", "gxf3", "e6", "Bd2", "Nh5", "Qe2", "Be7", "O-O-O", "g5", "d5", "Bd6", "e5", "Bc5", "dxe6", "fxe6", "f4", "Nxf4", "Bxf4", "Nd7", "Qh5+", "Kf8", "Bxe6", "gxf4"],
+        "comments": ["","","","Caro-Kann. I don't have any knowledge of the theory...","","","I see a chance to gambit a pawn...","","","","I don't see the point of h6...","","","","Really pleased with that exchange...","","My mouse slipped here...","They don't take the pawn...","I develop my queen and get ready to castle...","Their get a queen-bishop battery going on h5...","Finally developed! Time to rip it open and attack.","Terrible. Their position was probably already lost...","","","Perhaps this is not the strongest move here...","A bad move, but there aren't really any good moves left...","","","Driving their knight backwards...","A huge blunder, and apparently they realized it.","","","","","",""]
+      },
+            {
+        "name": "Caro-Kann: Bronstein-Larsen (Main Line)",
+        "description": "Facing the ...gxf6 line in the Caro-Kann.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "Be2", "e6", "O-O", "Qc7", "c4", "Nd7", "Nh4", "Bxe2", "Qxe2", "O-O-O", "d5", "exd5", "cxd5", "cxd5", "Be3"],
+        "comments": ["","","","","","","","This move leads to two very different positions...","","With this quirky move Black takes several risks...","Unlike in the system with exf6...","Against such pins our gut reaction is always to kick the bishop immediately...","The text move breaks the pin...","","The g-file attack is nothing more than an illusion...","","","","This unusual move here has multiple benefits...","","","","This central break is the key idea!","","","","And White has a tremendous attacking position..."]
+      },
+      {
+        "name": "Caro-Kann: Bronstein-Larsen (Side: vs 7.h3?)",
+        "description": "Side variation from the Bronstein-Larsen chapter.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3", "Qxd4", "Be2", "Nd7", "O-O", "Ne5"],
+        "comments": ["","","","","","","","","","", "", "", "","Bxf3!","","","THIS WAY WHITE IS UNDEVELOPED...","","","",""]
+      },
+      {
+        "name": "Caro-Kann: Karpov Variation Trap",
+        "description": "An aggressive trap in the Karpov Variation.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nd7", "Ng5", "h6", "Ne6", "Qa5+", "Bd2", "Qb6", "Bd3", "fxe6", "Qh5+", "Kd8", "Ba5"],
+        "comments": ["","","","","","","","This line is called the Karpov Variation...","An unorthodox move in return...","This is a common mistake here...","This knight sortie is one of the key ideas...","This leads to a famous opening trap.","","","White can still leave the knight hanging!","","","","This stunning geometrical motif decides the game. The queen is lost!"]
+      },
+      {
+        "name": "Caro-Kann: Classical, Lobron System",
+        "description": "A solid, strategic approach against the Classical Caro-Kann.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "h5", "Bh7", "Nf3", "e6", "Bd3", "Bxd3", "Qxd3", "Nd7", "Bd2", "Ngf6", "O-O-O", "Be7", "Qe2", "O-O", "Nf1"],
+        "comments": ["","This move introduces the Caro-Kann Defense...","As always, when given the chance...","","The most thematic response...","","","The vast majority of times, black plays the solid 3...dxe4...","","","This move tickles the bishop...","","This pawn thrust has a long-term benefit too...","","","","The active 'Capablanca bishop' needs to be dealt with.","","","","","11.Bf4 is also possible here...","","","","This useful move removes the queen from the d-file...","","With Black having committed to opposite side castling, we adjust our plans!"]
+      },
+      {
+        "name": "Caro-Kann: Von Hennig Gambit",
+        "description": "An aggressive gambit line against the Caro-Kann.",
+        "category": "Caro-Kann Defense",
+        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Bc4", "Nf6", "f3", "h6", "fxe4", "Bg4", "Nf3", "Bxf3", "gxf3", "e6", "Bd2", "Nh5", "Qe2", "Be7", "O-O-O", "g5", "d5", "Bd6", "e5", "Bc5", "dxe6", "fxe6", "f4", "Nxf4", "Bxf4", "Nd7", "Qh5+", "Kf8", "Bxe6", "gxf4"],
+        "comments": ["","","","Caro-Kann. I don't have any knowledge of the theory...","","","I see a chance to gambit a pawn...","","","","I don't see the point of h6...","","","","Really pleased with that exchange...","","My mouse slipped here...","They don't take the pawn...","I develop my queen and get ready to castle...","Their get a queen-bishop battery going on h5...","Finally developed! Time to rip it open and attack.","Terrible. Their position was probably already lost...","","","Perhaps this is not the strongest move here...","A bad move, but there aren't really any good moves left...","","","Driving their knight backwards...","A huge blunder, and apparently they realized it.","","","","","",""]
+      },
+      {
+        "name": "French Defense: Advance, Paulsen Attack",
+        "description": "Example game vs the most played moves in the French Advance.",
+        "category": "French Defense",
+        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","Black following with a mistake in 1 game on 2 :D"]
+      },
+      {
+        "name": "French Defense: Paulsen Attack (Side: vs 13.f4)",
+        "description": "Side variation from the French Defense chapter.",
+        "category": "French Defense",
+        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "f4", "Bc5", "Bxc5", "Qxc5+", "Kh1", "O-O", "Nb5", "Bd7", "Nd6"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "French Defense: Paulsen Attack (Side: vs 13...Qxe5?)",
+        "description": "Side variation from the French Defense chapter.",
+        "category": "French Defense",
+        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3", "Qxe5", "f4", "Qb8", "Bd4", "b6", "f5", "Qc7", "Na4"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","as long we dont play that White is in great shape","","","many strong moves that can only stinks for Black","","AGAIN THIS WAS NEEDED","",""]
+      },
+      {
+        "name": "French Defense: Paulsen Attack (Side: vs 14...Qc7?)",
+        "description": "Side variation from the French Defense chapter.",
+        "category": "French Defense",
+        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3", "Qxe5", "f4", "Qc7", "Rac1", "Qd7", "Nb5", "Bd6", "Nxd6+", "Qxd6", "Bc5", "Qd8", "f5", "h5", "fxe6", "Bxe6", "Qe5", "Rh7", "Rce1", "Qd7", "Qxe6+", "fxe6", "Rf8#"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","AGAIN THIS WAS NEEDED","","","","","","","LEADS TO EAS FORCED MATE","",""]
+      },
+      {
+        "name": "French Defense: Paulsen Attack (Side: vs 19.Qg4?)",
+        "description": "Side variation from the French Defense chapter.",
+        "category": "French Defense",
+        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3", "Qxe5", "f4", "Qc7", "Rac1", "Qd8", "Nb5", "Bd6", "Nxd6+", "Qxd6", "Bc5", "Qd8", "Qg4"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Pirc Defense: Austrian Attack (Main Line)",
+        "description": "An aggressive setup against the Pirc Defense.",
+        "category": "Pirc Defense",
+        "moves": ["e4", "d6", "d4", "Nf6", "Nc3", "g6", "Be3", "Bg7", "Qd2", "O-O", "f3", "Nbd7", "Nge2", "c6", "Bh6", "b5", "h4", "b4", "Nd1", "Ba6", "Bxg7", "Kxg7", "h5"],
+        "comments": ["","","","Technically speaking, this move followed by g6 introduces the Pirc...","","Note that 3...e5 transposes back to the Philidor Defense...","","","","This move is really asking for trouble...","Taking the g4-square away from Black's knight...","","","","We want to trade the strong defender on g7.","","We start our kingside attack!","","Although this move looks like we are undeveloping our knight...","","","","And White's attack punches through."]
+      },
+      {
+        "name": "Pirc Defense: Transposing to Philidor",
+        "description": "Side variation showing the transposition to the Philidor Defense.",
+        "category": "Pirc Defense",
+        "moves": ["e4", "d6", "d4", "Nf6", "Nc3", "e5", "dxe5", "dxe5", "Qxd8+", "Kxd8", "Bg5", "Be6"],
+        "comments": ["","","","","","","","","","","",""]
+      },
+      {
+        "name": "Pirc Defense: Philidor, Lion Variation",
+        "description": "Side variation showing the Lion Variation of the Philidor.",
+        "category": "Pirc Defense",
+        "moves": ["e4", "d6", "d4", "Nf6", "Nc3", "e5", "Nf3", "Nbd7", "Bc4", "Be7", "O-O", "O-O", "Re1", "exd4", "Nxd4"],
+        "comments": ["","","","","","","C41 Philidor Defense: Lion Variation","","","","","","","",""]
+      },
+      {
+        "name": "Modern Defense: Gurgenidze System (Main Line)",
+        "description": "Tackling the hypermodern Modern Defense.",
+        "category": "Modern Defense",
+        "moves": ["e4", "g6", "d4", "Bg7", "Nc3", "c6", "f4", "d5", "e5", "h5", "Nf3", "Nh6", "Be3", "Bg4", "h3", "Bxf3", "Qxf3", "Nf5", "Bf2", "h4", "Bd3", "e6", "O-O", "Nd7", "Ne2", "Bf8", "b3", "Be7", "c4"],
+        "comments": ["","The Modern or Robatsch Defense...","","","","","","The Gurgenidze system...","The most principled choice...","This strange-looking pawn move is designed to secure the f5-square...","White continues their development in the most standard fashion...","","In the spirit of quick development...","Since Black is building a pawn chain on the white squares...","Forcing Black to clarify their intentions on the kingside.","","","","White secures the bishop...","Black has to deny White the g2-g4 break...","Developing the last piece.","","White's goal now is to blow up the center...","","","","The last preparatory measure...","","And White is clearly better..."]
+      },
+      {
+        "name": "Modern Defense: Gurgenidze (Side: vs 14.c4)",
+        "description": "Side variation from the Modern Defense chapter.",
+        "category": "Modern Defense",
+        "moves": ["e4", "g6", "d4", "Bg7", "Nc3", "c6", "f4", "d5", "e5", "h5", "Nf3", "Nh6", "Be3", "Bg4", "h3", "Bxf3", "Qxf3", "Nf5", "Bf2", "h4", "Bd3", "e6", "O-O", "Nd7", "Ne2", "Bf8", "c4", "dxc4", "Bxc4", "Nb6"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","BLACK CANT COMPLAIN HERE","",""]
+      },
+      {
+        "name": "Alekhine's Defense: Exchange, Voronezh (Main Line)",
+        "description": "Fighting the Alekhine's Defense with the Voronezh Variation.",
+        "category": "Alekhine's Defense",
+        "moves": ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "c4", "Nb6", "exd6", "cxd6", "Nc3", "g6", "Be3", "Bg7", "Rc1", "O-O", "b3", "e5", "dxe5", "dxe5", "Qxd8", "Rxd8", "c5", "N6d7", "Bc4", "Nc6", "Ne4"],
+        "comments": ["","This slightly provocative knight jump introduces the Alekhine Defense...","The principled response.","","Centah! When space is offered, we should grab it.","","The other main theoretical line begins with 4.Nf3...","","The text aims to resolve the battle for the center immediately...","","","","White is following a unique method of development...","","White removes the rook from the scope of the g7-bishop...","","The final step of bolstering the center.","Interestingly, Black does not really have anything else available!","White is aiming to play an endgame...","","","","Forcing Black to move backward...","","This natural developing move helps us control the d5-square...","","The pending Ng5 and Nd6 threats make White's position easier to play..."]
+      },
+      {
+        "name": "Alekhine's Defense: Four Pawns Attack (Side)",
+        "description": "Side variation: The Four Pawns Attack.",
+        "category": "Alekhine's Defense",
+        "moves": ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "c4", "Nb6", "f4", "dxe5", "fxe5", "Bf5", "Nf3", "Nc6", "Be2", "e6", "O-O", "Be7", "Nc3", "O-O"],
+        "comments": ["","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Alekhine's Defense: Four Pawns (Side: vs 6...Nc6)",
+        "description": "Side variation within the Four Pawns Attack.",
+        "category": "Alekhine's Defense",
+        "moves": ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "c4", "Nb6", "f4", "dxe5", "fxe5", "Nc6", "Be3", "Bf5", "Nc3", "e6", "Nf3", "Bb4", "Be2", "Na5"],
+        "comments": ["","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Alapin Sicilian: vs 2...e5 (Main Line)",
+        "description": "Handling the 2...e5 response in the Alapin.",
+        "category": "Alapin Sicilian",
+        "moves": ["e4", "c5", "c3", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "d5", "exd5", "Nxd5", "d4", "cxd4", "O-O", "Be7", "Nxf7", "Kxf7", "Qf3+", "Ke6", "a4"],
+        "comments": ["","","This move introduces the Alapin Sicilian...","","","","","","","","","","","","","","","","","","This absolutely shocking move is the key to retaining our attack..."]
+      },
+      {
+        "name": "Alapin Sicilian: vs 2...e5 (Side: 6...Na5)",
+        "description": "Side variation within the 2...e5 Alapin.",
+        "category": "Alapin Sicilian",
+        "moves": ["e4", "c5", "c3", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "d5", "exd5", "Na5", "Bb5+", "Bd7", "Qa4", "Be7", "Bxd7+", "Nxd7", "Ne6", "fxe6", "dxe6"],
+        "comments": ["","","","","","","","","","","","","","","","","","","","",""]
+      },
+      {
+        "name": "Alapin Sicilian: Barmen Defense (Main Line)",
+        "description": "A sharp, tactical line against the Barmen Defense.",
+        "category": "Alapin Sicilian",
+        "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "Bg4", "dxc5", "Qxc5", "Na3", "Nc6", "Nb5", "Qb6", "Be3", "Qa5", "b4", "Qd8", "Qxd8+", "Kxd8", "Ng5", "Bh5", "Be2", "Bg6", "O-O-O+", "Kc8", "Bd3", "Bh5", "Bf5+", "e6", "Nxe6", "Bxd1", "Nc5+"],
+        "comments": ["","","","","","B22 Sicilian Defense: Alapin Variation, Barmen Defense...","","","This is the major junction here...","Barmen Defense : Modern line","Although the most popular move here is 6.Be2...","The endgame variation with6...Qxd1+ in analysed in the main course.","This knight move introduces various attacking schemes...","Blunder .. played 20% of the time","that knight gonna be annoying for sure :D","","","","","","","","Going for the unprotected f7-pawn.","","Yet another tempo move...","","White's initiative is overpowering...","","","","","","","","game is over"]
+      },
+      {
+        "name": "Alapin Sicilian: Smith-Morra Declined (Main Line)",
+        "description": "Against the 2...Nf6 line in the Alapin.",
+        "category": "Alapin Sicilian",
+        "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "Nf3", "e6", "cxd4", "d6", "Bc4", "Be7", "O-O", "O-O", "Qe2", "b6", "Rd1", "Bb7", "Bxd5", "Bxd5", "Nc3", "Bb7", "d5"],
+        "comments": ["","","","This move challenges the e4-pawn...","","","","transposition : Smith-Morra Declined","White is no hurry to recapture on d4...","","","","","","","","Beginning a common maneuver: Qe2-e4-g4.","The e6-pawn blocks the development of the c8-bishop...","This move introduces a very unique plan:","","This is most surprising...","","","","This reveals the point of both Rd1 and the unusual trade on d5..."]
+      },
+      {
+        "name": "Alapin Sicilian: Smith-Morra Declined (Side: 6.Bc4)",
+        "description": "Side variation within the Smith-Morra Declined.",
+        "category": "Alapin Sicilian",
+        "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "Nf3", "Nc6", "Bc4", "Nb6", "Bb3", "dxc3", "Nxc3", "g6", "Ng5", "Nxe5", "f4", "h6", "fxe5", "hxg5", "O-O", "e6", "Ne4"],
+        "comments": ["","","","","","","","","","","Once again, we prefer development over recovering material.","","","This is just a touch too greedy.","","","","very bad move","","","","","Black's position looks awful...","","white is unstopable"]
+      },
+      {
+        "name": "Alapin Sicilian: Smith-Morra Declined (Side: 9...Nxe5)",
+        "description": "Side variation within the Smith-Morra Declined.",
+        "category": "Alapin Sicilian",
+        "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "Nf3", "Nc6", "Bc4", "Nb6", "Bb3", "dxc3", "Nxc3", "g6", "Ng5", "e6", "Nge4", "Nxe5", "Bg5", "Be7", "Bxe7", "Qxe7", "Qd4", "f6", "f4", "Nc6", "Nd6+"],
+        "comments": ["","","","","","","","","","","","","","","","","","even if this is 2x better it is not enough to stop White Tactics!","","","","","","","","","","",""]
       }
     ]
   }
