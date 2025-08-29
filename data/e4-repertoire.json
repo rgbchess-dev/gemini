@@ -8,7 +8,7 @@
     "startingFen": null,
     "lines": [
        {
-        "name": "Scandinavian: Main Line (3...Qa5)",
+        "name": "Scandinavian: Introduction",
         "description": "Side variation from the introduction chapter.",
         "category": "Scandinavian Defense",
         "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5"],
