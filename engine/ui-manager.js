@@ -9,8 +9,7 @@ export class UIManager {
         this.config = {
             multipleArrows: true,
             maxMoves: 3,
-            showHints: true,
-            theme: 'blue'
+            showHints: true
         };
         
         this.setup();
@@ -28,10 +27,8 @@ export class UIManager {
         this.initializeElements();
         this.attachTrainerListeners();
         this.attachUIListeners();
-        this.setupArrowControls();
         this.performInitialUpdate();
-        this.updateDebugInfo('UI Manager initialized');
-        console.log('✅ Fixed UI Manager loaded');
+        console.log('✅ UI Manager loaded');
     }
     
     initializeElements() {
@@ -51,65 +48,8 @@ export class UIManager {
             movesList: document.getElementById('movesList'),
             successMessage: document.getElementById('successMessage'),
             errorMessage: document.getElementById('errorMessage'),
-            progressFill: document.getElementById('progressFill'),
-            debugText: document.getElementById('debugText')
+            progressFill: document.getElementById('progressFill')
         };
-    }
-
-    setupArrowControls() {
-        const enableEnhancer = document.getElementById('enableEnhancer');
-        const previewMoves = document.getElementById('previewMoves');
-        const boardTheme = document.getElementById('boardTheme');
-        const educationalHints = document.getElementById('educationalHints');
-        
-        // Debug what we found
-        console.log('🔧 Arrow controls found:', {
-            enableEnhancer: !!enableEnhancer,
-            previewMoves: !!previewMoves,
-            boardTheme: !!boardTheme,
-            educationalHints: !!educationalHints
-        });
-        
-        if (enableEnhancer) {
-            enableEnhancer.addEventListener('change', (e) => {
-                this.config.multipleArrows = e.target.checked;
-                this.updateDebugInfo(`Multiple arrows: ${this.config.multipleArrows}`);
-                this.refreshArrows();
-            });
-        }
-        
-        if (previewMoves) {
-            previewMoves.addEventListener('change', (e) => {
-                this.config.maxMoves = parseInt(e.target.value);
-                this.updateDebugInfo(`Max moves: ${this.config.maxMoves}`);
-                this.refreshArrows();
-            });
-        }
-        
-        if (boardTheme) {
-            boardTheme.addEventListener('change', (e) => {
-                this.config.theme = e.target.value;
-                this.updateDebugInfo(`Theme: ${this.config.theme}`);
-                this.applyTheme(e.target.value);
-            });
-            // Apply initial theme
-            this.applyTheme(this.config.theme);
-        }
-        
-        if (educationalHints) {
-            educationalHints.addEventListener('change', (e) => {
-                this.config.showHints = e.target.checked;
-                this.updateDebugInfo(`Hints: ${this.config.showHints}`);
-                this.refreshArrows();
-            });
-        }
-    }
-
-    updateDebugInfo(message) {
-        if (this.elements.debugText) {
-            this.elements.debugText.textContent = message;
-        }
-        console.log('🐛', message);
     }
 
     performInitialUpdate() {
@@ -149,13 +89,11 @@ export class UIManager {
     }
     
     handleCorrectMove() {
-        this.updateDebugInfo('Correct move played!');
         this.clearArrows();
         setTimeout(() => this.refreshArrows(), 100);
     }
     
     handleComputerMove() {
-        this.updateDebugInfo('Computer played a move');
         this.refreshArrows();
     }
 
@@ -181,7 +119,6 @@ export class UIManager {
             this.clearArrows();
             
             if (!this.config.multipleArrows || this.trainer.currentMode !== 'theory') {
-                this.updateDebugInfo('Arrows disabled or not in theory mode');
                 return;
             }
 
@@ -190,8 +127,7 @@ export class UIManager {
             const currentTurn = this.trainer.chessEngine.getCurrentColor();
             
             if (playerColor !== 'both' && playerColor !== currentTurn) {
-                this.updateDebugInfo(`Computer's turn (${currentTurn}) - hiding arrows`);
-                return;
+                return; // Computer's turn - no arrows
             }
 
             const line = this.trainer.getCurrentLine();
@@ -199,7 +135,6 @@ export class UIManager {
             const currentIndex = progress.current;
             
             if (!line || !line.moves || currentIndex >= line.moves.length) {
-                this.updateDebugInfo('No moves to show');
                 return;
             }
 
@@ -207,14 +142,10 @@ export class UIManager {
             
             if (shapes.length > 0) {
                 this.trainer.chessEngine.board.setAutoShapes(shapes);
-                this.updateDebugInfo(`Player's turn (${currentTurn}) - showing ${shapes.length} arrows`);
-            } else {
-                this.updateDebugInfo('No valid arrows created');
             }
             
         } catch (error) {
             console.error('❌ Arrow error:', error);
-            this.updateDebugInfo(`Error: ${error.message}`);
         }
     }
 
@@ -329,50 +260,6 @@ export class UIManager {
         }
     }
 
-    // ============================================
-    // THEME SYSTEM
-    // ============================================
-    
-    applyTheme(themeName) {
-        const themes = {
-            classic: { light: '#f0d9b5', dark: '#b58863' },
-            blue: { light: '#dee3e6', dark: '#8ca2ad' },
-            green: { light: '#ffffdd', dark: '#86a666' },
-            purple: { light: '#e8e8e8', dark: '#9f90c0' }
-        };
-        
-        const theme = themes[themeName];
-        if (!theme) return;
-        
-        // Apply to CSS variables
-        const root = document.documentElement;
-        root.style.setProperty('--board-light', theme.light);
-        root.style.setProperty('--board-dark', theme.dark);
-        
-        // Update board background
-        const boardElement = document.querySelector('cg-board');
-        if (boardElement) {
-            boardElement.style.backgroundColor = theme.light;
-            
-            // Create a simple alternating pattern
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
-                <defs>
-                    <pattern id="board" patternUnits="userSpaceOnUse" width="2" height="2">
-                        <rect width="1" height="1" fill="${theme.light}"/>
-                        <rect x="1" y="1" width="1" height="1" fill="${theme.light}"/>
-                        <rect x="1" y="0" width="1" height="1" fill="${theme.dark}"/>
-                        <rect x="0" y="1" width="1" height="1" fill="${theme.dark}"/>
-                    </pattern>
-                </defs>
-                <rect width="8" height="8" fill="url(#board)"/>
-            </svg>`;
-            
-            boardElement.style.backgroundImage = `url('data:image/svg+xml;base64,${btoa(svg)}')`;
-        }
-        
-        this.updateDebugInfo(`Applied theme: ${themeName}`);
-    }
-    
     // ============================================
     // UI UTILITIES
     // ============================================

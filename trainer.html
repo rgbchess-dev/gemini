@@ -65,18 +65,6 @@
             margin-right: 6px;
         }
 
-        /* Debug info */
-        #debugInfo {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            padding: 8px;
-            margin: 8px 0;
-            font-family: monospace;
-            font-size: 0.75em;
-            color: #6c757d;
-        }
-
         /* Dynamic Board Theming */
         cg-board {
             background-color: var(--board-light);
@@ -196,42 +184,6 @@
                     </div>
                 </div>
 
-                <!-- Enhanced Arrow Controls -->
-                <div id="enhancedControls" class="control-section">
-                    <h4>Arrow Settings</h4>
-                    <div class="arrow-controls-grid">
-                        <div class="control-group">
-                            <label>
-                                <input type="checkbox" id="enableEnhancer" checked> 
-                                Multiple Arrows
-                            </label>
-                        </div>
-                        <div class="control-group">
-                            <label for="previewMoves">Show Moves:</label>
-                            <select id="previewMoves">
-                                <option value="1">1 Move</option>
-                                <option value="2">2 Moves</option>
-                                <option value="3" selected>3 Moves</option>
-                            </select>
-                        </div>
-                        <div class="control-group">
-                            <label for="boardTheme">Theme:</label>
-                            <select id="boardTheme">
-                                <option value="classic">Brown</option>
-                                <option value="blue" selected>Blue</option>
-                                <option value="green">Green</option>
-                                <option value="purple">Purple</option>
-                            </select>
-                        </div>
-                        <div class="control-group">
-                            <label>
-                                <input type="checkbox" id="educationalHints" checked> 
-                                Hints
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="control-section action-buttons">
                     <button id="resetBtn">Reset</button>
                     <button id="hintBtn">Hint</button>
@@ -244,11 +196,6 @@
                     </div>
                     <div id="status">Ready</div>
                 </div>
-
-                <div id="debugInfo" class="control-section">
-                    <strong>Debug:</strong> <span id="debugText">Loading...</span>
-                </div>
-
                 <div id="movesList" class="control-section"></div>
             </div>
         </main>
