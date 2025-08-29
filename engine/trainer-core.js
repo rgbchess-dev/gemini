@@ -1,4 +1,4 @@
-// /engine/trainer-core.js - FIXED VERSION with Working Computer Move Events
+// /engine/trainer-core.js - FINAL CORRECTED VERSION
 
 import { ChessEngine } from './chess-engine.js';
 import { SpacedRepetitionManager } from './spaced-repetition.js';
@@ -9,6 +9,7 @@ export class ChessTrainer extends EventTarget {
         super();
         
         this.boardId = boardId;
+        // --- FIX: Restore the call to the essential precomputeMoveData function ---
         this.courseData = this.precomputeMoveData(this.normalizeCourseData(courseData));
         this.options = { defaultColor: options.defaultColor || 'white', ...options };
         
@@ -26,10 +27,9 @@ export class ChessTrainer extends EventTarget {
             orientation: this.courseData.orientation || this.options.defaultColor
         });
         
-        // FIXED: Proper event handling
         this.chessEngine.onMove((move, validation) => this.handleMove(move, validation));
-        this.chessEngine.onLineComplete((data) => this.handleLineComplete(data));
-        this.chessEngine.onComputerMove((move) => this.handleComputerMove(move));
+        this.chessEngine.onLineComplete((data) => this.emit('lineComplete', data));
+        this.chessEngine.onComputerMove((move) => this.emit('computerMove', { move }));
         
         this.currentCategory = this.getDefaultCategory();
         
@@ -37,11 +37,14 @@ export class ChessTrainer extends EventTarget {
         this.loadCurrentPosition();
     }
 
+    // --- FUNCTION RESTORED ---
+    // This function is ESSENTIAL for the arrows to work.
     precomputeMoveData(courseData) {
         console.log('🎯 Processing all course lines with PgnParser...');
         if (!courseData.theory || !courseData.theory.lines) return courseData;
     
         for (const line of courseData.theory.lines) {
+            // This creates the line.computedMoves property that the UI needs
             line.computedMoves = PgnParser.compute(line);
         }
         
@@ -67,7 +70,6 @@ export class ChessTrainer extends EventTarget {
     }
     
     setMode(mode) {
-        console.log('🎯 Mode changed to:', mode);
         this.currentMode = mode;
         this.currentLineIndex = 0;
         this.emit('modeChanged', { mode: mode, categories: this.getAvailableCategories() });
@@ -82,7 +84,6 @@ export class ChessTrainer extends EventTarget {
             return;
         }
         
-        console.log('🎯 Loading position for line:', line.name);
         this.chessEngine.loadLine(line, this.getStartingFen());
         this.emit('positionLoaded', {
             mode: this.currentMode,
@@ -91,10 +92,7 @@ export class ChessTrainer extends EventTarget {
         });
     }
     
-    // FIXED: Proper event emission
     handleMove(move, validation) {
-        console.log('🎯 Move handled:', move.san, 'Valid:', validation.valid);
-        
         if (validation.valid) {
             this.emit('correctMove', { move, validation });
         } else {
@@ -102,21 +100,10 @@ export class ChessTrainer extends EventTarget {
         }
     }
     
-    handleComputerMove(move) {
-        console.log('🤖 Computer move handled:', move.san);
-        this.emit('computerMove', { move });
-    }
-    
-    handleLineComplete(data) {
-        console.log('🏁 Line completed:', data.line?.name);
-        this.emit('lineComplete', data);
-    }
-    
     nextLine() {
         const lines = this.getCurrentLines();
         if (this.currentLineIndex < lines.length - 1) {
             this.currentLineIndex++;
-            console.log('➡️ Next line:', this.currentLineIndex);
             this.loadCurrentPosition();
             this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
         }
@@ -125,21 +112,18 @@ export class ChessTrainer extends EventTarget {
     previousLine() {
         if (this.currentLineIndex > 0) {
             this.currentLineIndex--;
-            console.log('⬅️ Previous line:', this.currentLineIndex);
             this.loadCurrentPosition();
             this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
         }
     }
     
     selectLine(index) {
-        console.log('🎯 Selecting line:', index);
         this.currentLineIndex = index;
         this.loadCurrentPosition();
         this.emit('lineChanged', { lineIndex: this.currentLineIndex, line: this.getCurrentLine() });
     }
     
     setCategory(category) {
-        console.log('🎯 Category changed to:', category);
         this.currentCategory = category;
         this.currentLineIndex = 0;
         this.emit('categoryChanged', { category: category, lines: this.getCurrentLines() });
@@ -147,17 +131,27 @@ export class ChessTrainer extends EventTarget {
     }
     
     resetPosition() { 
-        console.log('🔄 Resetting position');
         this.chessEngine.resetCurrentLine(); 
+        this.emit('positionLoaded', { line: this.getCurrentLine(), lineIndex: this.currentLineIndex });
     }
     
     flipBoard() { 
-        console.log('🔄 Flipping board');
         this.chessEngine.flipBoard(); 
     }
     
+    stepBackward() {
+        if (this.chessEngine.stepBackward()) {
+            this.emit('stepped');
+        }
+    }
+
+    stepForward() {
+        if (this.chessEngine.stepForward()) {
+            this.emit('stepped');
+        }
+    }
+    
     setPlayerColor(color) { 
-        console.log('🎯 Player color changed to:', color);
         this.chessEngine.setPlayerColor(color);
         this.loadCurrentPosition();
     }
@@ -189,7 +183,6 @@ export class ChessTrainer extends EventTarget {
         };
     }
     emit(eventName, detail) { 
-        console.log('📡 Event emitted:', eventName, detail);
         this.dispatchEvent(new CustomEvent(eventName, { detail })); 
     }
 }

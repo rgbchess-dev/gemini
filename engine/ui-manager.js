@@ -1,25 +1,17 @@
-// /engine/ui-manager.js - FINAL VERSION WITH LINE COMPLETE MESSAGE
+// /engine/ui-manager.js - FINAL CORRECTED VERSION
 
 export class UIManager {
     constructor(trainer) {
-        // ... (constructor is unchanged) ...
         this.trainer = trainer;
         this.elements = {};
-        this.config = {
-            multipleArrows: true,
-            maxMoves: 3,
-            showHints: true
-        };
+        this.config = { multipleArrows: true, maxMoves: 3, showHints: true };
         this.setup();
     }
     
-    // ... (setup, onDomReady, initializeElements are unchanged) ...
     setup() {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.onDomReady());
-        } else {
-            this.onDomReady();
-        }
+        } else { this.onDomReady(); }
     }
     
     onDomReady() {
@@ -27,40 +19,38 @@ export class UIManager {
         this.attachTrainerListeners();
         this.attachUIListeners();
         this.performInitialUpdate();
-        console.log('✅ UI Manager loaded');
     }
     
     initializeElements() {
         this.elements = {
             modeSelect: document.getElementById('modeSelect'),
             categorySelect: document.getElementById('categorySelect'),
-            categoryLabel: document.getElementById('categoryLabel'),
             lineSelect: document.getElementById('lineSelect'),
             colorSelect: document.getElementById('colorSelect'),
             prevLineBtn: document.getElementById('prevLineBtn'),
             nextLineBtn: document.getElementById('nextLineBtn'),
-            hintBtn: document.getElementById('hintBtn'),
             resetBtn: document.getElementById('resetBtn'),
             flipBtn: document.getElementById('flipBtn'),
-            positionInfo: document.getElementById('positionInfo'),
             status: document.getElementById('status'),
             movesList: document.getElementById('movesList'),
             successMessage: document.getElementById('successMessage'),
             errorMessage: document.getElementById('errorMessage'),
             progressFill: document.getElementById('progressFill'),
-            moveComment: document.getElementById('moveComment')
+            positionInfo: document.getElementById('positionInfo'),
+            moveComment: document.getElementById('moveComment'),
+            backBtn: document.getElementById('backBtn'),
+            forwardBtn: document.getElementById('forwardBtn')
         };
     }
 
     performInitialUpdate() {
-        // ... (this function is unchanged) ...
         const state = this.trainer.getProgress();
         this.populateCategorySelect(this.trainer.getAvailableCategories());
         this.populateLineSelect(this.trainer.getCurrentLines());
-        if(this.elements.modeSelect) this.elements.modeSelect.value = state.mode;
-        if(this.elements.colorSelect) this.elements.colorSelect.value = this.trainer.options.defaultColor;
-        if(this.elements.categorySelect) this.elements.categorySelect.value = state.category;
-        if(this.elements.lineSelect) this.elements.lineSelect.value = state.lineIndex;
+        if (this.elements.modeSelect) this.elements.modeSelect.value = state.mode;
+        if (this.elements.colorSelect) this.elements.colorSelect.value = this.trainer.options.defaultColor;
+        if (this.elements.categorySelect) this.elements.categorySelect.value = state.category;
+        if (this.elements.lineSelect) this.elements.lineSelect.value = state.lineIndex;
         this.updatePositionInfo(this.trainer.getCurrentLine());
         this.refreshArrows();
         this.updateMovesList();
@@ -73,31 +63,10 @@ export class UIManager {
         this.trainer.addEventListener('computerMove', () => this.handleComputerMove());
         this.trainer.addEventListener('lineChanged', e => this.handleLineChanged(e.detail));
         this.trainer.addEventListener('categoryChanged', e => this.handleCategoryChanged(e.detail));
-        // --- NEW ---
-        this.trainer.addEventListener('lineComplete', () => this.handleLineComplete());
+        this.trainer.addEventListener('lineComplete', e => this.handleLineComplete(e.detail));
+        this.trainer.addEventListener('stepped', () => this.handleStep());
     }
 
-    // --- NEW FUNCTION ---
-    handleLineComplete() {
-        // Update the main status bar
-        if (this.elements.status) {
-            this.elements.status.textContent = 'Line complete! Well done!';
-            this.elements.status.classList.add('success');
-        }
-
-        // Show the pop-up success message
-        if (this.elements.successMessage) {
-            this.elements.successMessage.textContent = 'Line Complete!';
-            this.elements.successMessage.classList.add('show');
-
-            // Hide the message after 3 seconds
-            setTimeout(() => {
-                this.elements.successMessage.classList.remove('show');
-            }, 3000);
-        }
-    }
-    
-    // ... (rest of the file is unchanged) ...
     attachUIListeners() {
         this.elements.modeSelect.addEventListener('change', () => this.trainer.setMode(this.elements.modeSelect.value));
         this.elements.categorySelect.addEventListener('change', () => this.trainer.setCategory(this.elements.categorySelect.value));
@@ -107,15 +76,15 @@ export class UIManager {
         this.elements.nextLineBtn.addEventListener('click', () => this.trainer.nextLine());
         this.elements.resetBtn.addEventListener('click', () => this.trainer.resetPosition());
         this.elements.flipBtn.addEventListener('click', () => this.trainer.flipBoard());
+        this.elements.backBtn.addEventListener('click', () => this.trainer.stepBackward());
+        this.elements.forwardBtn.addEventListener('click', () => this.trainer.stepForward());
     }
     
     handlePositionLoaded(data) {
         this.updatePositionInfo(data.line);
-        this.refreshArrows();
         this.updateMovesList();
         this.updateMoveComment(); 
-
-        // --- ADDED --- Reset status text when a new position loads
+        this.refreshArrows();
         if (this.elements.status) {
             this.elements.status.textContent = 'Ready';
             this.elements.status.classList.remove('success', 'error');
@@ -130,51 +99,55 @@ export class UIManager {
     }
     
     handleComputerMove() {
-        this.refreshArrows();
         this.updateMovesList();
         this.updateMoveComment();
+        this.refreshArrows();
     }
 
     handleLineChanged(data) {
         this.updatePositionInfo(data.line);
         this.elements.lineSelect.value = data.lineIndex;
-        this.refreshArrows();
         this.updateMovesList();
         this.updateMoveComment();
-
-        // --- ADDED --- Also reset status when the line is changed manually
+        this.refreshArrows();
         if (this.elements.status) {
             this.elements.status.textContent = 'Ready';
             this.elements.status.classList.remove('success', 'error');
         }
     }
 
-    handleCategoryChanged(data) {
-        this.populateLineSelect(data.lines);
-        this.elements.lineSelect.value = 0;
-        this.updatePositionInfo(this.trainer.getCurrentLine());
-        this.refreshArrows();
-        this.updateMovesList();
-        this.updateMoveComment();
+    handleLineComplete(data) {
+        if (this.elements.status) {
+            this.elements.status.textContent = 'Line complete! Well done!';
+            this.elements.status.classList.add('success');
+        }
+        if (this.elements.successMessage) {
+            this.elements.successMessage.textContent = 'Line Complete!';
+            this.elements.successMessage.classList.add('show');
+            setTimeout(() => { this.elements.successMessage.classList.remove('show'); }, 3000);
+        }
     }
 
+    handleStep() {
+        this.updateMovesList();
+        this.updateMoveComment();
+        this.refreshArrows();
+    }
+    
     updateMovesList() {
         if (!this.elements.movesList) return;
-        const history = this.trainer.chessEngine.chess.history();
+        const progress = this.trainer.getProgress().chessProgress;
+        const history = this.trainer.chessEngine.chess.history().slice(0, progress.current);
         if (history.length > 0) {
             let formattedMoves = '';
             for (let i = 0; i < history.length; i++) {
                 if (i % 2 === 0) {
                     const moveNumber = Math.floor(i / 2) + 1;
                     formattedMoves += `${moveNumber}. ${history[i]} `;
-                } else {
-                    formattedMoves += `${history[i]} `;
-                }
+                } else { formattedMoves += `${history[i]} `; }
             }
             this.elements.movesList.textContent = formattedMoves.trim();
-        } else {
-            this.elements.movesList.textContent = 'Moves will appear here...';
-        }
+        } else { this.elements.movesList.textContent = 'Moves will appear here...'; }
     }
 
     updateMoveComment() {
@@ -187,6 +160,7 @@ export class UIManager {
         }
     }
     
+    // --- ARROW FUNCTIONS RESTORED TO CORRECT VERSION ---
     refreshArrows() {
         try {
             this.clearArrows();
@@ -194,11 +168,16 @@ export class UIManager {
             const playerColor = this.trainer.chessEngine.playerColor;
             const currentTurn = this.trainer.chessEngine.getCurrentColor();
             if (playerColor !== 'both' && playerColor !== currentTurn) { return; }
+
             const line = this.trainer.getCurrentLine();
             const progress = this.trainer.getProgress().chessProgress;
             const currentIndex = progress.current;
-            if (!line || !line.moves || currentIndex >= line.moves.length) { return; }
-            const shapes = this.createArrowShapes(line.moves, currentIndex);
+            
+            if (!line || !line.computedMoves || currentIndex >= line.computedMoves.length) {
+                return;
+            }
+
+            const shapes = this.createArrowShapes(line.computedMoves, currentIndex);
             if (shapes.length > 0) {
                 this.trainer.chessEngine.board.setAutoShapes(shapes);
             }
@@ -207,48 +186,30 @@ export class UIManager {
         }
     }
 
-    createArrowShapes(moves, startIndex) {
+    createArrowShapes(computedMoves, startIndex) {
         const shapes = [];
-        const maxMoves = Math.min(this.config.maxMoves, moves.length - startIndex);
-        const tempChess = new Chess(this.trainer.chessEngine.chess.fen());
-        let computerMovesShown = 0;
+        const maxMoves = Math.min(this.config.maxMoves, computedMoves.length - startIndex);
         let playerMovesShown = 0;
+        
         for (let i = 0; i < maxMoves; i++) {
-            const moveNotation = moves[startIndex + i];
-            if (!moveNotation) continue;
-            try {
-                const legalMoves = tempChess.moves({ verbose: true });
-                let targetMove = legalMoves.find(move => move.san === moveNotation);
-                if (!targetMove) {
-                    const cleanNotation = moveNotation.replace(/[+#]$/, '');
-                    targetMove = legalMoves.find(move => 
-                        move.san === cleanNotation || 
-                        move.san.replace(/[+#]$/, '') === cleanNotation
-                    );
+            const move = computedMoves[startIndex + i];
+            if (!move) continue;
+
+            const isPlayerMove = this.isPlayerMove(startIndex + i);
+            let color;
+
+            if (isPlayerMove) {
+                color = playerMovesShown === 0 ? 'green' : 'yellow';
+                playerMovesShown++;
+            } else {
+                color = 'blue'; // Computer moves are always blue
+            }
+            
+            if (color) {
+                shapes.push({ orig: move.from, dest: move.to, brush: color });
+                if (move.isCapture && this.config.showHints) {
+                    shapes.push({ orig: move.to, brush: 'red' });
                 }
-                if (targetMove) {
-                    const isPlayerMove = this.isPlayerMove(startIndex + i);
-                    let color;
-                    if (isPlayerMove) {
-                        color = playerMovesShown === 0 ? 'green' : 'yellow';
-                        playerMovesShown++;
-                    } else {
-                        color = computerMovesShown === 0 ? 'blue' : null;
-                        if (computerMovesShown === 0) computerMovesShown++;
-                    }
-                    if (color) {
-                        shapes.push({ orig: targetMove.from, dest: targetMove.to, brush: color });
-                        if (targetMove.captured && this.config.showHints) {
-                            shapes.push({ orig: targetMove.to, brush: 'red' });
-                        }
-                    }
-                    tempChess.move(moveNotation, { sloppy: true });
-                } else {
-                    console.warn('⚠️ Could not parse move:', moveNotation);
-                }
-            } catch (error) {
-                console.warn('⚠️ Move parsing error:', error);
-                continue;
             }
         }
         return shapes;
@@ -257,16 +218,13 @@ export class UIManager {
     isPlayerMove(moveIndex) {
         const playerColor = this.trainer.chessEngine.playerColor;
         if (playerColor === 'both') return true;
-        const progress = this.trainer.getProgress().chessProgress;
-        const currentIndex = progress.current;
-        const offset = moveIndex - currentIndex;
-        const currentTurn = this.trainer.chessEngine.getCurrentColor();
-        let moveColor;
-        if (offset === 0) {
-            moveColor = currentTurn;
-        } else {
-            moveColor = (offset % 2 === 0) ? currentTurn : (currentTurn === 'white' ? 'black' : 'white');
-        }
+        
+        const line = this.trainer.getCurrentLine();
+        if (!line || !line.computedMoves || !line.computedMoves[moveIndex]) return false;
+        
+        const move = line.computedMoves[moveIndex];
+        const moveColor = move.isWhiteMove ? 'white' : 'black';
+        
         return playerColor === moveColor;
     }
 
@@ -278,23 +236,24 @@ export class UIManager {
     
     populateCategorySelect(categories) {
         if(this.elements.categorySelect) {
-            this.elements.categorySelect.innerHTML = categories.map(cat => 
-                `<option value="${cat}">${cat}</option>`
-            ).join('');
+            this.elements.categorySelect.innerHTML = categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
         }
     }
     
     populateLineSelect(lines) {
         if(this.elements.lineSelect) {
-            this.elements.lineSelect.innerHTML = lines.map((line, idx) => 
-                `<option value="${idx}">${line.name || `Line ${idx + 1}`}</option>`
-            ).join('');
+            this.elements.lineSelect.innerHTML = lines.map((line, idx) => `<option value="${idx}">${line.name || `Line ${idx + 1}`}</option>`).join('');
         }
     }
     
     updatePositionInfo(line) {
         if (line && this.elements.positionInfo) {
-            this.elements.positionInfo.innerHTML = `<h4>${line.name || ''}</h4><p>${line.description || ''}</p><p id="moveComment" style="font-style: italic; color: #aaa; margin-top: 10px;"></p>`;
+            const infoContainer = this.elements.positionInfo.querySelector('div');
+            if (infoContainer) {
+                infoContainer.innerHTML = `<h4>${line.name || ''}</h4><p>${line.description || ''}</p>`;
+            } else {
+                this.elements.positionInfo.innerHTML = `<div><h4>${line.name || ''}</h4><p>${line.description || ''}</p></div><p id="moveComment" style="font-style: italic; color: #aaa; margin-top: 10px;"></p>`;
+            }
             this.elements.moveComment = document.getElementById('moveComment');
         }
     }
