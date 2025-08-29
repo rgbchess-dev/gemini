@@ -1,0 +1,283 @@
+/** 
+ * Enhanced Mobile Responsiveness for Chess Training Site
+ * File: /assets/css/mobile-improvements.css
+ * 
+ * Add this to your existing styles or integrate into styles.css
+ * Fixes board sizing, touch interactions, and layout issues
+ */
+
+/* Enhanced Chess Board Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Fix board container sizing */
+    #board-container {
+        flex: 1 1 auto;
+        min-width: 320px;
+        max-width: min(90vw, 90vh);
+        width: min(90vw, 90vh);
+        height: min(90vw, 90vh);
+        margin: 0 auto 20px auto;
+    }
+
+    /* Ensure chessground wrapper scales properly */
+    .cg-wrap {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 320px !important;
+        min-height: 320px !important;
+        max-width: min(90vw, 90vh) !important;
+        max-height: min(90vw, 90vh) !important;
+    }
+
+    /* Board touch optimization */
+    cg-board {
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Improve piece dragging on mobile */
+    cg-board piece.dragging {
+        z-index: 1000 !important;
+        pointer-events: none;
+        touch-action: none;
+    }
+
+    /* Better square highlighting for touch */
+    cg-board square.move-dest {
+        background: radial-gradient(rgba(30, 95, 175, 0.7) 25%, #1e5faf 0, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 0) !important;
+    }
+    
+    cg-board square.selected {
+        background-color: rgba(30, 95, 175, 0.8) !important;
+    }
+
+    /* Main layout adjustments */
+    main {
+        flex-direction: column;
+        padding: 15px;
+        gap: 20px;
+        align-items: center;
+    }
+
+    /* Controls panel mobile optimization */
+    #controls-panel {
+        width: 100%;
+        max-width: min(90vw, 500px);
+        order: 2; /* Place controls below board */
+    }
+
+    /* Header improvements */
+    header {
+        padding: 8px 15px;
+    }
+
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    .back-link {
+        font-size: 0.85em;
+    }
+
+    /* Control sections spacing */
+    .control-section {
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+
+    /* Button improvements */
+    button, select {
+        min-height: 44px; /* iOS minimum touch target */
+        padding: 8px 12px;
+        font-size: 14px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        background-color: var(--surface-color);
+        color: var(--text-color);
+        cursor: pointer;
+        touch-action: manipulation;
+    }
+
+    button:hover, button:focus {
+        background-color: var(--surface-light-color);
+    }
+
+    /* Button grid improvements */
+    .nav-buttons, .action-buttons {
+        gap: 12px;
+        margin: 10px 0;
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Moves list mobile optimization */
+    #movesList {
+        font-size: 0.9em;
+        line-height: 1.6;
+        max-height: 150px;
+        padding: 10px;
+        background-color: var(--surface-color);
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+    }
+
+    /* Progress bar mobile */
+    .progress-bar {
+        height: 8px;
+        margin: 10px 0;
+    }
+
+    /* Status section */
+    .status-section {
+        font-size: 0.85em;
+        margin: 10px 0;
+    }
+
+    /* Feedback messages mobile */
+    .feedback-message {
+        bottom: -80px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        max-width: calc(100vw - 20px);
+        font-size: 14px;
+    }
+
+    .feedback-message.show {
+        bottom: 20px;
+    }
+
+    /* Control groups stacking */
+    .control-group {
+        margin: 8px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .control-group label {
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+/* Very small screens (phones in portrait) */
+@media (max-width: 480px) {
+    #board-container {
+        min-width: 280px;
+        max-width: min(95vw, 95vh);
+        width: min(95vw, 95vh);
+        height: min(95vw, 95vh);
+    }
+
+    .cg-wrap {
+        min-width: 280px !important;
+        min-height: 280px !important;
+        max-width: min(95vw, 95vh) !important;
+        max-height: min(95vw, 95vh) !important;
+    }
+
+    main {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    #controls-panel {
+        max-width: 95vw;
+    }
+
+    .control-section {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    button, select {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    header h1 {
+        font-size: 1.1em;
+    }
+
+    /* Stack action buttons vertically on very small screens */
+    .action-buttons {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    #movesList {
+        max-height: 120px;
+        font-size: 0.85em;
+    }
+}
+
+/* Landscape phones */
+@media (max-width: 767px) and (orientation: landscape) {
+    main {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    #board-container {
+        flex: 0 0 min(60vh, 60vw);
+        width: min(60vh, 60vw);
+        height: min(60vh, 60vw);
+        margin: 0;
+    }
+
+    .cg-wrap {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: min(60vh, 60vw) !important;
+        max-height: min(60vh, 60vw) !important;
+    }
+
+    #controls-panel {
+        flex: 1;
+        max-width: none;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .control-section {
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    #movesList {
+        max-height: 100px;
+    }
+}
+
+/* iPad and tablet improvements */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #board-container {
+        max-width: min(60vh, 600px);
+        width: min(60vh, 600px);
+        height: min(60vh, 600px);
+    }
+
+    .cg-wrap {
+        max-width: min(60vh, 600px) !important;
+        max-height: min(60vh, 600px) !important;
+    }
+
+    main {
+        gap: 25px;
+        padding: 20px;
+    }
+
+    #controls-panel {
+        min-width: 300px;
+    }
+
+    button, select {
+        min-height: 40px;
+        font-size: 15px;
+    }
+}
