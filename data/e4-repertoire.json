@@ -1,135 +1,111 @@
 {
-    "name": "Complete 1.e4 Repertoire for White",
-    "description": "A comprehensive repertoire for White starting with 1.e4, covering responses to the Petrov, Scandinavian, French, and more.",
-    "author": "IM Andras Toth & Community",
-    "source": "Lichess Study",
-    "playerColor": "white",
-    "orientation": "white",
-    "theory": {
-        "lines": [
-            {
-                "category": "Scandinavian Defense",
-                "name": "Scandinavian: Valencian Variation",
-                "description": "The Scandinavian is a great opening for the active Black player. Having the queen out early is contrary to opening principles, however the Scandinavian is one notable exception to this rule. White tries to gain extra tempi by attacking the Black queen.",
-                "moves": [
-                    "e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nf6", "Nf3", "e6", "Bg5", "Nbd7", "Bc4", "Be7", "O-O", "a6", "a4", "c5", "dxc5", "Bxc5", "Ne4", "Be7", "Nd6+", "Bxd6", "Qxd6", "Ne4", "Qf4", "Nxg5", "Nxg5", "Nf6", "Rad1", "Bd7", "Rfe1", "Qb8", "Qh4", "Qc7", "Rd3", "h6", "Rg3", "O-O", "Nf3", "Kh8"
-                ],
-                "analysis": "White has a strong attacking position.",
-                "startingFen": null
-            },
-            {
-                "category": "Scandinavian Defense",
-                "name": "Scandinavian: Richter Variation (Portuguese Gambit)",
-                "description": "In the Portuguese Gambit, Black elects to play Nf6 instead of the more traditional Qxd5. White should get on with their usual agenda (center and development), instead of trying to keep the d5-pawn.",
-                "moves": [
-                    "e4", "d5", "exd5", "Nf6", "d4", "Nxd5", "Nf3", "g6", "c4", "Nb6", "Nc3", "Bg7", "c5", "Nd5", "Bc4", "Nxc3", "bxc3", "O-O", "O-O", "b6", "Re1", "bxc5", "Ng5", "e6", "Qf3", "c6", "Qh3", "h6", "Ne4"
-                ],
-                "analysis": "White has a dominant position with fabulous attacking prospects.",
-                "startingFen": null
-            },
-            {
-                "category": "Scandinavian Defense",
-                "name": "Scandinavian: Main Line, Mieses Variation",
-                "description": "The main line of the Scandinavian where Black plays 3...Qa5. Our plan is to challenge the pinned knight and gain space on the kingside.",
-                "moves": [
-                    "e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Nxe5"
-                ],
-                "analysis": "The black bishop on g6 is experiencing extreme discomfort.",
-                "startingFen": null
-            },
-            {
-                "category": "Caro-Kann Defense",
-                "name": "Caro-Kann: Bronstein-Larsen Variation",
-                "description": "After Black plays 5...gxf6, the pawn chain is broken and kingside castling is risky due to the semi-open g-file. Our plan involves knight maneuvers and a central d4-d5 break.",
-                "moves": [
-                    "e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "Be2", "e6", "O-O", "Qc7", "c4", "Nd7", "Nh4", "Bxe2", "Qxe2", "O-O-O", "d5", "exd5", "cxd5", "cxd5", "Be3"
-                ],
-                "analysis": "White has a tremendous attacking position, whilst the black pawn structure also offers multiple strategic targets, in particular, the weak pawns and the f5-outpost.",
-                "startingFen": null
-            },
-            {
-                "category": "Caro-Kann Defense",
-                "name": "Caro-Kann: Karpov Variation Trap",
-                "description": "The Karpov Variation (4...Nd7) is solid, but we can reply with the unorthodox 5.Ng5! to generate tactical opportunities on the light squares, in particular f7 and e6.",
-                "moves": [
-                    "e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nd7", "Ng5", "h6", "Ne6", "Qa5+", "Bd2", "Qb6", "Bd3", "fxe6", "Qh5+", "Kd8", "Ba5"
-                ],
-                "analysis": "A stunning geometrical motif that decides the game. The queen is lost!",
-                "startingFen": null
-            },
-            {
-                "category": "Caro-Kann Defense",
-                "name": "Caro-Kann: Classical, Lobron System",
-                "description": "The Caro-Kann is known for its reliable, sturdy layout. Against the Classical variation (4...Bf5), we will play the Lobron System with h4-h5 to gain space and prepare a kingside attack.",
-                "moves": [
-                    "e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "h5", "Bh7", "Nf3", "e6", "Bd3", "Bxd3", "Qxd3", "Nd7", "Bd2", "Ngf6", "O-O-O", "Be7", "Qe2", "O-O", "Nf1"
-                ],
-                "analysis": "With Black having committed to opposite side castling, we adjust our plans! This counter-intuitive knight move prepares a major assault on the kingside.",
-                "startingFen": null
-            },
-            {
-                "category": "Caro-Kann Defense",
-                "name": "Caro-Kann: Von Hennig Gambit",
-                "description": "An aggressive pawn gambit (4.Bc4 and 5.f3) to seize a large pawn center and get the opponent out of their theoretical knowledge.",
-                "moves": [
-                    "e4", "c6", "d4", "d5", "Nc3", "dxe4", "Bc4", "Nf6", "f3", "h6", "fxe4", "Bg4", "Nf3", "Bxf3", "gxf3", "e6", "Bd2", "Nh5", "Qe2", "Be7", "O-O-O", "g5", "d5", "Bd6", "e5", "Bc5", "dxe6", "fxe6", "f4", "Nxf4", "Bxf4", "Nd7", "Qh5+", "Kf8", "Bxe6", "gxf4"
-                ],
-                "analysis": "1-0 White wins.",
-                "startingFen": null
-            },
-            {
-                "category": "Petrov Defense",
-                "name": "Petrov Defense: Main Line (Improved)",
-                "description": "The Petroff Defense is one of the most popular openings of our time. We will play the most principled move, 3.Nxe5, to eliminate the important e5-pawn instantly.",
-                "moves": [
-                    "e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nf3", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Be3", "Nc6", "Qd2", "Be6", "O-O-O", "Qd7", "Kb1", "Bf6", "h4", "O-O-O", "Nd4", "Nxd4", "Bxd4", "Bxd4", "Qxd4"
-                ],
-                "analysis": "White has the upper hand with a double attack on the a7 and g7 pawns.",
-                "startingFen": null
-            },
-            {
-                "category": "Petrov Defense",
-                "name": "Petrov: Main Line - 5.Nc3",
-                "description": "The most popular and principled response. The e5-pawn is a vital central asset and we eliminate it instantly, then develop with Nc3 to trade knights and open the d-file for our queen and bishop.",
-                "moves": [
-                    "e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nf3", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Be3", "Nc6", "Qd2", "Be6", "O-O-O", "Qd7", "Kb1", "Bf6", "h4", "O-O-O", "Nd4", "Nxd4", "Bxd4", "Bxd4", "Qxd4"
-                ],
-                "analysis": "White has the upper hand with a double attack on the a7 and g7 pawns.",
-                "startingFen": null
-            },
-            {
-                "category": "Petrov Defense",
-                "name": "Petrov: Cochrane Gambit - 4.Nxf7!!",
-                "description": "A sharp knight sacrifice for two pawns and complete exposure of Black's king. This is extremely dangerous in practical play - most games end decisively, rarely in draws.",
-                "moves": [
-                    "e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nxf7", "Kxf7", "d4", "c5", "Nc3", "cxd4", "Bc4+", "d5", "Nxd5", "Be6", "Bg5", "Nbd7", "O-O", "Qc8", "Nxf6", "Qxc4", "Qh5+", "g6", "Qf3", "Nxf6", "Bxf6", "Bg7", "Bxd4+", "Kg8", "Bxg7", "Kxg7", "b3", "Qc5", "Rad1", "Rhd8", "c4", "Qe5", "h3"
-                ],
-                "analysis": "A complex position where White maintains pressure.",
-                "startingFen": null
-            },
-            {
-                "category": "Petrov Defense",
-                "name": "Petrov: Steinitz Variation - 3.d4",
-                "description": "A sharp, modern variation where both players plant their knights in advanced positions. Exchanges often occur to avoid a single piece becoming too powerful.",
-                "moves": [
-                    "e4", "e5", "Nf3", "Nf6", "d4", "Nxe4", "Bd3", "d5", "Nxe5", "Nd7", "Nxd7", "Bxd7", "O-O", "Bd6", "c4", "c6", "cxd5", "cxd5", "Nc3", "Nxc3", "bxc3", "O-O", "Qh5", "g6", "Qxd5", "Qc7"
-                ],
-                "analysis": "The position is roughly equal, with dynamic chances for both sides.",
-                "startingFen": null
-            },
-            {
-                "category": "Petrov Defense",
-                "name": "Petrov: Three Knights Alternative - 3.Nc3",
-                "description": "A sound alternative to avoid the sharpest Petrov lines. If Black plays 3...Nc6, we transpose to the Four Knights Game. If Black plays 3...Bb4, we keep the game active.",
-                "moves": [
-                    "e4", "e5", "Nf3", "Nf6", "Nc3"
-                ],
-                "analysis": "From here, Black can play 3...Nc6, transposing to the Four Knights, or play 3...Bb4 to maintain a unique position.",
-                "startingFen": null
-            }
-        ]
-    },
-    "exercises": {
-        "lines": []
-    }
+  "name": "Winning 1.e4 Repertoire - Scandinavian Module",
+  "author": "IM Andras Toth / colt45nine",
+  "description": "The complete Scandinavian Defense lines from the PGN study, with all variations as separate lines.",
+  "playerColor": "white",
+  "orientation": "white",
+  "theory": {
+    "startingFen": null,
+    "lines": [
+       {
+        "name": "Scandinavian: Main Line (3...Qa5)",
+        "description": "Side variation from the introduction chapter.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "Main Line"]
+      },     
+       {
+        "name": "Scandinavian: Main Line, Mieses Variation (3...Qa5)",
+        "description": "Main line against the Mieses Variation.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Nxe5"],
+        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", ""]
+      },
+
+      {
+        "name": "Scandinavian: Modern, Richter Variation (2...Nf6)",
+        "description": "Against the Portuguese Gambit line of the Scandinavian.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Nf6", "d4", "Nxd5", "Nf3", "g6", "c4", "Nb6", "Nc3", "Bg7", "c5", "Nd5", "Bc4", "Nxc3", "bxc3", "O-O", "O-O", "b6", "Re1", "bxc5", "Ng5", "e6", "Qf3", "c6", "Qh3", "h6", "Ne4"],
+        "comments": ["", "This move introduces the Scandinavian Defense...", "", "This move introduces the Portuguese Gambit...", "White simply gets on with their usual agendas...", "Marshall variation", "", "Richter Variation", "This natural space grab is our bread and butter...", "", "", "", "At first, this move is a positional mistake...", "", "", "", "", "", "", "", "This is a very important move to remember...", "", "Although12.Bg5 is also a good move here...", "", "", "", "", "", "White has a dominant position with fabulous attacking prospects."]
+      },
+      {
+        "name": "Scandinavian: Anderssen Counterattack (3...Qe6+)",
+        "description": "Side variation from the introduction chapter.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qe6+", "Be2", "Nc6", "d4", "Qf5", "Nb5", "Qd7", "Bf4", "e5", "dxe5", "Bb4+"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "most played but is mistake", "", "", "", "", "", "", "the only move", ""]
+      },
+      {
+        "name": "Scandinavian: Anderssen Counterattack (Side: vs 7.d5)",
+        "description": "Side variation within the 3...Qe6+ line.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qe6+", "Be2", "Nc6", "d4", "Qf5", "Nb5", "Qd7", "d5", "Nb8", "Bf4", "Na6", "Qd4", "Nf6", "O-O-O"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "most played but is mistake", "", "", "", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Valencian Variation (3...Qd8)",
+        "description": "Main line vs the Valencian Variation.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nf6", "Bg5", "Nbd7", "Bc4", "Be7", "O-O", "a6", "a4", "c5", "dxc5", "Bxc5", "Ne4", "Be7", "Nd6+", "Bxd6", "Qxd6", "Ne4", "Qf4", "Nxg5", "Nxg5", "Nf6", "Rad1", "Bd7", "Rfe1", "Qb8", "Qh4", "Qc7", "Rd3", "h6", "Rg3", "O-O", "Nf3", "Kh8"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "almost 40% Valencian Variation", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Valencian Variation (Side: vs 4...Nc6)",
+        "description": "Side variation within the Valencian Variation.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nc6", "d5", "Nb8", "Bc4", "e5", "Qe2", "Nd7", "f4", "Bd6", "Nf3", "Qe7", "O-O", "Ngf6", "Re1", "e4", "Nxe4", "O-O", "Nxd6", "Qxd6", "Qf2"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", "", "so many bad move that doesnt look bad for black ... only 6...e5! is not loosing", "", "", "", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Valencian Variation (Side: vs 4...g6)",
+        "description": "Side variation within the Valencian Variation.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "g6", "Nf3", "Bg7", "Be3", "Nf6", "Qd2", "O-O", "O-O-O"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", "", "", "", "", "this is good for white ..Black has too many theories1 to know!"]
+      },
+      {
+        "name": "Scandinavian: Valencian Variation (Side: vs 4...e6)",
+        "description": "Side variation within the Valencian Variation.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "e6", "Nf3", "Nf6", "Bc4"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Valencian, Ilundain Variation (4...c6)",
+        "description": "Side variation within the Valencian Variation.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "c6", "Bc4", "Nf6", "Nf3", "b5"],
+        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Mieses Variation (Side: vs 11...Nd5)",
+        "description": "Side variation from the Mieses chapter.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Nd5", "Nxd7", "Kxd7", "Bg2", "Nxc3", "Bxc3", "Bb4", "Bxb4", "Qxb4+"],
+        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Mieses Variation (Side: vs 11...h6)",
+        "description": "Side variation from the Mieses chapter.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "h6", "Nxg6", "fxg6", "Bc4", "O-O-O", "Qe2"],
+        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Mieses Variation (Side: vs 11...h5)",
+        "description": "Side variation from the Mieses chapter.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "h5", "Nxg6", "fxg6", "g5", "Nd5", "Bg2", "Nxc3", "bxc3"],
+        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", "", ""]
+      },
+      {
+        "name": "Scandinavian: Mieses Variation (Side: vs 11...Bb4)",
+        "description": "Side variation from the Mieses chapter.",
+        "category": "Scandinavian Defense",
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Bb4", "h5", "Bxc3", "Bxc3", "Qd5", "hxg6", "Qxh1"],
+        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", ""]
+      }
+    ]
+  }
 }

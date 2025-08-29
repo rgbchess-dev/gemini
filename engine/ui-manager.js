@@ -1,20 +1,19 @@
-// /engine/ui-manager.js - FIXED VERSION - Complete File
+// /engine/ui-manager.js - FINAL VERSION WITH LINE COMPLETE MESSAGE
 
 export class UIManager {
     constructor(trainer) {
+        // ... (constructor is unchanged) ...
         this.trainer = trainer;
         this.elements = {};
-        
-        // Simple, reliable config
         this.config = {
             multipleArrows: true,
             maxMoves: 3,
             showHints: true
         };
-        
         this.setup();
     }
     
+    // ... (setup, onDomReady, initializeElements are unchanged) ...
     setup() {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.onDomReady());
@@ -48,11 +47,13 @@ export class UIManager {
             movesList: document.getElementById('movesList'),
             successMessage: document.getElementById('successMessage'),
             errorMessage: document.getElementById('errorMessage'),
-            progressFill: document.getElementById('progressFill')
+            progressFill: document.getElementById('progressFill'),
+            moveComment: document.getElementById('moveComment')
         };
     }
 
     performInitialUpdate() {
+        // ... (this function is unchanged) ...
         const state = this.trainer.getProgress();
         this.populateCategorySelect(this.trainer.getAvailableCategories());
         this.populateLineSelect(this.trainer.getCurrentLines());
@@ -62,7 +63,8 @@ export class UIManager {
         if(this.elements.lineSelect) this.elements.lineSelect.value = state.lineIndex;
         this.updatePositionInfo(this.trainer.getCurrentLine());
         this.refreshArrows();
-        this.updateMovesList(); // --- ADD THIS --- Call the new function on initial load
+        this.updateMovesList();
+        this.updateMoveComment();
     }
     
     attachTrainerListeners() {
@@ -71,8 +73,31 @@ export class UIManager {
         this.trainer.addEventListener('computerMove', () => this.handleComputerMove());
         this.trainer.addEventListener('lineChanged', e => this.handleLineChanged(e.detail));
         this.trainer.addEventListener('categoryChanged', e => this.handleCategoryChanged(e.detail));
+        // --- NEW ---
+        this.trainer.addEventListener('lineComplete', () => this.handleLineComplete());
+    }
+
+    // --- NEW FUNCTION ---
+    handleLineComplete() {
+        // Update the main status bar
+        if (this.elements.status) {
+            this.elements.status.textContent = 'Line complete! Well done!';
+            this.elements.status.classList.add('success');
+        }
+
+        // Show the pop-up success message
+        if (this.elements.successMessage) {
+            this.elements.successMessage.textContent = 'Line Complete!';
+            this.elements.successMessage.classList.add('show');
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                this.elements.successMessage.classList.remove('show');
+            }, 3000);
+        }
     }
     
+    // ... (rest of the file is unchanged) ...
     attachUIListeners() {
         this.elements.modeSelect.addEventListener('change', () => this.trainer.setMode(this.elements.modeSelect.value));
         this.elements.categorySelect.addEventListener('change', () => this.trainer.setCategory(this.elements.categorySelect.value));
@@ -87,18 +112,27 @@ export class UIManager {
     handlePositionLoaded(data) {
         this.updatePositionInfo(data.line);
         this.refreshArrows();
-        this.updateMovesList(); // --- ADD THIS --- Update moves list when a new position loads
+        this.updateMovesList();
+        this.updateMoveComment(); 
+
+        // --- ADDED --- Reset status text when a new position loads
+        if (this.elements.status) {
+            this.elements.status.textContent = 'Ready';
+            this.elements.status.classList.remove('success', 'error');
+        }
     }
     
     handleCorrectMove() {
         this.clearArrows();
         setTimeout(() => this.refreshArrows(), 100);
-        this.updateMovesList(); // --- ADD THIS --- Update moves list after a correct player move
+        this.updateMovesList();
+        this.updateMoveComment();
     }
     
     handleComputerMove() {
         this.refreshArrows();
         this.updateMovesList();
+        this.updateMoveComment();
     }
 
     handleLineChanged(data) {
@@ -106,6 +140,13 @@ export class UIManager {
         this.elements.lineSelect.value = data.lineIndex;
         this.refreshArrows();
         this.updateMovesList();
+        this.updateMoveComment();
+
+        // --- ADDED --- Also reset status when the line is changed manually
+        if (this.elements.status) {
+            this.elements.status.textContent = 'Ready';
+            this.elements.status.classList.remove('success', 'error');
+        }
     }
 
     handleCategoryChanged(data) {
@@ -113,42 +154,54 @@ export class UIManager {
         this.elements.lineSelect.value = 0;
         this.updatePositionInfo(this.trainer.getCurrentLine());
         this.refreshArrows();
+        this.updateMovesList();
+        this.updateMoveComment();
     }
 
-    // ============================================
-    // FIXED ARROW SYSTEM - MAIN LOGIC
-    // ============================================
+    updateMovesList() {
+        if (!this.elements.movesList) return;
+        const history = this.trainer.chessEngine.chess.history();
+        if (history.length > 0) {
+            let formattedMoves = '';
+            for (let i = 0; i < history.length; i++) {
+                if (i % 2 === 0) {
+                    const moveNumber = Math.floor(i / 2) + 1;
+                    formattedMoves += `${moveNumber}. ${history[i]} `;
+                } else {
+                    formattedMoves += `${history[i]} `;
+                }
+            }
+            this.elements.movesList.textContent = formattedMoves.trim();
+        } else {
+            this.elements.movesList.textContent = 'Moves will appear here...';
+        }
+    }
+
+    updateMoveComment() {
+        if (!this.elements.moveComment) return;
+        const line = this.trainer.getCurrentLine();
+        const progress = this.trainer.getProgress().chessProgress;
+        const commentIndex = progress.current > 0 ? progress.current - 1 : 0;
+        if (line && line.comments && line.comments[commentIndex]) {
+            this.elements.moveComment.textContent = line.comments[commentIndex];
+        }
+    }
     
     refreshArrows() {
         try {
             this.clearArrows();
-            
-            if (!this.config.multipleArrows || this.trainer.currentMode !== 'theory') {
-                return;
-            }
-
-            // CRITICAL FIX: Only show arrows when it's player's turn
+            if (!this.config.multipleArrows || this.trainer.currentMode !== 'theory') { return; }
             const playerColor = this.trainer.chessEngine.playerColor;
             const currentTurn = this.trainer.chessEngine.getCurrentColor();
-            
-            if (playerColor !== 'both' && playerColor !== currentTurn) {
-                return; // Computer's turn - no arrows
-            }
-
+            if (playerColor !== 'both' && playerColor !== currentTurn) { return; }
             const line = this.trainer.getCurrentLine();
             const progress = this.trainer.getProgress().chessProgress;
             const currentIndex = progress.current;
-            
-            if (!line || !line.moves || currentIndex >= line.moves.length) {
-                return;
-            }
-
+            if (!line || !line.moves || currentIndex >= line.moves.length) { return; }
             const shapes = this.createArrowShapes(line.moves, currentIndex);
-            
             if (shapes.length > 0) {
                 this.trainer.chessEngine.board.setAutoShapes(shapes);
             }
-            
         } catch (error) {
             console.error('❌ Arrow error:', error);
         }
@@ -157,26 +210,15 @@ export class UIManager {
     createArrowShapes(moves, startIndex) {
         const shapes = [];
         const maxMoves = Math.min(this.config.maxMoves, moves.length - startIndex);
-        
-        // Create a temporary chess instance to simulate moves
         const tempChess = new Chess(this.trainer.chessEngine.chess.fen());
-        
-        // Track computer move count to show blue arrow for first computer move only
         let computerMovesShown = 0;
         let playerMovesShown = 0;
-        
         for (let i = 0; i < maxMoves; i++) {
             const moveNotation = moves[startIndex + i];
             if (!moveNotation) continue;
-            
             try {
-                // Get legal moves in current position
                 const legalMoves = tempChess.moves({ verbose: true });
-                
-                // Find the move that matches our notation
                 let targetMove = legalMoves.find(move => move.san === moveNotation);
-                
-                // Try without check/checkmate symbols
                 if (!targetMove) {
                     const cleanNotation = moveNotation.replace(/[+#]$/, '');
                     targetMove = legalMoves.find(move => 
@@ -184,78 +226,47 @@ export class UIManager {
                         move.san.replace(/[+#]$/, '') === cleanNotation
                     );
                 }
-                
                 if (targetMove) {
                     const isPlayerMove = this.isPlayerMove(startIndex + i);
                     let color;
-                    
                     if (isPlayerMove) {
-                        // Player moves: green for first, yellow for others
                         color = playerMovesShown === 0 ? 'green' : 'yellow';
                         playerMovesShown++;
                     } else {
-                        // Computer moves: blue for FIRST computer move only
                         color = computerMovesShown === 0 ? 'blue' : null;
                         if (computerMovesShown === 0) computerMovesShown++;
                     }
-                    
                     if (color) {
-                        // Main arrow
-                        shapes.push({
-                            orig: targetMove.from,
-                            dest: targetMove.to,
-                            brush: color
-                        });
-                        
-                        // Capture indicator
+                        shapes.push({ orig: targetMove.from, dest: targetMove.to, brush: color });
                         if (targetMove.captured && this.config.showHints) {
-                            shapes.push({
-                                orig: targetMove.to,
-                                brush: 'red'
-                            });
+                            shapes.push({ orig: targetMove.to, brush: 'red' });
                         }
                     }
-                    
-                    // Make the move in temp board for next iteration
                     tempChess.move(moveNotation, { sloppy: true });
                 } else {
                     console.warn('⚠️ Could not parse move:', moveNotation);
                 }
-                
             } catch (error) {
                 console.warn('⚠️ Move parsing error:', error);
                 continue;
             }
         }
-        
         return shapes;
     }
 
-    // FIXED: Determine if a move belongs to player or computer (works for both White and Black)
     isPlayerMove(moveIndex) {
         const playerColor = this.trainer.chessEngine.playerColor;
         if (playerColor === 'both') return true;
-        
-        // Get the current position to determine who moves at this point in the sequence
         const progress = this.trainer.getProgress().chessProgress;
         const currentIndex = progress.current;
-        
-        // Calculate the offset from current position
         const offset = moveIndex - currentIndex;
-        
-        // Get who's turn it is right now (at currentIndex)
         const currentTurn = this.trainer.chessEngine.getCurrentColor();
-        
-        // Determine who makes the move at moveIndex
         let moveColor;
         if (offset === 0) {
-            // This is the current move
             moveColor = currentTurn;
         } else {
-            // Alternate colors from current turn
             moveColor = (offset % 2 === 0) ? currentTurn : (currentTurn === 'white' ? 'black' : 'white');
         }
-        
         return playerColor === moveColor;
     }
 
@@ -264,10 +275,6 @@ export class UIManager {
             this.trainer.chessEngine.board.setAutoShapes([]);
         }
     }
-
-    // ============================================
-    // UI UTILITIES
-    // ============================================
     
     populateCategorySelect(categories) {
         if(this.elements.categorySelect) {
@@ -287,36 +294,8 @@ export class UIManager {
     
     updatePositionInfo(line) {
         if (line && this.elements.positionInfo) {
-            this.elements.positionInfo.innerHTML = `<h4>${line.name || ''}</h4><p>${line.description || ''}</p>`;
+            this.elements.positionInfo.innerHTML = `<h4>${line.name || ''}</h4><p>${line.description || ''}</p><p id="moveComment" style="font-style: italic; color: #aaa; margin-top: 10px;"></p>`;
+            this.elements.moveComment = document.getElementById('moveComment');
         }
     }
-
-    updateMovesList() {
-        if (!this.elements.movesList) return;
-
-        // Get the full history of moves from the underlying chess.js instance
-        const history = this.trainer.chessEngine.chess.history();
-        
-        if (history.length > 0) {
-            let formattedMoves = '';
-            // Loop through the moves to add move numbers
-            for (let i = 0; i < history.length; i++) {
-                // Check if it's White's move (the first move in a pair)
-                if (i % 2 === 0) {
-                    // Calculate the move number and add it
-                    const moveNumber = Math.floor(i / 2) + 1;
-                    formattedMoves += `${moveNumber}. ${history[i]} `;
-                } else {
-                    // It's Black's move, just add the move
-                    formattedMoves += `${history[i]} `;
-                }
-            }
-            // Update the div with the formatted string, trimming any extra space at the end
-            this.elements.movesList.textContent = formattedMoves.trim();
-        } else {
-            // Show a placeholder if there are no moves
-            this.elements.movesList.textContent = 'Moves will appear here...';
-        }
-    }
-
 }
