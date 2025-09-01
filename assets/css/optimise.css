@@ -1,0 +1,393 @@
+/* /assets/css/performance-optimizations.css */
+/* Critical performance optimizations for Chess Trainer */
+
+/* ============================================ */
+/* GPU ACCELERATION & HARDWARE OPTIMIZATION */
+/* ============================================ */
+
+/* Force GPU acceleration for chess board */
+.cg-wrap, 
+#board-container,
+cg-board,
+piece {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    will-change: transform;
+}
+
+/* Optimize piece movements */
+piece {
+    contain: layout style paint;
+    transform-origin: center;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+piece.dragging {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+/* Optimize square highlights */
+cg-board square {
+    contain: layout paint;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+cg-board square.move-dest {
+    will-change: background;
+    contain: paint;
+}
+
+/* ============================================ */
+/* LAYOUT & REFLOW OPTIMIZATIONS */
+/* ============================================ */
+
+/* Prevent layout thrashing */
+#app-container {
+    contain: layout;
+}
+
+#board-container {
+    contain: layout size;
+    flex-shrink: 0;
+    isolation: isolate;
+}
+
+#controls-panel {
+    contain: layout;
+    transform: translateZ(0);
+}
+
+/* Optimize font rendering */
+.trainer-container,
+#movesList,
+#positionInfo {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================ */
+/* ANIMATION OPTIMIZATIONS */
+/* ============================================ */
+
+/* Reduce motion for performance */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .cg-wrap {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Optimize feedback animations */
+.feedback-message {
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+.feedback-message.show {
+    animation-fill-mode: both;
+}
+
+/* Optimize status changes */
+#status {
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.2s;
+    will-change: background-color;
+}
+
+/* ============================================ */
+/* MEMORY & RENDERING OPTIMIZATIONS */
+/* ============================================ */
+
+/* Optimize scrolling performance */
+#movesList {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    contain: layout style paint;
+    transform: translateZ(0);
+}
+
+/* Optimize button interactions */
+button {
+    contain: layout style;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+button:active {
+    transform: translateZ(0) scale(0.98);
+}
+
+/* Optimize select elements */
+select {
+    contain: layout style;
+    transform: translateZ(0);
+}
+
+/* ============================================ */
+/* CRITICAL PATH OPTIMIZATIONS */
+/* ============================================ */
+
+/* Optimize first paint */
+#course-title {
+    contain: layout style paint;
+    transform: translateZ(0);
+}
+
+header {
+    contain: layout;
+    transform: translateZ(0);
+}
+
+/* Reduce paint complexity */
+.course-card,
+.control-section,
+.control-group {
+    contain: layout paint;
+    isolation: isolate;
+}
+
+/* ============================================ */
+/* MOBILE PERFORMANCE OPTIMIZATIONS */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    /* Reduce complexity on mobile */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Optimize touch interactions */
+    .cg-wrap {
+        touch-action: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* Reduce animation complexity on mobile */
+    piece {
+        transition-duration: 0.1s;
+    }
+    
+    /* Optimize mobile scrolling */
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-anchor: none;
+    }
+    
+    /* Reduce mobile render complexity */
+    #movesList {
+        font-variant-numeric: tabular-nums;
+        contain: strict;
+    }
+}
+
+/* ============================================ */
+/* FONT & TEXT OPTIMIZATIONS */
+/* ============================================ */
+
+/* Optimize font loading */
+@font-face {
+    font-display: swap; /* Prevent invisible text during font load */
+}
+
+/* Optimize text rendering for moves list */
+#movesList {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
+
+.move {
+    display: inline-block;
+    contain: layout style paint;
+}
+
+/* ============================================ */
+/* IMAGE & ASSET OPTIMIZATIONS */
+/* ============================================ */
+
+/* Optimize chess piece images */
+piece::before {
+    content: "";
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    will-change: background-image;
+}
+
+/* Preload critical images */
+.preload-pieces::after {
+    content: "";
+    background: 
+        url('../pieces/chess24/wK.png'),
+        url('../pieces/chess24/wQ.png'),
+        url('../pieces/chess24/wR.png'),
+        url('../pieces/chess24/wB.png'),
+        url('../pieces/chess24/wN.png'),
+        url('../pieces/chess24/wP.png'),
+        url('../pieces/chess24/bK.png'),
+        url('../pieces/chess24/bQ.png'),
+        url('../pieces/chess24/bR.png'),
+        url('../pieces/chess24/bB.png'),
+        url('../pieces/chess24/bN.png'),
+        url('../pieces/chess24/bP.png');
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ============================================ */
+/* CRITICAL RENDERING PATH OPTIMIZATIONS */
+/* ============================================ */
+
+/* Optimize above-the-fold content */
+.above-fold {
+    contain: layout style paint;
+    content-visibility: visible;
+}
+
+/* Optimize below-the-fold content */
+.below-fold {
+    contain: layout style paint;
+    content-visibility: auto;
+    contain-intrinsic-size: 300px;
+}
+
+/* Progressive enhancement layer */
+.enhanced-ui {
+    contain: layout style paint;
+}
+
+/* ============================================ */
+/* BROWSER-SPECIFIC OPTIMIZATIONS */
+/* ============================================ */
+
+/* Chrome/Edge optimizations */
+@supports (-webkit-appearance: none) {
+    .cg-wrap {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+}
+
+/* Firefox optimizations */
+@supports (-moz-appearance: none) {
+    .cg-wrap {
+        -moz-backface-visibility: hidden;
+    }
+}
+
+/* Safari optimizations */
+@supports (-webkit-overflow-scrolling: touch) {
+    #movesList {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ============================================ */
+/* PERFORMANCE DEBUGGING AIDS */
+/* ============================================ */
+
+/* Performance debug mode (add 'debug-perf' class to body) */
+.debug-perf * {
+    outline: 1px solid rgba(255, 0, 0, 0.1) !important;
+}
+
+.debug-perf .performance-hot {
+    background: rgba(255, 255, 0, 0.1) !important;
+    outline: 2px solid yellow !important;
+}
+
+.debug-perf .performance-critical {
+    background: rgba(255, 0, 0, 0.1) !important;
+    outline: 2px solid red !important;
+}
+
+/* ============================================ */
+/* LOADING OPTIMIZATIONS */
+/* ============================================ */
+
+/* Critical CSS for first paint */
+.critical-path {
+    contain: layout style;
+    content-visibility: visible;
+}
+
+/* Defer non-critical animations */
+.defer-animation {
+    animation-play-state: paused;
+}
+
+.defer-animation.activated {
+    animation-play-state: running;
+}
+
+/* ============================================ */
+/* ACCESSIBILITY OPTIMIZATIONS */
+/* ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .cg-wrap,
+    piece,
+    .feedback-message,
+    #status {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* High contrast optimizations */
+@media (prefers-contrast: high) {
+    cg-board square.move-dest {
+        background: #0066cc !important;
+        outline: 2px solid #fff !important;
+    }
+    
+    piece {
+        filter: contrast(1.2);
+    }
+}
+
+/* ============================================ */
+/* NETWORK OPTIMIZATIONS */
+/* ============================================ */
+
+/* Optimize resource hints */
+.resource-hints::before {
+    content: "";
+    /* Preconnect hints would go in HTML head */
+}
+
+/* Critical resource loading */
+.critical-resource {
+    /* High priority loading indicator */
+    loading: eager;
+}
+
+.defer-resource {
+    /* Deferred loading indicator */
+    loading: lazy;
+}

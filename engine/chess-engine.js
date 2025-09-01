@@ -18,6 +18,8 @@ export class ChessEngine {
         this.onComputerMoveCallback = null;
         this.initializeBoard();
         this.setupPromotionHandlers();
+        this.cachedDests = null;
+        this.lastCalculatedFen = null;
     }
     
     initializeBoard() {
@@ -37,10 +39,23 @@ export class ChessEngine {
 
     calculateDests() {
         const dests = new Map();
-        this.chess.SQUARES.forEach(s => {
-            const ms = this.chess.moves({square: s, verbose: true});
-            if (ms.length) dests.set(s, ms.map(m => m.to));
+        
+        // Only check squares that have pieces of the current player
+        const currentTurn = this.chess.turn(); // 'w' or 'b'
+        const board = this.chess.board();
+        
+        board.forEach((row, rowIndex) => {
+            row.forEach((piece, colIndex) => {
+                if (piece && piece.color === currentTurn) {
+                    const square = String.fromCharCode(97 + colIndex) + (8 - rowIndex);
+                    const moves = this.chess.moves({square, verbose: true});
+                    if (moves.length) {
+                        dests.set(square, moves.map(m => m.to));
+                    }
+                }
+            });
         });
+        
         return dests;
     }
 
@@ -62,7 +77,7 @@ export class ChessEngine {
         this.updateBoard();
         setTimeout(() => {
             if (this.shouldComputerMoveNow()) { this.playNextComputerMove(); }
-        }, 300);
+        }, 100);
     }
     
     shouldComputerMoveNow() {
@@ -166,9 +181,9 @@ export class ChessEngine {
                     if (validation.isComplete) {
                         this.completeCurrentLine();
                     } else {
-                        setTimeout(() => {
-                            if (this.shouldComputerMoveNow()) { setTimeout(() => { this.playNextComputerMove(); }, 600); }
-                        }, 100);
+                    if (this.shouldComputerMoveNow()) {
+                        setTimeout(() => this.playNextComputerMove(), 300);
+                    }
                     }
                 }
                 if (this.onMoveCallback) this.onMoveCallback(move, validation);

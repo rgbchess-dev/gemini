@@ -74,8 +74,40 @@
         "name": "Deutz Gambit: vs 6...Ng4 (Bxf7+ Sacrifice)",
         "description": "A sharp variation involving a bishop sacrifice on f7.",
         "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", "e5", "Ng4", "Bxf7+", "Kxf7", "Ng5+", "Kg8", "Qxg4", "Nxe5", "Qe4", "d6", "Qd5+", "Kf8", "f4", "c6", "fxe5+", "Ke8", "Qf7#"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","",""]
+        "moves": [
+          "e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", 
+          "e5", "Ng4", "Bxf7+", "Kxf7", "Ng5+", "Kg8", "Qxg4", "Nxe5", "Qe4", 
+          "d6", "Qd5+", "Kf8", "f4", "c6", "fxe5+", "Ke8", "Qf7#"
+        ],
+        "comments": [
+          "The King's Pawn Opening, aiming for central control.",
+          "Black mirrors White's move, contesting the center.",
+          "Develops a knight and attacks the e5 pawn.",
+          "Develops and defends the e5 pawn.",
+          "The Italian Game. The bishop puts pressure on Black's weak f7 square.",
+          "The Giuoco Piano. Black develops their own bishop to a strong square.",
+          "White castles, securing the king and preparing to bring the rook into the game.",
+          "Black develops the kingside knight and puts pressure on White's e4 pawn.",
+          "This is the Deutz Gambit! White challenges Black in the center at the cost of a pawn.",
+          "Black accepts the gambit. The main alternative is 5...Bxd4.",
+          "The key follow-up. White pushes the e-pawn to kick the f6 knight and open lines.",
+          "A very aggressive response. Black avoids retreating and puts the knight on an active square, but it can also become a target.",
+          "A brilliant sacrifice!! White gives up the bishop to completely expose the black king.",
+          "Forced. Black must accept the sacrifice.",
+          "The immediate follow-up. White uses the now-open diagonal to harass the king.",
+          "Moving the king to the corner. 8...Ke8 is also possible but the king remains vulnerable.",
+          "White recaptures the knight. The immediate threats are gone, but Black's king is still unsafe.",
+          "Black wins back a pawn and challenges White's queen.",
+          "A good centralizing move. The queen stays active and eyes Black's weak spots.",
+          "Solidifies the center and gives the black queen an escape square.",
+          "White continues to probe, not giving Black a moment to consolidate.",
+          "Forced back. The king's position is becoming precarious.",
+          "The critical attacking move! This threatens to take the e5 knight and opens the f-file for the rook.",
+          "A resourceful try. Black counter-attacks the white queen, hoping to force it to a less active square.",
+          "The decisive blow! It's a discovered check from the rook. White correctly determines that this attack is stronger than the threat to their own queen.",
+          "Black is forced to move the king. The alternative, 13...cxd5, also loses quickly to 14. exd6+, a discovered check from the rook on f1.",
+          "Checkmate. A beautiful and logical conclusion to the attack."
+        ]
       },
       {
         "name": "Deutz Gambit: vs 6...Ng8 Retreat",

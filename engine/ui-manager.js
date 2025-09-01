@@ -93,7 +93,7 @@ export class UIManager {
     
     handleCorrectMove() {
         this.clearArrows();
-        setTimeout(() => this.refreshArrows(), 100);
+        this.refreshArrows();
         this.updateMovesList();
         this.updateMoveComment();
     }
@@ -136,18 +136,25 @@ export class UIManager {
     
     updateMovesList() {
         if (!this.elements.movesList) return;
+        
         const progress = this.trainer.getProgress().chessProgress;
         const history = this.trainer.chessEngine.chess.history().slice(0, progress.current);
+        
         if (history.length > 0) {
-            let formattedMoves = '';
+            // OPTIMIZED: Use array join instead of string concatenation
+            const moves = [];
             for (let i = 0; i < history.length; i++) {
                 if (i % 2 === 0) {
                     const moveNumber = Math.floor(i / 2) + 1;
-                    formattedMoves += `${moveNumber}. ${history[i]} `;
-                } else { formattedMoves += `${history[i]} `; }
+                    moves.push(`${moveNumber}.${history[i]}`);
+                } else { 
+                    moves.push(history[i]); 
+                }
             }
-            this.elements.movesList.textContent = formattedMoves.trim();
-        } else { this.elements.movesList.textContent = 'Moves will appear here...'; }
+            this.elements.movesList.textContent = moves.join(' ');
+        } else { 
+            this.elements.movesList.textContent = 'Moves will appear here...'; 
+        }
     }
 
     updateMoveComment() {
