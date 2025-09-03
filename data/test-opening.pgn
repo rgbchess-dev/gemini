@@ -1,0 +1,13 @@
+[Event "Simple Test Opening"]
+[Site "Test Course"]
+[Date "2024.01.01"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+
+{This is a simple 4-move opening test. White develops pieces quickly and Black responds classically.}
+
+1.e4 {White opens with the king's pawn, controlling the center and freeing the bishop and queen.} 
+1...e5 {Black mirrors White's opening, also controlling the center squares.}
+2.Nf3 {White develops the knight, attacking Black's e5 pawn while developing towards the center.} 
+2...Nc6 {Black defends the e5 pawn and develops the knight to its best square.} *

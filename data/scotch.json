@@ -1,0 +1,306 @@
+{
+  "name": "Short & Sweet: The Scotch Game",
+  "source": "Chessable.com",
+  "description": "A detailed analysis of the Scotch Game, including early deviations and main lines, sourced from Chessable.",
+  "lines": [
+    {
+      "headers": {
+        "Event": "Short & Sweet: The Scotch Game",
+        "Site": "Main Level",
+        "Date": "????.??.??",
+        "Round": "?",
+        "White": "1. Early Scotch",
+        "Black": "Deviations: 4...Nxd4?!",
+        "Result": "*",
+        "SourceTitle": "Main Level",
+        "Source": "Chessable.com",
+        "Comment": "short-sweet-the-scotch-game/course/5479, variation/223016"
+      },
+      "line_name": "1. Early Scotch: Deviations: 4...Nxd4?!",
+      "movetree": [
+        {
+          "move_number": "1.",
+          "move": "e4",
+          "comment": "White's most popular first move attracts World champions and novices alike. Chess newcomers naturally gravitate towards it while many World Championships were decided by it. Fischer's move, together with 1. d4, has the simple plan of taking over the whole centre by playing d4 on the next move. In addition, it opens lines for his bishop and queen, while preparing rapid development and kingside castling."
+        },
+        {
+          "move_number": "1...",
+          "move": "e5",
+          "comment": "Black avoids the wild, unbalanced Sicilian or the exotic French and Caro-Kann and instead heads for the solid Open Games."
+        },
+        {
+          "move_number": "2.",
+          "move": "Nf3",
+          "comment": "[%csl Re5] A natural move - White attacks e5 and develops. By developing his kingside knight, White is one move closer to short castling."
+        },
+        {
+          "move_number": "2...",
+          "move": "Nc6",
+          "comment": "Black replies similarly - he covers the pawn and develops. However, Black has other options at his disposal - most notably",
+          "variations": [
+            [
+              {
+                "move_number": "2...",
+                "move": "Nf6",
+                "comment": ", the Petroff Defence"
+              }
+            ],
+            [
+              {
+                "move_number": "2...",
+                "move": "d6",
+                "comment": ", the Philidor Defence. Both of these openings will be covered in the final lines of this course."
+              }
+            ]
+          ]
+        },
+        {
+          "move_number": "3.",
+          "move": "d4",
+          "comment": "[%csl Re5,Ge4,Gd4] White's third most popular move is 3. d4, after 3. Bb5 (the Ruy Lopez) and 3. Bc4 (the Italian). Firstly, some people might wonder why one would want to play the Scotch Game. I see a handful of benefits to playing the Scotch over the alternatives: 1. It's less common than both the Ruy Lopez and Italian game. This means that your opponents are less likely to be thoroughly-prepared for it and they should of course have less experience in it as well. 2. Unlike the Ruy Lopez (and the Italian to a lesser extent), Black's options are very limited. While black in the Ruy Lopez can choose from almost a dozen different defences, the Scotch boils down to two main lines. This makes the Scotch a bit easier to learn since there are fewer sidelines. 3. The Scotch can lead to a variety of different, interesting positions and structures which are hard to come by in different openings. This means that the Scotch should certainly appeal to creative and experimental chess players. So what is the idea behind 3. d4? Basically it boils down to the centre. In the Ruy Lopez or Italian, White's plan is often to play d4 after lengthy preparation with c3 and so on. This means that White can recapture on d4 with the pawn (which is superior to capturing with the knight) but the downside is that Black is often not forced to take on d4! He typically would guard the e5 strongpoint and would very rarely relinquish control of the e5 pawn since it is his only real central foothold. This does come at a cost however. White spends one tempo to carry out this d4 break. Instead of developing his bishop and quickly castling, white has opted for a central break which grants him a larger centre. In the mainlines, Black tries to exploit this loss of time by quickly generating threats against both the undefended e4-pawn and the unstable knight on d4. Therefore, after 4. Nxd4 Black's two main choices are ...Bc5 and ...Nf6. These will be covered in the following two chapters while this chapter will examine what White should do when Black deviates earlier.",
+          "variations": [
+            [
+              {
+                "move_number": "3.",
+                "move": "d4",
+                "comment": "on the other hand takes a very different approach. White makes his central break early which forces Black to play"
+              },
+              {
+                "move_number": "3...",
+                "move": "exd4",
+                "comment": "is not good, which will be demonstrated later.",
+                "variations": [
+                  [
+                    {
+                      "move_number": "3...",
+                      "move": "d6"
+                    }
+                  ]
+                ]
+              },
+              {
+                "move_number": "4.",
+                "move": "Nxd4",
+                "comment": "White will have an extra pawn in the centre - e4 - while Black was forced to exchange his e5 pawn. As a result of this e4 pawn, White has better control over the centre."
+              }
+            ]
+          ]
+        },
+        {
+          "move_number": "3...",
+          "move": "exd4",
+          "comment": "The obvious and best move. Black is forced to cede the centre since",
+          "variations": [
+            [
+              {
+                "move_number": "3...",
+                "move": "d6",
+                "comment": "isn't good, as will be demonstrated."
+              }
+            ]
+          ]
+        },
+        {
+          "move_number": "4.",
+          "move": "Nxd4",
+          "comment": "[%csl Gd4,Ge4] To be totally honest, the Scotch Game only technically starts after this move, not 3. d4. White had a couple of options to deviate here, such as the Scotch gambit -",
+          "variations": [
+            [
+              {
+                "move_number": "4.",
+                "move": "Bc4",
+                "comment": ","
+              }
+            ],
+            [
+              {
+                "move_number": "4.",
+                "move": "c3",
+                "comment": ". Neither of those will be covered here, as this is a course dedicated to the Scotch game."
+              }
+            ]
+          ]
+        },
+        {
+          "move_number": "4...",
+          "move": "Nxd4",
+          "nags": ["$6"],
+          "comment": "While making this course, I was weighing up whether or not to show this move, since it is without any doubt a mistake. However, it is an unbelievably common mistake - it is Black's third most popular move!"
+        },
+        {
+          "move_number": "5.",
+          "move": "Qxd4",
+          "comment": "[%csl Gd4,Rc6] The reason Nxd4 is a mistake is because it 'lures' White's queen to a great square. Usually, a queen in the centre is vulnerable because the opponent can gain tempi on it for free. This is not the case here. With Black's b8-knight already exchanged, there is no irritating ...Nc6 to chase our queen away."
+        },
+        {
+          "move_number": "5...",
+          "move": "d6",
+          "comment": "Black's most common move."
+        },
+        {
+          "move_number": "6.",
+          "move": "Nc3"
+        },
+        {
+          "move_number": "6...",
+          "move": "Nf6"
+        },
+        {
+          "move_number": "7.",
+          "move": "f3",
+          "comment": "[%cal Gf3g4,Bc1e3,Be1c1][%csl Gg4] Our plan in this variation is to go for a Yugoslav attack setup with Be3, O-O-O etc.",
+          "variations": [
+            [
+              {
+                "move_number": "7.",
+                "move": "Be3",
+                "comment": "immediately allows the extra possibility of"
+              },
+              {
+                "move_number": "7...",
+                "move": "Ng4",
+                "comment": ", so this prophylactic move first is preferable."
+              }
+            ]
+          ]
+        },
+        {
+          "move_number": "7...",
+          "move": "Be7"
+        },
+        {
+          "move_number": "8.",
+          "move": "Be3",
+          "comment": "[%cal Be1c1]"
+        },
+        {
+          "move_number": "8...",
+          "move": "O-O"
+        },
+        {
+          "move_number": "9.",
+          "move": "O-O-O",
+          "nags": ["$16"],
+          "comment": "[%cal Bg2g4,Bh2h4][%csl Rg8] White has a wonderful attacking position - next comes g4 and Black will have to be very careful not to get mated within a dozen moves. White's setup resembles the Dragon's Yugoslav attack, except Black is missing his usual Dragon counterplay."
+        }
+      ]
+    },
+    {
+      "headers": {
+        "Event": "Short & Sweet: The Scotch Game",
+        "Site": "Main Level",
+        "Date": "????.??.??",
+        "Round": "?",
+        "White": "2. Early Scotch",
+        "Black": "Deviations: 3...d6?!",
+        "Result": "*",
+        "SourceTitle": "Main Level",
+        "Source": "Chessable.com",
+        "Comment": "short-sweet-the-scotch-game/course/5479, variation/223015"
+      },
+      "line_name": "2. Early Scotch: Deviations: 3...d6?!",
+      "movetree": [
+        {
+          "move_number": "1.",
+          "move": "e4"
+        },
+        {
+          "move_number": "1...",
+          "move": "e5"
+        },
+        {
+          "move_number": "2.",
+          "move": "Nf3"
+        },
+        {
+          "move_number": "2...",
+          "move": "Nc6"
+        },
+        {
+          "move_number": "3.",
+          "move": "d4"
+        },
+        {
+          "move_number": "3...",
+          "move": "d6",
+          "nags": ["$6"],
+          "comment": "[%cal Gd6e5] A surprisingly common error. Black wants to reinforce the e5-pawn, which makes sense, but White is simply given a free hand in the centre now:"
+        },
+        {
+          "move_number": "4.",
+          "move": "d5",
+          "nags": ["$1"],
+          "comment": "Going into the endgame by capturing",
+          "variations": [
+            [
+              {
+                "move_number": "4.",
+                "move": "dxe5",
+                "comment": "is also possible and good, but this is just as strong and keeps the queens on the board."
+              }
+            ]
+          ]
+        },
+        {
+          "move_number": "4...",
+          "move": "Nce7",
+          "comment": "Black's knight is heading to g6."
+        },
+        {
+          "move_number": "5.",
+          "move": "c4",
+          "comment": "[%cal Bb1c3][%csl Gc4,Gd5,Ge4] Solidifying d5 and preparing to play Nc3."
+        },
+        {
+          "move_number": "5...",
+          "move": "Nf6",
+          "comment": "[%csl Re4] Developing and attacking e4."
+        },
+        {
+          "move_number": "6.",
+          "move": "Nc3",
+          "comment": "[%cal Gc3e4][%csl Ge4] Covering e4."
+        },
+        {
+          "move_number": "6...",
+          "move": "Ng6",
+          "comment": "Black needs to move his knight again so that his dark-squared bishop can develop."
+        },
+        {
+          "move_number": "7.",
+          "move": "h4",
+          "nags": ["$1"],
+          "comment": "[%cal Bh4h5][%csl Rg6] This is a strong idea which I like very much. White exploits the awkardly placed knight on g6 and intends to kick it back again with h5."
+        },
+        {
+          "move_number": "7...",
+          "move": "Bg4",
+          "comment": "[%cal Gg4h5,Gf6h5][%csl Gh5] Black is forced to prevent h5."
+        },
+        {
+          "move_number": "8.",
+          "move": "Be2"
+        },
+        {
+          "move_number": "8...",
+          "move": "c6",
+          "comment": "...c6 is a standard idea to chip away at White's centre followed by queenside counterplay - with ... a6 and ...b5 - but this plan is really going nowhere in this position."
+        },
+        {
+          "move_number": "9.",
+          "move": "Be3"
+        },
+        {
+          "move_number": "9...",
+          "move": "Be7"
+        },
+        {
+          "move_number": "10.",
+          "move": "g3",
+          "nags": ["$16"],
+          "comment": "[%cal Gg3f4,Bf3d2,Be2g4][%csl Gf4] A very strong prophylactic move! White protects h4 again, but more importantly he covers the f4 square preventing any ...Nf4 intrusions. Next White intends Nd2 (trading off white's bad bishop for Black's good one) with a great position for white."
+        }
+      ]
+    }
+  ]
+}

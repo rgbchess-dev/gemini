@@ -1,0 +1,80 @@
+[Event "Italian Game: Variations Study"]
+[Site "Training Course"]
+[Date "2025.01.01"]
+[Round "?"]
+[White "Student"]
+[Black "Computer"]
+[Result "*"]
+[ECO "C50"]
+[Opening "Italian Game"]
+[Annotator "Chess Trainer"]
+
+{This study covers the Italian Game with key variations and tactical themes.}
+
+1. e4 {The King's pawn opening. [%cal Ge2e4] Controls the center immediately.} 
+e5 {Black mirrors White's central control.} 
+
+2. Nf3 {Develops the knight and attacks the e5 pawn. [%cal Gg1f3,Rf3e5]} 
+Nc6 {The natural defense of the e5 pawn.} 
+
+3. Bc4 {The Italian Game! The bishop targets the weak f7 square. [%cal Gf1c4,Rc4f7]} 
+Bc5 {The Giuoco Piano - Black develops symmetrically.} 
+
+( 3... Be7 {The Hungarian Defense - a solid but passive setup.} 
+4. d3 {White continues with a solid positional approach.} 
+Nf6 5. Ng5 {The Rousseau Gambit! A tricky try.} 
+O-O 6. f4 {White goes for a kingside attack.} 
+exf4 7. Bxf4 {With good compensation for the pawn.} )
+
+( 3... f5 {The Rousseau Gambit accepted! Very aggressive but risky.} 
+4. d3 {The solid response.} 
+fxe4 5. dxe4 Nf6 6. O-O {White has excellent development compensation.} )
+
+( 3... Nf6 {The Two Knights Defense - Black avoids the pin.} 
+4. Ng5 {The aggressive continuation. [%cal Rf3g5,Rg5f7]} 
+d5 {The Polerio Defense!} 
+5. exd5 Nxd5 
+( 5... Na5 {The main line of the Two Knights.} 
+6. Bb5+ c6 7. dxc6 bxc6 8. Be2 {With a complex position.} )
+6. Nxf7 {The famous knight sacrifice! [%csl Rf7]} 
+Kxf7 7. Qf3+ Ke6 {The king must advance - very dangerous!} )
+
+4. c3 {The main line of the Giuoco Piano. [%cal Gc2c3]} 
+Nf6 {Black develops the kingside knight.} 
+
+5. d4 {The center strike! [%cal Gd2d4,Rd4e5,Rd4c5]} 
+exd4 {Black accepts the challenge.} 
+
+( 5... Bb6 {The Moller Defense - avoiding the central tension.} 
+6. dxe5 Nxe4 7. Qd5 {White regains the piece with advantage.} )
+
+( 5... Bd6 {A solid retreat keeping the center.} 
+6. dxe5 Nxe5 7. Nxe5 Bxe5 8. f4 {White gets the bishop pair.} )
+
+6. cxd4 {[%cal Gc3d4]} 
+Bb4+ {The Greco Attack! Black gives check to disrupt White's development.} 
+
+( 6... Nxe4 {The Blackburne Gambit - very sharp!} 
+7. d5 {The best response.} 
+Nf6 8. dxc6 Nxc4 9. cxb7 {Material mayhem!} )
+
+7. Nc3 {[%cal Gb1c3]} 
+Nxe4 {Black wins the e4 pawn temporarily.} 
+
+8. O-O {[%cal Ge1g1] Castling with tempo due to the pin.} 
+Bxc3 {Black breaks the pin.} 
+
+( 8... Nxc3 {Alternative capture.} 
+9. bxc3 Bxc3 10. Qb3 {White has compensation.} )
+
+9. d5 {[%cal Gd4d5] The central advance!} 
+Bf6 {Black's pieces become awkwardly placed.} 
+
+10. Re1 {[%cal Gf1e1] Pinning the knight and increasing pressure.} 
+Ne7 {Forced retreat.} 
+
+11. Rxe4 {White regains the material with a great position.} 
+d6 {Black tries to consolidate.} 
+
+12. Bg5 {[%cal Gc1g5] Increasing the pressure on Black's position.} 
+Bxg5 13. Nxg5 {With a winning attack for White.} *

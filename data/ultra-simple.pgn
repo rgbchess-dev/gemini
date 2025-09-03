@@ -1,0 +1,73 @@
+[Event "Scandinavian Defense Course"]
+[Site "Chess Trainer"]
+[Date "2025.01.01"]
+[Round "?"]
+[White "Student"]
+[Black "Computer"]
+[Result "*"]
+[ECO "B01"]
+[Opening "Scandinavian Defense"]
+[Annotator "Chess Trainer"]
+
+{Complete Scandinavian Defense repertoire with the Qd8 retreat system.}
+
+1. e4 {White's most popular opening move.} 
+d5 {The Scandinavian Defense! Black immediately challenges the center.}
+
+2. exd5 {White captures the pawn.} 
+Qxd5 {Black recaptures with the queen.} 
+
+3. Nc3 {White develops with tempo, attacking the queen.}
+
+( 3. Nf3 {Alternative development.} 
+Qa5+ {Black gives check and keeps the queen active.} 
+4. Bd2 Qb6 {The queen finds a safe square and eyes b2.} )
+
+3... Qd8 {The queen retreats to safety. This is our main weapon - simple and sound.}
+
+4. d4 {White occupies the center.} 
+Nf6 {Black develops the knight naturally.}
+
+5. Nf3 {White's most frequent fifth move, following "knights before bishops".}
+
+( 5. Bd3 {Alternative bishop development.} 
+Bg4 {Black pins the knight.} 
+6. f3 Bd7 {The bishop retreats but Black has gained time.} )
+
+( 5. Be3 {Solid development.} 
+Bg4 {Black immediately challenges the center with the pin.} 
+6. f3 Bd7 7. Bd3 e6 {Black builds a solid structure.} )
+
+5... Bg4 {Black pins the knight and creates pressure on d4. This is more active than Bf5 in this position.}
+
+6. Bc4 {White threatens the tactical shot Bxf7+ followed by Ne5+.}
+
+( 6. Be2 {The solid approach.} 
+e6 {Black develops safely.} 
+7. h3 Bxf3 {Black exchanges to avoid being pushed around.} 
+8. Bxf3 c6 9. O-O Bd6 {Black has a solid position.} 
+10. Ne2 Nbd7 11. c4 O-O 12. Nc3 Qc7 {Black has achieved a comfortable setup.} )
+
+( 6. h3 {The most common continuation.} 
+Bxf3 {Black should exchange immediately.} 
+7. Qxf3 c6 {Preventing discoveries and preparing development.} 
+8. Qd3 e6 9. g3 Nbd7 10. Bg2 Bd6 {Black has equalized comfortably.} )
+
+6... e6 {Black must address the tactical threat on f7.}
+
+7. h3 {White forces the bishop to make a decision.} 
+Bxf3 {Best - Black exchanges before being kicked around.}
+
+8. Qxf3 {White's queen becomes active but also exposed.}
+
+( 8. gxf3 {Doubling pawns for piece activity.} 
+c6 9. f4 Bd6 10. O-O O-O {Black has good piece coordination.} )
+
+8... c6 {Black prevents discoveries and prepares queenside development.}
+
+9. O-O {White completes kingside development.}
+
+( 9. Ne2 {Alternative knight maneuver.} 
+Nbd7 10. O-O Bd6 11. b3 O-O 12. Bb2 a5 {Black gets counterplay.} )
+
+9... Qxd4 {Black can safely capture the central pawn now.} *

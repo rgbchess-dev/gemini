@@ -20,7 +20,21 @@
         "name": "Italian Game: Giuoco Pianissimo & Tricky Gambits",
         "author": "Community",
         "description": "An aggressive introduction to the Italian Game, focusing on the Giuoco Piano and Evans Gambit.",
-        "playerColor": "black",
+        "playerColor": "white",
         "path": "./data/italian-toth.json"
+    },
+    {
+        "id": "italian-variations-test",
+        "name": "Italian Game: Variations Study (PGN Test)",
+        "author": "Chess Trainer",
+        "description": "Test course for PGN variation extraction with [%cal] arrows and multiple lines",
+        "playerColor": "white",
+        "path": "./data/italian-variations-test.pgn"
+    },
+    {
+  "id": "ultra-simple",
+  "name": "Ultra Simple Test", 
+  "playerColor": "white",
+  "path": "./data/ultra-simple.pgn"
     }
 ]

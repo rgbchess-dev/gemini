@@ -1,0 +1,35 @@
+[Event "London System Complete Repertoire"]
+[Site "Chess Training Course"]
+[Date "2025.01.01"] 
+[Round "?"]
+[White "Student"]
+[Black "Computer"]
+[Result "*"]
+[Author "GM Simon Williams"]
+[SourceTitle "London System vs King's Indian Setup"]
+
+{Welcome to the London System! This solid opening gives White good chances for an advantage while avoiding massive theory. The key ideas are rapid development, central control, and kingside attack.}
+
+1. d4 {The London System starts with this flexible move, controlling e5 and c5.} d5 {Black's most solid response, establishing central presence.} 
+
+2. Nf3 {Develops the knight to its best square, preparing to support the e4 advance.} Nf6 {Black mirrors White's development.}
+
+3. Bf4 {The signature London System move! This bishop is perfectly placed on f4, controlling e5 and the long diagonal.} 
+
+( 3. Bg5 {This is the Trompowsky Attack, a related but different system.} h6 4. Bh4 c5 {Black gets good counterplay.} )
+
+3... c5 {Black challenges the center immediately. This is one of the main defensive setups.}
+
+( 3... e6 {The French Defense setup - very solid for Black.} 4. e3 Bd6 {Challenging our bishop.} 5. Bxd6 Qxd6 6. c4 {White gets a good position.} )
+
+( 3... g6 {The King's Indian setup - Black fianchettoes the bishop.} 4. e3 Bg7 5. h4! {A key attacking idea in the London!} h6 6. Bd3 O-O 7. Nbd2 {White has excellent attacking prospects.} )
+
+4. e3 {Solid and flexible, supporting the d4 pawn and preparing Bd3.} Nc6 {Natural development.}
+
+5. c3 {Preparing b2-b4 to gain space on the queenside.} Qb6 {Black puts pressure on the b2 pawn.}
+
+6. Qb3 {Trading queens simplifies the position in White's favor.} Qxb3 7. axb3 {White gets the better pawn structure and easier play.}
+
+( 6. b3 {A solid alternative, maintaining the pawn structure.} cxd4 7. exd4 Bf5 8. Bd3 {White has a slight edge.} )
+
+7... a6 {Preventing Nb5.} 8. Bd3 {The bishop finds its ideal square, eyeing the kingside.} e6 9. Nbd2 {Completing development.} Bd7 10. O-O {White has completed development with a solid, slightly better position.} *
