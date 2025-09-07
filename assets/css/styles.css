@@ -78,10 +78,28 @@ main {
     gap: 15px;
 }
 
+
 /* --- CONTROLS PANEL SECTIONS --- */
+#moveComment {
+  /* --- The Core Fix --- */
+  min-height: 100px;  /* Force it to always take up at least this much space */
+  overflow-y: auto;   /* Add a scrollbar if the comment is very long */
+
+  /* --- Styling to make it look like a box --- */
+  border: 1px solid var(--border-color); /* Use your existing border color */
+  border-radius: 4px;
+  padding: 8px;
+
+  /* --- From your inline style --- */
+  font-style: italic;
+  color: #aaa;
+  margin-top: 10px;
+  box-sizing: border-box; /* Important: ensures padding is inside the height */
+}
+
 .control-section {
     background-color: var(--surface-color);
-    padding: 15px;
+    padding: 5px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
 }
