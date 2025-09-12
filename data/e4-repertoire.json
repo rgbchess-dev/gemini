@@ -47,7 +47,7 @@
         "name": "Scandinavian: Valencian Variation (3...Qd8)",
         "description": "Main line vs the Valencian Variation.",
         "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nf6", "Bg5", "Nbd7", "Bc4", "Be7", "O-O", "a6", "a4", "c5", "dxc5", "Bxc5", "Ne4", "Be7", "Nd6+", "Bxd6", "Qxd6", "Ne4", "Qf4", "Nxg5", "Nxg5", "Nf6", "Rad1", "Bd7", "Rfe1", "Qb8", "Qh4", "Qc7", "Rd3", "h6", "Rg3", "O-O", "Nf3", "Kh8"],
+        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nf6", "Bg5", "Nbd7", "Bc4", "e6", "Nf3", "Be7", "O-O", "a6", "a4", "c5", "dxc5", "O-O", "Qe2", "Bxc5", "Rfd1", "b6", "Bxf6", "Qxf6", "Ne4", "Qe7", "Nxc5", "Qxc5", "Rd4", "Nf6", "Rad1", "Bb7"],
         "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "almost 40% Valencian Variation", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
       },
       {

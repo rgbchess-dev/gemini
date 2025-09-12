@@ -1,0 +1,76 @@
+{
+    "name": "Traxler Counter-Attack",
+    "playerColor": "black",
+    "orientation": "black",
+    "startingFen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "lines": [
+        {
+            "id": "traxler_theory_0",
+            "type": "theory",
+            "category": "Nxf7 Sacrifice Lines",
+            "name": "Line 1: Main Line",
+            "fen": null,
+            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Kf3", "Qf6+", "Kxe4", "d5+", "Bxd5", "Qf4+", "Kd3", "Qd4+", "Ke2", "Qxd5", "Kf1", "Qxf7+"],
+            "annotation": "The main line where White accepts the sacrifice and the king is hunted. This is the critical line.",
+            "annotations": [
+                { "type": "arrow", "from": "g5", "to": "f7", "color": "red" },
+                { "type": "arrow", "from": "c5", "to": "f2", "color": "green" },
+                { "type": "highlight", "square": "e4", "color": "green" }
+            ]
+        },
+        {
+            "id": "traxler_theory_1",
+            "type": "theory",
+            "category": "Nxf7 Sacrifice Lines",
+            "name": "Line 1.1: White tries Ke1",
+            "fen": null,
+            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Ke1", "Qh4+", "g3", "Nxg3", "hxg3", "Qxh1+", "Bf1", "O-O"],
+            "annotation": "White tries to hide with Ke1, but Black's queen joins the attack with decisive effect.",
+            "annotations": [
+                { "type": "arrow", "from": "e1", "to": "f1", "color": "blue" },
+                { "type": "arrow", "from": "d8", "to": "h4", "color": "green" },
+                { "type": "highlight", "square": "h1", "color": "red" }
+            ]
+        },
+        {
+            "id": "traxler_theory_2",
+            "type": "theory",
+            "category": "Nxf7 Sacrifice Lines",
+            "name": "Line 2: Kf1 Variation",
+            "fen": null,
+            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kf1", "Qe7", "Nxh8", "d5", "exd5", "Nd4", "c3", "Bg4", "Qa4+", "Nd7", "cxd4", "Qf6", "dxe5", "Qf4", "g3", "Bxg3+", "Kg2", "Qf2#"],
+            "annotation": "If White refuses the bishop sacrifice, Black develops the queen and gets a beautiful mating attack.",
+            "annotations": []
+        },
+        {
+            "id": "traxler_theory_3",
+            "type": "theory",
+            "category": "Bxf7+ Bishop Sacrifice",
+            "name": "Line 3: White sacs on f7",
+            "fen": null,
+            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Bxf7+", "Ke7", "Bb3", "Rf8", "Nc3", "Qe8", "O-O", "d6", "d3", "Qg6", "Nf3", "Bg4", "Bd2", "Nd4"],
+            "annotation": "White can try the bishop sacrifice instead. Black gets good compensation but the game is more complex.",
+            "annotations": []
+        },
+        {
+            "id": "traxler_exercise_0",
+            "type": "exercise",
+            "category": "Basic Tactics",
+            "name": "Find the Traxler Sacrifice",
+            "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p1N1/2B1P3/8/PPPP1PPP/RNBQK2R w KQkq - 4 5",
+            "moves": ["Bc5"],
+            "annotation": "White just played Ng5, attacking f7. How should Black respond to initiate the Traxler Counter-Attack?",
+            "annotations": []
+        },
+        {
+            "id": "traxler_exercise_1",
+            "type": "exercise",
+            "category": "King Hunt",
+            "name": "Continue the King Hunt",
+            "fen": "r1bqk2r/pppp1ppp/2n5/4p3/2B1n3/5K2/PPPP2PP/RNBQ3R b kq - 1 6",
+            "moves": ["Qf6+", "Kxe4", "d5+"],
+            "annotation": "White played 3.Kf3. Find the powerful move that brings your queen into the attack and continues to hunt the king.",
+            "annotations": []
+        }
+    ]
+}

@@ -63,7 +63,7 @@
             },
             {
                 "name": "Line 4: Quiet Retreat (Nf3)",
-                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nf3", "d5", "exd5", "Nxd5", "O-O", "O-O", "d3", "f5", "Ng5", "Qd6", "f4", "exf4", "Bxf4", "Nxf4", "Rxf4", "Bd6"],
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nf3", "d5", "exd5", "Nxd5", "O-O", "O-O", "d3", "f5", "Ng5", "Qd6"],
                 "description": "If White retreats quietly, Black gets excellent central control and attacking chances.",
                 "hint": "Against the quiet retreat, Black strikes in the center with d5!",
                 "evaluation": "Equal position with good play for Black",
@@ -71,7 +71,7 @@
             },
             {
                 "name": "Line 5: d4 Variation",
-                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "d4", "exd4", "O-O", "dxc3", "bxc3", "d6", "Re1+", "Kf8", "Nh3", "h6", "Nf4", "g5", "Nd5", "Nxd5", "Bxd5", "c6"],
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "d4", "d5", "exd5", "Nxd4", "d6", "O-O", "dxc7", "Qxc7"],
                 "description": "White can try d4 to open the center, but Black gets good piece play.",
                 "hint": "Against d4, Black takes and develops with good compensation",
                 "evaluation": "Approximately equal with active piece play",
@@ -79,7 +79,7 @@
             },
             {
                 "name": "Line 6: Nxf7 Declined - Nh3",
-                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nh3", "d5", "exd5", "Nxd5", "Bxd5", "Qxd5", "O-O", "O-O", "d3", "f5", "f4", "exf4", "Nxf4", "Qh5"],
+                "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nh3", "d5", "exd5", "Nxd5", "Bxd5", "Qxd5", "O-O", "O-O", "d3", "f5"],
                 "description": "White can retreat to h3 to avoid complications. Black gets active piece play.",
                 "hint": "Against Nh3, Black seizes the center with d5 and gets excellent development",
                 "evaluation": "Good compensation for Black with active pieces",

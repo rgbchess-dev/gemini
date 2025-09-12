@@ -67,14 +67,31 @@ export class ChessEngine {
         });
     }
     
+    // In /engine/chess-engine.js
+
+    // REPLACE your existing loadLine function with this one
     loadLine(lineData, startingFen = null) {
         this.currentLine = lineData;
         this.currentMoves = lineData.moves || [];
         this.moveIndex = 0;
         this.isLineActive = true;
-        if (startingFen) { this.chess.load(startingFen); } 
-        else { this.chess.reset(); }
+        
+        // --- CRITICAL FIX: Add a safety check ---
+        // Only call chess.load if startingFen is a valid string.
+        // Otherwise, just reset to the default starting position.
+        try {
+            if (startingFen && typeof startingFen === 'string') { 
+                this.chess.load(startingFen); 
+            } else { 
+                this.chess.reset(); 
+            }
+        } catch (e) {
+            console.error("Invalid FEN provided to chess.js, resetting board:", startingFen);
+            this.chess.reset();
+        }
+        
         this.updateBoard();
+        
         setTimeout(() => {
             if (this.shouldComputerMoveNow()) { this.playNextComputerMove(); }
         }, 100);

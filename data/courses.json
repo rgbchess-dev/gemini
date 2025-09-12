@@ -35,6 +35,6 @@
   "id": "ultra-simple",
   "name": "Ultra Simple Test", 
   "playerColor": "white",
-  "path": "./data/ultra-simple.pgn"
+  "path": "./data/traxler-test.json"
     }
 ]

@@ -1,4 +1,4 @@
-// Complete ui-manager.js with PGN annotation support
+// Complete ui-manager.js with PGN annotation support AND BUG FIXES
 // Replace your existing ui-manager.js with this complete version
 
 export class UIManager {
@@ -48,7 +48,8 @@ export class UIManager {
             positionInfo: document.getElementById('positionInfo'),
             moveComment: document.getElementById('moveComment'),
             backBtn: document.getElementById('backBtn'),
-            forwardBtn: document.getElementById('forwardBtn')
+            forwardBtn: document.getElementById('forwardBtn'),
+            hintBtn: document.getElementById('hintBtn') 
         };
     }
 
@@ -62,11 +63,10 @@ export class UIManager {
         if (this.elements.categorySelect) this.elements.categorySelect.value = state.category;
         if (this.elements.lineSelect) this.elements.lineSelect.value = state.lineIndex;
         
-        // Enhanced configuration for PGN support
-        this.config.showPgnAnnotations = true;     // Enable PGN arrows by default
-        this.config.showAnnotationInfo = false;    // Set to true for debugging
-        this.config.multipleArrows = true;         // Keep standard arrows enabled
-        this.config.maxMoves = 3;                  // Standard arrow settings
+        this.config.showPgnAnnotations = true;
+        this.config.showAnnotationInfo = false;
+        this.config.multipleArrows = true;
+        this.config.maxMoves = 3;
         this.config.showHints = true;
         
         this.updatePositionInfo(this.trainer.getCurrentLine());
@@ -74,7 +74,6 @@ export class UIManager {
         this.updateMovesList();
         this.updateMoveComment();
         
-        // Log annotation support status
         const currentLine = this.trainer.getCurrentLine();
         if (currentLine && currentLine.annotations) {
             console.log(`🔸 Line "${currentLine.name}" has PGN annotations:`, {
@@ -93,6 +92,21 @@ export class UIManager {
         this.trainer.addEventListener('categoryChanged', e => this.handleCategoryChanged(e.detail));
         this.trainer.addEventListener('lineComplete', e => this.handleLineComplete(e.detail));
         this.trainer.addEventListener('stepped', () => this.handleStep());
+
+        // --- FIX: Correctly implement the hint event listener ---
+        this.trainer.addEventListener('hint', e => {
+            const move = e.detail.move;
+            console.log(`UI received hint: Drawing arrow from ${move.from} to ${move.to}`);
+    
+            const engine = this.trainer.chessEngine;
+    
+            if (engine && engine.board) {
+                // Use the CORRECT Chessground function to draw a temporary blue hint arrow
+                engine.board.setAutoShapes([{ orig: move.from, dest: move.to, brush: 'blue' }]);
+            } else {
+                console.error('Cannot draw hint arrow: chessEngine or board object not found.');
+            }
+        });
     }
 
     attachUIListeners() {
@@ -129,6 +143,9 @@ export class UIManager {
         }
         if (this.elements.forwardBtn) {
             this.elements.forwardBtn.addEventListener('click', () => this.trainer.stepForward());
+        }
+        if (this.elements.hintBtn) {
+            this.elements.hintBtn.addEventListener('click', () => this.trainer.getHint());
         }
     }
     
@@ -170,11 +187,15 @@ export class UIManager {
         }
     }
 
+    // --- FIX: This function now correctly triggers a position load ---
     handleCategoryChanged(data) {
         this.populateLineSelect(data.lines);
         if (this.elements.lineSelect) {
             this.elements.lineSelect.value = 0;
         }
+        // This was the missing step: after changing category,
+        // we must explicitly tell the trainer to load the first line of the new category.
+        this.trainer.selectLine(0);
     }
 
     handleLineComplete(data) {
@@ -182,12 +203,19 @@ export class UIManager {
             this.elements.status.textContent = 'Line complete! Well done!';
             this.elements.status.classList.add('success');
         }
-        if (this.elements.successMessage) {
-            this.elements.successMessage.textContent = 'Line Complete!';
-            this.elements.successMessage.classList.add('show');
-            setTimeout(() => { 
-                this.elements.successMessage.classList.remove('show'); 
-            }, 3000);
+
+        if (this.trainer.currentMode === 'spaced_repetition') {
+            const card = this.trainer.getCurrentLine();
+            if (card) {
+                // 1. Tell the SRS manager to advance the stage for the card we just finished.
+                this.trainer.srsManager.advanceCardStage(card.id);
+
+                // 2. Automatically load the next position.
+                // This will either be the same card on its next stage, or a new card.
+                setTimeout(() => {
+                    this.trainer.loadCurrentPosition();
+                }, 1500); // 1.5 second delay for the user to see the success message
+            }
         }
     }
 
@@ -204,7 +232,6 @@ export class UIManager {
         const history = this.trainer.chessEngine.chess.history().slice(0, progress.current);
         
         if (history.length > 0) {
-            // OPTIMIZED: Use array join instead of string concatenation
             const moves = [];
             for (let i = 0; i < history.length; i++) {
                 if (i % 2 === 0) {
@@ -229,12 +256,10 @@ export class UIManager {
         
         let comment = '';
         
-        // Get regular comment (cleaned of annotations)
         if (line && line.comments && line.comments[commentIndex]) {
             comment = line.comments[commentIndex];
         }
         
-        // Add annotation info for debugging (optional)
         if (line && line.annotations && this.config.showAnnotationInfo) {
             const arrows = line.annotations.arrows.length;
             const highlights = line.annotations.highlights.length;
@@ -247,60 +272,50 @@ export class UIManager {
         this.elements.moveComment.textContent = comment;
     }
     
-    // COMPLETE refreshArrows method with dual arrow system:
-    refreshArrows() {
-        try {
-            this.clearArrows();
-            if (this.trainer.currentMode !== 'theory') { 
-                return; 
-            }
-            
-            const playerColor = this.trainer.chessEngine.playerColor;
-            const currentTurn = this.trainer.chessEngine.getCurrentColor();
-            
-            const line = this.trainer.getCurrentLine();
-            const progress = this.trainer.getProgress().chessProgress;
-            const currentIndex = progress.current;
-            
-            if (!line) {
-                return;
-            }
+// INSIDE ui-manager.js
+// REPLACE your entire refreshArrows function with this one.
 
-            const shapes = [];
-            
-            // 1. Add PGN annotation arrows (DISTINCT COLORS - highest priority)
-            if (line.annotations && line.annotations.arrows && this.config.showPgnAnnotations !== false) {
-                const pgnArrows = this.createPgnAnnotationShapes(line, currentIndex);
-                shapes.push(...pgnArrows);
-                if (pgnArrows.length > 0) {
-                    console.log(`🔸 Added ${pgnArrows.length} PGN annotation arrows`);
+// In /engine/ui-manager.js
+
+    // REPLACE your existing refreshArrows function with this one
+    refreshArrows() {
+        this.clearArrows();
+        const line = this.trainer.getCurrentLine();
+        
+        // Only run arrow logic if we have a valid line and are in an appropriate mode
+        if (!line || (this.trainer.currentMode !== 'theory' && this.trainer.currentMode !== 'spaced_repetition')) {
+            return;
+        }
+
+        // --- NEW: Stage-aware logic ---
+        const stage = (this.trainer.currentMode === 'spaced_repetition') ? (line.reviewStage || 1) : 1;
+
+        if (stage === 1) {
+            // STAGE 1 ("Theory"): Show all guiding arrows (green/yellow/blue)
+            if (line.computedMoves) {
+                const progress = this.trainer.getProgress().chessProgress;
+                const shapes = this.createArrowShapes(line.computedMoves, progress.current);
+                if (shapes.length > 0) this.trainer.chessEngine.board.setAutoShapes(shapes);
+            }
+        } else if (stage === 2) {
+            // STAGE 2 ("Piece Hint"): Highlight the starting square of the next move
+            const progress = this.trainer.getProgress().chessProgress;
+            const nextMoveSan = line.moves[progress.current];
+            if (nextMoveSan) {
+                // We need to find the 'from' square. The simplest way is to ask chess.js
+                const tempChess = new Chess(this.trainer.chessEngine.chess.fen());
+                const moveObject = tempChess.move(nextMoveSan, { sloppy: true });
+                if (moveObject) {
+                    const fromSquare = moveObject.from;
+                    this.trainer.chessEngine.board.setAutoShapes([{ orig: fromSquare, brush: 'yellow' }]);
                 }
             }
-            
-            // 2. Add computed move arrows (STANDARD COLORS - if enabled and applicable)
-            if (this.config.multipleArrows && 
-                (playerColor === 'both' || playerColor === currentTurn)) {
-                
-                if (line.computedMoves && currentIndex < line.computedMoves.length) {
-                    const moveArrows = this.createArrowShapes(line.computedMoves, currentIndex);
-                    shapes.push(...moveArrows);
-                    if (moveArrows.length > 0) {
-                        console.log(`🎯 Added ${moveArrows.length} computed move arrows`);
-                    }
-                }
-            }
-            
-            // Apply all shapes to the board
-            if (shapes.length > 0) {
-                this.trainer.chessEngine.board.setAutoShapes(shapes);
-            }
-            
-        } catch (error) {
-            console.error('❌ Arrow error:', error);
+        } else if (stage === 3) {
+            // STAGE 3 ("No Assistance"): Do nothing.
+            return;
         }
     }
 
-    // RESTORE missing createArrowShapes method (STANDARD TOOL ARROWS):
     createArrowShapes(computedMoves, startIndex) {
         const shapes = [];
         const maxMoves = Math.min(this.config.maxMoves || 3, computedMoves.length - startIndex);
@@ -314,11 +329,10 @@ export class UIManager {
             let color;
 
             if (isPlayerMove) {
-                // STANDARD TOOL COLORS for computed moves
                 color = playerMovesShown === 0 ? 'green' : 'yellow';
                 playerMovesShown++;
             } else {
-                color = 'blue'; // Computer moves are always blue
+                color = 'blue';
             }
             
             if (color) {
@@ -331,7 +345,6 @@ export class UIManager {
         return shapes;
     }
 
-    // RESTORE missing isPlayerMove method:
     isPlayerMove(moveIndex) {
         const playerColor = this.trainer.chessEngine.playerColor;
         if (playerColor === 'both') return true;
@@ -345,66 +358,40 @@ export class UIManager {
         return playerColor === moveColor;
     }
 
-    /**
-     * Create DISTINCT arrow shapes from PGN [%cal] annotations
-     */
     createPgnAnnotationShapes(line, currentIndex) {
         const shapes = [];
+        if (!line.annotations || !line.annotations.arrows) { return shapes; }
         
-        if (!line.annotations || !line.annotations.arrows) {
-            return shapes;
-        }
-        
-        // Show PGN arrows - these use DISTINCT colors from the tool arrows
         for (const arrow of line.annotations.arrows) {
-            // Convert PGN annotation color to DISTINCT chessground brush
             const brush = this.mapPgnColorToBrush(arrow.color);
-            
-            shapes.push({
-                orig: arrow.from,
-                dest: arrow.to,
-                brush: brush
-            });
+            shapes.push({ orig: arrow.from, dest: arrow.to, brush: brush });
         }
         
-        // Add square highlights from PGN [%csl] annotations
         if (line.annotations.highlights) {
             for (const highlight of line.annotations.highlights) {
-                shapes.push({
-                    orig: highlight.square,
-                    brush: this.mapPgnColorToBrush(highlight.color)
-                });
+                shapes.push({ orig: highlight.square, brush: this.mapPgnColorToBrush(highlight.color) });
             }
         }
-        
         return shapes;
     }
 
-    /**
-     * Map PGN annotation colors to DISTINCT chessground brush colors
-     * These are DIFFERENT from the standard tool colors (green/yellow/blue)
-     */
     mapPgnColorToBrush(pgnColor) {
         const colorMap = {
-            'green': 'paleGreen',    // PGN green -> pale green (distinct from tool green)
-            'red': 'red',            // PGN red -> red
-            'yellow': 'paleBlue',    // PGN yellow -> pale blue (distinct from tool yellow)  
-            'blue': 'purple',        // PGN blue -> purple (distinct from tool blue)
-            'orange': 'orange'       // PGN orange -> orange (if available)
+            'green': 'paleGreen',
+            'red': 'red',
+            'yellow': 'paleBlue',
+            'blue': 'purple',
+            'orange': 'orange'
         };
-        
         return colorMap[pgnColor] || 'paleGreen';
     }
 
-    // Toggle PGN annotations:
     togglePgnAnnotations() {
         this.config.showPgnAnnotations = !this.config.showPgnAnnotations;
         this.refreshArrows();
-        
         const status = this.config.showPgnAnnotations ? 'enabled' : 'disabled';
         console.log(`🔸 PGN annotations ${status}`);
         
-        // Show visual feedback
         if (this.elements.status) {
             this.elements.status.textContent = `PGN annotations ${status}`;
             this.elements.status.classList.remove('success', 'error');

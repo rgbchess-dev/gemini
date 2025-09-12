@@ -1,41 +1,38 @@
-// /engine/spaced-repetition.js - Complete working implementation
 export class SpacedRepetitionManager {
     constructor(openingName) {
         this.openingName = openingName;
+        this.storageKey = `srs-progress-${this.openingName}`;
         this.cards = new Map();
-        this.currentSession = {
-            studied: 0,
-            correct: 0,
-            startTime: Date.now()
-        };
+        this.currentSession = { studied: 0, correct: 0, startTime: Date.now() };
     }
 
     createCard(positionId, data) {
+        if (this.cards.has(positionId)) {
+            const existingCard = this.cards.get(positionId);
+            existingCard.moves = data.moves;
+            existingCard.name = data.name;
+            if (!existingCard.startingFen) existingCard.startingFen = data.startingFen;
+            // --- ADDITION: Ensure existing cards have a reviewStage ---
+            if (!existingCard.reviewStage) existingCard.reviewStage = 1;
+            return existingCard;
+        }
+        
         const card = {
             id: positionId,
             opening: this.openingName,
             lineIndex: data.lineIndex,
-            
             interval: 1,
             repetitions: 0,
             easeFactor: 2.5,
             nextReview: Date.now(),
-            
-            lineCompletions: 0,
-            correctTestAttempts: 0,
-            totalTestAttempts: 0,
             streak: 0,
             lastStudied: null,
-            currentMoveInLine: 0,
             difficulty: 'new',
-            
+            // --- ADDITION: New cards always start at Stage 1 ---
+            reviewStage: 1, 
             moves: data.moves || [],
             name: data.name,
-            category: data.category,
-            description: data.description,
-            hint: data.hint,
-            playerColor: data.playerColor || 'black',
-            orientation: data.orientation || 'black'
+            startingFen: data.startingFen
         };
         
         this.cards.set(positionId, card);
@@ -43,131 +40,118 @@ export class SpacedRepetitionManager {
     }
 
     generateCardsFromOpening(openingData) {
-        console.log('=== GENERATING SPACED REPETITION CARDS ===');
-        
-        if (!openingData || !openingData.lines || !openingData.lines.length) {
-            console.error('ERROR: No lines in opening data');
-            return;
-        }
+        if (!openingData || !openingData.lines) return;
 
-        const playerColor = openingData.playerColor || 'black';
-        const orientation = openingData.orientation || 'black';
-        let cardCount = 0;
+        // --- CRITICAL FIX: Use the course's starting FEN to create cards ---
+        const courseStartingFen = openingData.startingFen || 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
         openingData.lines.forEach((line, lineIndex) => {
-            if (!line.moves || !line.moves.length) {
-                console.warn(`Skipping line ${lineIndex}: no moves`);
-                return;
-            }
+            if (!line.moves || !line.moves.length) return;
 
             const positionId = `${this.openingName}_line${lineIndex}`;
-            const cardData = {
+            this.createCard(positionId, {
                 lineIndex: lineIndex,
                 moves: line.moves,
                 name: line.name,
-                category: line.category || 'Main Lines',
-                description: line.description || `Learn ${line.name}`,
-                hint: line.hint || `Study ${line.name} variation`,
-                playerColor: playerColor,
-                orientation: orientation
-            };
-
-            this.createCard(positionId, cardData);
-            cardCount++;
+                // For now, we assume all lines start from the course's main FEN.
+                // This is a robust assumption that prevents crashes.
+                startingFen: courseStartingFen
+            });
         });
 
-        console.log(`Generated ${cardCount} cards for ${this.openingName}`);
-        console.log(`Total cards available: ${this.cards.size}`);
+        console.log(`Synced ${openingData.lines.length} lines. Total cards: ${this.cards.size}`);
+        this.saveProgress();
     }
+    
+    // ... (The rest of this file is correct: getNextCard, updateCardAfterReview, load/saveProgress etc.) ...
+    // (Paste the rest of your working functions here)
+
 
     getNextCard() {
         const allCards = Array.from(this.cards.values());
+        if (allCards.length === 0) return null;
+        const now = Date.now();
+        const dueCards = allCards.filter(card => card.nextReview <= now);
+        if (dueCards.length === 0) return null;
+        dueCards.sort((a, b) => {
+            const aIsNew = a.difficulty === 'new';
+            const bIsNew = b.difficulty === 'new';
+            if (aIsNew && !bIsNew) return -1;
+            if (!aIsNew && bIsNew) return 1;
+            return a.nextReview - b.nextReview;
+        });
+        return dueCards[0];
+    }
+
+    // --- NEW FUNCTION: Advance a card to the next stage or complete it ---
+    advanceCardStage(cardId) {
+        const card = this.cards.get(cardId);
+        if (!card) return;
+
+        if (card.reviewStage < 3) {
+            card.reviewStage++;
+            console.log(`Advancing card "${card.name}" to Stage ${card.reviewStage}`);
+        } else {
+            // The user has completed Stage 3. This is a fully successful review.
+            this.updateCardAfterReview(cardId, 5); // Grade it as "perfect"
+            card.reviewStage = 1; // Reset for the next time it's due
+            console.log(`✅ Card "${card.name}" review complete! Resetting to Stage 1.`);
+        }
+        this.saveProgress();
+    }
+
+    // --- NEW FUNCTION: Demote a card back to Stage 1 after a mistake ---
+    demoteCard(cardId) {
+        const card = this.cards.get(cardId);
+        if (!card) return;
         
-        if (allCards.length === 0) {
-            console.log('No cards available');
-            return null;
+        if (card.reviewStage > 1) {
+            console.log(`Mistake made. Demoting card "${card.name}" back to Stage 1.`);
+            card.reviewStage = 1;
         }
-
-        const learningCards = allCards.filter(card => card.lineCompletions < 2);
-        if (learningCards.length > 0) {
-            console.log(`Returning learning card: ${learningCards[0].name}`);
-            return learningCards[0];
-        }
-
-        const testingCards = allCards.filter(card => card.lineCompletions >= 2);
-        if (testingCards.length > 0) {
-            console.log(`Returning testing card: ${testingCards[0].name}`);
-            return testingCards[0];
-        }
-
-        console.log(`Returning first available card: ${allCards[0].name}`);
-        return allCards[0];
+        
+        // Penalize the card's interval for the mistake
+        this.updateCardAfterReview(cardId, 1); // Grade it as "failed"
+        this.saveProgress();
     }
 
     updateCardAfterReview(cardId, quality) {
         const card = this.cards.get(cardId);
         if (!card) return;
-
         card.lastStudied = Date.now();
         this.currentSession.studied++;
         
-        const isLearningPhase = card.lineCompletions < 2;
-        
-        if (isLearningPhase) {
-            if (quality >= 3) {
-                this.currentSession.correct++;
-            }
+        if (quality >= 3) {
+            this.currentSession.correct++;
+            card.streak++;
+            if (card.difficulty === 'new') { card.difficulty = 'learning'; card.interval = 1; } 
+            else if (card.difficulty === 'learning') { card.difficulty = 'testing'; card.interval = 6; } 
+            else { card.interval = Math.round(card.interval * card.easeFactor); }
+            card.repetitions++;
+            card.easeFactor += (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+            if (card.easeFactor < 1.3) card.easeFactor = 1.3;
         } else {
-            card.totalTestAttempts++;
-            
-            if (quality >= 3) {
-                card.correctTestAttempts++;
-                card.streak++;
-                this.currentSession.correct++;
-                
-                if (card.repetitions === 0) {
-                    card.interval = 1;
-                } else if (card.repetitions === 1) {
-                    card.interval = 6;
-                } else {
-                    card.interval = Math.round(card.interval * card.easeFactor);
-                }
-                
-                card.repetitions++;
-                card.easeFactor = card.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
-                
-                if (card.easeFactor < 1.3) {
-                    card.easeFactor = 1.3;
-                }
-                
-                card.difficulty = card.repetitions >= 2 && card.easeFactor >= 2.5 ? 'mastered' : 'testing';
-            } else {
-                card.streak = 0;
-                card.repetitions = 0;
-                card.interval = 1;
-                card.difficulty = 'learning';
-                card.lineCompletions = 0;
-                card.currentMoveInLine = 0;
-            }
-            
-            card.nextReview = Date.now() + (card.interval * 24 * 60 * 60 * 1000);
+            card.streak = 0;
+            card.repetitions = 0;
+            card.interval = 1;
+            card.difficulty = 'learning';
         }
+        
+        card.nextReview = Date.now() + (card.interval * 24 * 60 * 60 * 1000);
+        this.saveProgress();
     }
 
     getStats() {
         const cards = Array.from(this.cards.values());
-        
         return {
             totalCards: cards.length,
-            learningCards: cards.filter(c => c.lineCompletions < 2).length,
-            testingCards: cards.filter(c => c.lineCompletions >= 2).length,
-            masteredCards: cards.filter(c => c.difficulty === 'mastered').length,
-            
+            newCards: cards.filter(c => c.difficulty === 'new').length,
+            learningCards: cards.filter(c => c.difficulty === 'learning').length,
+            testingCards: cards.filter(c => c.difficulty === 'testing').length,
             session: {
                 studied: this.currentSession.studied,
                 correct: this.currentSession.correct,
-                successRate: this.currentSession.studied > 0 ? 
-                    Math.round((this.currentSession.correct / this.currentSession.studied) * 100) : 0,
+                successRate: this.currentSession.studied > 0 ? Math.round((this.currentSession.correct / this.currentSession.studied) * 100) : 0,
                 timeMinutes: Math.round((Date.now() - this.currentSession.startTime) / 60000)
             }
         };
@@ -177,11 +161,30 @@ export class SpacedRepetitionManager {
         this.currentSession = { studied: 0, correct: 0, startTime: Date.now() };
     }
 
+    // --- THIS IS THE CRITICAL FUNCTION THAT MUST EXIST ---
     loadProgress() {
-        console.log(`Loading spaced repetition data for ${this.openingName}`);
+        try {
+            const savedData = localStorage.getItem(this.storageKey);
+            if (savedData) {
+                const deserializedCards = JSON.parse(savedData);
+                this.cards = new Map(deserializedCards);
+                console.log(`✅ Loaded progress: ${this.cards.size} cards for ${this.openingName}`);
+            } else {
+                console.log('ℹ️ No saved progress found. Starting fresh.');
+            }
+        } catch (error) {
+            console.error('❌ Failed to load progress:', error);
+            this.cards = new Map();
+        }
     }
 
     saveProgress() {
-        console.log(`Saved progress: ${this.cards.size} cards tracked`);
+        try {
+            const serializedCards = JSON.stringify(Array.from(this.cards.entries()));
+            localStorage.setItem(this.storageKey, serializedCards);
+            console.log(`✅ Saved progress: ${this.cards.size} cards tracked.`);
+        } catch (error) {
+            console.error('❌ Failed to save progress:', error);
+        }
     }
 }
