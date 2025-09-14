@@ -1,356 +1,957 @@
 {
-  "name": "Winning 1.e4 Repertoire - Scandinavian Module",
-  "author": "IM Andras Toth / colt45nine",
-  "description": "The complete Scandinavian Defense lines from the PGN study, with all variations as separate lines.",
-  "playerColor": "white",
-  "orientation": "white",
-  "theory": {
+    "name": "Winning 1.e4 Repertoire - Scandinavian Module",
+    "playerColor": "white",
+    "orientation": "white",
     "startingFen": null,
     "lines": [
-       {
-        "name": "Scandinavian: Introduction",
-        "description": "Side variation from the introduction chapter.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "Main Line"]
-      },     
-       {
-        "name": "Scandinavian: Main Line, Mieses Variation (3...Qa5)",
-        "description": "Main line against the Mieses Variation.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Nxe5"],
-        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", ""]
-      },
-
-      {
-        "name": "Scandinavian: Modern, Richter Variation (2...Nf6)",
-        "description": "Against the Portuguese Gambit line of the Scandinavian.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Nf6", "d4", "Nxd5", "Nf3", "g6", "c4", "Nb6", "Nc3", "Bg7", "c5", "Nd5", "Bc4", "Nxc3", "bxc3", "O-O", "O-O", "b6", "Re1", "bxc5", "Ng5", "e6", "Qf3", "c6", "Qh3", "h6", "Ne4"],
-        "comments": ["", "This move introduces the Scandinavian Defense...", "", "This move introduces the Portuguese Gambit...", "White simply gets on with their usual agendas...", "Marshall variation", "", "Richter Variation", "This natural space grab is our bread and butter...", "", "", "", "At first, this move is a positional mistake...", "", "", "", "", "", "", "", "This is a very important move to remember...", "", "Although12.Bg5 is also a good move here...", "", "", "", "", "", "White has a dominant position with fabulous attacking prospects."]
-      },
-      {
-        "name": "Scandinavian: Anderssen Counterattack (3...Qe6+)",
-        "description": "Side variation from the introduction chapter.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qe6+", "Be2", "Nc6", "d4", "Qf5", "Nb5", "Qd7", "Bf4", "e5", "dxe5", "Bb4+"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "most played but is mistake", "", "", "", "", "", "", "the only move", ""]
-      },
-      {
-        "name": "Scandinavian: Anderssen Counterattack (Side: vs 7.d5)",
-        "description": "Side variation within the 3...Qe6+ line.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qe6+", "Be2", "Nc6", "d4", "Qf5", "Nb5", "Qd7", "d5", "Nb8", "Bf4", "Na6", "Qd4", "Nf6", "O-O-O"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "most played but is mistake", "", "", "", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Valencian Variation (3...Qd8)",
-        "description": "Main line vs the Valencian Variation.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nf6", "Bg5", "Nbd7", "Bc4", "e6", "Nf3", "Be7", "O-O", "a6", "a4", "c5", "dxc5", "O-O", "Qe2", "Bxc5", "Rfd1", "b6", "Bxf6", "Qxf6", "Ne4", "Qe7", "Nxc5", "Qxc5", "Rd4", "Nf6", "Rad1", "Bb7"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "almost 40% Valencian Variation", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Valencian Variation (Side: vs 4...Nc6)",
-        "description": "Side variation within the Valencian Variation.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "Nc6", "d5", "Nb8", "Bc4", "e5", "Qe2", "Nd7", "f4", "Bd6", "Nf3", "Qe7", "O-O", "Ngf6", "Re1", "e4", "Nxe4", "O-O", "Nxd6", "Qxd6", "Qf2"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", "", "so many bad move that doesnt look bad for black ... only 6...e5! is not loosing", "", "", "", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Valencian Variation (Side: vs 4...g6)",
-        "description": "Side variation within the Valencian Variation.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "g6", "Nf3", "Bg7", "Be3", "Nf6", "Qd2", "O-O", "O-O-O"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", "", "", "", "", "this is good for white ..Black has too many theories1 to know!"]
-      },
-      {
-        "name": "Scandinavian: Valencian Variation (Side: vs 4...e6)",
-        "description": "Side variation within the Valencian Variation.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "e6", "Nf3", "Nf6", "Bc4"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Valencian, Ilundain Variation (4...c6)",
-        "description": "Side variation within the Valencian Variation.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qd8", "d4", "c6", "Bc4", "Nf6", "Nf3", "b5"],
-        "comments": ["", "The Scandinavian is a great opening for the active Black player...", "", "Scandinavian Defense: Mieses-Kotroc Variation", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Mieses Variation (Side: vs 11...Nd5)",
-        "description": "Side variation from the Mieses chapter.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Nd5", "Nxd7", "Kxd7", "Bg2", "Nxc3", "Bxc3", "Bb4", "Bxb4", "Qxb4+"],
-        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Mieses Variation (Side: vs 11...h6)",
-        "description": "Side variation from the Mieses chapter.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "h6", "Nxg6", "fxg6", "Bc4", "O-O-O", "Qe2"],
-        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Mieses Variation (Side: vs 11...h5)",
-        "description": "Side variation from the Mieses chapter.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "h5", "Nxg6", "fxg6", "g5", "Nd5", "Bg2", "Nxc3", "bxc3"],
-        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Scandinavian: Mieses Variation (Side: vs 11...Bb4)",
-        "description": "Side variation from the Mieses chapter.",
-        "category": "Scandinavian Defense",
-        "moves": ["e4", "d5", "exd5", "Qxd5", "Nc3", "Qa5", "d4", "Nf6", "Nf3", "c6", "Bd2", "Bg4", "h3", "Bh5", "g4", "Bg6", "Ne5", "Nbd7", "f4", "e6", "h4", "Bb4", "h5", "Bxc3", "Bxc3", "Qd5", "hxg6", "Qxh1"],
-        "comments": ["", "", "", "", "", "", "", "", "", "", "We eliminate the pin...", "", "", "", "bishop have no time to breath", "", "Our standard knight move.", "", "", "", "The black bishop on g6 is experiencing extreme discomfort.", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Petrov Defense: Nimzowitsch Attack (Main Line)",
-        "description": "An active approach against the solid Petrov Defense.",
-        "category": "Petrov Defense",
-        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nf3", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Be3", "Nc6", "Qd2", "Be6", "O-O-O", "Qd7", "Kb1", "Bf6", "h4", "O-O-O", "Nd4", "Nxd4", "Bxd4", "Bxd4", "Qxd4"],
-        "comments": ["","","","This move introduces the Petrov Defense...","The most popular move and the most principled one...","","","","This is the second most popular move...","","The right recapture...","By far the most popular move...","White's main goal in this system is to quickly castle queenside...","7...d5 is too early here...","White consistently carries out the intention...","The bishop is annoyingly aiming at a2...","Anyway! It turns out that the a2-pawn is poisoned!","Black floats the possibility of castling either side...","Simply securing the a2-pawn...","","This is a typical method we use to begin a kingside attack...","","This is an important move to remember!","","","","And White has the upper hand..."]
-      },
-      {
-        "name": "Petrov Defense: Three Knights Game (Side)",
-        "description": "Side variation from the Petrov chapter.",
-        "category": "Petrov Defense",
-        "moves": ["e4", "e5", "Nf3", "Nf6", "Nc3"],
-        "comments": ["","","","", "Black can easily transpose into the Four Knights Game with 3...Nc6..."]
-      },
-      {
-        "name": "Petrov Defense: Steinitz Variation (Side)",
-        "description": "Side variation from the Petrov chapter.",
-        "category": "Petrov Defense",
-        "moves": ["e4", "e5", "Nf3", "Nf6", "d4", "Nxe4", "Bd3", "d5", "Nxe5", "Nd7", "Nxd7", "Bxd7", "O-O", "Bd6", "c4", "c6", "cxd5", "cxd5", "Nc3", "Nxc3", "bxc3", "O-O", "Qh5", "g6", "Qxd5", "Qc7"],
-        "comments": ["","","","", "Modern or Steinitz variation...", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-      },
-      {
-        "name": "Petrov Defense: Cochrane Gambit (Side)",
-        "description": "Side variation from the Petrov chapter.",
-        "category": "Petrov Defense",
-        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nxf7", "Kxf7", "d4", "c5", "Nc3", "cxd4", "Bc4+", "d5", "Nxd5", "Be6", "Bg5", "Nbd7", "O-O", "Qc8", "Nxf6", "Qxc4", "Qh5+", "g6", "Qf3", "Nxf6", "Bxf6", "Bg7", "Bxd4+", "Kg8", "Bxg7", "Kxg7", "b3", "Qc5", "Rad1", "Rhd8", "c4", "Qe5", "h3", "Rxd1", "Rxd1"],
-        "comments": ["","","","","","","There are a few lines that are quite dangerous...","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Petrov Defense: Nimzowitsch (Side: Poisoned a2 pawn)",
-        "description": "Side variation from the Petrov chapter.",
-        "category": "Petrov Defense",
-        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "d6", "Nf3", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Be3", "Nc6", "Qd2", "Be6", "O-O-O", "Bxa2", "b3", "a5", "Kb2", "a4", "Ra1", "axb3", "cxb3", "Bxb3", "Rxa8", "Qxa8", "Kxb3", "Qa1", "Qb2", "Qd1+", "Qc2", "Qa1", "Qc1", "Na5+", "Kc2", "Qa4+", "Kb1", "Nc4", "Bxc4", "Qxc4", "Qa3", "O-O", "Kc2", "Qe4+", "Kd2", "Qd5+", "Kc2", "Qe4+", "Kc1", "d5", "Qb3", "Ra8", "Kd2", "c6", "Rc1", "b5", "Ke2", "Ra3", "Qc2", "Qc4+", "Qd3", "Qxd3+", "Kxd3", "b4", "Nd4", "c5", "Nb5"],
-        "comments": ["","","","","","","","","","","","","","","","","","","go to sleep bishop","","","","","","","","","","","","the only good move here","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","WAS THE ONLY GOOD MOVE","",""]
-      },
-      {
-        "name": "Petrov Defense: OTB Game Example",
-        "description": "An example game vs the Russian Game.",
-        "category": "Petrov Defense",
-        "moves": ["e4", "e5", "Nf3", "Nf6", "Nxe5", "Qe7", "Nf3", "d6", "Qe2", "Qxe4", "Qxe4+", "Nxe4", "d4", "Nc6", "Bb5", "Bd7", "Be3", "O-O-O", "a4", "Kb8", "O-O", "Nb4", "Na3", "a6", "Bc4", "f6", "d5", "Bxa4", "c3", "Nc2", "Nxc2", "Bxc2", "Nd4", "b5", "Rxa6", "bxc4", "Nc6+", "Kc8", "Ra8+", "Kb7", "Rxd8"],
-        "comments": ["","","","","","Inaccuracy. d6 was best.","10000 players+ played 4...d6...","Blunder. Nxe4 was best.","I have to admit I played too fast there...","","","position back to =...","","","","","","","","","","","","","Inaccuracy. Bxd7 was best.","Mistake. Bxa4 was best.","","Blunder. c6 was best.","","Inaccuracy. b5 was best.","","","","Inaccuracy. Nxc3 was best.","","Checkmate is now unavoidable...","","","","","",""]
-      },
-      {
-        "name": "Caro-Kann: Bronstein-Larsen (Main Line)",
-        "description": "Facing the ...gxf6 line in the Caro-Kann.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "Be2", "e6", "O-O", "Qc7", "c4", "Nd7", "Nh4", "Bxe2", "Qxe2", "O-O-O", "d5", "exd5", "cxd5", "cxd5", "Be3"],
-        "comments": ["","","","","","","","This move leads to two very different positions...","","With this quirky move Black takes several risks...","Unlike in the system with exf6...","Against such pins our gut reaction is always to kick the bishop immediately...","The text move breaks the pin...","","The g-file attack is nothing more than an illusion...","","","","This unusual move here has multiple benefits...","","","","This central break is the key idea!","","","","And White has a tremendous attacking position..."]
-      },
-      {
-        "name": "Caro-Kann: Bronstein-Larsen (Side: vs 7.h3?)",
-        "description": "Side variation from the Bronstein-Larsen chapter.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3", "Qxd4", "Be2", "Nd7", "O-O", "Ne5"],
-        "comments": ["","","","","","","","","","", "", "", "","Bxf3!","","","THIS WAY WHITE IS UNDEVELOPED...","","","",""]
-      },
-      {
-        "name": "Caro-Kann: Karpov Variation Trap",
-        "description": "An aggressive trap in the Karpov Variation.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nd7", "Ng5", "h6", "Ne6", "Qa5+", "Bd2", "Qb6", "Bd3", "fxe6", "Qh5+", "Kd8", "Ba5"],
-        "comments": ["","","","","","","","This line is called the Karpov Variation...","An unorthodox move in return...","This is a common mistake here...","This knight sortie is one of the key ideas...","This leads to a famous opening trap.","","","White can still leave the knight hanging!","","","","This stunning geometrical motif decides the game. The queen is lost!"]
-      },
-      {
-        "name": "Caro-Kann: Classical, Lobron System",
-        "description": "A solid, strategic approach against the Classical Caro-Kann.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "h5", "Bh7", "Nf3", "e6", "Bd3", "Bxd3", "Qxd3", "Nd7", "Bd2", "Ngf6", "O-O-O", "Be7", "Qe2", "O-O", "Nf1"],
-        "comments": ["","This move introduces the Caro-Kann Defense...","As always, when given the chance...","","The most thematic response...","","","The vast majority of times, black plays the solid 3...dxe4...","","","This move tickles the bishop...","","This pawn thrust has a long-term benefit too...","","","","The active 'Capablanca bishop' needs to be dealt with.","","","","","11.Bf4 is also possible here...","","","","This useful move removes the queen from the d-file...","","With Black having committed to opposite side castling, we adjust our plans!"]
-      },
-      {
-        "name": "Caro-Kann: Von Hennig Gambit",
-        "description": "An aggressive gambit line against the Caro-Kann.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Bc4", "Nf6", "f3", "h6", "fxe4", "Bg4", "Nf3", "Bxf3", "gxf3", "e6", "Bd2", "Nh5", "Qe2", "Be7", "O-O-O", "g5", "d5", "Bd6", "e5", "Bc5", "dxe6", "fxe6", "f4", "Nxf4", "Bxf4", "Nd7", "Qh5+", "Kf8", "Bxe6", "gxf4"],
-        "comments": ["","","","Caro-Kann. I don't have any knowledge of the theory...","","","I see a chance to gambit a pawn...","","","","I don't see the point of h6...","","","","Really pleased with that exchange...","","My mouse slipped here...","They don't take the pawn...","I develop my queen and get ready to castle...","Their get a queen-bishop battery going on h5...","Finally developed! Time to rip it open and attack.","Terrible. Their position was probably already lost...","","","Perhaps this is not the strongest move here...","A bad move, but there aren't really any good moves left...","","","Driving their knight backwards...","A huge blunder, and apparently they realized it.","","","","","",""]
-      },
-            {
-        "name": "Caro-Kann: Bronstein-Larsen (Main Line)",
-        "description": "Facing the ...gxf6 line in the Caro-Kann.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "Be2", "e6", "O-O", "Qc7", "c4", "Nd7", "Nh4", "Bxe2", "Qxe2", "O-O-O", "d5", "exd5", "cxd5", "cxd5", "Be3"],
-        "comments": ["","","","","","","","This move leads to two very different positions...","","With this quirky move Black takes several risks...","Unlike in the system with exf6...","Against such pins our gut reaction is always to kick the bishop immediately...","The text move breaks the pin...","","The g-file attack is nothing more than an illusion...","","","","This unusual move here has multiple benefits...","","","","This central break is the key idea!","","","","And White has a tremendous attacking position..."]
-      },
-      {
-        "name": "Caro-Kann: Bronstein-Larsen (Side: vs 7.h3?)",
-        "description": "Side variation from the Bronstein-Larsen chapter.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nf6", "Nxf6+", "gxf6", "Nf3", "Bg4", "h3", "Bxf3", "Qxf3", "Qxd4", "Be2", "Nd7", "O-O", "Ne5"],
-        "comments": ["","","","","","","","","","", "", "", "","Bxf3!","","","THIS WAY WHITE IS UNDEVELOPED...","","","",""]
-      },
-      {
-        "name": "Caro-Kann: Karpov Variation Trap",
-        "description": "An aggressive trap in the Karpov Variation.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Nd7", "Ng5", "h6", "Ne6", "Qa5+", "Bd2", "Qb6", "Bd3", "fxe6", "Qh5+", "Kd8", "Ba5"],
-        "comments": ["","","","","","","","This line is called the Karpov Variation...","An unorthodox move in return...","This is a common mistake here...","This knight sortie is one of the key ideas...","This leads to a famous opening trap.","","","White can still leave the knight hanging!","","","","This stunning geometrical motif decides the game. The queen is lost!"]
-      },
-      {
-        "name": "Caro-Kann: Classical, Lobron System",
-        "description": "A solid, strategic approach against the Classical Caro-Kann.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Nxe4", "Bf5", "Ng3", "Bg6", "h4", "h6", "h5", "Bh7", "Nf3", "e6", "Bd3", "Bxd3", "Qxd3", "Nd7", "Bd2", "Ngf6", "O-O-O", "Be7", "Qe2", "O-O", "Nf1"],
-        "comments": ["","This move introduces the Caro-Kann Defense...","As always, when given the chance...","","The most thematic response...","","","The vast majority of times, black plays the solid 3...dxe4...","","","This move tickles the bishop...","","This pawn thrust has a long-term benefit too...","","","","The active 'Capablanca bishop' needs to be dealt with.","","","","","11.Bf4 is also possible here...","","","","This useful move removes the queen from the d-file...","","With Black having committed to opposite side castling, we adjust our plans!"]
-      },
-      {
-        "name": "Caro-Kann: Von Hennig Gambit",
-        "description": "An aggressive gambit line against the Caro-Kann.",
-        "category": "Caro-Kann Defense",
-        "moves": ["e4", "c6", "d4", "d5", "Nc3", "dxe4", "Bc4", "Nf6", "f3", "h6", "fxe4", "Bg4", "Nf3", "Bxf3", "gxf3", "e6", "Bd2", "Nh5", "Qe2", "Be7", "O-O-O", "g5", "d5", "Bd6", "e5", "Bc5", "dxe6", "fxe6", "f4", "Nxf4", "Bxf4", "Nd7", "Qh5+", "Kf8", "Bxe6", "gxf4"],
-        "comments": ["","","","Caro-Kann. I don't have any knowledge of the theory...","","","I see a chance to gambit a pawn...","","","","I don't see the point of h6...","","","","Really pleased with that exchange...","","My mouse slipped here...","They don't take the pawn...","I develop my queen and get ready to castle...","Their get a queen-bishop battery going on h5...","Finally developed! Time to rip it open and attack.","Terrible. Their position was probably already lost...","","","Perhaps this is not the strongest move here...","A bad move, but there aren't really any good moves left...","","","Driving their knight backwards...","A huge blunder, and apparently they realized it.","","","","","",""]
-      },
-      {
-        "name": "French Defense: Advance, Paulsen Attack",
-        "description": "Example game vs the most played moves in the French Advance.",
-        "category": "French Defense",
-        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","Black following with a mistake in 1 game on 2 :D"]
-      },
-      {
-        "name": "French Defense: Paulsen Attack (Side: vs 13.f4)",
-        "description": "Side variation from the French Defense chapter.",
-        "category": "French Defense",
-        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "f4", "Bc5", "Bxc5", "Qxc5+", "Kh1", "O-O", "Nb5", "Bd7", "Nd6"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "French Defense: Paulsen Attack (Side: vs 13...Qxe5?)",
-        "description": "Side variation from the French Defense chapter.",
-        "category": "French Defense",
-        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3", "Qxe5", "f4", "Qb8", "Bd4", "b6", "f5", "Qc7", "Na4"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","as long we dont play that White is in great shape","","","many strong moves that can only stinks for Black","","AGAIN THIS WAS NEEDED","",""]
-      },
-      {
-        "name": "French Defense: Paulsen Attack (Side: vs 14...Qc7?)",
-        "description": "Side variation from the French Defense chapter.",
-        "category": "French Defense",
-        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3", "Qxe5", "f4", "Qc7", "Rac1", "Qd7", "Nb5", "Bd6", "Nxd6+", "Qxd6", "Bc5", "Qd8", "f5", "h5", "fxe6", "Bxe6", "Qe5", "Rh7", "Rce1", "Qd7", "Qxe6+", "fxe6", "Rf8#"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","AGAIN THIS WAS NEEDED","","","","","","","LEADS TO EAS FORCED MATE","",""]
-      },
-      {
-        "name": "French Defense: Paulsen Attack (Side: vs 19.Qg4?)",
-        "description": "Side variation from the French Defense chapter.",
-        "category": "French Defense",
-        "moves": ["e4", "e6", "d4", "d5", "e5", "c5", "c3", "Nc6", "Nf3", "Qb6", "Be2", "cxd4", "cxd4", "Nge7", "O-O", "Nf5", "Nc3", "Nfxd4", "Nxd4", "Nxd4", "Be3", "Nxe2+", "Qxe2", "Qc7", "a3", "Qxe5", "f4", "Qc7", "Rac1", "Qd8", "Nb5", "Bd6", "Nxd6+", "Qxd6", "Bc5", "Qd8", "Qg4"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Pirc Defense: Austrian Attack (Main Line)",
-        "description": "An aggressive setup against the Pirc Defense.",
-        "category": "Pirc Defense",
-        "moves": ["e4", "d6", "d4", "Nf6", "Nc3", "g6", "Be3", "Bg7", "Qd2", "O-O", "f3", "Nbd7", "Nge2", "c6", "Bh6", "b5", "h4", "b4", "Nd1", "Ba6", "Bxg7", "Kxg7", "h5"],
-        "comments": ["","","","Technically speaking, this move followed by g6 introduces the Pirc...","","Note that 3...e5 transposes back to the Philidor Defense...","","","","This move is really asking for trouble...","Taking the g4-square away from Black's knight...","","","","We want to trade the strong defender on g7.","","We start our kingside attack!","","Although this move looks like we are undeveloping our knight...","","","","And White's attack punches through."]
-      },
-      {
-        "name": "Pirc Defense: Transposing to Philidor",
-        "description": "Side variation showing the transposition to the Philidor Defense.",
-        "category": "Pirc Defense",
-        "moves": ["e4", "d6", "d4", "Nf6", "Nc3", "e5", "dxe5", "dxe5", "Qxd8+", "Kxd8", "Bg5", "Be6"],
-        "comments": ["","","","","","","","","","","",""]
-      },
-      {
-        "name": "Pirc Defense: Philidor, Lion Variation",
-        "description": "Side variation showing the Lion Variation of the Philidor.",
-        "category": "Pirc Defense",
-        "moves": ["e4", "d6", "d4", "Nf6", "Nc3", "e5", "Nf3", "Nbd7", "Bc4", "Be7", "O-O", "O-O", "Re1", "exd4", "Nxd4"],
-        "comments": ["","","","","","","C41 Philidor Defense: Lion Variation","","","","","","","",""]
-      },
-      {
-        "name": "Modern Defense: Gurgenidze System (Main Line)",
-        "description": "Tackling the hypermodern Modern Defense.",
-        "category": "Modern Defense",
-        "moves": ["e4", "g6", "d4", "Bg7", "Nc3", "c6", "f4", "d5", "e5", "h5", "Nf3", "Nh6", "Be3", "Bg4", "h3", "Bxf3", "Qxf3", "Nf5", "Bf2", "h4", "Bd3", "e6", "O-O", "Nd7", "Ne2", "Bf8", "b3", "Be7", "c4"],
-        "comments": ["","The Modern or Robatsch Defense...","","","","","","The Gurgenidze system...","The most principled choice...","This strange-looking pawn move is designed to secure the f5-square...","White continues their development in the most standard fashion...","","In the spirit of quick development...","Since Black is building a pawn chain on the white squares...","Forcing Black to clarify their intentions on the kingside.","","","","White secures the bishop...","Black has to deny White the g2-g4 break...","Developing the last piece.","","White's goal now is to blow up the center...","","","","The last preparatory measure...","","And White is clearly better..."]
-      },
-      {
-        "name": "Modern Defense: Gurgenidze (Side: vs 14.c4)",
-        "description": "Side variation from the Modern Defense chapter.",
-        "category": "Modern Defense",
-        "moves": ["e4", "g6", "d4", "Bg7", "Nc3", "c6", "f4", "d5", "e5", "h5", "Nf3", "Nh6", "Be3", "Bg4", "h3", "Bxf3", "Qxf3", "Nf5", "Bf2", "h4", "Bd3", "e6", "O-O", "Nd7", "Ne2", "Bf8", "c4", "dxc4", "Bxc4", "Nb6"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","BLACK CANT COMPLAIN HERE","",""]
-      },
-      {
-        "name": "Alekhine's Defense: Exchange, Voronezh (Main Line)",
-        "description": "Fighting the Alekhine's Defense with the Voronezh Variation.",
-        "category": "Alekhine's Defense",
-        "moves": ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "c4", "Nb6", "exd6", "cxd6", "Nc3", "g6", "Be3", "Bg7", "Rc1", "O-O", "b3", "e5", "dxe5", "dxe5", "Qxd8", "Rxd8", "c5", "N6d7", "Bc4", "Nc6", "Ne4"],
-        "comments": ["","This slightly provocative knight jump introduces the Alekhine Defense...","The principled response.","","Centah! When space is offered, we should grab it.","","The other main theoretical line begins with 4.Nf3...","","The text aims to resolve the battle for the center immediately...","","","","White is following a unique method of development...","","White removes the rook from the scope of the g7-bishop...","","The final step of bolstering the center.","Interestingly, Black does not really have anything else available!","White is aiming to play an endgame...","","","","Forcing Black to move backward...","","This natural developing move helps us control the d5-square...","","The pending Ng5 and Nd6 threats make White's position easier to play..."]
-      },
-      {
-        "name": "Alekhine's Defense: Four Pawns Attack (Side)",
-        "description": "Side variation: The Four Pawns Attack.",
-        "category": "Alekhine's Defense",
-        "moves": ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "c4", "Nb6", "f4", "dxe5", "fxe5", "Bf5", "Nf3", "Nc6", "Be2", "e6", "O-O", "Be7", "Nc3", "O-O"],
-        "comments": ["","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Alekhine's Defense: Four Pawns (Side: vs 6...Nc6)",
-        "description": "Side variation within the Four Pawns Attack.",
-        "category": "Alekhine's Defense",
-        "moves": ["e4", "Nf6", "e5", "Nd5", "d4", "d6", "c4", "Nb6", "f4", "dxe5", "fxe5", "Nc6", "Be3", "Bf5", "Nc3", "e6", "Nf3", "Bb4", "Be2", "Na5"],
-        "comments": ["","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Alapin Sicilian: vs 2...e5 (Main Line)",
-        "description": "Handling the 2...e5 response in the Alapin.",
-        "category": "Alapin Sicilian",
-        "moves": ["e4", "c5", "c3", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "d5", "exd5", "Nxd5", "d4", "cxd4", "O-O", "Be7", "Nxf7", "Kxf7", "Qf3+", "Ke6", "a4"],
-        "comments": ["","","This move introduces the Alapin Sicilian...","","","","","","","","","","","","","","","","","","This absolutely shocking move is the key to retaining our attack..."]
-      },
-      {
-        "name": "Alapin Sicilian: vs 2...e5 (Side: 6...Na5)",
-        "description": "Side variation within the 2...e5 Alapin.",
-        "category": "Alapin Sicilian",
-        "moves": ["e4", "c5", "c3", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "d5", "exd5", "Na5", "Bb5+", "Bd7", "Qa4", "Be7", "Bxd7+", "Nxd7", "Ne6", "fxe6", "dxe6"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Alapin Sicilian: Barmen Defense (Main Line)",
-        "description": "A sharp, tactical line against the Barmen Defense.",
-        "category": "Alapin Sicilian",
-        "moves": ["e4", "c5", "c3", "d5", "exd5", "Qxd5", "d4", "Nf6", "Nf3", "Bg4", "dxc5", "Qxc5", "Na3", "Nc6", "Nb5", "Qb6", "Be3", "Qa5", "b4", "Qd8", "Qxd8+", "Kxd8", "Ng5", "Bh5", "Be2", "Bg6", "O-O-O+", "Kc8", "Bd3", "Bh5", "Bf5+", "e6", "Nxe6", "Bxd1", "Nc5+"],
-        "comments": ["","","","","","B22 Sicilian Defense: Alapin Variation, Barmen Defense...","","","This is the major junction here...","Barmen Defense : Modern line","Although the most popular move here is 6.Be2...","The endgame variation with6...Qxd1+ in analysed in the main course.","This knight move introduces various attacking schemes...","Blunder .. played 20% of the time","that knight gonna be annoying for sure :D","","","","","","","","Going for the unprotected f7-pawn.","","Yet another tempo move...","","White's initiative is overpowering...","","","","","","","","game is over"]
-      },
-      {
-        "name": "Alapin Sicilian: Smith-Morra Declined (Main Line)",
-        "description": "Against the 2...Nf6 line in the Alapin.",
-        "category": "Alapin Sicilian",
-        "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "Nf3", "e6", "cxd4", "d6", "Bc4", "Be7", "O-O", "O-O", "Qe2", "b6", "Rd1", "Bb7", "Bxd5", "Bxd5", "Nc3", "Bb7", "d5"],
-        "comments": ["","","","This move challenges the e4-pawn...","","","","transposition : Smith-Morra Declined","White is no hurry to recapture on d4...","","","","","","","","Beginning a common maneuver: Qe2-e4-g4.","The e6-pawn blocks the development of the c8-bishop...","This move introduces a very unique plan:","","This is most surprising...","","","","This reveals the point of both Rd1 and the unusual trade on d5..."]
-      },
-      {
-        "name": "Alapin Sicilian: Smith-Morra Declined (Side: 6.Bc4)",
-        "description": "Side variation within the Smith-Morra Declined.",
-        "category": "Alapin Sicilian",
-        "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "Nf3", "Nc6", "Bc4", "Nb6", "Bb3", "dxc3", "Nxc3", "g6", "Ng5", "Nxe5", "f4", "h6", "fxe5", "hxg5", "O-O", "e6", "Ne4"],
-        "comments": ["","","","","","","","","","","Once again, we prefer development over recovering material.","","","This is just a touch too greedy.","","","","very bad move","","","","","Black's position looks awful...","","white is unstopable"]
-      },
-      {
-        "name": "Alapin Sicilian: Smith-Morra Declined (Side: 9...Nxe5)",
-        "description": "Side variation within the Smith-Morra Declined.",
-        "category": "Alapin Sicilian",
-        "moves": ["e4", "c5", "c3", "Nf6", "e5", "Nd5", "d4", "cxd4", "Nf3", "Nc6", "Bc4", "Nb6", "Bb3", "dxc3", "Nxc3", "g6", "Ng5", "e6", "Nge4", "Nxe5", "Bg5", "Be7", "Bxe7", "Qxe7", "Qd4", "f6", "f4", "Nc6", "Nd6+"],
-        "comments": ["","","","","","","","","","","","","","","","","","even if this is 2x better it is not enough to stop White Tactics!","","","","","","","","","","",""]
-      }
+        {
+            "id": "scandinavian_module_theory_0",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Introduction",
+            "fen": null,
+            "annotation": "Side variation from the introduction chapter.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" },
+                { "san": "Qa5", "comment": "Main Line" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_1",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Main Line, Mieses Variation (3...Qa5)",
+            "fen": null,
+            "annotation": "Main line against the Mieses Variation.",
+            "moves": [
+                { "san": "e4" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Qxd5" }, { "san": "Nc3" }, { "san": "Qa5" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nf3" }, { "san": "c6" },
+                { "san": "Bd2", "comment": "We eliminate the pin..." },
+                { "san": "Bg4" }, { "san": "h3" }, { "san": "Bh5" },
+                { "san": "g4", "comment": "bishop have no time to breath" },
+                { "san": "Bg6" },
+                { "san": "Ne5", "comment": "Our standard knight move." },
+                { "san": "Nbd7" }, { "san": "f4" }, { "san": "e6" },
+                { "san": "h4", "comment": "The black bishop on g6 is experiencing extreme discomfort." },
+                { "san": "Nxe5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_2",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Modern, Richter Variation (2...Nf6)",
+            "fen": null,
+            "annotation": "Against the Portuguese Gambit line of the Scandinavian.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "This move introduces the Scandinavian Defense..." },
+                { "san": "exd5" },
+                { "san": "Nf6", "comment": "This move introduces the Portuguese Gambit..." },
+                { "san": "d4", "comment": "White simply gets on with their usual agendas..." },
+                { "san": "Nxd5", "comment": "Marshall variation" },
+                { "san": "Nf3" },
+                { "san": "g6", "comment": "Richter Variation" },
+                { "san": "c4", "comment": "This natural space grab is our bread and butter..." },
+                { "san": "Nb6" }, { "san": "Nc3" }, { "san": "Bg7" },
+                { "san": "c5", "comment": "At first, this move is a positional mistake..." },
+                { "san": "Nd5" }, { "san": "Bc4" }, { "san": "Nxc3" }, { "san": "bxc3" }, { "san": "O-O" }, { "san": "O-O" },
+                { "san": "b6", "comment": "This is a very important move to remember..." },
+                { "san": "Re1" },
+                { "san": "bxc5", "comment": "Although12.Bg5 is also a good move here..." },
+                { "san": "Ng5" }, { "san": "e6" }, { "san": "Qf3" }, { "san": "c6" }, { "san": "Qh3" }, { "san": "h6" },
+                { "san": "Ne4", "comment": "White has a dominant position with fabulous attacking prospects." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_3",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Anderssen Counterattack (3...Qe6+)",
+            "fen": null,
+            "annotation": "Side variation from the introduction chapter.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" }, { "san": "Qe6+" },
+                { "san": "Be2", "comment": "most played but is mistake" },
+                { "san": "Nc6" }, { "san": "d4" }, { "san": "Qf5" }, { "san": "Nb5" }, { "san": "Qd7" }, { "san": "Bf4" },
+                { "san": "e5", "comment": "the only move" },
+                { "san": "dxe5" }, { "san": "Bb4+" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_4",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Anderssen Counterattack (Side: vs 7.d5)",
+            "fen": null,
+            "annotation": "Side variation within the 3...Qe6+ line.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" }, { "san": "Qe6+" },
+                { "san": "Be2", "comment": "most played but is mistake" },
+                { "san": "Nc6" }, { "san": "d4" }, { "san": "Qf5" }, { "san": "Nb5" }, { "san": "Qd7" }, { "san": "d5" }, { "san": "Nb8" }, { "san": "Bf4" }, { "san": "Na6" }, { "san": "Qd4" }, { "san": "Nf6" }, { "san": "O-O-O" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_5",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Valencian Variation (3...Qd8)",
+            "fen": null,
+            "annotation": "Main line vs the Valencian Variation.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" },
+                { "san": "Qd8", "comment": "almost 40% Valencian Variation" },
+                { "san": "d4" }, { "san": "Nf6" }, { "san": "Bg5" }, { "san": "Nbd7" }, { "san": "Bc4" }, { "san": "e6" }, { "san": "Nf3" }, { "san": "Be7" }, { "san": "O-O" }, { "san": "a6" }, { "san": "a4" }, { "san": "c5" }, { "san": "dxc5" }, { "san": "O-O" }, { "san": "Qe2" }, { "san": "Bxc5" }, { "san": "Rfd1" }, { "san": "b6" }, { "san": "Bxf6" }, { "san": "Qxf6" }, { "san": "Ne4" }, { "san": "Qe7" }, { "san": "Nxc5" }, { "san": "Qxc5" }, { "san": "Rd4" }, { "san": "Nf6" }, { "san": "Rad1" }, { "san": "Bb7" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_6",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Valencian Variation (Side: vs 4...Nc6)",
+            "fen": null,
+            "annotation": "Side variation within the Valencian Variation.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" }, { "san": "Qd8" }, { "san": "d4" }, { "san": "Nc6" }, { "san": "d5" }, { "san": "Nb8" },
+                { "san": "Bc4", "comment": "so many bad move that doesnt look bad for black ... only 6...e5! is not loosing" },
+                { "san": "e5" }, { "san": "Qe2" }, { "san": "Nd7" }, { "san": "f4" }, { "san": "Bd6" }, { "san": "Nf3" }, { "san": "Qe7" }, { "san": "O-O" }, { "san": "Ngf6" }, { "san": "Re1" }, { "san": "e4" }, { "san": "Nxe4" }, { "san": "O-O" }, { "san": "Nxd6" }, { "san": "Qxd6" }, { "san": "Qf2" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_7",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Valencian Variation (Side: vs 4...g6)",
+            "fen": null,
+            "annotation": "Side variation within the Valencian Variation.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" }, { "san": "Qd8" }, { "san": "d4" }, { "san": "g6" }, { "san": "Nf3" }, { "san": "Bg7" }, { "san": "Be3" }, { "san": "Nf6" }, { "san": "Qd2" }, { "san": "O-O" },
+                { "san": "O-O-O", "comment": "this is good for white ..Black has too many theories1 to know!" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_8",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Valencian Variation (Side: vs 4...e6)",
+            "fen": null,
+            "annotation": "Side variation within the Valencian Variation.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" }, { "san": "Qd8" }, { "san": "d4" }, { "san": "e6" }, { "san": "Nf3" }, { "san": "Nf6" }, { "san": "Bc4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_9",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Valencian, Ilundain Variation (4...c6)",
+            "fen": null,
+            "annotation": "Side variation within the Valencian Variation.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d5", "comment": "The Scandinavian is a great opening for the active Black player..." },
+                { "san": "exd5" },
+                { "san": "Qxd5", "comment": "Scandinavian Defense: Mieses-Kotroc Variation" },
+                { "san": "Nc3" }, { "san": "Qd8" }, { "san": "d4" }, { "san": "c6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "Nf3" }, { "san": "b5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_10",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Mieses Variation (Side: vs 11...Nd5)",
+            "fen": null,
+            "annotation": "Side variation from the Mieses chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Qxd5" }, { "san": "Nc3" }, { "san": "Qa5" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nf3" }, { "san": "c6" },
+                { "san": "Bd2", "comment": "We eliminate the pin..." },
+                { "san": "Bg4" }, { "san": "h3" }, { "san": "Bh5" },
+                { "san": "g4", "comment": "bishop have no time to breath" },
+                { "san": "Bg6" },
+                { "san": "Ne5", "comment": "Our standard knight move." },
+                { "san": "Nbd7" }, { "san": "f4" }, { "san": "e6" },
+                { "san": "h4", "comment": "The black bishop on g6 is experiencing extreme discomfort." },
+                { "san": "Nd5" }, { "san": "Nxd7" }, { "san": "Kxd7" }, { "san": "Bg2" }, { "san": "Nxc3" }, { "san": "Bxc3" }, { "san": "Bb4" }, { "san": "Bxb4" }, { "san": "Qxb4+" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_11",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Mieses Variation (Side: vs 11...h6)",
+            "fen": null,
+            "annotation": "Side variation from the Mieses chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Qxd5" }, { "san": "Nc3" }, { "san": "Qa5" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nf3" }, { "san": "c6" },
+                { "san": "Bd2", "comment": "We eliminate the pin..." },
+                { "san": "Bg4" }, { "san": "h3" }, { "san": "Bh5" },
+                { "san": "g4", "comment": "bishop have no time to breath" },
+                { "san": "Bg6" },
+                { "san": "Ne5", "comment": "Our standard knight move." },
+                { "san": "Nbd7" }, { "san": "f4" }, { "san": "e6" },
+                { "san": "h4", "comment": "The black bishop on g6 is experiencing extreme discomfort." },
+                { "san": "h6" }, { "san": "Nxg6" }, { "san": "fxg6" }, { "san": "Bc4" }, { "san": "O-O-O" }, { "san": "Qe2" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_12",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Mieses Variation (Side: vs 11...h5)",
+            "fen": null,
+            "annotation": "Side variation from the Mieses chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Qxd5" }, { "san": "Nc3" }, { "san": "Qa5" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nf3" }, { "san": "c6" },
+                { "san": "Bd2", "comment": "We eliminate the pin..." },
+                { "san": "Bg4" }, { "san": "h3" }, { "san": "Bh5" },
+                { "san": "g4", "comment": "bishop have no time to breath" },
+                { "san": "Bg6" },
+                { "san": "Ne5", "comment": "Our standard knight move." },
+                { "san": "Nbd7" }, { "san": "f4" }, { "san": "e6" },
+                { "san": "h4", "comment": "The black bishop on g6 is experiencing extreme discomfort." },
+                { "san": "h5" }, { "san": "Nxg6" }, { "san": "fxg6" }, { "san": "g5" }, { "san": "Nd5" }, { "san": "Bg2" }, { "san": "Nxc3" }, { "san": "bxc3" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_13",
+            "type": "theory",
+            "category": "Scandinavian Defense",
+            "name": "Scandinavian: Mieses Variation (Side: vs 11...Bb4)",
+            "fen": null,
+            "annotation": "Side variation from the Mieses chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Qxd5" }, { "san": "Nc3" }, { "san": "Qa5" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nf3" }, { "san": "c6" },
+                { "san": "Bd2", "comment": "We eliminate the pin..." },
+                { "san": "Bg4" }, { "san": "h3" }, { "san": "Bh5" },
+                { "san": "g4", "comment": "bishop have no time to breath" },
+                { "san": "Bg6" },
+                { "san": "Ne5", "comment": "Our standard knight move." },
+                { "san": "Nbd7" }, { "san": "f4" }, { "san": "e6" },
+                { "san": "h4", "comment": "The black bishop on g6 is experiencing extreme discomfort." },
+                { "san": "Bb4" }, { "san": "h5" }, { "san": "Bxc3" }, { "san": "Bxc3" }, { "san": "Qd5" }, { "san": "hxg6" }, { "san": "Qxh1" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_14",
+            "type": "theory",
+            "category": "Petrov Defense",
+            "name": "Petrov Defense: Nimzowitsch Attack (Main Line)",
+            "fen": null,
+            "annotation": "An active approach against the solid Petrov Defense.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" },
+                { "san": "Nf3", "comment": "This move introduces the Petrov Defense..." },
+                { "san": "Nf6" },
+                { "san": "Nxe5", "comment": "The most popular move and the most principled one..." },
+                { "san": "d6" }, { "san": "Nf3" }, { "san": "Nxe4" },
+                { "san": "Nc3", "comment": "This is the second most popular move..." },
+                { "san": "Nxc3" },
+                { "san": "dxc3", "comment": "The right recapture..." },
+                { "san": "Be7", "comment": "By far the most popular move..." },
+                { "san": "Be3", "comment": "White's main goal in this system is to quickly castle queenside..." },
+                { "san": "Nc6", "comment": "7...d5 is too early here..." },
+                { "san": "Qd2", "comment": "White consistently carries out the intention..." },
+                { "san": "Be6", "comment": "The bishop is annoyingly aiming at a2..." },
+                { "san": "O-O-O", "comment": "Anyway! It turns out that the a2-pawn is poisoned!" },
+                { "san": "Qd7", "comment": "Black floats the possibility of castling either side..." },
+                { "san": "Kb1", "comment": "Simply securing the a2-pawn..." },
+                { "san": "Bf6" },
+                { "san": "h4", "comment": "This is a typical method we use to begin a kingside attack..." },
+                { "san": "O-O-O" },
+                { "san": "Nd4", "comment": "This is an important move to remember!" },
+                { "san": "Nxd4" }, { "san": "Bxd4" }, { "san": "Bxd4" },
+                { "san": "Qxd4", "comment": "And White has the upper hand..." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_15",
+            "type": "theory",
+            "category": "Petrov Defense",
+            "name": "Petrov Defense: Three Knights Game (Side)",
+            "fen": null,
+            "annotation": "Side variation from the Petrov chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nf6" },
+                { "san": "Nc3", "comment": "Black can easily transpose into the Four Knights Game with 3...Nc6..." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_16",
+            "type": "theory",
+            "category": "Petrov Defense",
+            "name": "Petrov Defense: Steinitz Variation (Side)",
+            "fen": null,
+            "annotation": "Side variation from the Petrov chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nf6" },
+                { "san": "d4", "comment": "Modern or Steinitz variation..." },
+                { "san": "Nxe4" }, { "san": "Bd3" }, { "san": "d5" }, { "san": "Nxe5" }, { "san": "Nd7" }, { "san": "Nxd7" }, { "san": "Bxd7" }, { "san": "O-O" }, { "san": "Bd6" }, { "san": "c4" }, { "san": "c6" }, { "san": "cxd5" }, { "san": "cxd5" }, { "san": "Nc3" }, { "san": "Nxc3" }, { "san": "bxc3" }, { "san": "O-O" }, { "san": "Qh5" }, { "san": "g6" }, { "san": "Qxd5" }, { "san": "Qc7" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_17",
+            "type": "theory",
+            "category": "Petrov Defense",
+            "name": "Petrov Defense: Cochrane Gambit (Side)",
+            "fen": null,
+            "annotation": "Side variation from the Petrov chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nf6" }, { "san": "Nxe5" }, { "san": "d6" },
+                { "san": "Nxf7", "comment": "There are a few lines that are quite dangerous..." },
+                { "san": "Kxf7" }, { "san": "d4" }, { "san": "c5" }, { "san": "Nc3" }, { "san": "cxd4" }, { "san": "Bc4+" }, { "san": "d5" }, { "san": "Nxd5" }, { "san": "Be6" }, { "san": "Bg5" }, { "san": "Nbd7" }, { "san": "O-O" }, { "san": "Qc8" }, { "san": "Nxf6" }, { "san": "Qxc4" }, { "san": "Qh5+" }, { "san": "g6" }, { "san": "Qf3" }, { "san": "Nxf6" }, { "san": "Bxf6" }, { "san": "Bg7" }, { "san": "Bxd4+" }, { "san": "Kg8" }, { "san": "Bxg7" }, { "san": "Kxg7" }, { "san": "b3" }, { "san": "Qc5" }, { "san": "Rad1" }, { "san": "Rhd8" }, { "san": "c4" }, { "san": "Qe5" }, { "san": "h3" }, { "san": "Rxd1" }, { "san": "Rxd1" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_18",
+            "type": "theory",
+            "category": "Petrov Defense",
+            "name": "Petrov Defense: Nimzowitsch (Side: Poisoned a2 pawn)",
+            "fen": null,
+            "annotation": "Side variation from the Petrov chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nf6" }, { "san": "Nxe5" }, { "san": "d6" }, { "san": "Nf3" }, { "san": "Nxe4" }, { "san": "Nc3" }, { "san": "Nxc3" }, { "san": "dxc3" }, { "san": "Be7" }, { "san": "Be3" }, { "san": "Nc6" }, { "san": "Qd2" }, { "san": "Be6" }, { "san": "O-O-O" },
+                { "san": "Bxa2", "comment": "go to sleep bishop" },
+                { "san": "b3" }, { "san": "a5" }, { "san": "Kb2" }, { "san": "a4" }, { "san": "Ra1" }, { "san": "axb3" }, { "san": "cxb3" }, { "san": "Bxb3" }, { "san": "Rxa8" }, { "san": "Qxa8" }, { "san": "Kxb3" },
+                { "san": "Qa1", "comment": "the only good move here" },
+                { "san": "Qb2" }, { "san": "Qd1+" }, { "san": "Qc2" }, { "san": "Qa1" }, { "san": "Qc1" }, { "san": "Na5+" }, { "san": "Kc2" }, { "san": "Qa4+" }, { "san": "Kb1" }, { "san": "Nc4" }, { "san": "Bxc4" }, { "san": "Qxc4" }, { "san": "Qa3" }, { "san": "O-O" }, { "san": "Kc2" }, { "san": "Qe4+" }, { "san": "Kd2" }, { "san": "Qd5+" }, { "san": "Kc2" }, { "san": "Qe4+" },
+                { "san": "Kc1", "comment": "WAS THE ONLY GOOD MOVE" },
+                { "san": "d5" }, { "san": "Qb3" }, { "san": "Ra8" }, { "san": "Kd2" }, { "san": "c6" }, { "san": "Rc1" }, { "san": "b5" }, { "san": "Ke2" }, { "san": "Ra3" }, { "san": "Qc2" }, { "san": "Qc4+" }, { "san": "Qd3" }, { "san": "Qxd3+" }, { "san": "Kxd3" }, { "san": "b4" }, { "san": "Nd4" }, { "san": "c5" }, { "san": "Nb5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_19",
+            "type": "theory",
+            "category": "Petrov Defense",
+            "name": "Petrov Defense: OTB Game Example",
+            "fen": null,
+            "annotation": "An example game vs the Russian Game.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nf6" },
+                { "san": "Nxe5", "comment": "Inaccuracy. d6 was best." },
+                { "san": "Qe7", "comment": "10000 players+ played 4...d6..." },
+                { "san": "Nf3", "comment": "Blunder. Nxe4 was best." },
+                { "san": "d6", "comment": "I have to admit I played too fast there..." },
+                { "san": "Qe2" },
+                { "san": "Qxe4", "comment": "position back to =..." },
+                { "san": "Qxe4+" }, { "san": "Nxe4" }, { "san": "d4" }, { "san": "Nc6" }, { "san": "Bb5" }, { "san": "Bd7" }, { "san": "Be3" }, { "san": "O-O-O" }, { "san": "a4" }, { "san": "Kb8" }, { "san": "O-O" }, { "san": "Nb4" },
+                { "san": "Na3", "comment": "Inaccuracy. Bxd7 was best." },
+                { "san": "a6", "comment": "Mistake. Bxa4 was best." },
+                { "san": "Bc4" },
+                { "san": "f6", "comment": "Blunder. c6 was best." },
+                { "san": "d5" },
+                { "san": "Bxa4", "comment": "Inaccuracy. b5 was best." },
+                { "san": "c3" },
+                { "san": "Nc2", "comment": "Inaccuracy. Nxc3 was best." },
+                { "san": "Nxc2" },
+                { "san": "Bxc2", "comment": "Checkmate is now unavoidable..." },
+                { "san": "Nd4" }, { "san": "b5" }, { "san": "Rxa6" }, { "san": "bxc4" }, { "san": "Nc6+" }, { "san": "Kc8" }, { "san": "Ra8+" }, { "san": "Kb7" }, { "san": "Rxd8" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_20",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Bronstein-Larsen (Main Line)",
+            "fen": null,
+            "annotation": "Facing the ...gxf6 line in the Caro-Kann.",
+            "moves": [
+                { "san": "e4" }, { "san": "c6" }, { "san": "d4" }, { "san": "d5" }, { "san": "Nc3" }, { "san": "dxe4" },
+                { "san": "Nxe4", "comment": "This move leads to two very different positions..." },
+                { "san": "Nf6" }, { "san": "Nxf6+" },
+                { "san": "gxf6", "comment": "With this quirky move Black takes several risks..." },
+                { "san": "Nf3", "comment": "Unlike in the system with exf6..." },
+                { "san": "Bg4", "comment": "Against such pins our gut reaction is always to kick the bishop immediately..." },
+                { "san": "Be2", "comment": "The text move breaks the pin..." },
+                { "san": "e6" },
+                { "san": "O-O", "comment": "The g-file attack is nothing more than an illusion..." },
+                { "san": "Qc7" }, { "san": "c4" }, { "san": "Nd7" },
+                { "san": "Nh4", "comment": "This unusual move here has multiple benefits..." },
+                { "san": "Bxe2" }, { "san": "Qxe2" }, { "san": "O-O-O" },
+                { "san": "d5", "comment": "This central break is the key idea!" },
+                { "san": "exd5" }, { "san": "cxd5" }, { "san": "cxd5" },
+                { "san": "Be3", "comment": "And White has a tremendous attacking position..." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_21",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Bronstein-Larsen (Side: vs 7.h3?)",
+            "fen": null,
+            "annotation": "Side variation from the Bronstein-Larsen chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "c6" }, { "san": "d4" }, { "san": "d5" }, { "san": "Nc3" }, { "san": "dxe4" }, { "san": "Nxe4" }, { "san": "Nf6" }, { "san": "Nxf6+" }, { "san": "gxf6" }, { "san": "Nf3" }, { "san": "Bg4" },
+                { "san": "h3", "comment": "Bxf3!" },
+                { "san": "Bxf3" },
+                { "san": "Qxf3", "comment": "THIS WAY WHITE IS UNDEVELOPED..." },
+                { "san": "Qxd4" }, { "san": "Be2" }, { "san": "Nd7" }, { "san": "O-O" }, { "san": "Ne5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_22",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Karpov Variation Trap",
+            "fen": null,
+            "annotation": "An aggressive trap in the Karpov Variation.",
+            "moves": [
+                { "san": "e4" }, { "san": "c6" }, { "san": "d4" }, { "san": "d5" }, { "san": "Nc3" }, { "san": "dxe4" },
+                { "san": "Nxe4", "comment": "This line is called the Karpov Variation..." },
+                { "san": "Nd7" },
+                { "san": "Ng5", "comment": "An unorthodox move in return..." },
+                { "san": "h6", "comment": "This is a common mistake here..." },
+                { "san": "Ne6", "comment": "This knight sortie is one of the key ideas..." },
+                { "san": "Qa5+", "comment": "This leads to a famous opening trap." },
+                { "san": "Bd2" }, { "san": "Qb6" },
+                { "san": "Bd3", "comment": "White can still leave the knight hanging!" },
+                { "san": "fxe6" }, { "san": "Qh5+" }, { "san": "Kd8" },
+                { "san": "Ba5", "comment": "This stunning geometrical motif decides the game. The queen is lost!" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_23",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Classical, Lobron System",
+            "fen": null,
+            "annotation": "A solid, strategic approach against the Classical Caro-Kann.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "c6", "comment": "This move introduces the Caro-Kann Defense..." },
+                { "san": "d4", "comment": "As always, when given the chance..." },
+                { "san": "d5" },
+                { "san": "Nc3", "comment": "The most thematic response..." },
+                { "san": "dxe4" },
+                { "san": "Nxe4", "comment": "The vast majority of times, black plays the solid 3...dxe4..." },
+                { "san": "Bf5" }, { "san": "Ng3" },
+                { "san": "Bg6", "comment": "This move tickles the bishop..." },
+                { "san": "h4" },
+                { "san": "h6", "comment": "This pawn thrust has a long-term benefit too..." },
+                { "san": "h5" }, { "san": "Bh7" }, { "san": "Nf3" },
+                { "san": "e6", "comment": "The active 'Capablanca bishop' needs to be dealt with." },
+                { "san": "Bd3" }, { "san": "Bxd3" }, { "san": "Qxd3" },
+                { "san": "Nd7", "comment": "11.Bf4 is also possible here..." },
+                { "san": "Bd2" }, { "san": "Ngf6" }, { "san": "O-O-O" },
+                { "san": "Be7", "comment": "This useful move removes the queen from the d-file..." },
+                { "san": "Qe2" },
+                { "san": "O-O", "comment": "With Black having committed to opposite side castling, we adjust our plans!" },
+                { "san": "Nf1" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_24",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Von Hennig Gambit",
+            "fen": null,
+            "annotation": "An aggressive gambit line against the Caro-Kann.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "c6", "comment": "Caro-Kann. I don't have any knowledge of the theory..." },
+                { "san": "d4" }, { "san": "d5" },
+                { "san": "Nc3", "comment": "I see a chance to gambit a pawn..." },
+                { "san": "dxe4" }, { "san": "Bc4" }, { "san": "Nf6" },
+                { "san": "f3", "comment": "I don't see the point of h6..." },
+                { "san": "h6" },
+                { "san": "fxe4", "comment": "Really pleased with that exchange..." },
+                { "san": "Bg4" },
+                { "san": "Nf3", "comment": "My mouse slipped here..." },
+                { "san": "Bxf3", "comment": "They don't take the pawn..." },
+                { "san": "gxf3", "comment": "I develop my queen and get ready to castle..." },
+                { "san": "e6", "comment": "Their get a queen-bishop battery going on h5..." },
+                { "san": "Bd2", "comment": "Finally developed! Time to rip it open and attack." },
+                { "san": "Nh5", "comment": "Terrible. Their position was probably already lost..." },
+                { "san": "Qe2" },
+                { "san": "Be7", "comment": "Perhaps this is not the strongest move here..." },
+                { "san": "O-O-O", "comment": "A bad move, but there aren't really any good moves left..." },
+                { "san": "g5" },
+                { "san": "d5", "comment": "Driving their knight backwards..." },
+                { "san": "Bd6", "comment": "A huge blunder, and apparently they realized it." },
+                { "san": "e5" }, { "san": "Bc5" }, { "san": "dxe6" }, { "san": "fxe6" }, { "san": "f4" }, { "san": "Nxf4" }, { "san": "Bxf4" }, { "san": "Nd7" }, { "san": "Qh5+" }, { "san": "Kf8" }, { "san": "Bxe6" }, { "san": "gxf4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_25",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Bronstein-Larsen (Main Line)",
+            "fen": null,
+            "annotation": "Facing the ...gxf6 line in the Caro-Kann.",
+            "moves": [
+                { "san": "e4" }, { "san": "c6" }, { "san": "d4" }, { "san": "d5" }, { "san": "Nc3" }, { "san": "dxe4" },
+                { "san": "Nxe4", "comment": "This move leads to two very different positions..." },
+                { "san": "Nf6" }, { "san": "Nxf6+" },
+                { "san": "gxf6", "comment": "With this quirky move Black takes several risks..." },
+                { "san": "Nf3", "comment": "Unlike in the system with exf6..." },
+                { "san": "Bg4", "comment": "Against such pins our gut reaction is always to kick the bishop immediately..." },
+                { "san": "Be2", "comment": "The text move breaks the pin..." },
+                { "san": "e6" },
+                { "san": "O-O", "comment": "The g-file attack is nothing more than an illusion..." },
+                { "san": "Qc7" }, { "san": "c4" }, { "san": "Nd7" },
+                { "san": "Nh4", "comment": "This unusual move here has multiple benefits..." },
+                { "san": "Bxe2" }, { "san": "Qxe2" }, { "san": "O-O-O" },
+                { "san": "d5", "comment": "This central break is the key idea!" },
+                { "san": "exd5" }, { "san": "cxd5" }, { "san": "cxd5" },
+                { "san": "Be3", "comment": "And White has a tremendous attacking position..." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_26",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Bronstein-Larsen (Side: vs 7.h3?)",
+            "fen": null,
+            "annotation": "Side variation from the Bronstein-Larsen chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "c6" }, { "san": "d4" }, { "san": "d5" }, { "san": "Nc3" }, { "san": "dxe4" }, { "san": "Nxe4" }, { "san": "Nf6" }, { "san": "Nxf6+" }, { "san": "gxf6" }, { "san": "Nf3" }, { "san": "Bg4" },
+                { "san": "h3", "comment": "Bxf3!" },
+                { "san": "Bxf3" },
+                { "san": "Qxf3", "comment": "THIS WAY WHITE IS UNDEVELOPED..." },
+                { "san": "Qxd4" }, { "san": "Be2" }, { "san": "Nd7" }, { "san": "O-O" }, { "san": "Ne5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_27",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Karpov Variation Trap",
+            "fen": null,
+            "annotation": "An aggressive trap in the Karpov Variation.",
+            "moves": [
+                { "san": "e4" }, { "san": "c6" }, { "san": "d4" }, { "san": "d5" }, { "san": "Nc3" }, { "san": "dxe4" },
+                { "san": "Nxe4", "comment": "This line is called the Karpov Variation..." },
+                { "san": "Nd7" },
+                { "san": "Ng5", "comment": "An unorthodox move in return..." },
+                { "san": "h6", "comment": "This is a common mistake here..." },
+                { "san": "Ne6", "comment": "This knight sortie is one of the key ideas..." },
+                { "san": "Qa5+", "comment": "This leads to a famous opening trap." },
+                { "san": "Bd2" }, { "san": "Qb6" },
+                { "san": "Bd3", "comment": "White can still leave the knight hanging!" },
+                { "san": "fxe6" }, { "san": "Qh5+" }, { "san": "Kd8" },
+                { "san": "Ba5", "comment": "This stunning geometrical motif decides the game. The queen is lost!" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_28",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Classical, Lobron System",
+            "fen": null,
+            "annotation": "A solid, strategic approach against the Classical Caro-Kann.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "c6", "comment": "This move introduces the Caro-Kann Defense..." },
+                { "san": "d4", "comment": "As always, when given the chance..." },
+                { "san": "d5" },
+                { "san": "Nc3", "comment": "The most thematic response..." },
+                { "san": "dxe4" },
+                { "san": "Nxe4", "comment": "The vast majority of times, black plays the solid 3...dxe4..." },
+                { "san": "Bf5" }, { "san": "Ng3" },
+                { "san": "Bg6", "comment": "This move tickles the bishop..." },
+                { "san": "h4" },
+                { "san": "h6", "comment": "This pawn thrust has a long-term benefit too..." },
+                { "san": "h5" }, { "san": "Bh7" }, { "san": "Nf3" },
+                { "san": "e6", "comment": "The active 'Capablanca bishop' needs to be dealt with." },
+                { "san": "Bd3" }, { "san": "Bxd3" }, { "san": "Qxd3" },
+                { "san": "Nd7", "comment": "11.Bf4 is also possible here..." },
+                { "san": "Bd2" }, { "san": "Ngf6" }, { "san": "O-O-O" },
+                { "san": "Be7", "comment": "This useful move removes the queen from the d-file..." },
+                { "san": "Qe2" },
+                { "san": "O-O", "comment": "With Black having committed to opposite side castling, we adjust our plans!" },
+                { "san": "Nf1" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_29",
+            "type": "theory",
+            "category": "Caro-Kann Defense",
+            "name": "Caro-Kann: Von Hennig Gambit",
+            "fen": null,
+            "annotation": "An aggressive gambit line against the Caro-Kann.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "c6", "comment": "Caro-Kann. I don't have any knowledge of the theory..." },
+                { "san": "d4" }, { "san": "d5" },
+                { "san": "Nc3", "comment": "I see a chance to gambit a pawn..." },
+                { "san": "dxe4" }, { "san": "Bc4" }, { "san": "Nf6" },
+                { "san": "f3", "comment": "I don't see the point of h6..." },
+                { "san": "h6" },
+                { "san": "fxe4", "comment": "Really pleased with that exchange..." },
+                { "san": "Bg4" },
+                { "san": "Nf3", "comment": "My mouse slipped here..." },
+                { "san": "Bxf3", "comment": "They don't take the pawn..." },
+                { "san": "gxf3", "comment": "I develop my queen and get ready to castle..." },
+                { "san": "e6", "comment": "Their get a queen-bishop battery going on h5..." },
+                { "san": "Bd2", "comment": "Finally developed! Time to rip it open and attack." },
+                { "san": "Nh5", "comment": "Terrible. Their position was probably already lost..." },
+                { "san": "Qe2" },
+                { "san": "Be7", "comment": "Perhaps this is not the strongest move here..." },
+                { "san": "O-O-O", "comment": "A bad move, but there aren't really any good moves left..." },
+                { "san": "g5" },
+                { "san": "d5", "comment": "Driving their knight backwards..." },
+                { "san": "Bd6", "comment": "A huge blunder, and apparently they realized it." },
+                { "san": "e5" }, { "san": "Bc5" }, { "san": "dxe6" }, { "san": "fxe6" }, { "san": "f4" }, { "san": "Nxf4" }, { "san": "Bxf4" }, { "san": "Nd7" }, { "san": "Qh5+" }, { "san": "Kf8" }, { "san": "Bxe6" }, { "san": "gxf4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_30",
+            "type": "theory",
+            "category": "French Defense",
+            "name": "French Defense: Advance, Paulsen Attack",
+            "fen": null,
+            "annotation": "Example game vs the most played moves in the French Advance.",
+            "moves": [
+                { "san": "e4" }, { "san": "e6" }, { "san": "d4" }, { "san": "d5" }, { "san": "e5" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nc6" }, { "san": "Nf3" }, { "san": "Qb6" }, { "san": "Be2" }, { "san": "cxd4" }, { "san": "cxd4" }, { "san": "Nge7" }, { "san": "O-O" }, { "san": "Nf5" }, { "san": "Nc3" }, { "san": "Nfxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Be3" }, { "san": "Nxe2+" }, { "san": "Qxe2" }, { "san": "Qc7" },
+                { "san": "a3", "comment": "Black following with a mistake in 1 game on 2 :D" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_31",
+            "type": "theory",
+            "category": "French Defense",
+            "name": "French Defense: Paulsen Attack (Side: vs 13.f4)",
+            "fen": null,
+            "annotation": "Side variation from the French Defense chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e6" }, { "san": "d4" }, { "san": "d5" }, { "san": "e5" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nc6" }, { "san": "Nf3" }, { "san": "Qb6" }, { "san": "Be2" }, { "san": "cxd4" }, { "san": "cxd4" }, { "san": "Nge7" }, { "san": "O-O" }, { "san": "Nf5" }, { "san": "Nc3" }, { "san": "Nfxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Be3" }, { "san": "Nxe2+" }, { "san": "Qxe2" }, { "san": "Qc7" }, { "san": "f4" }, { "san": "Bc5" }, { "san": "Bxc5" }, { "san": "Qxc5+" }, { "san": "Kh1" }, { "san": "O-O" }, { "san": "Nb5" }, { "san": "Bd7" }, { "san": "Nd6" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_32",
+            "type": "theory",
+            "category": "French Defense",
+            "name": "French Defense: Paulsen Attack (Side: vs 13...Qxe5?)",
+            "fen": null,
+            "annotation": "Side variation from the French Defense chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e6" }, { "san": "d4" }, { "san": "d5" }, { "san": "e5" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nc6" }, { "san": "Nf3" }, { "san": "Qb6" }, { "san": "Be2" }, { "san": "cxd4" }, { "san": "cxd4" }, { "san": "Nge7" }, { "san": "O-O" }, { "san": "Nf5" }, { "san": "Nc3" }, { "san": "Nfxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Be3" }, { "san": "Nxe2+" }, { "san": "Qxe2" }, { "san": "Qc7" },
+                { "san": "a3", "comment": "as long we dont play that White is in great shape" },
+                { "san": "Qxe5" },
+                { "san": "f4", "comment": "many strong moves that can only stinks for Black" },
+                { "san": "Qb8" },
+                { "san": "Bd4", "comment": "AGAIN THIS WAS NEEDED" },
+                { "san": "b6" }, { "san": "f5" }, { "san": "Qc7" }, { "san": "Na4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_33",
+            "type": "theory",
+            "category": "French Defense",
+            "name": "French Defense: Paulsen Attack (Side: vs 14...Qc7?)",
+            "fen": null,
+            "annotation": "Side variation from the French Defense chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e6" }, { "san": "d4" }, { "san": "d5" }, { "san": "e5" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nc6" }, { "san": "Nf3" }, { "san": "Qb6" }, { "san": "Be2" }, { "san": "cxd4" }, { "san": "cxd4" }, { "san": "Nge7" }, { "san": "O-O" }, { "san": "Nf5" }, { "san": "Nc3" }, { "san": "Nfxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Be3" }, { "san": "Nxe2+" }, { "san": "Qxe2" }, { "san": "Qc7" }, { "san": "a3" }, { "san": "Qxe5" },
+                { "san": "f4", "comment": "AGAIN THIS WAS NEEDED" },
+                { "san": "Qc7" }, { "san": "Rac1" }, { "san": "Qd7" }, { "san": "Nb5" }, { "san": "Bd6" }, { "san": "Nxd6+" }, { "san": "Qxd6" }, { "san": "Bc5" }, { "san": "Qd8" }, { "san": "f5" }, { "san": "h5" },
+                { "san": "fxe6", "comment": "LEADS TO EAS FORCED MATE" },
+                { "san": "Bxe6" }, { "san": "Qe5" }, { "san": "Rh7" }, { "san": "Rce1" }, { "san": "Qd7" }, { "san": "Qxe6+" }, { "san": "fxe6" }, { "san": "Rf8#" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_34",
+            "type": "theory",
+            "category": "French Defense",
+            "name": "French Defense: Paulsen Attack (Side: vs 19.Qg4?)",
+            "fen": null,
+            "annotation": "Side variation from the French Defense chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "e6" }, { "san": "d4" }, { "san": "d5" }, { "san": "e5" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nc6" }, { "san": "Nf3" }, { "san": "Qb6" }, { "san": "Be2" }, { "san": "cxd4" }, { "san": "cxd4" }, { "san": "Nge7" }, { "san": "O-O" }, { "san": "Nf5" }, { "san": "Nc3" }, { "san": "Nfxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Be3" }, { "san": "Nxe2+" }, { "san": "Qxe2" }, { "san": "Qc7" }, { "san": "a3" }, { "san": "Qxe5" }, { "san": "f4" }, { "san": "Qc7" }, { "san": "Rac1" }, { "san": "Qd8" }, { "san": "Nb5" }, { "san": "Bd6" }, { "san": "Nxd6+" }, { "san": "Qxd6" }, { "san": "Bc5" }, { "san": "Qd8" }, { "san": "Qg4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_35",
+            "type": "theory",
+            "category": "Pirc Defense",
+            "name": "Pirc Defense: Austrian Attack (Main Line)",
+            "fen": null,
+            "annotation": "An aggressive setup against the Pirc Defense.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "d6", "comment": "Technically speaking, this move followed by g6 introduces the Pirc..." },
+                { "san": "d4" },
+                { "san": "Nf6", "comment": "Note that 3...e5 transposes back to the Philidor Defense..." },
+                { "san": "Nc3" }, { "san": "g6" }, { "san": "Be3" },
+                { "san": "Bg7", "comment": "This move is really asking for trouble..." },
+                { "san": "Qd2" },
+                { "san": "O-O", "comment": "Taking the g4-square away from Black's knight..." },
+                { "san": "f3" }, { "san": "Nbd7" }, { "san": "Nge2" },
+                { "san": "c6", "comment": "We want to trade the strong defender on g7." },
+                { "san": "Bh6" },
+                { "san": "b5", "comment": "We start our kingside attack!" },
+                { "san": "h4" },
+                { "san": "b4", "comment": "Although this move looks like we are undeveloping our knight..." },
+                { "san": "Nd1" }, { "san": "Ba6" }, { "san": "Bxg7" }, { "san": "Kxg7" },
+                { "san": "h5", "comment": "And White's attack punches through." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_36",
+            "type": "theory",
+            "category": "Pirc Defense",
+            "name": "Pirc Defense: Transposing to Philidor",
+            "fen": null,
+            "annotation": "Side variation showing the transposition to the Philidor Defense.",
+            "moves": [
+                { "san": "e4" }, { "san": "d6" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nc3" }, { "san": "e5" }, { "san": "dxe5" }, { "san": "dxe5" }, { "san": "Qxd8+" }, { "san": "Kxd8" }, { "san": "Bg5" }, { "san": "Be6" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_37",
+            "type": "theory",
+            "category": "Pirc Defense",
+            "name": "Pirc Defense: Philidor, Lion Variation",
+            "fen": null,
+            "annotation": "Side variation showing the Lion Variation of the Philidor.",
+            "moves": [
+                { "san": "e4" }, { "san": "d6" }, { "san": "d4" }, { "san": "Nf6" }, { "san": "Nc3" },
+                { "san": "e5", "comment": "C41 Philidor Defense: Lion Variation" },
+                { "san": "Nf3" }, { "san": "Nbd7" }, { "san": "Bc4" }, { "san": "Be7" }, { "san": "O-O" }, { "san": "O-O" }, { "san": "Re1" }, { "san": "exd4" }, { "san": "Nxd4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_38",
+            "type": "theory",
+            "category": "Modern Defense",
+            "name": "Modern Defense: Gurgenidze System (Main Line)",
+            "fen": null,
+            "annotation": "Tackling the hypermodern Modern Defense.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "g6", "comment": "The Modern or Robatsch Defense..." },
+                { "san": "d4" }, { "san": "Bg7" }, { "san": "Nc3" },
+                { "san": "c6", "comment": "The Gurgenidze system..." },
+                { "san": "f4" },
+                { "san": "d5", "comment": "The most principled choice..." },
+                { "san": "e5" },
+                { "san": "h5", "comment": "This strange-looking pawn move is designed to secure the f5-square..." },
+                { "san": "Nf3", "comment": "White continues their development in the most standard fashion..." },
+                { "san": "Nh6" },
+                { "san": "Be3", "comment": "In the spirit of quick development..." },
+                { "san": "Bg4", "comment": "Since Black is building a pawn chain on the white squares..." },
+                { "san": "h3", "comment": "Forcing Black to clarify their intentions on the kingside." },
+                { "san": "Bxf3" }, { "san": "Qxf3" },
+                { "san": "Nf5", "comment": "White secures the bishop..." },
+                { "san": "Bf2" },
+                { "san": "h4", "comment": "Black has to deny White the g2-g4 break..." },
+                { "san": "Bd3", "comment": "Developing the last piece." },
+                { "san": "e6" },
+                { "san": "O-O", "comment": "White's goal now is to blow up the center..." },
+                { "san": "Nd7" }, { "san": "Ne2" },
+                { "san": "Bf8", "comment": "The last preparatory measure..." },
+                { "san": "b3" }, { "san": "Be7" },
+                { "san": "c4", "comment": "And White is clearly better..." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_39",
+            "type": "theory",
+            "category": "Modern Defense",
+            "name": "Modern Defense: Gurgenidze (Side: vs 14.c4)",
+            "fen": null,
+            "annotation": "Side variation from the Modern Defense chapter.",
+            "moves": [
+                { "san": "e4" }, { "san": "g6" }, { "san": "d4" }, { "san": "Bg7" }, { "san": "Nc3" }, { "san": "c6" }, { "san": "f4" }, { "san": "d5" }, { "san": "e5" }, { "san": "h5" }, { "san": "Nf3" }, { "san": "Nh6" }, { "san": "Be3" }, { "san": "Bg4" }, { "san": "h3" }, { "san": "Bxf3" }, { "san": "Qxf3" }, { "san": "Nf5" }, { "san": "Bf2" }, { "san": "h4" }, { "san": "Bd3" }, { "san": "e6" }, { "san": "O-O" }, { "san": "Nd7" }, { "san": "Ne2" },
+                { "san": "Bf8", "comment": "BLACK CANT COMPLAIN HERE" },
+                { "san": "c4" }, { "san": "dxc4" }, { "san": "Bxc4" }, { "san": "Nb6" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_40",
+            "type": "theory",
+            "category": "Alekhine's Defense",
+            "name": "Alekhine's Defense: Exchange, Voronezh (Main Line)",
+            "fen": null,
+            "annotation": "Fighting the Alekhine's Defense with the Voronezh Variation.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "Nf6", "comment": "This slightly provocative knight jump introduces the Alekhine Defense..." },
+                { "san": "e5", "comment": "The principled response." },
+                { "san": "Nd5" },
+                { "san": "d4", "comment": "Centah! When space is offered, we should grab it." },
+                { "san": "d6" },
+                { "san": "c4", "comment": "The other main theoretical line begins with 4.Nf3..." },
+                { "san": "Nb6" },
+                { "san": "exd6", "comment": "The text aims to resolve the battle for the center immediately..." },
+                { "san": "cxd6" }, { "san": "Nc3" },
+                { "san": "g6", "comment": "White is following a unique method of development..." },
+                { "san": "Be3" },
+                { "san": "Bg7", "comment": "White removes the rook from the scope of the g7-bishop..." },
+                { "san": "Rc1" },
+                { "san": "O-O", "comment": "The final step of bolstering the center." },
+                { "san": "b3" },
+                { "san": "e5", "comment": "Interestingly, Black does not really have anything else available!" },
+                { "san": "dxe5", "comment": "White is aiming to play an endgame..." },
+                { "san": "dxe5" }, { "san": "Qxd8" }, { "san": "Rxd8" },
+                { "san": "c5", "comment": "Forcing Black to move backward..." },
+                { "san": "N6d7" },
+                { "san": "Bc4", "comment": "This natural developing move helps us control the d5-square..." },
+                { "san": "Nc6" },
+                { "san": "Ne4", "comment": "The pending Ng5 and Nd6 threats make White's position easier to play..." }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_41",
+            "type": "theory",
+            "category": "Alekhine's Defense",
+            "name": "Alekhine's Defense: Four Pawns Attack (Side)",
+            "fen": null,
+            "annotation": "Side variation: The Four Pawns Attack.",
+            "moves": [
+                { "san": "e4" }, { "san": "Nf6" }, { "san": "e5" }, { "san": "Nd5" }, { "san": "d4" }, { "san": "d6" }, { "san": "c4" }, { "san": "Nb6" }, { "san": "f4" }, { "san": "dxe5" }, { "san": "fxe5" }, { "san": "Bf5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Be2" }, { "san": "e6" }, { "san": "O-O" }, { "san": "Be7" }, { "san": "Nc3" }, { "san": "O-O" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_42",
+            "type": "theory",
+            "category": "Alekhine's Defense",
+            "name": "Alekhine's Defense: Four Pawns (Side: vs 6...Nc6)",
+            "fen": null,
+            "annotation": "Side variation within the Four Pawns Attack.",
+            "moves": [
+                { "san": "e4" }, { "san": "Nf6" }, { "san": "e5" }, { "san": "Nd5" }, { "san": "d4" }, { "san": "d6" }, { "san": "c4" }, { "san": "Nb6" }, { "san": "f4" }, { "san": "dxe5" }, { "san": "fxe5" }, { "san": "Nc6" }, { "san": "Be3" }, { "san": "Bf5" }, { "san": "Nc3" }, { "san": "e6" }, { "san": "Nf3" }, { "san": "Bb4" }, { "san": "Be2" }, { "san": "Na5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_43",
+            "type": "theory",
+            "category": "Alapin Sicilian",
+            "name": "Alapin Sicilian: vs 2...e5 (Main Line)",
+            "fen": null,
+            "annotation": "Handling the 2...e5 response in the Alapin.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "c5", "comment": "This move introduces the Alapin Sicilian..." },
+                { "san": "c3" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "Ng5" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Nxd5" }, { "san": "d4" }, { "san": "cxd4" }, { "san": "O-O" }, { "san": "Be7" },
+                { "san": "Nxf7", "comment": "This absolutely shocking move is the key to retaining our attack..." },
+                { "san": "Kxf7" }, { "san": "Qf3+" }, { "san": "Ke6" }, { "san": "a4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_44",
+            "type": "theory",
+            "category": "Alapin Sicilian",
+            "name": "Alapin Sicilian: vs 2...e5 (Side: 6...Na5)",
+            "fen": null,
+            "annotation": "Side variation within the 2...e5 Alapin.",
+            "moves": [
+                { "san": "e4" }, { "san": "c5" }, { "san": "c3" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "Ng5" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Na5" }, { "san": "Bb5+" }, { "san": "Bd7" }, { "san": "Qa4" }, { "san": "Be7" }, { "san": "Bxd7+" }, { "san": "Nxd7" }, { "san": "Ne6" }, { "san": "fxe6" }, { "san": "dxe6" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_45",
+            "type": "theory",
+            "category": "Alapin Sicilian",
+            "name": "Alapin Sicilian: Barmen Defense (Main Line)",
+            "fen": null,
+            "annotation": "A sharp, tactical line against the Barmen Defense.",
+            "moves": [
+                { "san": "e4" }, { "san": "c5" }, { "san": "c3" },
+                { "san": "d5", "comment": "B22 Sicilian Defense: Alapin Variation, Barmen Defense..." },
+                { "san": "exd5" }, { "san": "Qxd5" },
+                { "san": "d4", "comment": "This is the major junction here..." },
+                { "san": "Nf6" },
+                { "san": "Nf3", "comment": "Barmen Defense : Modern line" },
+                { "san": "Bg4", "comment": "Although the most popular move here is 6.Be2..." },
+                { "san": "dxc5", "comment": "The endgame variation with6...Qxd1+ in analysed in the main course." },
+                { "san": "Qxc5", "comment": "This knight move introduces various attacking schemes..." },
+                { "san": "Na3", "comment": "Blunder .. played 20% of the time" },
+                { "san": "Nc6", "comment": "that knight gonna be annoying for sure :D" },
+                { "san": "Nb5" }, { "san": "Qb6" }, { "san": "Be3" }, { "san": "Qa5" }, { "san": "b4" }, { "san": "Qd8" }, { "san": "Qxd8+" },
+                { "san": "Kxd8", "comment": "Going for the unprotected f7-pawn." },
+                { "san": "Ng5" },
+                { "san": "Bh5", "comment": "Yet another tempo move..." },
+                { "san": "Be2" },
+                { "san": "Bg6", "comment": "White's initiative is overpowering..." },
+                { "san": "O-O-O+" }, { "san": "Kc8" }, { "san": "Bd3" }, { "san": "Bh5" }, { "san": "Bf5+" }, { "san": "e6" }, { "san": "Nxe6" },
+                { "san": "Bxd1", "comment": "game is over" },
+                { "san": "Nc5+" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_46",
+            "type": "theory",
+            "category": "Alapin Sicilian",
+            "name": "Alapin Sicilian: Smith-Morra Declined (Main Line)",
+            "fen": null,
+            "annotation": "Against the 2...Nf6 line in the Alapin.",
+            "moves": [
+                { "san": "e4" }, { "san": "c5" },
+                { "san": "c3", "comment": "This move challenges the e4-pawn..." },
+                { "san": "Nf6" }, { "san": "e5" }, { "san": "Nd5" },
+                { "san": "d4", "comment": "transposition : Smith-Morra Declined" },
+                { "san": "cxd4", "comment": "White is no hurry to recapture on d4..." },
+                { "san": "Nf3" }, { "san": "e6" }, { "san": "cxd4" }, { "san": "d6" }, { "san": "Bc4" }, { "san": "Be7" }, { "san": "O-O" },
+                { "san": "O-O", "comment": "Beginning a common maneuver: Qe2-e4-g4." },
+                { "san": "Qe2", "comment": "The e6-pawn blocks the development of the c8-bishop..." },
+                { "san": "b6", "comment": "This move introduces a very unique plan:" },
+                { "san": "Rd1" },
+                { "san": "Bb7", "comment": "This is most surprising..." },
+                { "san": "Bxd5" }, { "san": "Bxd5" }, { "san": "Nc3" },
+                { "san": "Bb7", "comment": "This reveals the point of both Rd1 and the unusual trade on d5..." },
+                { "san": "d5" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_47",
+            "type": "theory",
+            "category": "Alapin Sicilian",
+            "name": "Alapin Sicilian: Smith-Morra Declined (Side: 6.Bc4)",
+            "fen": null,
+            "annotation": "Side variation within the Smith-Morra Declined.",
+            "moves": [
+                { "san": "e4" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nf6" }, { "san": "e5" }, { "san": "Nd5" }, { "san": "d4" }, { "san": "cxd4" },
+                { "san": "Nf3", "comment": "Once again, we prefer development over recovering material." },
+                { "san": "Nc6" },
+                { "san": "Bc4", "comment": "This is just a touch too greedy." },
+                { "san": "Nb6" },
+                { "san": "Bb3", "comment": "very bad move" },
+                { "san": "dxc3" },
+                { "san": "Nxc3", "comment": "Black's position looks awful..." },
+                { "san": "g6" },
+                { "san": "Ng5", "comment": "white is unstopable" },
+                { "san": "Nxe5" }, { "san": "f4" }, { "san": "h6" }, { "san": "fxe5" }, { "san": "hxg5" }, { "san": "O-O" }, { "san": "e6" }, { "san": "Ne4" }
+            ]
+        },
+        {
+            "id": "scandinavian_module_theory_48",
+            "type": "theory",
+            "category": "Alapin Sicilian",
+            "name": "Alapin Sicilian: Smith-Morra Declined (Side: 9...Nxe5)",
+            "fen": null,
+            "annotation": "Side variation within the Smith-Morra Declined.",
+            "moves": [
+                { "san": "e4" }, { "san": "c5" }, { "san": "c3" }, { "san": "Nf6" }, { "san": "e5" }, { "san": "Nd5" }, { "san": "d4" }, { "san": "cxd4" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nb6" }, { "san": "Bb3" }, { "san": "dxc3" }, { "san": "Nxc3" },
+                { "san": "g6", "comment": "even if this is 2x better it is not enough to stop White Tactics!" },
+                { "san": "Ng5" }, { "san": "e6" }, { "san": "Nge4" }, { "san": "Nxe5" }, { "san": "Bg5" }, { "san": "Be7" }, { "san": "Bxe7" }, { "san": "Qxe7" }, { "san": "Qd4" }, { "san": "f6" }, { "san": "f4" }, { "san": "Nc6" }, { "san": "Nd6+" }
+            ]
+        }
     ]
-  }
 }

@@ -10,12 +10,32 @@
             "category": "Nxf7 Sacrifice Lines",
             "name": "Line 1: Main Line",
             "fen": null,
-            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Kf3", "Qf6+", "Kxe4", "d5+", "Bxd5", "Qf4+", "Kd3", "Qd4+", "Ke2", "Qxd5", "Kf1", "Qxf7+"],
             "annotation": "The main line where White accepts the sacrifice and the king is hunted. This is the critical line.",
-            "annotations": [
-                { "type": "arrow", "from": "g5", "to": "f7", "color": "red" },
-                { "type": "arrow", "from": "c5", "to": "f2", "color": "green" },
-                { "type": "highlight", "square": "e4", "color": "green" }
+            "moves": [
+                { "san": "e4", "comment": "White begins with the King's Pawn opening." },
+                { "san": "e5", "comment": "Black responds, leading to an open game." },
+                { "san": "Nf3", "comment": "" },
+                { "san": "Nc6", "comment": "" },
+                { "san": "Bc4", "comment": "" },
+                { "san": "Nf6", "comment": "" },
+                { "san": "Ng5", "comment": "The start of the attack, targeting the weak f7 square.", "annotations": [{ "type": "highlight", "square": "f7", "color": "red" }] },
+                { "san": "Bc5", "comment": "Black ignores the threat and develops a piece!" },
+                { "san": "Nxf7", "comment": "White captures the pawn, forking the Queen and Rook.", "annotations": [{ "type": "arrow", "from": "g5", "to": "f7", "color": "red" }] },
+                { "san": "Bxf2+", "comment": "The Traxler! Black sacrifices the bishop to expose the White king.", "annotations": [{ "type": "arrow", "from": "c5", "to": "f2", "color": "green" }] },
+                { "san": "Kxf2", "comment": "" },
+                { "san": "Nxe4+", "comment": "The knight joins the attack with check.", "annotations": [{ "type": "highlight", "square": "e4", "color": "green" }] },
+                { "san": "Kf3", "comment": "" },
+                { "san": "Qf6+", "comment": "" },
+                { "san": "Kxe4", "comment": "" },
+                { "san": "d5+", "comment": "" },
+                { "san": "Bxd5", "comment": "" },
+                { "san": "Qf4+", "comment": "" },
+                { "san": "Kd3", "comment": "" },
+                { "san": "Qd4+", "comment": "" },
+                { "san": "Ke2", "comment": "" },
+                { "san": "Qxd5", "comment": "" },
+                { "san": "Kf1", "comment": "" },
+                { "san": "Qxf7+", "comment": "" }
             ]
         },
         {
@@ -24,12 +44,14 @@
             "category": "Nxf7 Sacrifice Lines",
             "name": "Line 1.1: White tries Ke1",
             "fen": null,
-            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kxf2", "Nxe4+", "Ke1", "Qh4+", "g3", "Nxg3", "hxg3", "Qxh1+", "Bf1", "O-O"],
             "annotation": "White tries to hide with Ke1, but Black's queen joins the attack with decisive effect.",
-            "annotations": [
-                { "type": "arrow", "from": "e1", "to": "f1", "color": "blue" },
-                { "type": "arrow", "from": "d8", "to": "h4", "color": "green" },
-                { "type": "highlight", "square": "h1", "color": "red" }
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "Ng5" }, { "san": "Bc5" }, { "san": "Nxf7" }, { "san": "Bxf2+" }, { "san": "Kxf2" }, { "san": "Nxe4+" },
+                { "san": "Ke1", "comment": "White hopes to find safety here.", "annotations": [{ "type": "arrow", "from": "f2", "to": "e1", "color": "blue" }] },
+                { "san": "Qh4+", "comment": "But Black's queen joins the attack immediately!", "annotations": [{ "type": "arrow", "from": "d8", "to": "h4", "color": "green" }] },
+                { "san": "g3" }, { "san": "Nxg3" }, { "san": "hxg3" },
+                { "san": "Qxh1+", "comment": "Black wins the rook.", "annotations": [{ "type": "highlight", "square": "h1", "color": "red" }] },
+                { "san": "Bf1" }, { "san": "O-O" }
             ]
         },
         {
@@ -38,39 +60,36 @@
             "category": "Nxf7 Sacrifice Lines",
             "name": "Line 2: Kf1 Variation",
             "fen": null,
-            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Nxf7", "Bxf2+", "Kf1", "Qe7", "Nxh8", "d5", "exd5", "Nd4", "c3", "Bg4", "Qa4+", "Nd7", "cxd4", "Qf6", "dxe5", "Qf4", "g3", "Bxg3+", "Kg2", "Qf2#"],
             "annotation": "If White refuses the bishop sacrifice, Black develops the queen and gets a beautiful mating attack.",
-            "annotations": []
-        },
-        {
-            "id": "traxler_theory_3",
-            "type": "theory",
-            "category": "Bxf7+ Bishop Sacrifice",
-            "name": "Line 3: White sacs on f7",
-            "fen": null,
-            "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "Ng5", "Bc5", "Bxf7+", "Ke7", "Bb3", "Rf8", "Nc3", "Qe8", "O-O", "d6", "d3", "Qg6", "Nf3", "Bg4", "Bd2", "Nd4"],
-            "annotation": "White can try the bishop sacrifice instead. Black gets good compensation but the game is more complex.",
-            "annotations": []
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "Ng5" }, { "san": "Bc5" }, { "san": "Nxf7" }, { "san": "Bxf2+" },
+                { "san": "Kf1", "comment": "White declines the sacrifice." }, { "san": "Qe7", "comment": "Black develops with tempo." },
+                { "san": "Nxh8" }, { "san": "d5" }, { "san": "exd5" }, { "san": "Nd4" }, { "san": "c3" }, { "san": "Bg4" }, { "san": "Qa4+" }, { "san": "Nd7" }, { "san": "cxd4" }, { "san": "Qf6" }, { "san": "dxe5" }, { "san": "Qf4" }, { "san": "g3" }, { "san": "Bxg3+" }, { "san": "Kg2" }, { "san": "Qf2#" }
+            ]
         },
         {
             "id": "traxler_exercise_0",
-            "type": "exercise",
-            "category": "Basic Tactics",
+            "type": "exercises",
+            "category": "Nxf7 Sacrifice Lines",
             "name": "Find the Traxler Sacrifice",
-            "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p1N1/2B1P3/8/PPPP1PPP/RNBQK2R w KQkq - 4 5",
-            "moves": ["Bc5"],
-            "annotation": "White just played Ng5, attacking f7. How should Black respond to initiate the Traxler Counter-Attack?",
-            "annotations": []
+            "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p1N1/2B1P3/8/PPPP1PPP/RNBQK2R b KQkq - 5 5",
+            "annotation": "White just played Nxf7. How should Black respond?",
+            "moves": [
+                { "san": "Bxf2+", "comment": "Correct! This move ignores the threat to f7 and prepares the counter-sacrifice." }
+            ]
         },
         {
             "id": "traxler_exercise_1",
-            "type": "exercise",
-            "category": "King Hunt",
+            "type": "exercises",
+            "category": "Nxf7 Sacrifice Lines",
             "name": "Continue the King Hunt",
             "fen": "r1bqk2r/pppp1ppp/2n5/4p3/2B1n3/5K2/PPPP2PP/RNBQ3R b kq - 1 6",
-            "moves": ["Qf6+", "Kxe4", "d5+"],
             "annotation": "White played 3.Kf3. Find the powerful move that brings your queen into the attack and continues to hunt the king.",
-            "annotations": []
+            "moves": [
+                { "san": "Qf6+", "comment": "Excellent! The queen joins the attack with check." },
+                { "san": "Kxe4" },
+                { "san": "d5+", "comment": "Forcing the king further into the open." }
+            ]
         }
     ]
 }

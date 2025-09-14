@@ -1,156 +1,276 @@
 {
-  "name": "Italian Game: Giuoco Piano & Tricky Gambits",
-  "author": "IM Andras Toth",
-  "description": "An aggressive introduction to the Italian Game, focusing on the Giuoco Piano, Scotch Gambit, and Evans Gambit.",
-  "playerColor": "white",
-  "orientation": "white",
-  "theory": {
+    "name": "Italian Game: Giuoco Piano & Tricky Gambits",
+    "playerColor": "white",
+    "orientation": "white",
     "startingFen": null,
     "lines": [
-      {
-        "name": "Italian: Giuoco Pianissimo (5.c3)",
-        "description": "The main line of the 'Quiet Game'.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "c3", "d6", "Nbd2", "a5", "Nf1", "Be6", "Bb5", "O-O"],
-        "comments": ["","","","","Time to move on to the Italian...", "The first decision...","The main line. White defends their pawn...","I've played quite a few Italians...","Both sides have thousands of possible move orders...","I believe this is the simplest...","A move order tried a few times by Magnus Carlsen...","Taking control of the b4-square.","White continues the knight's journey.","Let's challenge White's bishop immediately...","White's only challenging continuation.","Magnus Carlsen had this position twice against Aryan Tari."]
-      },
-      {
-        "name": "Italian: Giuoco Pianissimo (Side: 9.Bg5 Trap)",
-        "description": "A side variation from the Giuoco Pianissimo line featuring a checkmate trap.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d3", "Bc5", "c3", "d6", "Nbd2", "a5", "Nf1", "Be6", "Bb5", "O-O", "Bg5", "h6", "Bh4", "g5", "Nxg5", "hxg5", "Bxg5", "Nxe4", "Bxd8", "Bxf2+", "Ke2", "Bg4#"],
-        "comments": ["","","","","","","","","","","","","","","","","Carlsen's first try...", "","","","We don't need to fear the piece sacrifice.","","","These positions can be scary, but here we have a knockout blow.","It turns out it's White's king that is in trouble.","","","A picturesque mate."]
-      },
-      {
-        "name": "Italian: Two Knights, Scotch Gambit (Main Line)",
-        "description": "An aggressive line beginning with 4.d4.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d4", "exd4", "e5", "d5", "Bb5", "Ne4", "Nxd4", "Bd7", "Bxc6", "bxc6", "O-O", "Bc5", "f3", "Ng5", "f4", "Ne4", "Be3", "Bb6", "Nd2", "c5", "N4f3", "Nxd2", "Qxd2", "d4", "Bf2", "O-O", "a4", "a5", "Qd3"],
-        "comments": ["","","","","The Italian is a trendy opening...","","Two Knights Defense, Open Variation...","C44 Scotch Game: Scotch Gambit...","Scotch Gambit, Advance Variation...","This counterthrust is always Black's best way to respond...","Both pawn captures are bad here...","","","","In return for the bishop pair we hope to exploit two positional factors...","","","","","White executes the f2-f4 idea...","","","The knight is now on an outpost...","Our best case scenario is to trade the b6-bishop...","This is an ambitious plan...","","","","","And suddenly our dark-squared strategy has completely shifted..."]
-      },
-      {
-        "name": "Italian: Scotch Gambit (Side: 6.exd6?? Trap)",
-        "description": "A side variation showing an opening trap for White.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d4", "exd4", "e5", "d5", "exd6", "Bxd6", "Qe2+", "Be7", "O-O", "O-O", "Bg5", "Bf5"],
-        "comments": ["","","","","","","","","","","just develops Black's pieces after","","","","","","",""]
-      },
-      {
-        "name": "Italian: Scotch Gambit (Side: vs 13...Nxd2)",
-        "description": "A side variation within the Scotch Gambit line.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "d4", "exd4", "e5", "d5", "Bb5", "Ne4", "Nxd4", "Bd7", "Bxc6", "bxc6", "O-O", "Bc5", "f3", "Ng5", "f4", "Ne4", "Be3", "Bb6", "Nd2", "Nxd2", "Qxd2", "c5", "Nf3", "Bf5", "Bf2", "O-O", "a4", "a5", "Rad1", "Rb8", "c4", "dxc4", "Qc3", "Qc8", "Nd2", "Bd7", "Nxc4", "Bxa4", "Rd3", "Bb5", "b3", "Qe6", "Bh4", "Qf5", "Rg3", "g6", "Kh1", "Bxc4", "bxc4", "c6", "Be7", "Rfc8", "Rg5", "Qe4", "f5", "Bd8", "e6", "Rb1", "exf7+", "Kxf7", "fxg6+", "Ke8", "Rc1", "Bxe7", "gxh7", "Qxh7", "Re5", "Rcb8", "Ree1", "Rxc1", "Qxc1", "Kd7", "Rd1+", "Ke8", "Qa1", "Rd8", "Re1", "Qh4", "Qxa5", "Qxc4", "Qc7", "Rd7", "Qc8+", "Rd8", "Qxc6+", "Kf7", "Qh6", "Bf6", "Qh7+", "Kf8", "Qh6+", "Bg7", "Qg6", "Qe2", "Qb1", "Qd3", "Qb6", "c4", "Qe6", "Bc3", "Qe7+", "Kg8", "Qe6+", "Kh8", "Rg1", "Bg7", "h3", "c3", "Qe7", "c2", "Rc1", "Qd1+", "Kh2", "Rc8", "Qh4+", "Kg8", "Qf4", "Qd4", "Qf3", "Bh6", "Qb3+", "Qc4", "Qg3+", "Kh7", "Re1", "Rc7"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","WE P","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Italian: Evans Gambit, Compromised Defense (Main)",
-        "description": "The main line of the Evans Gambit, accepting the pawn.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "b4", "Bxb4", "c3", "Ba5", "d4", "exd4", "O-O", "dxc3", "Qb3", "Qf6", "Bg5", "Qg6", "Nxc3", "Bxc3", "Qxc3"],
-        "comments": ["","","","","The Italian is a trendy opening...","","This move introduces the C51 Italian Game: Evans Gambit...","Black has accepted the gambit...","This is the move that earns the extra tempo for us...","This is Black's best response...","White goes for it anyway!","White happily gambits the second pawn...","","","This queen move is a common idea...","","White's development unfolds fluidly...","","","","White has everything one could ask for..."]
-      },
-      {
-        "name": "Italian: Evans Gambit, Anderssen Defense",
-        "description": "A second line in the Evans Gambit.",
-        "category": "Italian Game",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "b4", "Bxb4", "c3", "Ba5", "d4", "exd4", "O-O", "Nf6", "Ba3", "d6", "e5", "dxe5", "Qb3"],
-        "comments": ["","","","","","","","","","","","","","","This is another very important measure...","","Utilising the evergreen theme of the Evans...","","With a huge attack against the uncastled black king."]
-      },
-      {
-        "name": "Deutz Gambit: Main Line (5...Bxd4)",
-        "description": "The main line of the Deutz Gambit after Black recaptures on d4.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "Bxd4", "Nxd4", "Nxd4", "Bg5", "O-O", "f4", "d6", "Nc3", "h6", "fxe5", "dxe5", "Bxf6", "gxf6", "Qh5", "Kh7", "Bxf7", "Qe7", "Qg6+", "Kh8", "Qxh6#"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: Queen Trap Variation (5...exd4)",
-        "description": "A devastating line where Black's queen gets trapped after a series of precise moves.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", "e5", "d5", "exf6", "dxc4", "fxg7", "Rg8", "Re1+", "Be6", "Bg5", "Qd5", "Nc3", "Qf5", "Ne4", "Rxg7", "Nh4", "Qd5", "Nf6+"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: vs 6...Ng4 (Bxf7+ Sacrifice)",
-        "description": "A sharp variation involving a bishop sacrifice on f7.",
-        "category": "Deutz Gambit",
-        "moves": [
-          "e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", 
-          "e5", "Ng4", "Bxf7+", "Kxf7", "Ng5+", "Kg8", "Qxg4", "Nxe5", "Qe4", 
-          "d6", "Qd5+", "Kf8", "f4", "c6", "fxe5+", "Ke8", "Qf7#"
-        ],
-        "comments": [
-          "The King's Pawn Opening, aiming for central control.",
-          "Black mirrors White's move, contesting the center.",
-          "Develops a knight and attacks the e5 pawn.",
-          "Develops and defends the e5 pawn.",
-          "The Italian Game. The bishop puts pressure on Black's weak f7 square.",
-          "The Giuoco Piano. Black develops their own bishop to a strong square.",
-          "White castles, securing the king and preparing to bring the rook into the game.",
-          "Black develops the kingside knight and puts pressure on White's e4 pawn.",
-          "This is the Deutz Gambit! White challenges Black in the center at the cost of a pawn.",
-          "Black accepts the gambit. The main alternative is 5...Bxd4.",
-          "The key follow-up. White pushes the e-pawn to kick the f6 knight and open lines.",
-          "A very aggressive response. Black avoids retreating and puts the knight on an active square, but it can also become a target.",
-          "A brilliant sacrifice!! White gives up the bishop to completely expose the black king.",
-          "Forced. Black must accept the sacrifice.",
-          "The immediate follow-up. White uses the now-open diagonal to harass the king.",
-          "Moving the king to the corner. 8...Ke8 is also possible but the king remains vulnerable.",
-          "White recaptures the knight. The immediate threats are gone, but Black's king is still unsafe.",
-          "Black wins back a pawn and challenges White's queen.",
-          "A good centralizing move. The queen stays active and eyes Black's weak spots.",
-          "Solidifies the center and gives the black queen an escape square.",
-          "White continues to probe, not giving Black a moment to consolidate.",
-          "Forced back. The king's position is becoming precarious.",
-          "The critical attacking move! This threatens to take the e5 knight and opens the f-file for the rook.",
-          "A resourceful try. Black counter-attacks the white queen, hoping to force it to a less active square.",
-          "The decisive blow! It's a discovered check from the rook. White correctly determines that this attack is stronger than the threat to their own queen.",
-          "Black is forced to move the king. The alternative, 13...cxd5, also loses quickly to 14. exd6+, a discovered check from the rook on f1.",
-          "Checkmate. A beautiful and logical conclusion to the attack."
-        ]
-      },
-      {
-        "name": "Deutz Gambit: vs 6...Ng8 Retreat",
-        "description": "Punishing the passive knight retreat to g8 with a queen sacrifice.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "exd4", "e5", "Ng8", "Ng5", "Nh6", "Re1", "O-O", "Qd3", "g6", "Qh3", "Kg7", "Qxh6+", "Kxh6", "Nxf7+", "Kg7", "Bh6+", "Kg8", "Nxd8+", "Kh8", "Bxf8", "Bxf8", "Nxc6", "dxc6"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: Queen Fianchetto Attack (5...Bxd4)",
-        "description": "An aggressive continuation involving f4!! and a mating attack.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "Bxd4", "Nxd4", "Nxd4", "Bg5", "h6", "Bh4", "g5", "f4", "gxf4", "Rxf4", "exf4", "Qxd4", "O-O", "Bxf6", "Qe8", "Bh8", "d6", "Qg7#"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: vs 5...Nxd4 Trap",
-        "description": "A line punishing the immediate knight capture on d4.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Bc5", "O-O", "Nf6", "d4", "Nxd4", "Nxe5", "O-O", "Be3", "Ne6", "Bxe6", "Bxe3", "Bxf7+", "Rxf7", "Nxf7", "Kxf7", "fxe3", "d6", "e5"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: via Two Knights (4...Bc5)",
-        "description": "How the Deutz Gambit can arise from the Two Knights Defense move order.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Bc5", "d4"],
-        "comments": ["","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: Two Knights Main (6...Be7!)",
-        "description": "The correct and solid way for Black to respond in the Two Knights move order.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Nxe4", "Nc3", "Nxc3", "dxc3", "Be7", "Qd5", "O-O", "Nxe5"],
-        "comments": ["","","","","","","","","","","","","","",""]
-      },
-      {
-        "name": "Deutz Gambit: Two Knights Trap (6...Bc5??)",
-        "description": "A classic trap Black can fall into after 4...Nxe4.",
-        "category": "Deutz Gambit",
-        "moves": ["e4", "e5", "Nf3", "Nc6", "Bc4", "Nf6", "O-O", "Nxe4", "Nc3", "Nxc3", "dxc3", "Bc5", "Ng5", "O-O", "Qh5", "h6", "Nxf7", "Qf6", "Nxh6+", "Kh8", "Nf7+", "Kg8", "Qh8#"],
-        "comments": ["","","","","","","","","","","","","","","","","","","","","","",""]
-      }
+        {
+            "id": "giuoco_piano_theory_0",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Giuoco Pianissimo (5.c3)",
+            "fen": null,
+            "annotation": "The main line of the 'Quiet Game'.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" },
+                { "san": "Nc6", "comment": "Time to move on to the Italian..." },
+                { "san": "Bc4", "comment": "The first decision..." },
+                { "san": "Nf6", "comment": "The main line. White defends their pawn..." },
+                { "san": "d3", "comment": "I've played quite a few Italians..." },
+                { "san": "Bc5", "comment": "Both sides have thousands of possible move orders..." },
+                { "san": "c3", "comment": "I believe this is the simplest..." },
+                { "san": "d6", "comment": "A move order tried a few times by Magnus Carlsen..." },
+                { "san": "Nbd2", "comment": "Taking control of the b4-square." },
+                { "san": "a5", "comment": "White continues the knight's journey." },
+                { "san": "Nf1", "comment": "Let's challenge White's bishop immediately..." },
+                { "san": "Be6", "comment": "White's only challenging continuation." },
+                { "san": "Bb5", "comment": "Magnus Carlsen had this position twice against Aryan Tari." },
+                { "san": "O-O" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_1",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Giuoco Pianissimo (Side: 9.Bg5 Trap)",
+            "fen": null,
+            "annotation": "A side variation from the Giuoco Pianissimo line featuring a checkmate trap.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "d3" }, { "san": "Bc5" }, { "san": "c3" }, { "san": "d6" }, { "san": "Nbd2" }, { "san": "a5" }, { "san": "Nf1" }, { "san": "Be6" }, { "san": "Bb5" },
+                { "san": "O-O", "comment": "Carlsen's first try..." },
+                { "san": "Bg5" }, { "san": "h6" }, { "san": "Bh4" },
+                { "san": "g5", "comment": "We don't need to fear the piece sacrifice." },
+                { "san": "Nxg5" }, { "san": "hxg5" },
+                { "san": "Bxg5", "comment": "These positions can be scary, but here we have a knockout blow." },
+                { "san": "Nxe4", "comment": "It turns out it's White's king that is in trouble." },
+                { "san": "Bxd8" }, { "san": "Bxf2+" },
+                { "san": "Ke2", "comment": "A picturesque mate." },
+                { "san": "Bg4#" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_2",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Two Knights, Scotch Gambit (Main Line)",
+            "fen": null,
+            "annotation": "An aggressive line beginning with 4.d4.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "e5", "comment": "The Italian is a trendy opening..." },
+                { "san": "Nf3" }, { "san": "Nc6" },
+                { "san": "Bc4", "comment": "Two Knights Defense, Open Variation..." },
+                { "san": "Nf6" },
+                { "san": "d4", "comment": "C44 Scotch Game: Scotch Gambit..." },
+                { "san": "exd4", "comment": "Scotch Gambit, Advance Variation..." },
+                { "san": "e5", "comment": "This counterthrust is always Black's best way to respond..." },
+                { "san": "d5", "comment": "Both pawn captures are bad here..." },
+                { "san": "Bb5" }, { "san": "Ne4" }, { "san": "Nxd4" },
+                { "san": "Bd7", "comment": "In return for the bishop pair we hope to exploit two positional factors..." },
+                { "san": "Bxc6" }, { "san": "bxc6" }, { "san": "O-O" },
+                { "san": "Bc5", "comment": "White executes the f2-f4 idea..." },
+                { "san": "f3" }, { "san": "Ng5" },
+                { "san": "f4", "comment": "The knight is now on an outpost..." },
+                { "san": "Ne4", "comment": "Our best case scenario is to trade the b6-bishop..." },
+                { "san": "Be3", "comment": "This is an ambitious plan..." },
+                { "san": "Bb6" }, { "san": "Nd2" }, { "san": "c5" }, { "san": "N4f3" }, { "san": "Nxd2" }, { "san": "Qxd2" },
+                { "san": "d4", "comment": "And suddenly our dark-squared strategy has completely shifted..." },
+                { "san": "Bf2" }, { "san": "O-O" }, { "san": "a4" }, { "san": "a5" }, { "san": "Qd3" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_3",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Scotch Gambit (Side: 6.exd6?? Trap)",
+            "fen": null,
+            "annotation": "A side variation showing an opening trap for White.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "exd4" }, { "san": "e5" },
+                { "san": "d5", "comment": "just develops Black's pieces after" },
+                { "san": "exd6" }, { "san": "Bxd6" }, { "san": "Qe2+" }, { "san": "Be7" }, { "san": "O-O" }, { "san": "O-O" }, { "san": "Bg5" }, { "san": "Bf5" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_4",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Scotch Gambit (Side: vs 13...Nxd2)",
+            "fen": null,
+            "annotation": "A side variation within the Scotch Gambit line.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "exd4" }, { "san": "e5" }, { "san": "d5" }, { "san": "Bb5" }, { "san": "Ne4" }, { "san": "Nxd4" }, { "san": "Bd7" }, { "san": "Bxc6" }, { "san": "bxc6" }, { "san": "O-O" }, { "san": "Bc5" }, { "san": "f3" }, { "san": "Ng5" }, { "san": "f4" }, { "san": "Ne4" }, { "san": "Be3" }, { "san": "Bb6" }, { "san": "Nd2" }, { "san": "Nxd2" },
+                { "san": "Qxd2", "comment": "WE P" },
+                { "san": "c5" }, { "san": "Nf3" }, { "san": "Bf5" }, { "san": "Bf2" }, { "san": "O-O" }, { "san": "a4" }, { "san": "a5" }, { "san": "Rad1" }, { "san": "Rb8" }, { "san": "c4" }, { "san": "dxc4" }, { "san": "Qc3" }, { "san": "Qc8" }, { "san": "Nd2" }, { "san": "Bd7" }, { "san": "Nxc4" }, { "san": "Bxa4" }, { "san": "Rd3" }, { "san": "Bb5" }, { "san": "b3" }, { "san": "Qe6" }, { "san": "Bh4" }, { "san": "Qf5" }, { "san": "Rg3" }, { "san": "g6" }, { "san": "Kh1" }, { "san": "Bxc4" }, { "san": "bxc4" }, { "san": "c6" }, { "san": "Be7" }, { "san": "Rfc8" }, { "san": "Rg5" }, { "san": "Qe4" }, { "san": "f5" }, { "san": "Bd8" }, { "san": "e6" }, { "san": "Rb1" }, { "san": "exf7+" }, { "san": "Kxf7" }, { "san": "fxg6+" }, { "san": "Ke8" }, { "san": "Rc1" }, { "san": "Bxe7" }, { "san": "gxh7" }, { "san": "Qxh7" }, { "san": "Re5" }, { "san": "Rcb8" }, { "san": "Ree1" }, { "san": "Rxc1" }, { "san": "Qxc1" }, { "san": "Kd7" }, { "san": "Rd1+" }, { "san": "Ke8" }, { "san": "Qa1" }, { "san": "Rd8" }, { "san": "Re1" }, { "san": "Qh4" }, { "san": "Qxa5" }, { "san": "Qxc4" }, { "san": "Qc7" }, { "san": "Rd7" }, { "san": "Qc8+" }, { "san": "Rd8" }, { "san": "Qxc6+" }, { "san": "Kf7" }, { "san": "Qh6" }, { "san": "Bf6" }, { "san": "Qh7+" }, { "san": "Kf8" }, { "san": "Qh6+" }, { "san": "Bg7" }, { "san": "Qg6" }, { "san": "Qe2" }, { "san": "Qb1" }, { "san": "Qd3" }, { "san": "Qb6" }, { "san": "c4" }, { "san": "Qe6" }, { "san": "Bc3" }, { "san": "Qe7+" }, { "san": "Kg8" }, { "san": "Qe6+" }, { "san": "Kh8" }, { "san": "Rg1" }, { "san": "Bg7" }, { "san": "h3" }, { "san": "c3" }, { "san": "Qe7" }, { "san": "c2" }, { "san": "Rc1" }, { "san": "Qd1+" }, { "san": "Kh2" }, { "san": "Rc8" }, { "san": "Qh4+" }, { "san": "Kg8" }, { "san": "Qf4" }, { "san": "Qd4" }, { "san": "Qf3" }, { "san": "Bh6" }, { "san": "Qb3+" }, { "san": "Qc4" }, { "san": "Qg3+" }, { "san": "Kh7" }, { "san": "Re1" }, { "san": "Rc7" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_5",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Evans Gambit, Compromised Defense (Main)",
+            "fen": null,
+            "annotation": "The main line of the Evans Gambit, accepting the pawn.",
+            "moves": [
+                { "san": "e4" },
+                { "san": "e5", "comment": "The Italian is a trendy opening..." },
+                { "san": "Nf3" }, { "san": "Nc6" },
+                { "san": "Bc4", "comment": "This move introduces the C51 Italian Game: Evans Gambit..." },
+                { "san": "Bc5" },
+                { "san": "b4", "comment": "Black has accepted the gambit..." },
+                { "san": "Bxb4", "comment": "This is the move that earns the extra tempo for us..." },
+                { "san": "c3", "comment": "This is Black's best response..." },
+                { "san": "Ba5", "comment": "White goes for it anyway!" },
+                { "san": "d4", "comment": "White happily gambits the second pawn..." },
+                { "san": "exd4" }, { "san": "O-O" },
+                { "san": "dxc3", "comment": "This queen move is a common idea..." },
+                { "san": "Qb3" },
+                { "san": "Qf6", "comment": "White's development unfolds fluidly..." },
+                { "san": "Bg5" }, { "san": "Qg6" }, { "san": "Nxc3" }, { "san": "Bxc3" },
+                { "san": "Qxc3", "comment": "White has everything one could ask for..." }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_6",
+            "type": "theory",
+            "category": "Italian Game",
+            "name": "Italian: Evans Gambit, Anderssen Defense",
+            "fen": null,
+            "annotation": "A second line in the Evans Gambit.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Bc5" }, { "san": "b4" }, { "san": "Bxb4" }, { "san": "c3" }, { "san": "Ba5" }, { "san": "d4" }, { "san": "exd4" },
+                { "san": "O-O", "comment": "This is another very important measure..." },
+                { "san": "Nf6" },
+                { "san": "Ba3", "comment": "Utilising the evergreen theme of the Evans..." },
+                { "san": "d6" }, { "san": "e5" },
+                { "san": "dxe5", "comment": "With a huge attack against the uncastled black king." },
+                { "san": "Qb3" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_7",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: Main Line (5...Bxd4)",
+            "fen": null,
+            "annotation": "The main line of the Deutz Gambit after Black recaptures on d4.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Bc5" }, { "san": "O-O" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "Bxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Bg5" }, { "san": "O-O" }, { "san": "f4" }, { "san": "d6" }, { "san": "Nc3" }, { "san": "h6" }, { "san": "fxe5" }, { "san": "dxe5" }, { "san": "Bxf6" }, { "san": "gxf6" }, { "san": "Qh5" }, { "san": "Kh7" }, { "san": "Bxf7" }, { "san": "Qe7" }, { "san": "Qg6+" }, { "san": "Kh8" }, { "san": "Qxh6#" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_8",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: Queen Trap Variation (5...exd4)",
+            "fen": null,
+            "annotation": "A devastating line where Black's queen gets trapped after a series of precise moves.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Bc5" }, { "san": "O-O" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "exd4" }, { "san": "e5" }, { "san": "d5" }, { "san": "exf6" }, { "san": "dxc4" }, { "san": "fxg7" }, { "san": "Rg8" }, { "san": "Re1+" }, { "san": "Be6" }, { "san": "Bg5" }, { "san": "Qd5" }, { "san": "Nc3" }, { "san": "Qf5" }, { "san": "Ne4" }, { "san": "Rxg7" }, { "san": "Nh4" }, { "san": "Qd5" }, { "san": "Nf6+" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_9",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: vs 6...Ng4 (Bxf7+ Sacrifice)",
+            "fen": null,
+            "annotation": "A sharp variation involving a bishop sacrifice on f7.",
+            "moves": [
+                { "san": "e4", "comment": "The King's Pawn Opening, aiming for central control." },
+                { "san": "e5", "comment": "Black mirrors White's move, contesting the center." },
+                { "san": "Nf3", "comment": "Develops a knight and attacks the e5 pawn." },
+                { "san": "Nc6", "comment": "Develops and defends the e5 pawn." },
+                { "san": "Bc4", "comment": "The Italian Game. The bishop puts pressure on Black's weak f7 square." },
+                { "san": "Bc5", "comment": "The Giuoco Piano. Black develops their own bishop to a strong square." },
+                { "san": "O-O", "comment": "White castles, securing the king and preparing to bring the rook into the game." },
+                { "san": "Nf6", "comment": "Black develops the kingside knight and puts pressure on White's e4 pawn." },
+                { "san": "d4", "comment": "This is the Deutz Gambit! White challenges Black in the center at the cost of a pawn." },
+                { "san": "exd4", "comment": "Black accepts the gambit. The main alternative is 5...Bxd4." },
+                { "san": "e5", "comment": "The key follow-up. White pushes the e-pawn to kick the f6 knight and open lines." },
+                { "san": "Ng4", "comment": "A very aggressive response. Black avoids retreating and puts the knight on an active square, but it can also become a target." },
+                { "san": "Bxf7+", "comment": "A brilliant sacrifice!! White gives up the bishop to completely expose the black king." },
+                { "san": "Kxf7", "comment": "Forced. Black must accept the sacrifice." },
+                { "san": "Ng5+", "comment": "The immediate follow-up. White uses the now-open diagonal to harass the king." },
+                { "san": "Kg8", "comment": "Moving the king to the corner. 8...Ke8 is also possible but the king remains vulnerable." },
+                { "san": "Qxg4", "comment": "White recaptures the knight. The immediate threats are gone, but Black's king is still unsafe." },
+                { "san": "Nxe5", "comment": "Black wins back a pawn and challenges White's queen." },
+                { "san": "Qe4", "comment": "A good centralizing move. The queen stays active and eyes Black's weak spots." },
+                { "san": "d6", "comment": "Solidifies the center and gives the black queen an escape square." },
+                { "san": "Qd5+", "comment": "White continues to probe, not giving Black a moment to consolidate." },
+                { "san": "Kf8", "comment": "Forced back. The king's position is becoming precarious." },
+                { "san": "f4", "comment": "The critical attacking move! This threatens to take the e5 knight and opens the f-file for the rook." },
+                { "san": "c6", "comment": "A resourceful try. Black counter-attacks the white queen, hoping to force it to a less active square." },
+                { "san": "fxe5+", "comment": "The decisive blow! It's a discovered check from the rook. White correctly determines that this attack is stronger than the threat to their own queen." },
+                { "san": "Ke8", "comment": "Black is forced to move the king. The alternative, 13...cxd5, also loses quickly to 14. exd6+, a discovered check from the rook on f1." },
+                { "san": "Qf7#", "comment": "Checkmate. A beautiful and logical conclusion to the attack." }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_10",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: vs 6...Ng8 Retreat",
+            "fen": null,
+            "annotation": "Punishing the passive knight retreat to g8 with a queen sacrifice.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Bc5" }, { "san": "O-O" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "exd4" }, { "san": "e5" }, { "san": "Ng8" }, { "san": "Ng5" }, { "san": "Nh6" }, { "san": "Re1" }, { "san": "O-O" }, { "san": "Qd3" }, { "san": "g6" }, { "san": "Qh3" }, { "san": "Kg7" }, { "san": "Qxh6+" }, { "san": "Kxh6" }, { "san": "Nxf7+" }, { "san": "Kg7" }, { "san": "Bh6+" }, { "san": "Kg8" }, { "san": "Nxd8+" }, { "san": "Kh8" }, { "san": "Bxf8" }, { "san": "Bxf8" }, { "san": "Nxc6" }, { "san": "dxc6" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_11",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: Queen Fianchetto Attack (5...Bxd4)",
+            "fen": null,
+            "annotation": "An aggressive continuation involving f4!! and a mating attack.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Bc5" }, { "san": "O-O" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "Bxd4" }, { "san": "Nxd4" }, { "san": "Nxd4" }, { "san": "Bg5" }, { "san": "h6" }, { "san": "Bh4" }, { "san": "g5" }, { "san": "f4" }, { "san": "gxf4" }, { "san": "Rxf4" }, { "san": "exf4" }, { "san": "Qxd4" }, { "san": "O-O" }, { "san": "Bxf6" }, { "san": "Qe8" }, { "san": "Bh8" }, { "san": "d6" }, { "san": "Qg7#" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_12",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: vs 5...Nxd4 Trap",
+            "fen": null,
+            "annotation": "A line punishing the immediate knight capture on d4.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Bc5" }, { "san": "O-O" }, { "san": "Nf6" }, { "san": "d4" }, { "san": "Nxd4" }, { "san": "Nxe5" }, { "san": "O-O" }, { "san": "Be3" }, { "san": "Ne6" }, { "san": "Bxe6" }, { "san": "Bxe3" }, { "san": "Bxf7+" }, { "san": "Rxf7" }, { "san": "Nxf7" }, { "san": "Kxf7" }, { "san": "fxe3" }, { "san": "d6" }, { "san": "e5" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_13",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: via Two Knights (4...Bc5)",
+            "fen": null,
+            "annotation": "How the Deutz Gambit can arise from the Two Knights Defense move order.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "O-O" }, { "san": "Bc5" }, { "san": "d4" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_14",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: Two Knights Main (6...Be7!)",
+            "fen": null,
+            "annotation": "The correct and solid way for Black to respond in the Two Knights move order.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "O-O" }, { "san": "Nxe4" }, { "san": "Nc3" }, { "san": "Nxc3" }, { "san": "dxc3" }, { "san": "Be7" }, { "san": "Qd5" }, { "san": "O-O" }, { "san": "Nxe5" }
+            ]
+        },
+        {
+            "id": "giuoco_piano_theory_15",
+            "type": "theory",
+            "category": "Deutz Gambit",
+            "name": "Deutz Gambit: Two Knights Trap (6...Bc5??)",
+            "fen": null,
+            "annotation": "A classic trap Black can fall into after 4...Nxe4.",
+            "moves": [
+                { "san": "e4" }, { "san": "e5" }, { "san": "Nf3" }, { "san": "Nc6" }, { "san": "Bc4" }, { "san": "Nf6" }, { "san": "O-O" }, { "san": "Nxe4" }, { "san": "Nc3" }, { "san": "Nxc3" }, { "san": "dxc3" }, { "san": "Bc5" }, { "san": "Ng5" }, { "san": "O-O" }, { "san": "Qh5" }, { "san": "h6" }, { "san": "Nxf7" }, { "san": "Qf6" }, { "san": "Nxh6+" }, { "san": "Kh8" }, { "san": "Nf7+" }, { "san": "Kg8" }, { "san": "Qh8#" }
+            ]
+        }
     ]
-  }
 }
